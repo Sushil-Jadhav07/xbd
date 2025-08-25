@@ -15,7 +15,7 @@ const Navbar = () => {
     { name: 'Book', href: '/book' },
     { name: 'Learning Hub', href: '/learning-hub' },
     { name: 'About Anuj', href: '/about' },
-    { name: 'Work with Anuj', href: '/work' },
+    { name: 'Work with Anuj', href: '/community' },
   ];
 
   return (
