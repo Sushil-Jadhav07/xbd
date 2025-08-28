@@ -3,8 +3,8 @@ import { HiOutlineSparkles } from 'react-icons/hi'
 
 const Newsletter = () => {
   return (
-    <section className="bg-white py-6 md:py-12  border-b border-gray-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-white lg:px-12 lg:py-6 md:py-12 py-8  border-b border-gray-200">
+          <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header */}
             <div className="flex flex-col justify-start items-start text-start">
               {/* Label */}

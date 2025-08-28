@@ -7,6 +7,15 @@ import PricingPlan from '@/components/Community/PricingPlan'
 import Media from '@/components/Community/Media'
 import Quote from '@/components/Community/Quote'
 import Newsletter from '@/components/Community/Newsletter'
+import BookBanner from '@/components/book/BookBanner'
+import Testimonial from '@/components/book/Testimonial'
+import BookInfo from '@/components/book/BookInfo'
+import InsideBook from '@/components/book/InsideBook'
+import MeetAuthor from '@/components/book/MeetAuthor'
+import AboutTitle from '@/components/About-Anuj/AboutTitle'
+import Keynotes from '@/components/About-Anuj/Keynotes'
+import Industries from '@/components/About-Anuj/Industries'
+import CalltoAction from '@/components/About-Anuj/CalltoAction'
 import React from 'react'
 
 const Community = () => {
@@ -20,6 +29,15 @@ const Community = () => {
       <Media />
       <Quote />
       <Newsletter />
+      <BookBanner />
+      <Testimonial />
+      <BookInfo />
+      <InsideBook />
+      <MeetAuthor />
+      <AboutTitle />
+      <Keynotes />
+      <Industries />
+      <CalltoAction />
       
       <Footer />
     </div>
