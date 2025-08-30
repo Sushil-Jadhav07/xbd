@@ -1,5 +1,49 @@
 @import "tailwindcss";
 
+/* Dark mode global overrides to support legacy hardcoded colors */
+/* Ensures clicking the theme toggle flips common utilities site-wide */
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}
+.dark body {
+  background-color: #0b0b0b;
+  color: #e5e7eb;
+}
+
+/* Backgrounds */
+.dark .bg-white { background-color: #0b0b0b !important; }
+.dark .bg-gray-50 { background-color: #0a0a0a !important; }
+.dark .bg-gray-100 { background-color: #111827 !important; }
+.dark .bg-gray-200 { background-color: #1f2937 !important; }
+.dark .bg-gray-300 { background-color: #374151 !important; }
+.dark .bg-gray-400 { background-color: #4b5563 !important; }
+.dark .bg-gray-600 { background-color: #4b5563 !important; }
+.dark .bg-gray-700 { background-color: #374151 !important; }
+.dark .bg-gray-800 { background-color: #1f2937 !important; }
+
+/* Text colors */
+.dark .text-black { color: #f3f4f6 !important; }
+.dark .text-gray-900 { color: #f3f4f6 !important; }
+.dark .text-gray-800 { color: #e5e7eb !important; }
+.dark .text-gray-700 { color: #d1d5db !important; }
+.dark .text-gray-600 { color: #9ca3af !important; }
+.dark .text-gray-500 { color: #9ca3af !important; }
+
+/* Borders */
+.dark .border-gray-50,
+.dark .border-gray-100,
+.dark .border-gray-200,
+.dark .border-gray-300 { border-color: #374151 !important; }
+.dark .border-gray-400,
+.dark .border-gray-500 { border-color: #4b5563 !important; }
+
+/* Buttons commonly styled as black on light */
+.dark .bg-black.text-white.rounded-lg { background-color: #f9fafb !important; color: #111827 !important; }
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
