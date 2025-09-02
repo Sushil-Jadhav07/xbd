@@ -9,12 +9,12 @@
   color-scheme: dark;
 }
 .dark body {
-  background-color: #0b0b0b;
+  background-color: #020202;
   color: #e5e7eb;
 }
 
 /* Backgrounds */
-.dark .bg-white { background-color: #0b0b0b !important; }
+.dark .bg-white { background-color: #020202 !important; }
 .dark .bg-gray-50 { background-color: #0a0a0a !important; }
 .dark .bg-gray-100 { background-color: #111827 !important; }
 .dark .bg-gray-200 { background-color: #1f2937 !important; }
@@ -40,8 +40,21 @@
 .dark .border-gray-400,
 .dark .border-gray-500 { border-color: #4b5563 !important; }
 
-/* Buttons commonly styled as black on light */
-.dark .bg-black.text-white.rounded-lg { background-color: #f9fafb !important; color: #111827 !important; }
+/* Primary button gradient override (light and dark) */
+.bg-black.text-white.rounded-lg,
+.bg-black.text-white.rounded {
+  background-image: linear-gradient(135deg, #9d7035, #c1a35e) !important;
+  color: #ffffff !important;
+}
+.bg-black.text-white.rounded-lg:hover,
+.bg-black.text-white.rounded:hover {
+  filter: brightness(0.95);
+}
+.dark .bg-black.text-white.rounded-lg,
+.dark .bg-black.text-white.rounded {
+  background-image: linear-gradient(135deg, #9d7035, #c1a35e) !important;
+  color: #ffffff !important;
+}
 
 
 :root {
@@ -58,7 +71,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #020202;
     --foreground: #ededed;
   }
 }

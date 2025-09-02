@@ -1,7 +1,10 @@
 "use client";
 
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { MdImage } from 'react-icons/md';
+import FeatureImageOne from "../../asset/feature1.png"
+import FeatureImageTwo from "../../asset/feature2.png"
 
 const ImageBannerCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -9,10 +12,9 @@ const ImageBannerCarousel = () => {
 
   // Sample slides - you can replace with actual images
   const slides = [
-    { id: 1, alt: "Banner Image 1" },
-    { id: 2, alt: "Banner Image 2" },
-    { id: 3, alt: "Banner Image 3" },
-    { id: 4, alt: "Banner Image 4" }
+    { id: 1, image:FeatureImageOne, alt: "Banner Image 1" },
+    { id: 2,image:FeatureImageTwo, alt: "Banner Image 2" },
+ 
   ];
 
   // Auto-play functionality
@@ -61,10 +63,10 @@ const ImageBannerCarousel = () => {
         {/* Carousel Container */}
         <div className="relative">
           {/* Main Carousel */}
-          <div className="relative overflow-hidden rounded-3xl bg-gray-300 aspect-[16/9] md:aspect-[21/9]">
+          <div className="relative overflow-hidden rounded-lg  aspect-[16/9] md:aspect-[21/9]">
             {/* Slides Container */}
             <div 
-              className="flex transition-transform duration-500 ease-in-out h-full"
+              className="flex w-full transition-transform duration-500 ease-in-out h-full"
               style={{
                 transform: `translateX(-${currentSlide * 100}%)`
               }}
@@ -75,13 +77,7 @@ const ImageBannerCarousel = () => {
                   className="w-full flex-shrink-0 relative h-full"
                 >
                   {/* Image Placeholder */}
-                  <div className="w-full h-full bg-[#dbdbdb] flex items-center justify-center relative">
-                    {/* Centered Image Icon */}
-                      <MdImage className="text-gray-500 text-[4rem]" />
-                    
-                    {/* Subtle gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20"></div>
-                  </div>
+                <Image className='w-full h-full' src={slide.image} alt={slide.alt} />
                 </div>
               ))}
             </div>

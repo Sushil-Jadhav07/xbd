@@ -1,24 +1,33 @@
 "use client";
 
-import { HiOutlineSparkles } from 'react-icons/hi';
+import { HiOutlineSparkles, HiOutlineEye, HiOutlineLink } from 'react-icons/hi';
+import { SiMaterialdesignicons } from "react-icons/si";
+
+
 
 const Feature = () => {
   const features = [
     {
       title: "Design at the Core",
-      description: "Integrate design thinking into your company's core to ensure growth occurs naturally, rather than relying on luck.",
-      hasButton: true
+      description:
+        "Integrate design thinking into your company's core to ensure growth occurs naturally, rather than relying on luck.",
+      hasButton: true,
+      icon: SiMaterialdesignicons,
     },
     {
       title: "System-Level Vision",
-      description: "View your business as a cohesive system and leverage unseen opportunities for remarkable outcomes.",
-      hasButton: false
+      description:
+        "View your business as a cohesive system and leverage unseen opportunities for remarkable outcomes.",
+      hasButton: false,
+      icon: HiOutlineEye,
     },
     {
       title: "Network Power",
-      description: "Unite converged systems so every move amplifies your reach and accelerates market dominance.",
-      hasButton: false
-    }
+      description:
+        "Unite converged systems so every move amplifies your reach and accelerates market dominance.",
+      hasButton: false,
+      icon: HiOutlineLink,
+    },
   ];
 
   return (
@@ -39,8 +48,11 @@ const Feature = () => {
           {features.map((feature, index) => (
             <div key={index} className="space-y-4">
               {/* Icon */}
-              <div className="bg-gray-300 rounded-lg p-4 w-16 h-16 flex items-center justify-center">
-                <HiOutlineSparkles className="text-gray-600 text-2xl" />
+              <div className="bg-gradient-to-br from-[#9d7035] to-[#c1a35e] rounded-lg p-4 w-16 h-16 flex items-center justify-center shadow-sm">
+                {(() => {
+                  const Icon = feature.icon;
+                  return <Icon className="text-white text-2xl" />;
+                })()}
               </div>
 
               {/* Title */}
@@ -54,13 +66,13 @@ const Feature = () => {
               </p>
 
               {/* Button (only for first item) */}
-              {feature.hasButton && (
+              {/* {feature.hasButton && (
                 <div className="pt-2">
                   <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200">
                     Take a quick look
                   </button>
                 </div>
-              )}
+              )} */}
             </div>
           ))}
         </div>
