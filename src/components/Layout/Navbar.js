@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { MdImage } from 'react-icons/md';
+import LogoMain from "../../asset/logomain.png"
 import ThemeToggle from './ThemeToggle';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,10 +26,11 @@ const Navbar = () => {
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 md:py-3">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <div className="bg-gray-200 dark:bg-gray-700 rounded-lg p-3 w-24 h-10 flex items-center justify-center transition-colors">
+          <div  className="flex-shrink-0 w-[130px]">
+            <Image src={LogoMain} alt="Logo Main" />
+            {/* <div className="bg-gray-200 dark:bg-gray-700 rounded-lg p-3 w-24 h-10 flex items-center justify-center transition-colors">
               <MdImage className="text-gray-400 dark:text-gray-300 text-xl" />
-            </div>
+            </div> */}
           </div>
 
           {/* Desktop Navigation */}

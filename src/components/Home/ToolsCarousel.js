@@ -3,6 +3,12 @@
 import { useState, useRef, useEffect } from 'react';
 import { HiOutlineSparkles, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import { MdImage } from 'react-icons/md';
+import XtremeReach from "../../asset/x-tremereach.png"
+import XtractEmotions from "../../asset/X-tract Emotions.png"
+import XtendValue from "../../asset/X-tend Value.png"
+
+
+import Image from 'next/image';
 
 const ToolsCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -13,17 +19,20 @@ const ToolsCarousel = () => {
     {
       title: "X-treme Reach",
       description: "Expand your audience faster than your competitors.",
-      buttonText: "Boost My Reach"
+      buttonText: "Boost My Reach",
+      image: XtremeReach
     },
     {
       title: "X-tract Emotions",
       description: "Win customers by inspiring action, not just attention.",
-      buttonText: "Amplify Influence"
+      buttonText: "Amplify Influence",
+      image: XtractEmotions
     },
     {
       title: "X-tend Value",
       description: "Turn your expertise into market-leading impact.",
-      buttonText: "Maximize Value"
+      buttonText: "Maximize Value",
+      image:  XtendValue
     },
     // Additional slides for demonstration
     {
@@ -136,10 +145,8 @@ const ToolsCarousel = () => {
                 >
                   <div className="h-full flex flex-col">
                     {/* Image Placeholder */}
-                    <div className="bg-[#dbdbdb] rounded-2xl aspect-[4/3] flex items-center justify-center mb-8 relative overflow-hidden">
-                      <div className="bg-gray-400 rounded-lg p-3 w-16 h-12 flex items-center justify-center">
-                        <MdImage className="text-gray-500 text-xl" />
-                      </div>
+                    <div className="bg-[#dbdbdb] rounded-2xl  flex items-center justify-center mb-8 relative overflow-hidden">
+                     <Image src={tool.image} alt={tool.title} />
                       <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20"></div>
                     </div>
 

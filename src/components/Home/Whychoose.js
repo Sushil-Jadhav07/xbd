@@ -2,6 +2,8 @@
 
 import { HiOutlineSparkles } from 'react-icons/hi';
 import { MdImage } from 'react-icons/md';
+import WhychooseImage from "../../asset/whyxbd.png"
+import Image from 'next/image';
 
 const Whychoose = () => {
   return (
@@ -13,12 +15,16 @@ const Whychoose = () => {
             {/* Label */}
             <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide">
               <HiOutlineSparkles className="text-lg" />
-              WHY EXPONENTIAL DESIGN
+              WHY EXPONENTIAL BY DESIGN
             </div>
 
             {/* Headline */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-              If You're Still Scaling the Old Way, You're{" "}
+              If You're{" "}
+              <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent inline">
+                Still Scaling the Old Way
+              </span>
+              , You're {" "}
               <span className="font-black">Already Behind</span>
             </h2>
 
@@ -53,14 +59,11 @@ const Whychoose = () => {
 
           {/* Right Image */}
           <div className="flex-1 max-w-lg lg:max-w-none">
-            <div className="bg-[#dbdbdb] rounded-3xl aspect-[4/3] flex items-center justify-center relative overflow-hidden">
+            <div className=" rounded-3xl  flex items-center justify-center relative overflow-hidden">
               {/* Small image placeholder in center */}
-              <div className="bg-gray-400 rounded-lg p-4 w-20 h-16 flex items-center justify-center">
-                <MdImage className="text-gray-500 text-2xl" />
-              </div>
-              
+            <Image src={WhychooseImage} alt="Whychoose" />
               {/* Subtle gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20"></div>
+            
             </div>
           </div>
         </div>

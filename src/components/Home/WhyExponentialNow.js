@@ -2,6 +2,9 @@
 
 import { HiOutlineSparkles } from 'react-icons/hi';
 import { MdImage } from 'react-icons/md';
+import WhyHyperGrowth from "../../asset/whyhypergrowth.png"
+import Image from 'next/image';
+
 
 const WhyExponentialNow = () => {
   const stats = [
@@ -59,14 +62,12 @@ const WhyExponentialNow = () => {
         <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
           {/* Left Image */}
           <div className="flex-1 w-full">
-            <div className="bg-[#dbdbdb] rounded-3xl aspect-[4/3] flex items-center justify-center relative overflow-hidden">
+            <div className=" flex items-center  justify-center relative overflow-hidden">
               {/* Small image placeholder in center */}
-              <div className="bg-gray-400 rounded-lg p-4 w-20 h-16 flex items-center justify-center">
-                <MdImage className="text-gray-500 text-2xl" />
-              </div>
+            <Image  src={WhyHyperGrowth} alt="WhyHyperGrowth" />
               
               {/* Subtle gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20"></div>
+            
             </div>
           </div>
 
