@@ -44,7 +44,7 @@ const QuoteCarousel = () => {
   };
 
   return (
-    <section className="bg-white py-16 md:py-20 lg:py-24  border-b border-gray-200">
+    <section className="bg-white dark:bg-black py-16 md:py-20 lg:py-24  border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16">
@@ -60,13 +60,13 @@ const QuoteCarousel = () => {
           </h2> */}
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-700 dark:text-white max-w-3xl mx-auto leading-relaxed">
             Join thousands of leaders who've accelerated their growth with our proven framework.
           </p>
         </div>
 
         {/* Main Content */}
-        <div className="bg-[#dbdbdb] rounded-3xl relative overflow-hidden">
+        <div className="bg-[#dbdbdb] dark:bg-gray-900 rounded-3xl relative overflow-hidden">
           {/* Large Quote Mark */}
           <div className="absolute top-8 left-8 text-gray-400 text-8xl md:text-9xl font-serif leading-none opacity-50 z-10">
             ❝
@@ -77,7 +77,7 @@ const QuoteCarousel = () => {
             <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col justify-center relative z-20">
               <div className="space-y-8">
                 {/* Quote Text */}
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
                   The Only Thing That's Changed In The World Is Everything
                 </h3>
 
@@ -87,7 +87,7 @@ const QuoteCarousel = () => {
                     Start My Growth
                   </button>
                   
-                  <button className="text-gray-900 font-semibold hover:text-black transition-colors duration-200 underline decoration-2 underline-offset-4">
+                  <button className="text-gray-900 dark:text-white font-semibold hover:text-black dark:hover:text-white transition-colors duration-200 underline decoration-2 underline-offset-4">
                     See How It Works
                   </button>
                 </div>
@@ -97,7 +97,7 @@ const QuoteCarousel = () => {
             {/* Right Carousel - Edge to Edge */}
             <div className="flex-1 relative">
               {/* Carousel Container */}
-              <div className="relative overflow-hidden h-full bg-[#dbdbdb] lg:rounded-r-3xl">
+              <div className="relative overflow-hidden h-full bg-[#dbdbdb] dark:bg-gray-900 lg:rounded-r-3xl">
                 {/* Slides */}
                 <div 
                   className="flex transition-transform duration-500 ease-in-out h-full"
@@ -111,9 +111,9 @@ const QuoteCarousel = () => {
                       className="w-full flex-shrink-0 relative h-full"
                     >
                       {/* Image Placeholder */}
-                      <div className="w-full h-full bg-[#dbdbdb] flex items-center justify-center relative">
+                      <div className="w-full h-full bg-[#dbdbdb] dark:bg-gray-900 flex items-center justify-center relative">
                         {/* Centered Image Icon */}
-                          <MdImage className="text-gray-500 text-5xl" />
+                          <MdImage className="text-gray-500 dark:text-gray-300 text-5xl" />
                         
                         {/* Subtle gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 opacity-30"></div>
