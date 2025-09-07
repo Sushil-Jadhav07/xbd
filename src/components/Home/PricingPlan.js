@@ -77,7 +77,7 @@ const PricingPlan = () => {
   const slideWidth = 100 / visibleSlides;
 
   return (
-    <section className="bg-[#dbdbdb] py-16 md:py-20  border-b border-gray-200">
+    <section className="bg-[#dbdbdb] dark:bg-black py-16 md:py-20  border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16">
@@ -99,7 +99,7 @@ const PricingPlan = () => {
         </div>
 
         {/* White Container */}
-        <div className="bg-white rounded-3xl p-8 md:p-10">
+        <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 md:p-10">
           {/* Carousel Container */}
           <div className="relative ">
             {/* Navigation Buttons */}

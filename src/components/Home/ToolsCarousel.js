@@ -8,31 +8,36 @@ import XtractEmotions from "../../asset/X-tract Emotions.png"
 import XtendValue from "../../asset/X-tend Value.png"
 
 
+
 import Image from 'next/image';
 
 const ToolsCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [visibleSlides, setVisibleSlides] = useState(3);
   const carouselRef = useRef(null);
+  const videoRefs = useRef([]);
 
   const tools = [
     {
       title: "X-treme Reach",
       description: "Expand your audience faster than your competitors.",
       buttonText: "Boost My Reach",
-      image: XtremeReach
+      image: XtremeReach,
+      video: 'https://res.cloudinary.com/dbjtwrdxo/video/upload/v1757166895/3_wo8ltt.mp4'
     },
     {
       title: "X-tract Emotions",
       description: "Win customers by inspiring action, not just attention.",
       buttonText: "Amplify Influence",
-      image: XtractEmotions
+      image: XtractEmotions,
+      video:'https://res.cloudinary.com/dbjtwrdxo/video/upload/v1757166895/1_tjzu6w.mp4'
     },
     {
       title: "X-tend Value",
       description: "Turn your expertise into market-leading impact.",
       buttonText: "Maximize Value",
-      image:  XtendValue
+      image:  XtendValue,
+      video:'https://res.cloudinary.com/dbjtwrdxo/video/upload/v1757166895/2_zt4ive.mp4'
     },
     // Additional slides for demonstration
     {
@@ -84,6 +89,37 @@ const ToolsCarousel = () => {
   };
 
   const slideWidth = 100 / visibleSlides;
+
+  const handleHoverPlay = (index) => {
+    const vid = videoRefs.current[index];
+    if (!vid) return;
+    // Pause others
+    videoRefs.current.forEach((v, i) => {
+      if (v && i !== index) {
+        try { v.pause(); } catch {}
+      }
+    });
+    try {
+      vid.play();
+    } catch {}
+  };
+
+  const handleHoverPause = (index) => {
+    const vid = videoRefs.current[index];
+    if (!vid) return;
+    try {
+      vid.pause();
+      vid.currentTime = 0;
+    } catch {}
+  };
+
+  // Safety: pause all when slide index changes
+  useEffect(() => {
+    videoRefs.current.forEach((v) => {
+      if (!v) return;
+      try { v.pause(); } catch {}
+    });
+  }, [currentSlide]);
 
   return (
     <section className="bg-white py-16 md:py-20 lg:py-24  border-b border-gray-200">
@@ -144,10 +180,31 @@ const ToolsCarousel = () => {
                   style={{ width: `${slideWidth}%` }}
                 >
                   <div className="h-full flex flex-col">
-                    {/* Image Placeholder */}
-                    <div className="bg-[#dbdbdb] rounded-2xl  flex items-center justify-center mb-8 relative overflow-hidden">
-                     <Image src={tool.image} alt={tool.title} />
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20"></div>
+                    {/* Media */}
+                    <div 
+                      className="bg-[#dbdbdb] rounded-2xl aspect-[4/3] w-full flex items-center justify-center mb-8 relative overflow-hidden"
+                      onMouseEnter={() => handleHoverPlay(index)}
+                      onMouseLeave={() => handleHoverPause(index)}
+                    >
+                      {tool.video ? (
+                        <video
+                          ref={(el) => (videoRefs.current[index] = el)}
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-full object-cover"
+                          preload="metadata"
+                        >
+                          <source src={tool.video} type="video/mp4" />
+                        </video>
+                      ) : tool.image ? (
+                        <Image src={tool.image} alt={tool.title} className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="bg-gray-300 rounded-lg p-3 w-16 h-12 flex items-center justify-center">
+                          <MdImage className="text-gray-500 text-xl" />
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20 pointer-events-none"></div>
                     </div>
 
                     {/* Content */}

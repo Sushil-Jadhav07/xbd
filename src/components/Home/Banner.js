@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { MdImage } from 'react-icons/md';
 import HomeMainBanner from "../../asset/homeBanner.png"
 
+
 const Banner = () => {
   return (
     <section className="bg-white py-12 md:py-16 border-b border-gray-200">
@@ -13,6 +14,9 @@ const Banner = () => {
           <div className="order-1">
             <div className="   flex items-center justify-center relative overflow-hidden">
               {/* Image placeholder icon */}
+              {/* <video  autoPlay loop muted playsInline>
+              <source src='https://res.cloudinary.com/dbjtwrdxo/video/upload/v1757150468/Animation_XBD_pfywxf.mp4' type="video/mp4" />
+              </video> */}
               <Image src={HomeMainBanner} alt="Home Main Banner" />
               {/* <div className="bg-gray-400 rounded-lg p-4 w-20 h-16 flex items-center justify-center">
                 <MdImage className="text-gray-500 text-2xl" />
