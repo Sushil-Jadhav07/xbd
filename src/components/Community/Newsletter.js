@@ -1,7 +1,19 @@
 'use client'
 import React from 'react'
 
-const Newsletter = () => {
+const Newsletter = ({ newsletterData }) => {
+  // Fallback data
+  const fallbackData = {
+    label: "News Letter",
+    title: "Join our monthly newsletter",
+    description: "Join 5,000+ leaders getting practical growth strategies straight to their inbox.",
+    inputPlaceholder: "Enter your email address",
+    buttonText: "Subscribe",
+    privacyNote: "No spam, unsubscribe at any time."
+  }
+
+  const data = newsletterData || fallbackData
+
   return (
     <div className="bg-white py-16">
       <div className="max-w-full mx-auto px-4 lg:px-8">
@@ -13,35 +25,35 @@ const Newsletter = () => {
               <div className="w-3 h-3 bg-white rounded-sm"></div>
             </div>
             <span className="text-sm font-medium text-black uppercase tracking-wide">
-              News Letter
+              {data.label}
             </span>
           </div>
           
           {/* Main Title */}
           <h2 className="text-4xl lg:text-5xl font-bold text-black mb-6">
-            Join our monthly newsletter
+            {data.title}
           </h2>
           
           {/* Subtitle/Description */}
           <p className="text-lg lg:text-xl text-black max-w-2xl mx-auto leading-relaxed">
-            Join 5,000+ leaders getting practical growth strategies straight to their inbox.
+            {data.description}
           </p>
           
           {/* Newsletter Signup Form */}
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
             <input 
               type="email" 
-              placeholder="Enter your email address"
+              placeholder={data.inputPlaceholder}
               className="flex-1 w-full sm:w-auto bg-gray-100 text-gray-700 px-6 py-3 rounded-lg border-none focus:ring-2 focus:ring-gray-400 focus:outline-none text-base"
             />
             <button className="w-full sm:w-auto bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-base">
-              Subscribe
+              {data.buttonText}
             </button>
           </div>
           
           {/* Privacy Note */}
           <p className="text-sm text-gray-500 mt-4">
-            No spam, unsubscribe at any time.
+            {data.privacyNote}
           </p>
           
         </div>

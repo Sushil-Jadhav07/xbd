@@ -1,20 +1,29 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { HiOutlineSparkles } from 'react-icons/hi';
 import { MdImage } from 'react-icons/md';
+import Image from 'next/image';
 
-const QuoteCarousel = () => {
+const QuoteCarousel = ({ quoteCarouselData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Sample slides for the carousel
-  const slides = [
-    { id: 1, alt: "Growth Image 1" },
-    { id: 2, alt: "Growth Image 2" },
-    { id: 3, alt: "Growth Image 3" },
-    { id: 4, alt: "Growth Image 4" }
-  ];
+  // Fallback data
+  const fallbackData = {
+    subtitle: "Join thousands of leaders who've accelerated their growth with our proven framework.",
+    quoteText: "The Only Thing That's Changed In The World Is Everything",
+    primaryButton: { text: "Start My Growth" },
+    secondaryButton: { text: "See How It Works" },
+    slides: [
+      { id: 1, alt: "Growth Image 1" },
+      { id: 2, alt: "Growth Image 2" },
+      { id: 3, alt: "Growth Image 3" },
+      { id: 4, alt: "Growth Image 4" }
+    ]
+  };
+
+  const data = quoteCarouselData || fallbackData;
+  const slides = data.slides || fallbackData.slides;
 
   // Auto-play functionality
   useEffect(() => {
@@ -44,24 +53,12 @@ const QuoteCarousel = () => {
   };
 
   return (
-    <section className="bg-white dark:bg-black py-16 md:py-20 lg:py-24  border-b border-gray-200 dark:border-gray-800">
+    <section className="bg-white dark:bg-black py-16 md:py-20 lg:py-24 border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16">
-          {/* Label */}
-          {/* <div className="flex items-center justify-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
-            <HiOutlineSparkles className="text-lg" />
-            TRANSFORMATION
-          </div> */}
-
-          {/* Title */}
-          {/* <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4">
-            Ready to Transform Your <span className="font-black">Business Growth?</span>
-          </h2> */}
-
-          {/* Subtitle */}
           <p className="text-lg sm:text-xl text-gray-700 dark:text-white max-w-3xl mx-auto leading-relaxed">
-            Join thousands of leaders who've accelerated their growth with our proven framework.
+            {data.subtitle}
           </p>
         </div>
 
@@ -78,18 +75,22 @@ const QuoteCarousel = () => {
               <div className="space-y-8">
                 {/* Quote Text */}
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
-                  The Only Thing That's Changed In The World Is Everything
+                  {data.quoteText}
                 </h3>
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200">
-                    Start My Growth
-                  </button>
+                  {data.primaryButton && (
+                    <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200">
+                      {data.primaryButton.text}
+                    </button>
+                  )}
                   
-                  <button className="text-gray-900 dark:text-white font-semibold hover:text-black dark:hover:text-white transition-colors duration-200 underline decoration-2 underline-offset-4">
-                    See How It Works
-                  </button>
+                  {data.secondaryButton && (
+                    <button className="text-gray-900 dark:text-white font-semibold hover:text-black dark:hover:text-white transition-colors duration-200 underline decoration-2 underline-offset-4">
+                      {data.secondaryButton.text}
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -107,13 +108,21 @@ const QuoteCarousel = () => {
                 >
                   {slides.map((slide, index) => (
                     <div 
-                      key={slide.id}
+                      key={index}
                       className="w-full flex-shrink-0 relative h-full"
                     >
-                      {/* Image Placeholder */}
+                      {/* Image */}
                       <div className="w-full h-full bg-[#dbdbdb] dark:bg-gray-900 flex items-center justify-center relative">
-                        {/* Centered Image Icon */}
+                        {slide.image ? (
+                          <Image 
+                            src={typeof slide.image === 'string' ? slide.image : slide.image}
+                            alt={slide.alt || `Slide ${index + 1}`}
+                            fill
+                            className="object-cover"
+                          />
+                        ) : (
                           <MdImage className="text-gray-500 dark:text-gray-300 text-5xl" />
+                        )}
                         
                         {/* Subtle gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 opacity-30"></div>
@@ -128,7 +137,7 @@ const QuoteCarousel = () => {
                   className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full items-center justify-center shadow-lg transition-colors duration-200 z-10"
                   aria-label="Previous image"
                 >
-                  <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-gray-800 dark:!text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
@@ -138,7 +147,7 @@ const QuoteCarousel = () => {
                   className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full items-center justify-center shadow-lg transition-colors duration-200 z-10"
                   aria-label="Next image"
                 >
-                  <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-gray-800 dark:!text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>

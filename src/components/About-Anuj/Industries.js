@@ -1,7 +1,26 @@
 'use client'
 import React from 'react'
+import Image from 'next/image'
 
-const Industries = () => {
+const Industries = ({ industriesData }) => {
+  // Fallback data
+  const fallbackData = {
+    title: "Industries Engagement",
+    mainFocusText: "Industry Focus",
+    industriesList: [
+      { name: "Telecom" },
+      { name: "Aviation" },
+      { name: "Fintech" },
+      { name: "Enterprise" },
+      { name: "Healthcare" },
+      { name: "Retail" },
+      { name: "Education" },
+      { name: "Government" }
+    ]
+  }
+
+  const data = industriesData || fallbackData
+
   return (
     <div className="bg-white dark:bg-gray-950 py-16 transition-colors">
       <div className="max-w-full mx-auto px-4 lg:px-8">
@@ -9,7 +28,7 @@ const Industries = () => {
         {/* Header Section */}
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-black dark:text-white">
-            Industries Engagement
+            {data.title}
           </h2>
         </div>
         
@@ -18,59 +37,41 @@ const Industries = () => {
           
           {/* Left Column - Large Rectangle */}
           <div className="lg:col-span-2">
-            <div className="bg-gray-200 dark:bg-gray-700 rounded-lg h-96 lg:h-[400px] flex items-center justify-center transition-colors">
-              <div className="text-gray-500 dark:text-gray-200 text-2xl font-medium">
-                Industry Focus
-              </div>
+            <div className="bg-gray-200 dark:bg-gray-700 rounded-lg h-96 lg:h-[400px] flex items-center justify-center transition-colors relative overflow-hidden">
+              {data.mainFocusImage ? (
+                <Image 
+                  src={data.mainFocusImage}
+                  alt={data.mainFocusText}
+                  fill
+                  className="object-cover"
+                />
+              ) : (
+                <div className="text-gray-500 dark:text-gray-200 text-2xl font-medium">
+                  {data.mainFocusText}
+                </div>
+              )}
             </div>
           </div>
           
-          {/* Right Column - Two Rows of Four Rectangles */}
+          {/* Right Column - Two Rows of Rectangles */}
           <div className="lg:col-span-3">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-              {/* First Row */}
-              <div className="bg-gray-200 dark:bg-gray-700 rounded-lg h-44 lg:h-[12rem] flex items-center justify-center transition-colors">
-                <div className="text-gray-500 dark:text-gray-200 text-sm font-medium text-center px-2">
-                  Telecom
+              {data.industriesList?.map((industry, index) => (
+                <div key={index} className="bg-gray-200 dark:bg-gray-700 rounded-lg h-44 lg:h-[12rem] flex items-center justify-center transition-colors relative overflow-hidden">
+                  {industry.icon ? (
+                    <Image 
+                      src={industry.icon}
+                      alt={industry.name}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="text-gray-500 dark:text-gray-200 text-sm font-medium text-center px-2">
+                      {industry.name}
+                    </div>
+                  )}
                 </div>
-              </div>
-              <div className="bg-gray-200 dark:bg-gray-700 rounded-lg h-44 lg:h-[12rem] flex items-center justify-center transition-colors">
-                <div className="text-gray-500 dark:text-gray-200 text-sm font-medium text-center px-2">
-                  Aviation
-                </div>
-              </div>
-              <div className="bg-gray-200 dark:bg-gray-700 rounded-lg h-44 lg:h-[12rem] flex items-center justify-center transition-colors">
-                <div className="text-gray-500 dark:text-gray-200 text-sm font-medium text-center px-2">
-                  Fintech
-                </div>
-              </div>
-              <div className="bg-gray-200 dark:bg-gray-700 rounded-lg h-44 lg:h-[12rem] flex items-center justify-center transition-colors">
-                <div className="text-gray-500 dark:text-gray-200 text-sm font-medium text-center px-2">
-                  Enterprise
-                </div>
-              </div>
-              
-              {/* Second Row */}
-              <div className="bg-gray-200 dark:bg-gray-700 rounded-lg h-44 lg:h-[12rem] flex items-center justify-center transition-colors">
-                <div className="text-gray-500 dark:text-gray-200 text-sm font-medium text-center px-2">
-                  Healthcare
-                </div>
-              </div>
-              <div className="bg-gray-200 dark:bg-gray-700 rounded-lg h-44 lg:h-[12rem] flex items-center justify-center transition-colors">
-                <div className="text-gray-500 dark:text-gray-200 text-sm font-medium text-center px-2">
-                  Retail
-                </div>
-              </div>
-              <div className="bg-gray-200 dark:bg-gray-700 rounded-lg h-44 lg:h-[12rem] flex items-center justify-center transition-colors">
-                <div className="text-gray-500 dark:text-gray-200 text-sm font-medium text-center px-2">
-                  Education
-                </div>
-              </div>
-              <div className="bg-gray-200 dark:bg-gray-700 rounded-lg h-44 lg:h-[12rem] flex items-center justify-center transition-colors">
-                <div className="text-gray-500 dark:text-gray-200 text-sm font-medium text-center px-2">
-                  Government
-                </div>
-              </div>
+              ))}
             </div>
           </div>
           

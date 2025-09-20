@@ -1,57 +1,52 @@
 "use client";
 
 import Image from 'next/image';
-import { MdImage } from 'react-icons/md';
-import HomeMainBanner from "../../asset/homeBanner.png"
+import HomeMainBanner from "../../asset/homeBanner.png"; // Keep your existing image
 
+const Banner = ({ bannerData }) => {
+  if (!bannerData) return null;
 
-const Banner = () => {
   return (
     <section className="bg-white py-12 md:py-16 border-b border-gray-200">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          {/* Left side - Image placeholder */}
+          {/* Left side - Image (keeping your existing image) */}
           <div className="order-1">
-            <div className="   flex items-center justify-center relative overflow-hidden">
-              {/* Image placeholder icon */}
-              {/* <video  autoPlay loop muted playsInline>
-              <source src='https://res.cloudinary.com/dbjtwrdxo/video/upload/v1757150468/Animation_XBD_pfywxf.mp4' type="video/mp4" />
-              </video> */}
+            <div className="flex items-center justify-center relative overflow-hidden">
               <Image src={HomeMainBanner} alt="Home Main Banner" />
-              {/* <div className="bg-gray-400 rounded-lg p-4 w-20 h-16 flex items-center justify-center">
-                <MdImage className="text-gray-500 text-2xl" />
-              </div>
-               */}
-              {/* Optional: Add a subtle pattern or gradient */}
               <div className="absolute inset-0 from-gray-200 to-gray-400 opacity-20"></div>
             </div>
           </div>
 
-          {/* Right side - Content */}
+          {/* Right side - Content (now dynamic) */}
           <div className="order-2 space-y-6">
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-              Achieve{" "}
+              {bannerData.title}{" "}
               <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent inline">
-                3x Growth in Just 12 Months
+                {bannerData.highlightText}
               </span>{" "}
-              with the <span className="font-black">X Framework</span>
+              {bannerData.titleafter}
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-lg">
-              Rewire your organization to scale at speed with near-zero marginal cost.
+              {bannerData.subtitle}
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <button className="bg-black text-white px-5 lg:px-8 py-4 rounded-lg font-semibold text-base hover:cursor-pointer hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap">
-                Claim Your 30-Min Growth Strategy Call
-              </button>
+              {bannerData.primaryButton && (
+                <button className="bg-black text-white px-5 lg:px-8 py-4 rounded-lg font-semibold text-base hover:cursor-pointer hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap">
+                  {bannerData.primaryButton.text}
+                </button>
+              )}
               
-              <button className="text-gray-900 font-semibold text-base hover:text-black transition-colors duration-200 underline decoration-2 underline-offset-4">
-                Explore the X Framework
-              </button>
+              {bannerData.secondaryButton && (
+                <button className="text-gray-900 font-semibold text-base hover:text-black transition-colors duration-200 underline decoration-2 underline-offset-4">
+                  {bannerData.secondaryButton.text}
+                </button>
+              )}
             </div>
           </div>
         </div>

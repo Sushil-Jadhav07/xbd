@@ -6,51 +6,46 @@ import { MdImage } from 'react-icons/md';
 import XtremeReach from "../../asset/x-tremereach.png"
 import XtractEmotions from "../../asset/X-tract Emotions.png"
 import XtendValue from "../../asset/X-tend Value.png"
-
-
-
 import Image from 'next/image';
 
-const ToolsCarousel = () => {
+const ToolsCarousel = ({ toolsCarouselData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [visibleSlides, setVisibleSlides] = useState(3);
   const carouselRef = useRef(null);
   const videoRefs = useRef([]);
 
-  const tools = [
-    {
-      title: "X-treme Reach",
-      description: "Expand your audience faster than your competitors.",
-      buttonText: "Boost My Reach",
-      image: XtremeReach,
-      video: 'https://res.cloudinary.com/dbjtwrdxo/video/upload/v1757166895/3_wo8ltt.mp4'
-    },
-    {
-      title: "X-tract Emotions",
-      description: "Win customers by inspiring action, not just attention.",
-      buttonText: "Amplify Influence",
-      image: XtractEmotions,
-      video:'https://res.cloudinary.com/dbjtwrdxo/video/upload/v1757166895/1_tjzu6w.mp4'
-    },
-    {
-      title: "X-tend Value",
-      description: "Turn your expertise into market-leading impact.",
-      buttonText: "Maximize Value",
-      image:  XtendValue,
-      video:'https://res.cloudinary.com/dbjtwrdxo/video/upload/v1757166895/2_zt4ive.mp4'
-    },
-    // Additional slides for demonstration
-    {
-      title: "X-celerate Growth",
-      description: "Scale your operations with exponential efficiency.",
-      buttonText: "Scale Faster"
-    },
-    {
-      title: "X-pand Networks",
-      description: "Build connections that multiply your influence.",
-      buttonText: "Grow Network"
-    }
-  ];
+  // Fallback data
+  const fallbackData = {
+    label: "RESOURCES",
+    title: "Get the Tools to Accelerate Your",
+    highlightText: "Leadership Growth",
+    subtitle: "We've distilled decades of growth into four simple starting points.",
+    tools: [
+      {
+        title: "X-treme Reach",
+        description: "Expand your audience faster than your competitors.",
+        buttonText: "Boost My Reach",
+        mediaType: "video",
+        videoUrl: 'https://res.cloudinary.com/dbjtwrdxo/video/upload/v1757166895/3_wo8ltt.mp4'
+      },
+      {
+        title: "X-tract Emotions",
+        description: "Win customers by inspiring action, not just attention.",
+        buttonText: "Amplify Influence",
+        mediaType: "video",
+        videoUrl: 'https://res.cloudinary.com/dbjtwrdxo/video/upload/v1757166895/1_tjzu6w.mp4'
+      },
+      {
+        title: "X-tend Value",
+        description: "Turn your expertise into market-leading impact.",
+        buttonText: "Maximize Value",
+        mediaType: "video",
+        videoUrl: 'https://res.cloudinary.com/dbjtwrdxo/video/upload/v1757166895/2_zt4ive.mp4'
+      }
+    ]
+  };
+
+  const data = toolsCarouselData || fallbackData;
 
   // Update visible slides based on screen size
   useEffect(() => {
@@ -72,7 +67,7 @@ const ToolsCarousel = () => {
   }, []);
 
   const nextSlide = () => {
-    if (currentSlide < tools.length - visibleSlides) {
+    if (currentSlide < data.tools.length - visibleSlides) {
       setCurrentSlide(currentSlide + 1);
     }
   };
@@ -84,7 +79,7 @@ const ToolsCarousel = () => {
   };
 
   const goToSlide = (index) => {
-    const maxSlide = tools.length - visibleSlides;
+    const maxSlide = data.tools.length - visibleSlides;
     setCurrentSlide(Math.min(index, maxSlide));
   };
 
@@ -121,25 +116,63 @@ const ToolsCarousel = () => {
     });
   }, [currentSlide]);
 
+  const renderMedia = (tool, index) => {
+    if (tool.mediaType === 'video' && tool.videoUrl) {
+      return (
+        <video
+          ref={(el) => (videoRefs.current[index] = el)}
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          preload="metadata"
+        >
+          <source src={tool.videoUrl} type="video/mp4" />
+        </video>
+      );
+    } else if (tool.mediaType === 'image' && tool.image) {
+      return (
+        <Image 
+          src={urlFor(tool.image).url()} 
+          alt={tool.title} 
+          className="w-full h-full object-cover"
+          width={400}
+          height={300}
+        />
+      );
+    } else {
+      // Fallback to static images or placeholder
+      const staticImages = [XtremeReach, XtractEmotions, XtendValue];
+      if (staticImages[index]) {
+        return <Image src={staticImages[index]} alt={tool.title} className="w-full h-full object-cover" />;
+      }
+      return (
+        <div className="bg-gray-300 rounded-lg p-3 w-16 h-12 flex items-center justify-center">
+          <MdImage className="text-gray-500 text-xl" />
+        </div>
+      );
+    }
+  };
+
   return (
-    <section className="bg-white py-16 md:py-20 lg:py-24  border-b border-gray-200">
+    <section className="bg-white py-16 md:py-20 lg:py-24 border-b border-gray-200">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-12 lg:mb-16">
           {/* Label */}
           <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
             <HiOutlineSparkles className="text-lg" />
-            RESOURCES
+            {data.label}
           </div>
 
           {/* Headline */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
-            Get the Tools to Accelerate Your <span className="font-black">Leadership Growth</span>
+            {data.title} <span className="font-black">{data.highlightText}</span>
           </h2>
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl text-gray-700 max-w-3xl">
-            We've distilled decades of growth into four simple starting points.
+            {data.subtitle}
           </p>
         </div>
 
@@ -157,7 +190,7 @@ const ToolsCarousel = () => {
             </button>
             <button
               onClick={nextSlide}
-              disabled={currentSlide >= tools.length - visibleSlides}
+              disabled={currentSlide >= data.tools.length - visibleSlides}
               className="p-2 rounded-lg border border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
               aria-label="Next slide"
             >
@@ -173,7 +206,7 @@ const ToolsCarousel = () => {
                 transform: `translateX(-${currentSlide * slideWidth}%)`
               }}
             >
-              {tools.map((tool, index) => (
+              {data.tools?.map((tool, index) => (
                 <div 
                   key={index}
                   className="flex-shrink-0 px-3"
@@ -183,27 +216,10 @@ const ToolsCarousel = () => {
                     {/* Media */}
                     <div 
                       className="bg-[#dbdbdb] rounded-2xl aspect-[4/3] w-full flex items-center justify-center mb-8 relative overflow-hidden"
-                      onMouseEnter={() => handleHoverPlay(index)}
-                      onMouseLeave={() => handleHoverPause(index)}
+                      onMouseEnter={() => tool.mediaType === 'video' && handleHoverPlay(index)}
+                      onMouseLeave={() => tool.mediaType === 'video' && handleHoverPause(index)}
                     >
-                      {tool.video ? (
-                        <video
-                          ref={(el) => (videoRefs.current[index] = el)}
-                          loop
-                          muted
-                          playsInline
-                          className="w-full h-full object-cover"
-                          preload="metadata"
-                        >
-                          <source src={tool.video} type="video/mp4" />
-                        </video>
-                      ) : tool.image ? (
-                        <Image src={tool.image} alt={tool.title} className="w-full h-full object-cover" />
-                      ) : (
-                        <div className="bg-gray-300 rounded-lg p-3 w-16 h-12 flex items-center justify-center">
-                          <MdImage className="text-gray-500 text-xl" />
-                        </div>
-                      )}
+                      {renderMedia(tool, index)}
                       <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20 pointer-events-none"></div>
                     </div>
 
@@ -229,36 +245,6 @@ const ToolsCarousel = () => {
               ))}
             </div>
           </div>
-
-          {/* Mobile Navigation Dots */}
-          {/* <div className="flex justify-center gap-2 mt-8 md:hidden">
-            {Array.from({ length: Math.ceil(tools.length / visibleSlides) }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index * visibleSlides)}
-                className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                  Math.floor(currentSlide / visibleSlides) === index ? 'bg-black' : 'bg-gray-300'
-                }`}
-                aria-label={`Go to slide group ${index + 1}`}
-              />
-            ))}
-          </div> */}
-
-          {/* Desktop Navigation Dots */}
-          {/* <div className="hidden md:flex justify-center gap-2 mt-8 lg:mt-12">
-            {Array.from({ length: tools.length - visibleSlides + 1 }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`transition-all duration-300 rounded-full ${
-                  index === currentSlide 
-                    ? 'w-8 h-3 bg-black' 
-                    : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div> */}
         </div>
       </div>
     </section>
