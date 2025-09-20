@@ -1,10 +1,7 @@
-import Banner from '@/components/Home/Banner'
-import ExponentialEconomy from '@/components/Home/ExponentialEconomy'
 import Feature from '@/components/Home/Feature'
 import ImageBanner from '@/components/Home/ImageBanner'
 import Newsletter from '@/components/Home/Newsletter'
 import PricingPlan from '@/components/Home/PricingPlan'
-import QuoteCarouselSection from '@/components/Home/QuoteCarousel'
 import QuoteCarousel from '@/components/Home/QuoteCarousel'
 import Slider from '@/components/Home/Slider'
 import ToolsCarousel from '@/components/Home/ToolsCarousel'
@@ -13,61 +10,75 @@ import WhyExponentialNow from '@/components/Home/WhyExponentialNow'
 import Footer from '@/components/Layout/Footer'
 import Navbar from '@/components/Layout/Navbar'
 import React from 'react'
+import Banner from '../../components/Home/Banner'
+import ExponentialEconomy from '../../components/Home/ExponentialEconomy'
+import { getBannerData, getExponentialEconomyData, getWhatIsExponentialData, getWhyChooseData, getWhyExponentialNowData, getResourcesSliderData, getToolsCarouselData, getQuoteCarouselData, getPricingPlanData, getNewsletterData, getImageBannerData } from '../../lib/sanityQueries'
+export default async function Home() {
+  const [bannerData, exponentialData, whatIsExponentialData, whyChooseData, whyExponentialNowData, resourcesSliderData, toolsCarouselData, quoteCarouselData, pricingPlanData, newsletterData, imageBannerData] = await Promise.all([
+    getBannerData(),
+    getExponentialEconomyData(),
+    getWhatIsExponentialData(),
+    getWhyChooseData(),
+    getWhyExponentialNowData(),
+    getResourcesSliderData(),
+    getToolsCarouselData(),
+    getQuoteCarouselData(),
+    getPricingPlanData(),
+    getNewsletterData(),
+    getImageBannerData()
+  ])
 
-const Home = () => {
   return (
     <div className='relative'>
       <Navbar />
 
+      {/* Banner Section - Only one, with data */}
       <section className="relative pt-[0px]">
-        <Banner/>
+        <Banner bannerData={bannerData} />
       </section>
 
       <section className="relative pt-[0px]">
-        <Feature/>
+      <Feature whatIsExponentialData={whatIsExponentialData} />
       </section>
 
       <section className="relative pt-[0px]">
-        <Whychoose/>
+      <Whychoose whyChooseData={whyChooseData} />
       </section>
 
       <section className="relative pt-[0px]">
-        <WhyExponentialNow/>
+      <WhyExponentialNow whyExponentialNowData={whyExponentialNowData} />
       </section>
 
       <section className="relative pt-[0px]">
-        <Slider/>
+      <Slider resourcesSliderData={resourcesSliderData} />
       </section>
 
       <section className="relative pt-[0px]">
-        <ImageBanner/>
+        <ImageBanner imageBannerData={imageBannerData}/>
+      </section>
+
+      {/* ExponentialEconomy Section - with data */}
+      <section className="relative pt-[0px]">
+        <ExponentialEconomy exponentialData={exponentialData} />
       </section>
 
       <section className="relative pt-[0px]">
-        <ExponentialEconomy/>
+      <ToolsCarousel toolsCarouselData={toolsCarouselData} />
       </section>
 
       <section className="relative pt-[0px]">
-        <ToolsCarousel/>
+        <QuoteCarousel quoteCarouselData={quoteCarouselData} />
       </section>
 
       <section className="relative pt-[0px]">
-        <QuoteCarousel/>
+        <PricingPlan pricingPlanData={pricingPlanData}/>
       </section>
 
       <section className="relative pt-[0px]">
-        <PricingPlan/>
+        <Newsletter newsletterData={newsletterData}/>
       </section>
 
-      <section className="relative pt-[0px]">
-        <Newsletter/>
-      </section>
-
-    <Footer/>
-
-
+      <Footer/>
     </div>
   )
 }
-
-export default Home

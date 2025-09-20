@@ -5,43 +5,67 @@ import { HiOutlineSparkles, HiChevronLeft, HiChevronRight } from 'react-icons/hi
 import { MdImage } from 'react-icons/md';
 import { HiOutlineDocument, HiOutlinePlay, HiOutlinePhone, HiOutlineMicrophone } from 'react-icons/hi';
 
-const Slider = () => {
+const Slider = ({ resourcesSliderData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef(null);
 
-  const resources = [
-    {
-      title: "Read the Playbook That's Fueling 15X Growth Stories",
-      description: "Complete Return OS framework & implementation guide",
-      meta: "212 Pages",
-      buttonText: "Get the Book",
-      icon: HiOutlineDocument
-    },
-    {
-      title: "Master the Framework That's Redefining Market Leaders",
-      description: "Step-by-step X Framework training with real-world case studies",
-      meta: "6 Weeks Live + On-Demand",
-      buttonText: "Start Learning",
-      icon: HiOutlinePlay
-    },
-    {
-      title: "Get the Strategy That's Driving Boardroom-Level Breakthroughs",
-      description: "Tailored growth roadmaps & leadership advisory for rapid scaling",
-      meta: "60-Min Strategy Call",
-      buttonText: "Book Your Session",
-      icon: HiOutlinePhone
-    },
-    {
-      title: "Experience the Talk That's Inspiring Industry Game Changers",
-      description: "High-impact leadership sessions for transformation & alignment",
-      meta: "45-90 Min Session",
-      buttonText: "Book the Keynote",
-      icon: HiOutlineMicrophone
+  // Fallback data
+  const fallbackData = {
+    label: "RESOURCES",
+    title: "Get the Tools to",
+    highlightText: "Accelerate Your Leadership Growth",
+    subtitle: "We've distilled decades of growth into four simple starting points.",
+    resources: [
+      {
+        title: "Read the Playbook That's Fueling 15X Growth Stories",
+        description: "Complete Return OS framework & implementation guide",
+        meta: "212 Pages",
+        buttonText: "Get the Book",
+        iconType: "document"
+      },
+      {
+        title: "Master the Framework That's Redefining Market Leaders",
+        description: "Step-by-step X Framework training with real-world case studies",
+        meta: "6 Weeks Live + On-Demand",
+        buttonText: "Start Learning",
+        iconType: "play"
+      },
+      {
+        title: "Get the Strategy That's Driving Boardroom-Level Breakthroughs",
+        description: "Tailored growth roadmaps & leadership advisory for rapid scaling",
+        meta: "60-Min Strategy Call",
+        buttonText: "Book Your Session",
+        iconType: "phone"
+      },
+      {
+        title: "Experience the Talk That's Inspiring Industry Game Changers",
+        description: "High-impact leadership sessions for transformation & alignment",
+        meta: "45-90 Min Session",
+        buttonText: "Book the Keynote",
+        iconType: "microphone"
+      }
+    ]
+  };
+
+  const data = resourcesSliderData || fallbackData;
+
+  const getIcon = (iconType) => {
+    switch(iconType) {
+      case 'document':
+        return HiOutlineDocument;
+      case 'play':
+        return HiOutlinePlay;
+      case 'phone':
+        return HiOutlinePhone;
+      case 'microphone':
+        return HiOutlineMicrophone;
+      default:
+        return HiOutlineDocument;
     }
-  ];
+  };
 
   const nextSlide = () => {
-    if (currentSlide < resources.length - getVisibleSlides()) {
+    if (currentSlide < data.resources.length - getVisibleSlides()) {
       setCurrentSlide(currentSlide + 1);
     }
   };
@@ -74,17 +98,17 @@ const Slider = () => {
           {/* Label */}
           <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
             <HiOutlineSparkles className="text-lg" />
-            RESOURCES
+            {data.label}
           </div>
 
           {/* Headline */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
-            Get the Tools to <span className="font-black">Accelerate Your Leadership Growth</span>
+            {data.title} <span className="font-black">{data.highlightText}</span>
           </h2>
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl text-gray-700 max-w-3xl">
-            We've distilled decades of growth into four simple starting points.
+            {data.subtitle}
           </p>
         </div>
 
@@ -101,7 +125,7 @@ const Slider = () => {
             </button>
             <button
               onClick={nextSlide}
-              disabled={currentSlide >= resources.length - getVisibleSlides()}
+              disabled={currentSlide >= data.resources.length - getVisibleSlides()}
               className="p-2 rounded-lg border border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
             >
               <HiChevronRight className="w-5 h-5 text-gray-600" />
@@ -116,52 +140,55 @@ const Slider = () => {
                 transform: `translateX(-${currentSlide * (100 / getVisibleSlides())}%)`
               }}
             >
-              {resources.map((resource, index) => (
-                <div 
-                  key={index}
-                  className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 flex-shrink-0 px-2"
-                >
-                  <div className="bg-white border border-gray-200 rounded-2xl p-6 h-full flex flex-col">
-                    {/* Image Placeholder */}
-                    <div className="bg-[#dbdbdb] rounded-xl aspect-[4/3] flex items-center justify-center mb-6 relative overflow-hidden">
-                      <div className="bg-gray-400 rounded-lg p-3 w-16 h-12 flex items-center justify-center">
-                        <MdImage className="text-gray-500 text-xl" />
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20"></div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 flex flex-col space-y-4">
-                      {/* Title */}
-                      <h3 className="text-xl font-bold text-gray-900 leading-tight">
-                        {resource.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-gray-700 leading-relaxed flex-1">
-                        {resource.description}
-                      </p>
-
-                      {/* Meta */}
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
-                        <resource.icon className="w-4 h-4" />
-                        {resource.meta}
+              {data.resources?.map((resource, index) => {
+                const IconComponent = getIcon(resource.iconType);
+                return (
+                  <div 
+                    key={index}
+                    className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 flex-shrink-0 px-2"
+                  >
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 h-full flex flex-col">
+                      {/* Image Placeholder */}
+                      <div className="bg-[#dbdbdb] rounded-xl aspect-[4/3] flex items-center justify-center mb-6 relative overflow-hidden">
+                        <div className="bg-gray-400 rounded-lg p-3 w-16 h-12 flex items-center justify-center">
+                          <MdImage className="text-gray-500 text-xl" />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20"></div>
                       </div>
 
-                      {/* Button */}
-                      <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200 w-full mt-4">
-                        {resource.buttonText}
-                      </button>
+                      {/* Content */}
+                      <div className="flex-1 flex flex-col space-y-4">
+                        {/* Title */}
+                        <h3 className="text-xl font-bold text-gray-900 leading-tight">
+                          {resource.title}
+                        </h3>
+
+                        {/* Description */}
+                        <p className="text-gray-700 leading-relaxed flex-1">
+                          {resource.description}
+                        </p>
+
+                        {/* Meta */}
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <IconComponent className="w-4 h-4" />
+                          {resource.meta}
+                        </div>
+
+                        {/* Button */}
+                        <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200 w-full mt-4">
+                          {resource.buttonText}
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
           {/* Mobile Navigation Dots */}
           <div className="flex justify-center gap-2 mt-8 md:hidden">
-            {Array.from({ length: resources.length }).map((_, index) => (
+            {Array.from({ length: data.resources.length }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}

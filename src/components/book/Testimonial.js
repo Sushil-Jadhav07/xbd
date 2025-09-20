@@ -1,55 +1,45 @@
 'use client'
 import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
 
-const Testimonial = () => {
+const Testimonial = ({ testimonialData }) => {
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  const logos = [
-    { name: "NY TIMES", icon: "📰" },
-    { name: "FORBES", icon: "💼" },
-    { name: "MICROSOFT", icon: "🪟" },
-    { name: "LINKEDIN", icon: "💼" },
-    { name: "ECONOMIST", icon: "📊" }
-  ]
-
-  const testimonials = [
-    {
-      quote: "The insights provided transformed our innovation strategy and helped us achieve breakthrough results in months.",
-      author: "James Wilson",
-      title: "CEO, Global Innovations",
-      rating: 5
-    },
-    {
-      quote: "A game-changing perspective on AI ecosystems with immediately applicable strategies. Extremely practical.",
-      author: "Sarah Chen",
-      title: "CEO, TechFuture Solutions",
-      rating: 5
-    },
-    {
-      quote: "Our digital transformation approach shifted entirely. Worth every minute invested—highly recommended.",
-      author: "David Rodriguez",
-      title: "Director of Innovation, Enterprise Media",
-      rating: 5
-    },
-    {
-      quote: "This framework revolutionized how we approach growth. The results speak for themselves.",
-      author: "Emily Johnson",
-      title: "CTO, Innovation Labs",
-      rating: 5
-    },
-    {
-      quote: "Finally, a practical guide that bridges theory and execution. Game-changing insights.",
-      author: "Michael Chen",
-      title: "VP Strategy, Future Corp",
-      rating: 5
-    },
-    {
-        quote: "Finally, a practical guide that bridges theory and execution. Game-changing insights.",
-        author: "Michael Chen",
-        title: "VP Strategy, Future Corp",
+  // Fallback data
+  const fallbackData = {
+    title: "Trusted by Industry Leaders Worldwide",
+    subtitle: "Recognized by top publications & executives shaping the future",
+    logos: [
+      { name: "NY TIMES" },
+      { name: "FORBES" },
+      { name: "MICROSOFT" },
+      { name: "LINKEDIN" },
+      { name: "ECONOMIST" }
+    ],
+    testimonials: [
+      {
+        quote: "The insights provided transformed our innovation strategy and helped us achieve breakthrough results in months.",
+        author: "James Wilson",
+        title: "CEO, Global Innovations",
+        rating: 5
+      },
+      {
+        quote: "A game-changing perspective on AI ecosystems with immediately applicable strategies. Extremely practical.",
+        author: "Sarah Chen",
+        title: "CEO, TechFuture Solutions",
+        rating: 5
+      },
+      {
+        quote: "Our digital transformation approach shifted entirely. Worth every minute invested—highly recommended.",
+        author: "David Rodriguez",
+        title: "Director of Innovation, Enterprise Media",
         rating: 5
       }
-  ]
+    ]
+  }
+
+  const data = testimonialData || fallbackData
+  const testimonials = data.testimonials || fallbackData.testimonials
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % Math.ceil(testimonials.length / 3))
@@ -59,13 +49,13 @@ const Testimonial = () => {
     setCurrentSlide((prev) => (prev - 1 + Math.ceil(testimonials.length / 3)) % Math.ceil(testimonials.length / 3))
   }
 
-  // Auto-advance carousel every 6 seconds
+  // Auto-advance carousel
   useEffect(() => {
     const timer = setInterval(() => {
       nextSlide()
     }, 6000)
     return () => clearInterval(timer)
-  }, [])
+  }, [testimonials.length])
 
   const getCurrentTestimonials = () => {
     const startIndex = currentSlide * 3
@@ -79,20 +69,31 @@ const Testimonial = () => {
         {/* Header Section */}
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">
-            Trusted by Industry Leaders Worldwide
+            {data.title}
           </h2>
           <p className="text-lg lg:text-xl text-black max-w-3xl mx-auto">
-            Recognized by top publications & executives shaping the future
+            {data.subtitle}
           </p>
         </div>
         
         {/* Logos Section */}
         <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {logos.map((logo, index) => (
+          {data.logos?.map((logo, index) => (
             <div key={index} className="bg-gray-100 rounded-lg px-6 py-4 flex items-center gap-3 shadow-sm hover:shadow-md transition-shadow duration-200">
-              <div className="w-6 h-6 bg-black rounded-sm flex items-center justify-center">
-                <div className="w-4 h-4 bg-white rounded-sm"></div>
-              </div>
+              {logo.logo ? (
+                <div className="w-6 h-6 relative">
+                  <Image 
+                    src={logo.logo}
+                    alt={logo.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              ) : (
+                <div className="w-6 h-6 bg-black rounded-sm flex items-center justify-center">
+                  <div className="w-4 h-4 bg-white rounded-sm"></div>
+                </div>
+              )}
               <span className="text-black font-medium text-sm">{logo.name}</span>
             </div>
           ))}
@@ -118,11 +119,22 @@ const Testimonial = () => {
                 
                 {/* Author Information */}
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center">
-                    <span className="text-white text-sm font-bold">
-                      {testimonial.author.charAt(0)}
-                    </span>
-                  </div>
+                  {testimonial.authorImage ? (
+                    <div className="w-10 h-10 relative rounded-full overflow-hidden">
+                      <Image 
+                        src={testimonial.authorImage}
+                        alt={testimonial.author}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm font-bold">
+                        {testimonial.author.charAt(0)}
+                      </span>
+                    </div>
+                  )}
                   <div>
                     <p className="text-black font-bold text-sm">{testimonial.author}</p>
                     <p className="text-gray-600 text-xs">{testimonial.title}</p>
