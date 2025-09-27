@@ -343,8 +343,14 @@ export async function getAboutTitleData() {
     subHeading,
     description,
     skills,
-    primaryButton,
-    secondaryButton,
+    primaryButton{
+      text,
+      link
+    },
+    secondaryButton{
+      text,
+      link
+    },
     clientResults,
     profileImage
   }`

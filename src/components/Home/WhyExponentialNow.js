@@ -1,10 +1,14 @@
 "use client";
 
 import { HiOutlineSparkles } from 'react-icons/hi';
+import { useState } from 'react';
 import WhyHyperGrowth from "../../asset/whyhypergrowth.png"
 import Image from 'next/image';
+import LeadFormModal from '../common/LeadFormModal';
 
 const WhyExponentialNow = ({ whyExponentialNowData }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   // Fallback data
   const fallbackData = {
     label: "WHY EXPONENTIAL NOW",
@@ -44,6 +48,7 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
   const data = whyExponentialNowData || fallbackData;
 
   return (
+    <>
     <section className="bg-white py-16 md:py-20 lg:py-24 border-b border-gray-200">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -99,7 +104,10 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
               {/* CTA Button - positioned after the stats */}
               {data.ctaButton && (
                 <div className="sm:col-span-2 pt-4">
-                  <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200">
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="bg-black text-white px-8 py-4 rounded-lg cursor-pointer font-semibold hover:bg-gray-800 transition-colors duration-200"
+                  >
                     {data.ctaButton.text}
                   </button>
                 </div>
@@ -109,6 +117,16 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
         </div>
       </div>
     </section>
+    <LeadFormModal
+      open={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+      title="Start Scaling Today"
+      onSubmit={async (values) => {
+        // TODO: integrate with your API
+        console.log('Submitting form:', values);
+      }}
+    />
+    </>
   );
 };
 

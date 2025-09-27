@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import Link from 'next/link'
 
 const InsideBook = ({ insideBookData }) => {
   // Fallback data
@@ -121,14 +122,20 @@ const InsideBook = ({ insideBookData }) => {
               {/* CTA Buttons */}
               <div className="gap-3 flex items-center justify-center pt-6">
                 {data.primaryButton && (
-                  <button className="w-full bg-black text-white py-2 px-6 rounded-lg font-medium border-2 border-black hover:bg-gray-800 transition-colors duration-200 text-lg">
+                  <Link
+                    href={data.primaryButton.link || '#'}
+                    className="w-full text-center bg-black text-white py-2 px-6 rounded-lg font-medium border-2 border-black hover:bg-gray-800 transition-colors duration-200 text-lg"
+                  >
                     {data.primaryButton.text}
-                  </button>
+                  </Link>
                 )}
                 {data.secondaryButton && (
-                  <button className="w-full bg-white text-black py-2 px-6 rounded-lg font-medium border-2 border-black hover:bg-gray-50 transition-colors duration-200 text-lg">
+                  <Link
+                    href={data.secondaryButton.link || '#'}
+                    className="w-full text-center bg-white text-black py-2 px-6 rounded-lg font-medium border-2 border-black hover:bg-gray-50 transition-colors duration-200 text-lg"
+                  >
                     {data.secondaryButton.text}
-                  </button>
+                  </Link>
                 )}
               </div>
             </div>

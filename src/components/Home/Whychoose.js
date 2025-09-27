@@ -3,6 +3,7 @@
 import { HiOutlineSparkles } from 'react-icons/hi';
 import WhychooseImage from "../../asset/whyxbd.png"
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Whychoose = ({ whyChooseData }) => {
   // Fallback data
@@ -59,17 +60,23 @@ const Whychoose = ({ whyChooseData }) => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
               {data.primaryButton && (
-                <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200">
+                <Link
+                  href={data.primaryButton.link || '#'}
+                  className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200"
+                >
                   {data.primaryButton.text}
-                </button>
+                </Link>
               )}
               
               {data.secondaryButton && (
-                <button className="text-gray-900 font-semibold hover:text-black transition-colors duration-200 underline decoration-2 underline-offset-4">
+                <Link
+                  href={data.secondaryButton.link || '#'}
+                  className="text-gray-900 font-semibold hover:text-black transition-colors duration-200 underline decoration-2 underline-offset-4"
+                >
                   {data.secondaryButton.text}
-                </button>
+                </Link>
               )}
             </div>
           </div>

@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import { HiOutlineSparkles, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import { MdImage } from 'react-icons/md';
 import { HiOutlineDocument, HiOutlinePlay, HiOutlinePhone, HiOutlineMicrophone } from 'react-icons/hi';
+import Link from 'next/link';
 
 const Slider = ({ resourcesSliderData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -175,9 +176,12 @@ const Slider = ({ resourcesSliderData }) => {
                         </div>
 
                         {/* Button */}
-                        <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200 w-full mt-4">
+                        <Link 
+                          href={resource.buttonLink || '#'}
+                          className="bg-black text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-gray-800 transition-colors duration-200 w-full mt-4"
+                        >
                           {resource.buttonText}
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>

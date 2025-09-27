@@ -1,5 +1,5 @@
 "use client";
-
+import Link from 'next/link'
 import { HiOutlineSparkles } from 'react-icons/hi';
 import { MdImage } from 'react-icons/md';
 
@@ -31,17 +31,23 @@ const ExponentialEconomy = ({ exponentialData }) => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 lg:flex-shrink-0">
+          <div className="flex flex-col sm:flex-row items-center gap-4 lg:flex-shrink-0">
             {exponentialData.primaryButton && (
-              <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap">
+              <Link
+                href={exponentialData.primaryButton.link || '#'}
+                className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap"
+              >
                 {exponentialData.primaryButton.text}
-              </button>
+              </Link>
             )}
             
             {exponentialData.secondaryButton && (
-              <button className="text-gray-900 font-semibold hover:text-black transition-colors duration-200 underline decoration-2 underline-offset-4">
+              <Link
+                href={exponentialData.secondaryButton.link || '#'}
+                className="text-gray-900 font-semibold hover:text-black transition-colors duration-200 underline decoration-2 underline-offset-4"
+              >
                 {exponentialData.secondaryButton.text}
-              </button>
+              </Link>
             )}
           </div>
         </div>

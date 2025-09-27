@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { HiOutlineSparkles, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import { MdImage, MdSecurity, MdFlashOn, MdVerifiedUser } from 'react-icons/md';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const PricingPlan = ({ pricingPlanData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -173,9 +174,12 @@ const PricingPlan = ({ pricingPlanData }) => {
                           {plan.title}
                         </h3>
 
-                        <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200 w-full">
+                        <Link
+                          href={plan.buttonLink || '#'}
+                          className="block bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200 w-full text-center"
+                        >
                           {plan.buttonText}
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -202,9 +206,12 @@ const PricingPlan = ({ pricingPlanData }) => {
         {/* Bottom CTA Section */}
         <div className="text-center space-y-6 md:pt-12 pt-6">
           {data.mainCtaButton && (
-            <button className="bg-black text-white px-12 py-4 rounded-lg font-semibold text-lg hover:bg-gray-800 transition-colors duration-200">
+            <Link
+              href={data.mainCtaButton.link || '#'}
+              className="inline-block bg-black text-white px-12 py-4 rounded-lg font-semibold text-lg hover:bg-gray-800 transition-colors duration-200 text-center"
+            >
               {data.mainCtaButton.text}
-            </button>
+            </Link>
           )}
 
           <div className="space-y-2">

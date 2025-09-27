@@ -1,9 +1,14 @@
 'use client'
 import React from 'react'
+import { useState } from 'react'
 import { MdImage } from 'react-icons/md'
 import Image from 'next/image'
+import Link from 'next/link'
+import LeadFormModal from '../common/LeadFormModal'
 
 const AboutTitle = ({ aboutTitleData }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   // Fallback data
   const fallbackData = {
     roleTag: "Author • Strategist • Advisor",
@@ -23,6 +28,7 @@ const AboutTitle = ({ aboutTitleData }) => {
   const data = aboutTitleData || fallbackData
 
   return (
+    <>
     <div className="bg-white py-16">
       <div className="max-w-full mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
@@ -85,14 +91,21 @@ const AboutTitle = ({ aboutTitleData }) => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               {data.primaryButton && (
-                <button className="bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-lg">
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(true)}
+                  className="bg-black text-white px-6 py-3 rounded-lg cursor-pointer font-medium hover:bg-gray-800 transition-colors duration-200 text-lg"
+                >
                   {data.primaryButton.text}
                 </button>
               )}
               {data.secondaryButton && (
-                <button className="bg-gray-100 text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition-colors duration-200 text-lg">
+                <Link
+                  href={data.secondaryButton.link || '#'}
+                  className="bg-gray-100 text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition-colors duration-200 text-lg"
+                >
                   {data.secondaryButton.text}
-                </button>
+                </Link>
               )}
             </div>
             
@@ -105,6 +118,16 @@ const AboutTitle = ({ aboutTitleData }) => {
         </div>
       </div>
     </div>
+    <LeadFormModal
+      open={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+      title="Request a free 15-minute discovery"
+      onSubmit={async (values) => {
+        // TODO: integrate with your API
+        console.log('Submitting form:', values);
+      }}
+    />
+    </>
   )
 }
 

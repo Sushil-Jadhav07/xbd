@@ -1,6 +1,7 @@
 "use client";
 
 import { HiOutlineSparkles, HiOutlineEye, HiOutlineLink } from 'react-icons/hi';
+import Link from 'next/link';
 import { SiMaterialdesignicons } from "react-icons/si";
 
 const Feature = ({ whatIsExponentialData }) => {
@@ -82,9 +83,12 @@ const Feature = ({ whatIsExponentialData }) => {
                 {/* Button (conditional) */}
                 {feature.hasButton && (
                   <div className="pt-2">
-                    <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200">
+                    <Link
+                      href={feature.buttonLink || '#'}
+                      className="inline-block bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200"
+                    >
                       {feature.buttonText || "Take a quick look"}
-                    </button>
+                    </Link>
                   </div>
                 )}
               </div>
