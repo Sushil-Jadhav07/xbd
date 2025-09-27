@@ -2,6 +2,7 @@
 import React from 'react'
 import { MdImage } from 'react-icons/md'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const BookInfo = ({ bookInfoData }) => {
   // Fallback data
@@ -154,14 +155,20 @@ const BookInfo = ({ bookInfoData }) => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-6">
               {data.primaryButton && (
-                <button className="bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-lg">
+                <Link
+                  href={data.primaryButton.link || '#'}
+                  className="bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-lg"
+                >
                   {data.primaryButton.text}
-                </button>
+                </Link>
               )}
               {data.secondaryButton && (
-                <a href={data.secondaryButton.link || "#"} className="text-black font-medium hover:text-gray-700 transition-colors duration-200 flex items-center text-lg">
+                <Link
+                  href={data.secondaryButton.link || '#'}
+                  className="text-black font-medium hover:text-gray-700 transition-colors duration-200 flex items-center text-lg"
+                >
                   {data.secondaryButton.text}
-                </a>
+                </Link>
               )}
             </div>
             

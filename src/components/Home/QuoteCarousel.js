@@ -3,10 +3,13 @@
 import { useState, useEffect } from 'react';
 import { MdImage } from 'react-icons/md';
 import Image from 'next/image';
+import Link from 'next/link';
+import LeadFormModal from '../common/LeadFormModal';
 
 const QuoteCarousel = ({ quoteCarouselData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Fallback data
   const fallbackData = {
@@ -53,6 +56,7 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
   };
 
   return (
+    <>
     <section className="bg-white dark:bg-black py-16 md:py-20 lg:py-24 border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -79,17 +83,24 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
                 </h3>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row items-center gap-4">
                   {data.primaryButton && (
-                    <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200">
+                    <button
+                      type="button"
+                      onClick={() => setIsModalOpen(true)}
+                      className="bg-black text-white px-8 py-4 rounded-lg cursor-pointer font-semibold hover:bg-gray-800 transition-colors duration-200"
+                    >
                       {data.primaryButton.text}
                     </button>
                   )}
                   
                   {data.secondaryButton && (
-                    <button className="text-gray-900 dark:text-white font-semibold hover:text-black dark:hover:text-white transition-colors duration-200 underline decoration-2 underline-offset-4">
+                    <Link
+                      href={data.secondaryButton.link || '#'}
+                      className="text-gray-900 dark:text-white font-semibold hover:text-black dark:hover:text-white transition-colors duration-200 underline decoration-2 underline-offset-4"
+                    >
                       {data.secondaryButton.text}
-                    </button>
+                    </Link>
                   )}
                 </div>
               </div>
@@ -173,6 +184,16 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
         </div>
       </div>
     </section>
+    <LeadFormModal
+      open={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+      title="Start My Growth"
+      onSubmit={async (values) => {
+        // TODO: integrate with your API
+        console.log('Submitting form:', values);
+      }}
+    />
+    </>
   );
 };
 

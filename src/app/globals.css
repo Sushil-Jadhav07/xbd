@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Dark mode global overrides to support legacy hardcoded colors */
 /* Ensures clicking the theme toggle flips common utilities site-wide */
 :root {

@@ -7,6 +7,7 @@ import XtremeReach from "../../asset/x-tremereach.png"
 import XtractEmotions from "../../asset/X-tract Emotions.png"
 import XtendValue from "../../asset/X-tend Value.png"
 import Image from 'next/image';
+import Link from 'next/link';
 
 const ToolsCarousel = ({ toolsCarouselData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -236,9 +237,12 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
                       </p>
 
                       {/* Button */}
-                      <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200 w-full mt-6">
+                      <Link
+                        href={tool.buttonLink || '#'}
+                        className="text-center bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200 w-full mt-6"
+                      >
                         {tool.buttonText}
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

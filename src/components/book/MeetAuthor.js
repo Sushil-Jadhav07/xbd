@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import Link from 'next/link'
 import { MdPlayArrow } from 'react-icons/md'
 
 const MeetAuthor = ({ meetAuthorData }) => {
@@ -63,14 +64,20 @@ const MeetAuthor = ({ meetAuthorData }) => {
               {/* CTA Elements */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 {data.primaryButton && (
-                  <button className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-lg">
+                  <Link
+                    href={data.primaryButton.link || '#'}
+                    className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-lg"
+                  >
                     {data.primaryButton.text}
-                  </button>
+                  </Link>
                 )}
                 {data.secondaryButton && (
-                  <a href={data.secondaryButton.link || "#"} className="text-black font-medium hover:text-gray-700 transition-colors duration-200 flex items-center text-lg">
+                  <Link
+                    href={data.secondaryButton.link || '#'}
+                    className="text-black font-medium hover:text-gray-700 transition-colors duration-200 flex items-center text-lg"
+                  >
                     {data.secondaryButton.text}
-                  </a>
+                  </Link>
                 )}
               </div>
             </div>
