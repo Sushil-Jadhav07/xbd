@@ -17,13 +17,19 @@ import Keynotes from '@/components/About-Anuj/Keynotes'
 import Industries from '@/components/About-Anuj/Industries'
 import CalltoAction from '@/components/About-Anuj/CalltoAction'
 import React from 'react'
+import XponentialCommunity from '@/components/Community/X-PonentialCommunity'
+import ValueProposition from '@/components/Community/ValueProposition'
+import CommunityStructure from '@/components/Community/CommunityStructure'
 
 const Community = () => {
   return (
     <div className='relative'>
       <Navbar />
-      <Topbar />
-      <CommunityBanner />
+      {/* <Topbar /> */}
+      <XponentialCommunity />
+      <ValueProposition />
+      <CommunityStructure />
+      {/* <CommunityBanner />
       <WhatGain />
       <PricingPlan />
       <Media />
@@ -37,7 +43,7 @@ const Community = () => {
       <AboutTitle />
       <Keynotes />
       <Industries />
-      <CalltoAction />
+      <CalltoAction /> */}
       
       <Footer />
     </div>

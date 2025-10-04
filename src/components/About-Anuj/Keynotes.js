@@ -1,8 +1,12 @@
 'use client'
-import React from 'react'
-import { MdPlayArrow, MdAccessTime, MdLanguage, MdEvent } from 'react-icons/md'
+import React, { useState } from 'react'
+import { MdPlayArrow, MdAccessTime, MdLanguage, MdEvent, MdChevronLeft, MdChevronRight, MdClose } from 'react-icons/md'
 
 const Keynotes = ({ keynotesData }) => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [showVideoModal, setShowVideoModal] = useState(false)
+  const [currentVideoUrl, setCurrentVideoUrl] = useState('')
+
   // Fallback data
   const fallbackData = {
     title: "Keynotes and Moderations at global Forums",
@@ -14,7 +18,8 @@ const Keynotes = ({ keynotesData }) => {
         duration: "60 hours",
         availability: "On Request",
         mode: "Hybrid Mode",
-        trustText: "Trusted by leaders"
+        trustText: "Trusted by leaders",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       },
       {
         title: "Importance of Design for Airports",
@@ -23,16 +28,115 @@ const Keynotes = ({ keynotesData }) => {
         duration: "60 hours",
         availability: "On Request",
         mode: "Onsite Mode",
-        trustText: "Trusted by leaders"
+        trustText: "Trusted by leaders",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      },
+      {
+        title: "Future of Aviation Design",
+        subtitle: "Global Aviation Summit, 2024",
+        description: "Applied a pilot canvas and sequencing plan across customer lifecycle.",
+        duration: "60 hours",
+        availability: "On Request",
+        mode: "Onsite Mode",
+        trustText: "Trusted by leaders",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      },
+      {
+        title: "Sustainable Aviation Practices",
+        subtitle: "Green Aviation Forum, 2024",
+        description: "Applied a pilot canvas and sequencing plan across customer lifecycle.",
+        duration: "60 hours",
+        availability: "On Request",
+        mode: "Hybrid Mode",
+        trustText: "Trusted by leaders",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       }
     ]
   }
 
   const data = keynotesData || fallbackData
+  const totalSlides = data.keynotesList?.length || 0
+
+  // Calculate items per view based on screen size
+  const getItemsPerView = () => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth >= 1024 ? 2 : 1
+    }
+    return 1
+  }
+
+  const [itemsPerView, setItemsPerView] = useState(getItemsPerView())
+
+  // Update items per view on resize
+  React.useEffect(() => {
+    const handleResize = () => {
+      setItemsPerView(getItemsPerView())
+    }
+    
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => {
+      const maxIndex = Math.ceil(totalSlides / itemsPerView) - 1
+      return prev >= maxIndex ? 0 : prev + 1
+    })
+  }
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => {
+      const maxIndex = Math.ceil(totalSlides / itemsPerView) - 1
+      return prev <= 0 ? maxIndex : prev - 1
+    })
+  }
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index)
+  }
+
+  const openVideoModal = (videoUrl) => {
+    // Convert YouTube URL to embed format
+    let embedUrl = videoUrl
+    
+    if (videoUrl.includes('youtube.com/watch?v=')) {
+      const videoId = videoUrl.split('v=')[1].split('&')[0]
+      embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`
+    } else if (videoUrl.includes('youtu.be/')) {
+      const videoId = videoUrl.split('youtu.be/')[1].split('?')[0]
+      embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`
+    }
+    
+    setCurrentVideoUrl(embedUrl)
+    setShowVideoModal(true)
+  }
+
+  const getEmbedUrl = (videoUrl, autoplay = false) => {
+    if (!videoUrl) return ''
+    
+    let embedUrl = videoUrl
+    
+    if (videoUrl.includes('youtube.com/watch?v=')) {
+      const videoId = videoUrl.split('v=')[1].split('&')[0]
+      embedUrl = `https://www.youtube.com/embed/${videoId}${autoplay ? '?autoplay=1' : ''}`
+    } else if (videoUrl.includes('youtu.be/')) {
+      const videoId = videoUrl.split('youtu.be/')[1].split('?')[0]
+      embedUrl = `https://www.youtube.com/embed/${videoId}${autoplay ? '?autoplay=1' : ''}`
+    }
+    
+    return embedUrl
+  }
+
+  const closeVideoModal = () => {
+    setShowVideoModal(false)
+    setCurrentVideoUrl('')
+  }
 
   return (
     <div className="bg-white dark:bg-gray-950 py-16 transition-colors">
-      <div className="max-w-full mx-auto px-4 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8">
         
         {/* Header Section */}
         <div className="text-center mb-12">
@@ -41,68 +145,187 @@ const Keynotes = ({ keynotesData }) => {
           </h2>
         </div>
         
-        {/* Content Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {data.keynotesList?.map((keynote, index) => (
-            <div key={index} className="bg-gray-100 dark:bg-gray-900 rounded-lg p-6 lg:p-8 transition-colors">
-              
-              {/* Video Placeholder */}
-              <div className="flex justify-center mb-6">
+        {/* Carousel Container */}
+        <div className="relative">
+          
+          {/* Carousel Content */}
+          <div className="overflow-hidden">
+            <div 
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {data.keynotesList?.map((keynote, index) => (
                 <div 
-                  className="bg-gray-300 dark:bg-gray-600 rounded-full w-24 h-24 lg:w-32 lg:h-32 flex items-center justify-center cursor-pointer hover:bg-gray-400 dark:hover:bg-gray-500 transition-colors duration-200"
-                  onClick={() => keynote.videoUrl && window.open(keynote.videoUrl, '_blank')}
+                  key={index} 
+                  className={`flex-shrink-0 px-4 ${itemsPerView === 2 ? 'w-1/2' : 'w-full'}`}
                 >
-                  <MdPlayArrow className="text-gray-600 dark:text-gray-200 text-3xl lg:text-4xl ml-1" />
+                  <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-6 lg:p-8 transition-colors h-full">
+                    
+                    {/* Video Player */}
+                    <div className="flex justify-center mb-6">
+                      {keynote.videoUrl ? (
+                        <div 
+                          className="relative w-full rounded-lg overflow-hidden cursor-pointer group"
+                          onClick={() => openVideoModal(keynote.videoUrl)}
+                        >
+                          {/* YouTube Thumbnail */}
+                          <div className="w-full aspect-video bg-gradient-to-br from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center relative">
+                            {/* YouTube Thumbnail Image */}
+                            {(() => {
+                              let thumbnailUrl = ''
+                              if (keynote.videoUrl.includes('youtube.com/watch?v=')) {
+                                const videoId = keynote.videoUrl.split('v=')[1].split('&')[0]
+                                thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+                              } else if (keynote.videoUrl.includes('youtu.be/')) {
+                                const videoId = keynote.videoUrl.split('youtu.be/')[1].split('?')[0]
+                                thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+                              }
+                              return thumbnailUrl ? (
+                                <img
+                                  src={thumbnailUrl}
+                                  alt={keynote.title}
+                                  className="w-full h-full object-cover"
+                                  onError={(e) => {
+                                    e.target.style.display = 'none'
+                                  }}
+                                />
+                              ) : null
+                            })()}
+                            
+                            {/* Play Button Overlay */}
+                            <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-100 group-hover:bg-black/30 transition-all duration-200">
+                              <div className="bg-white/90 dark:bg-gray-800/90 rounded-full w-16 h-16 lg:w-20 lg:h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                                <MdPlayArrow className="text-gray-800 dark:text-gray-200 text-3xl lg:text-4xl ml-1" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="w-full aspect-video bg-gradient-to-br from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-800 rounded-lg flex items-center justify-center">
+                          <div className="bg-gray-400 dark:bg-gray-600 rounded-full w-20 h-20 lg:w-24 lg:h-24 flex items-center justify-center">
+                            <MdPlayArrow className="text-gray-600 dark:text-gray-200 text-3xl lg:text-4xl ml-1" />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Title */}
+                    <h3 className="text-xl lg:text-2xl font-bold text-black dark:text-white mb-2 text-center">
+                      {keynote.title}
+                    </h3>
+                    
+                    {/* Subtitle */}
+                    <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 mb-4 text-center">
+                      {keynote.subtitle}
+                    </p>
+                    
+                    {/* Tags/Buttons */}
+                    <div className="flex flex-wrap justify-center gap-3 mb-6">
+                      {keynote.duration && (
+                        <div className="bg-gray-200 dark:bg-gray-700 text-black dark:text-gray-200 text-sm px-4 py-2 rounded-full flex items-center gap-2">
+                          <MdAccessTime className="text-gray-600 dark:text-gray-300 text-base" />
+                          <span className="font-medium">{keynote.duration}</span>
+                        </div>
+                      )}
+                      {keynote.availability && (
+                        <div className="bg-gray-200 dark:bg-gray-700 text-black dark:text-gray-200 text-sm px-4 py-2 rounded-full flex items-center gap-2">
+                          <MdLanguage className="text-gray-600 dark:text-gray-300 text-base" />
+                          <span className="font-medium">{keynote.availability}</span>
+                        </div>
+                      )}
+                      {keynote.mode && (
+                        <div className="bg-gray-200 dark:bg-gray-700 text-black dark:text-gray-200 text-sm px-4 py-2 rounded-full flex items-center gap-2">
+                          <MdEvent className="text-gray-600 dark:text-gray-300 text-base" />
+                          <span className="font-medium">{keynote.mode}</span>
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Description */}
+                    <p className="text-gray-800 dark:text-gray-300 text-base lg:text-lg text-center mb-6 leading-relaxed">
+                      {keynote.description}
+                    </p>
+                    
+                    {/* Footer */}
+                    <p className="text-sm text-gray-700 dark:text-gray-300 text-center">
+                      {keynote.trustText || "Trusted by leaders"}
+                    </p>
+                    
+                  </div>
                 </div>
-              </div>
-              
-              {/* Title */}
-              <h3 className="text-xl lg:text-2xl font-bold text-black dark:text-white mb-2 text-center">
-                {keynote.title}
-              </h3>
-              
-              {/* Subtitle */}
-              <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 mb-4 text-center">
-                {keynote.subtitle}
-              </p>
-              
-              {/* Tags/Buttons */}
-              <div className="flex flex-wrap justify-center gap-3 mb-6">
-                {keynote.duration && (
-                  <div className="bg-gray-200 dark:bg-gray-700 text-black dark:text-gray-200 text-sm px-4 py-2 rounded-full flex items-center gap-2">
-                    <MdAccessTime className="text-gray-600 dark:text-gray-300 text-base" />
-                    <span className="font-medium">{keynote.duration}</span>
-                  </div>
-                )}
-                {keynote.availability && (
-                  <div className="bg-gray-200 dark:bg-gray-700 text-black dark:text-gray-200 text-sm px-4 py-2 rounded-full flex items-center gap-2">
-                    <MdLanguage className="text-gray-600 dark:text-gray-300 text-base" />
-                    <span className="font-medium">{keynote.availability}</span>
-                  </div>
-                )}
-                {keynote.mode && (
-                  <div className="bg-gray-200 dark:bg-gray-700 text-black dark:text-gray-200 text-sm px-4 py-2 rounded-full flex items-center gap-2">
-                    <MdEvent className="text-gray-600 dark:text-gray-300 text-base" />
-                    <span className="font-medium">{keynote.mode}</span>
-                  </div>
-                )}
-              </div>
-              
-              {/* Description */}
-              <p className="text-gray-800 dark:text-gray-300 text-base lg:text-lg text-center mb-6 leading-relaxed">
-                {keynote.description}
-              </p>
-              
-              {/* Footer */}
-              <p className="text-sm text-gray-700 dark:text-gray-300 text-center">
-                {keynote.trustText || "Trusted by leaders"}
-              </p>
-              
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 text-black dark:text-white p-3 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 z-10"
+            aria-label="Previous slide"
+          >
+            <MdChevronLeft className="text-2xl" />
+          </button>
+          
+          <button
+            onClick={nextSlide}
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 text-black dark:text-white p-3 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 z-10"
+            aria-label="Next slide"
+          >
+            <MdChevronRight className="text-2xl" />
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-2 mt-8">
+            {Array.from({ length: Math.ceil(totalSlides / itemsPerView) }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? 'bg-gray-800 dark:bg-white w-8'
+                    : 'bg-gray-400 dark:bg-gray-600 hover:bg-gray-600 dark:hover:bg-gray-400'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
         
       </div>
+
+      {/* Video Modal Popup */}
+      {showVideoModal && (
+        <div 
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={closeVideoModal}
+        >
+          <div 
+            className="relative w-full max-w-5xl bg-black rounded-lg overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeVideoModal}
+              className="absolute top-4 right-4 z-10 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-sm transition-all duration-200"
+              aria-label="Close video"
+            >
+              <MdClose className="text-2xl" />
+            </button>
+
+            {/* Video Player */}
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src={currentVideoUrl}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
