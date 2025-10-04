@@ -71,48 +71,48 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
         </div>
 
         {/* Main Content */}
-        <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
-          {/* Left Image */}
-          <div className="flex-1 w-full">
+        <div className="flex flex-col items-center space-y-12">
+          {/* Center Image */}
+          <div className="w-full max-w-2xl">
             <div className="flex items-center justify-center relative overflow-hidden">
-              <Image src={WhyHyperGrowth} alt="Why Hyper Growth" />
+              <Image src={WhyHyperGrowth} alt="Why Hyper Growth" className="object-contain" />
             </div>
           </div>
 
-          {/* Right Stats Grid */}
-          <div className="flex-1 w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          {/* Stats in One Line */}
+          <div className="w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8">
               {data.stats?.map((stat, index) => (
-                <div key={index} className="space-y-2">
+                <div key={index} className="text-center space-y-3">
                   {/* Number */}
-                  <div className="text-4xl sm:text-5xl font-bold text-gray-900">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
                     {stat.number}
                   </div>
                   
                   {/* Title */}
-                  <div className="text-lg sm:text-xl font-bold text-gray-900">
+                  <div className="text-base sm:text-lg font-bold text-gray-900">
                     {stat.title}
                   </div>
                   
                   {/* Description */}
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                     {stat.description}
                   </p>
                 </div>
               ))}
-              
-              {/* CTA Button - positioned after the stats */}
-              {data.ctaButton && (
-                <div className="sm:col-span-2 pt-4">
-                  <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="bg-black text-white px-8 py-4 rounded-lg cursor-pointer font-semibold hover:bg-gray-800 transition-colors duration-200"
-                  >
-                    {data.ctaButton.text}
-                  </button>
-                </div>
-              )}
             </div>
+            
+            {/* CTA Button - centered below stats */}
+            {data.ctaButton && (
+              <div className="flex justify-center mt-12">
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="bg-black text-white px-8 py-4 rounded-lg cursor-pointer font-semibold hover:bg-gray-800 transition-colors duration-200"
+                >
+                  {data.ctaButton.text}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

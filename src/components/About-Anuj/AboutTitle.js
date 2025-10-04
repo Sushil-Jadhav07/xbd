@@ -5,6 +5,7 @@ import { MdImage } from 'react-icons/md'
 import Image from 'next/image'
 import Link from 'next/link'
 import LeadFormModal from '../common/LeadFormModal'
+import { urlFor } from '@/lib/sanity'
 
 const AboutTitle = ({ aboutTitleData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,10 +37,10 @@ const AboutTitle = ({ aboutTitleData }) => {
           {/* Left Column - Image */}
           <div className="">
             <div className="bg-gray-200 rounded-lg w-80 h-96 lg:w-full lg:h-full flex items-center justify-center overflow-hidden relative">
-              {data.profileImage ? (
+              {data.profileImage?.asset ? (
                 <Image 
-                  src={data.profileImage}
-                  alt={data.mainHeading}
+                  src={urlFor(data.profileImage).width(800).height(600).url()}
+                  alt={data.profileImage.alt || data.mainHeading}
                   fill
                   className="object-cover"
                 />

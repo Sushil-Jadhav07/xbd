@@ -4,8 +4,12 @@ import { HiOutlineSparkles } from 'react-icons/hi';
 import WhychooseImage from "../../asset/whyxbd.png"
 import Image from 'next/image';
 import Link from 'next/link';
+import { urlFor } from '@/lib/sanity';
+import { useState } from 'react';
 
 const Whychoose = ({ whyChooseData }) => {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
   // Fallback data
   const fallbackData = {
     label: "WHY EXPONENTIAL BY DESIGN",
@@ -17,10 +21,101 @@ const Whychoose = ({ whyChooseData }) => {
     authorName: "Anuj Pandey",
     authorTitle: "Author, Strategist & Founder of XBD",
     primaryButton: { text: "Discover X Now" },
-    secondaryButton: { text: "Get the Growth Playbook" }
+    secondaryButton: { text: "Get the Growth Playbook" },
+    mediaType: "image"
   };
 
   const data = whyChooseData || fallbackData;
+
+  // Function to get YouTube embed URL
+  const getYouTubeEmbedUrl = (url) => {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return match && match[2].length === 11 ? `https://www.youtube.com/embed/${match[2]}` : url;
+  };
+
+  // Function to get Vimeo embed URL
+  const getVimeoEmbedUrl = (url) => {
+    const regExp = /vimeo\.com\/(\d+)/;
+    const match = url.match(regExp);
+    return match ? `https://player.vimeo.com/video/${match[1]}` : url;
+  };
+
+  // Function to get embed URL based on video source
+  const getEmbedUrl = (url) => {
+    if (url.includes('youtube.com') || url.includes('youtu.be')) {
+      return getYouTubeEmbedUrl(url);
+    } else if (url.includes('vimeo.com')) {
+      return getVimeoEmbedUrl(url);
+    }
+    return url; // For direct video URLs
+  };
+
+  // Function to render media (image or video)
+  const renderMedia = () => {
+    if (data.mediaType === 'video' && data.videoUrl) {
+      return (
+        <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden">
+          {isVideoPlaying ? (
+            <iframe
+              src={getEmbedUrl(data.videoUrl)}
+              title="Video Player"
+              className="w-full h-full"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          ) : (
+            <div className="relative w-full h-full">
+              {/* Video Thumbnail */}
+              {data.videoThumbnail ? (
+                <Image
+                  src={urlFor(data.videoThumbnail).width(800).height(600).url()}
+                  alt={data.videoThumbnail.alt || "Video Thumbnail"}
+                  fill
+                  className="object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                  <div className="text-gray-500 text-lg">Video Thumbnail</div>
+                </div>
+              )}
+              
+              {/* Play Button Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
+                <button
+                  onClick={() => setIsVideoPlaying(true)}
+                  className="bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-6 transition-all duration-200 transform hover:scale-110"
+                >
+                  <svg className="w-12 h-12 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    } else if (data.mediaType === 'image' && data.image) {
+      return (
+        <div className="relative w-full h-full min-h-[400px]  overflow-hidden">
+          <Image
+            src={urlFor(data.image).width(800).height(600).url()}
+            alt={data.image.alt || "Why Choose"}
+            fill
+            className="object-contain"
+          />
+        </div>
+      );
+    } else {
+      // Fallback to static image
+      return (
+        <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden">
+          <Image src={WhychooseImage} alt="Why Choose" fill className="object-cover" />
+        </div>
+      );
+    }
+  };
 
   return (
     <section className="bg-white py-16 md:py-20 lg:py-24 border-b border-gray-200">
@@ -81,11 +176,9 @@ const Whychoose = ({ whyChooseData }) => {
             </div>
           </div>
 
-          {/* Right Image */}
+          {/* Right Media (Image or Video) */}
           <div className="flex-1 max-w-lg lg:max-w-none">
-            <div className="rounded-3xl flex items-center justify-center relative overflow-hidden">
-              <Image src={WhychooseImage} alt="Why Choose" />
-            </div>
+            {renderMedia()}
           </div>
         </div>
       </div>

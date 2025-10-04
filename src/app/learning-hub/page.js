@@ -1,3 +1,4 @@
+import ComingSoon from '@/components/common/ComingSoon'
 import Newsletter from '@/components/Home/Newsletter'
 import Footer from '@/components/Layout/Footer'
 import Navbar from '@/components/Layout/Navbar'
@@ -13,13 +14,14 @@ const page = () => {
   return (
     <div>
            <Navbar />
-           <LearningBanner />
+           <ComingSoon />
+           {/* <LearningBanner />
            <Programs />
            <IndustryFocus />
            <WhatLearn />
            <IntroductoryClass />
            <Faqs />
-           <Newsletter />
+           <Newsletter /> */}
            <Footer />
     </div>
   )

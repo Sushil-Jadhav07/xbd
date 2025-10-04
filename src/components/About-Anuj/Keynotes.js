@@ -260,18 +260,18 @@ const Keynotes = ({ keynotesData }) => {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 text-black dark:text-white p-3 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 z-10"
+            className="absolute -left-15 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 text-black dark:text-white p-3 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 z-10"
             aria-label="Previous slide"
           >
-            <MdChevronLeft className="text-2xl" />
+            <MdChevronLeft className="text-4xl" />
           </button>
           
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 text-black dark:text-white p-3 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 z-10"
+            className="absolute -right-15 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 text-black dark:text-white p-3 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 z-10"
             aria-label="Next slide"
           >
-            <MdChevronRight className="text-2xl" />
+            <MdChevronRight className="text-4xl" />
           </button>
 
           {/* Dots Indicator */}
