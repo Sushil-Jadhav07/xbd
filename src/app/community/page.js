@@ -20,15 +20,18 @@ import React from 'react'
 import XponentialCommunity from '@/components/Community/X-PonentialCommunity'
 import ValueProposition from '@/components/Community/ValueProposition'
 import CommunityStructure from '@/components/Community/CommunityStructure'
+import ComingSoon from '@/components/common/ComingSoon'
 
 const Community = () => {
   return (
     <div className='relative'>
       <Navbar />
+
+      <ComingSoon />
       {/* <Topbar /> */}
-      <XponentialCommunity />
+      {/* <XponentialCommunity />
       <ValueProposition />
-      <CommunityStructure />
+      <CommunityStructure /> */}
       {/* <CommunityBanner />
       <WhatGain />
       <PricingPlan />

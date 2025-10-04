@@ -97,7 +97,7 @@ const PricingPlan = ({ pricingPlanData }) => {
     <section className="bg-[#dbdbdb] dark:bg-black py-16 md:py-20 border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
+        <div className="text-center mb-12 lg:mb-0">
           <div className="flex items-center justify-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
             <HiOutlineSparkles className="text-lg" />
             {data.label}
@@ -117,7 +117,7 @@ const PricingPlan = ({ pricingPlanData }) => {
           {/* Carousel Container */}
           <div className="relative">
             {/* Navigation Buttons */}
-            <div className="hidden md:flex absolute -top-22 right-0 gap-2 z-10">
+            <div className="hidden md:flex absolute -top-20 right-0 gap-2 z-10">
               <button
                 onClick={prevSlide}
                 disabled={currentSlide === 0}

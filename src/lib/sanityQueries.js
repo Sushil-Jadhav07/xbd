@@ -69,7 +69,23 @@ export async function getWhyChooseData() {
     authorName,
     authorTitle,
     primaryButton,
-    secondaryButton
+    secondaryButton,
+    mediaType,
+    image{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    videoUrl,
+    videoThumbnail{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    }
   }`
   
   try {
@@ -352,7 +368,13 @@ export async function getAboutTitleData() {
       link
     },
     clientResults,
-    profileImage
+    profileImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    }
   }`
   
   try {
@@ -426,7 +448,21 @@ export async function getGroupCoachingData() {
     sessions[]{
       title,
       description,
-      videoThumbnail,
+      mediaType,
+      image{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      videoThumbnail{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
       videoUrl,
       tags[]{
         text,

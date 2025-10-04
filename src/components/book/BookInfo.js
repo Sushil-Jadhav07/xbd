@@ -117,16 +117,13 @@ const BookInfo = ({ bookInfoData }) => {
             
             {/* Top Label */}
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-5 h-5 bg-black rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <span className="text-sm font-medium text-black uppercase tracking-wide">
+              <h2 className="text-lg md:text-4xl font-medium text-black uppercase tracking-wide">
                 {data.topLabel}
-              </span>
+              </h2>
             </div>
             
             {/* Headline */}
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-medium text-black leading-tight">
+            <h1 className="text-sm md:text-xl font-medium text-black leading-tight">
               {data.headline} <strong>{data.headlineBold}</strong>
             </h1>
             

@@ -2,6 +2,7 @@
 import React from 'react'
 import { MdPlayArrow, MdAccessTime, MdLanguage, MdDevices } from 'react-icons/md'
 import Image from 'next/image'
+import { urlFor } from '@/lib/sanity'
 
 const GroupCoaching = ({ groupCoachingData }) => {
   // Fallback data
@@ -43,8 +44,41 @@ const GroupCoaching = ({ groupCoachingData }) => {
     return icons[iconType] || MdAccessTime
   }
 
+  // Function to render media (image or video)
+  const renderMedia = (session) => {
+    if (session.mediaType === 'video' && session.videoThumbnail?.asset) {
+      return (
+        <div className="relative w-24 h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden cursor-pointer">
+          <Image 
+            src={urlFor(session.videoThumbnail).width(200).height(200).url()}
+            alt={session.videoThumbnail.alt || session.title}
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
+            <MdPlayArrow className="text-white text-3xl lg:text-4xl ml-1" />
+          </div>
+        </div>
+      );
+    } else if (session.mediaType === 'image' && session.image?.asset) {
+      return (
+        <div className="relative w-24 h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden">
+          <Image 
+            src={urlFor(session.image).width(200).height(200).url()}
+            alt={session.image.alt || session.title}
+            fill
+            className="object-cover"
+          />
+        </div>
+      );
+    } else {
+      // No media - return null to display nothing
+      return null;
+    }
+  };
+
   return (
-    <div className="bg-white dark:bg-gray-950 py-16 transition-colors">
+    <div className="bg-white dark:bg-gray-950 pt-16 pb-0 transition-colors">
       <div className="max-w-full mx-auto px-4 lg:px-8">
         
         {/* Header Section */}
@@ -59,26 +93,12 @@ const GroupCoaching = ({ groupCoachingData }) => {
           {data.sessions?.map((session, index) => (
             <div key={index} className="bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 p-6 lg:p-8 shadow-sm hover:shadow-md transition-all duration-200">
               
-              {/* Video Placeholder */}
-              <div className="flex justify-center mb-6">
-                {session.videoThumbnail ? (
-                  <div className="relative w-24 h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden cursor-pointer">
-                    <Image 
-                      src={session.videoThumbnail}
-                      alt={session.title}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
-                      <MdPlayArrow className="text-white text-3xl lg:text-4xl ml-1" />
-                    </div>
-                  </div>
-                ) : (
-                  <div className="bg-gray-300 dark:bg-gray-600 rounded-full w-24 h-24 lg:w-32 lg:h-32 flex items-center justify-center cursor-pointer hover:bg-gray-400 dark:hover:bg-gray-500 transition-colors duration-200">
-                    <MdPlayArrow className="text-gray-600 dark:text-gray-200 text-3xl lg:text-4xl ml-1" />
-                  </div>
-                )}
-              </div>
+              {/* Media (Image or Video) */}
+              {renderMedia(session) && (
+                <div className="flex justify-center mb-6">
+                  {renderMedia(session)}
+                </div>
+              )}
               
               {/* Title */}
               <h3 className="text-xl lg:text-2xl font-bold text-black dark:text-white mb-3 text-center">
