@@ -52,20 +52,22 @@ const Feature = ({ whatIsExponentialData }) => {
   const renderIconOrImage = (feature) => {
     if (feature.useImage && feature.image) {
       return (
-        <div className="bg-gradient-to-br from-[#9d7035] to-[#c1a35e] rounded-lg p-4 w-16 h-16 flex items-center justify-center shadow-sm overflow-hidden">
+        <div className="relative w-[250px] h-full rounded-2xl overflow-hidden shadow-xl ">
           <Image
-            src={urlFor(feature.image).width(64).height(64).url()}
+            src={urlFor(feature.image).width(1000).height(1000).url()}
             alt={feature.image.alt || feature.title}
-            width={64}
-            height={64}
-            className="object-cover rounded"
+            width={500}
+            height={500}
+            className="object-contain w-full h-full"
+            priority={false}
           />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#9d7035]/10 to-[#c1a35e]/10 pointer-events-none"></div>
         </div>
       );
     } else {
       const Icon = getIcon(feature.iconType);
       return (
-        <div className="bg-gradient-to-br from-[#9d7035] to-[#c1a35e] rounded-lg p-4 w-16 h-16 flex items-center justify-center shadow-sm">
+        <div className="bg-gradient-to-br from-[#9d7035] to-[#c1a35e] rounded-xl p-4 w-16 h-16 flex items-center justify-center shadow-lg">
           <Icon className="text-white text-2xl" />
         </div>
       );
@@ -77,6 +79,15 @@ const Feature = ({ whatIsExponentialData }) => {
   const title = whatIsExponentialData?.title || "What is";
   const highlightText = whatIsExponentialData?.highlightText || "Exponential by Design";
   const subtitle = whatIsExponentialData?.subtitle || "The 3 Shifts That Turn Ordinary Companies Into Market Leaders";
+
+  // Debug logging to check image data
+  console.log('WhatIsExponential Data:', whatIsExponentialData);
+  console.log('Features with images:', features.map(f => ({ 
+    title: f.title, 
+    useImage: f.useImage, 
+    hasImage: !!f.image,
+    imageUrl: f.image ? urlFor(f.image).url() : 'No image'
+  })));
 
   return (
     <section className="bg-white py-16 md:py-24 border-b border-gray-200">
@@ -127,23 +138,25 @@ const Feature = ({ whatIsExponentialData }) => {
           >
             {features.map((feature, index) => (
               <SwiperSlide key={index}>
-                <div className="space-y-4 h-full">
+                <div className="space-y-6 h-full flex flex-col">
                   {/* Icon or Image */}
-                  {renderIconOrImage(feature)}
+                  <div className="flex justify-left">
+                    {renderIconOrImage(feature)}
+                  </div>
 
                   {/* Title */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 text-left">
                     {feature.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed text-left flex-grow">
                     {feature.description}
                   </p>
 
                   {/* Button (conditional) */}
                   {feature.hasButton && (
-                    <div className="pt-2">
+                    <div className="pt-4 flex justify-center">
                       <Link
                         href={feature.buttonLink || '#'}
                         className="inline-block bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200"

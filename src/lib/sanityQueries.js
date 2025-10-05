@@ -46,7 +46,22 @@ export async function getWhatIsExponentialData() {
     title,
     highlightText,
     subtitle,
-    features
+    features[]{
+      title,
+      description,
+      hasButton,
+      buttonText,
+      buttonLink,
+      iconType,
+      useImage,
+      image{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    }
   }`
   
   try {
