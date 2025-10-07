@@ -88,7 +88,7 @@ const Feature = ({ whatIsExponentialData }) => {
         try {
           const videoUrl = feature.uploadedVideo.asset.url;
           return (
-            <div className="relative w-[250px] h-[200px] rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative w-full h-[300px] rounded-2xl overflow-hidden shadow-xl">
               <video
                 controls
                 autoPlay={false}
@@ -118,7 +118,7 @@ const Feature = ({ whatIsExponentialData }) => {
         const isPlaying = isVideoPlaying[videoKey];
         
         return (
-          <div className="relative w-[250px] h-[200px] rounded-2xl overflow-hidden shadow-xl">
+          <div className="relative w-full h-[300px] rounded-2xl overflow-hidden shadow-xl">
             {isPlaying ? (
               <iframe
                 src={getEmbedUrl(feature.videoUrl)}
@@ -165,7 +165,7 @@ const Feature = ({ whatIsExponentialData }) => {
     // Handle image media type
     else if (feature.mediaType === 'image' && feature.image) {
       return (
-        <div className="relative w-[250px] h-[200px] rounded-2xl overflow-hidden shadow-xl">
+        <div className="relative w-full h-[300px] rounded-2xl overflow-hidden shadow-xl">
           <Image
             src={urlFor(feature.image).width(1000).height(1000).url()}
             alt={feature.image.alt || feature.title}
@@ -180,7 +180,7 @@ const Feature = ({ whatIsExponentialData }) => {
     // Handle legacy useImage (for backward compatibility)
     else if (feature.useImage && feature.image) {
       return (
-        <div className="relative w-[250px] h-[200px] rounded-2xl overflow-hidden shadow-xl">
+        <div className="relative w-full h-[300px] rounded-2xl overflow-hidden shadow-xl">
           <Image
             src={urlFor(feature.image).width(1000).height(1000).url()}
             alt={feature.image.alt || feature.title}
