@@ -10,6 +10,7 @@ import { useState } from 'react';
 const Whychoose = ({ whyChooseData }) => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
+
   // Fallback data
   const fallbackData = {
     label: "WHY EXPONENTIAL BY DESIGN",
@@ -26,6 +27,10 @@ const Whychoose = ({ whyChooseData }) => {
   };
 
   const data = whyChooseData || fallbackData;
+
+  // Check if video is an uploaded file or external URL
+  const isUploadedVideo = data.uploadedVideo && data.uploadedVideo.asset && data.uploadedVideo.asset._id;
+  const isExternalVideo = data.videoUrl && !isUploadedVideo;
 
   // Function to get YouTube embed URL
   const getYouTubeEmbedUrl = (url) => {
@@ -53,7 +58,52 @@ const Whychoose = ({ whyChooseData }) => {
 
   // Function to render media (image or video)
   const renderMedia = () => {
-    if (data.mediaType === 'video' && data.videoUrl) {
+    // Handle uploaded video files
+    if (data.mediaType === 'video' && isUploadedVideo) {
+      try {
+        // For file assets, use the direct URL instead of urlFor
+        const videoUrl = data.uploadedVideo.asset.url;
+        return (
+          <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden">
+            <video
+              controls
+              autoPlay={false}
+              className="w-full h-full object-cover"
+              poster={data.videoThumbnail && data.videoThumbnail.asset ? urlFor(data.videoThumbnail).width(800).height(600).url() : undefined}
+            >
+              <source src={videoUrl} type={data.uploadedVideo.asset.mimeType || "video/mp4"} />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        );
+      } catch (error) {
+        console.error('Error generating video URL:', error);
+        // Fallback to external video or image
+        if (data.videoUrl) {
+          return (
+            <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden">
+              <iframe
+                src={getEmbedUrl(data.videoUrl)}
+                title="Video Player"
+                className="w-full h-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          );
+        } else {
+          // Fallback to image
+          return (
+            <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden">
+              <Image src={WhychooseImage} alt="Why Choose" fill className="object-cover" />
+            </div>
+          );
+        }
+      }
+    }
+    // Handle external video URLs (YouTube/Vimeo)
+    else if (data.mediaType === 'video' && isExternalVideo) {
       return (
         <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden">
           {isVideoPlaying ? (
@@ -68,7 +118,7 @@ const Whychoose = ({ whyChooseData }) => {
           ) : (
             <div className="relative w-full h-full">
               {/* Video Thumbnail */}
-              {data.videoThumbnail ? (
+              {data.videoThumbnail && data.videoThumbnail.asset ? (
                 <Image
                   src={urlFor(data.videoThumbnail).width(800).height(600).url()}
                   alt={data.videoThumbnail.alt || "Video Thumbnail"}
@@ -118,7 +168,7 @@ const Whychoose = ({ whyChooseData }) => {
   };
 
   return (
-    <section className="bg-white py-16 md:py-20 lg:py-24 border-b border-gray-200">
+    <section className="bg-white dark:bg-[#020202] py-16 md:py-20 lg:py-24 border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Left Content */}
@@ -130,7 +180,7 @@ const Whychoose = ({ whyChooseData }) => {
             </div>
 
             {/* Headline */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
               {data.titleStart}{" "}
               <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent inline">
                 {data.highlightText}
@@ -140,7 +190,7 @@ const Whychoose = ({ whyChooseData }) => {
             </h2>
 
             {/* Quote */}
-            <blockquote className="text-lg sm:text-xl text-gray-700 leading-relaxed">
+            <blockquote className="text-sm md:text-base text-gray-700 leading-relaxed">
               "{data.quote}"
             </blockquote>
 

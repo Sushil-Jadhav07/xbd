@@ -28,7 +28,8 @@ export default async function Page() {
     getNewsletterSignupData()
   ])
   return (
-    <div>
+    <div className='relative'>
+      <main className="relative">
         <Navbar />
         <BookBanner bookBannerData={bookBannerData} />
         <Testimonial testimonialData={testimonialData}/>
@@ -38,6 +39,7 @@ export default async function Page() {
         <MeetAuthor meetAuthorData={meetAuthorData}/>
         <Newsletter newsletterSignupData={newsletterSignupData}/>
         <Footer />
+      </main>
     </div>
   )
 }

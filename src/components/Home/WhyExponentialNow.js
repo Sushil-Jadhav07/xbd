@@ -60,12 +60,12 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
           </div>
 
           {/* Headline */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
             {data.title} <span className="font-black">{data.highlightText}</span>
           </h2>
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-sm md:text-base text-gray-700 max-w-4xl mx-auto leading-relaxed">
             {data.subtitle}
           </p>
         </div>
@@ -85,17 +85,17 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
               {data.stats?.map((stat, index) => (
                 <div key={index} className="text-center space-y-3">
                   {/* Number */}
-                  <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
+                  <div className="text-2xl md:text-4xl font-bold text-gray-900">
                     {stat.number}
                   </div>
                   
                   {/* Title */}
-                  <div className="text-base sm:text-lg font-bold text-gray-900">
+                  <div className="text-sm md:text-base font-bold text-gray-900">
                     {stat.title}
                   </div>
                   
                   {/* Description */}
-                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                  <p className="text-xs md:text-base text-gray-700 leading-relaxed">
                     {stat.description}
                   </p>
                 </div>

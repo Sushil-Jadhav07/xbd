@@ -12,17 +12,19 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>
-           <Navbar />
-           <ComingSoon />
-           {/* <LearningBanner />
-           <Programs />
-           <IndustryFocus />
-           <WhatLearn />
-           <IntroductoryClass />
-           <Faqs />
-           <Newsletter /> */}
-           <Footer />
+    <div className='relative'>
+      <main className="relative">
+        <Navbar />
+        <ComingSoon />
+        {/* <LearningBanner />
+        <Programs />
+        <IndustryFocus />
+        <WhatLearn />
+        <IntroductoryClass />
+        <Faqs />
+        <Newsletter /> */}
+        <Footer />
+      </main>
     </div>
   )
 }

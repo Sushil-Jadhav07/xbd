@@ -54,7 +54,23 @@ export async function getWhatIsExponentialData() {
       buttonLink,
       iconType,
       useImage,
+      mediaType,
       image{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      videoUrl,
+      uploadedVideo{
+        asset->{
+          _id,
+          url,
+          mimeType
+        }
+      },
+      videoThumbnail{
         asset->{
           _id,
           url
@@ -94,6 +110,13 @@ export async function getWhyChooseData() {
       alt
     },
     videoUrl,
+    uploadedVideo{
+      asset->{
+        _id,
+        url,
+        mimeType
+      }
+    },
     videoThumbnail{
       asset->{
         _id,

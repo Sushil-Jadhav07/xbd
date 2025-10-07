@@ -26,7 +26,7 @@ const Banner = ({ bannerData }) => {
           {/* Right side - Content (now dynamic) */}
           <div className="order-2 space-y-6">
             {/* Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
               {bannerData.title}{" "}
               <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent inline">
                 {bannerData.highlightText}
@@ -35,7 +35,7 @@ const Banner = ({ bannerData }) => {
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-lg">
+            <p className="text-sm md:text-base text-gray-700 leading-relaxed max-w-lg">
               {bannerData.subtitle}
             </p>
 

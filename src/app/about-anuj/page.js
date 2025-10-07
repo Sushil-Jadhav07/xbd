@@ -21,7 +21,8 @@ export default async function Page() {
   ])
 
   return (
-    <div>
+    <div className='relative'>
+      <main className="relative">
         <Navbar />
         <AboutTitle aboutTitleData={aboutTitleData} />
         <Keynotes keynotesData={keynotesData} />
@@ -30,6 +31,7 @@ export default async function Page() {
         <GroupCoaching groupCoachingData={groupCoachingData} /> {/* Pass the data */}
         <AnujNewsletter anujNewsletterData={anujNewsletterData} /> {/* Pass the data */}
         <Footer />
+      </main>
     </div>
   )
 }

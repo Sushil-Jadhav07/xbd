@@ -5,7 +5,7 @@ import ContactPage from '@/components/Contact/ContactPage';
 
 const Contact = () => {
   return (
-    <div className="relative bg-white">
+    <div className="relative bg-white dark:bg-[#020202]">
       <Navbar />
       <main>
         <ContactPage />

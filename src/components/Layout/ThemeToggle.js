@@ -1,27 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useTheme } from '@/contexts/ThemeContext'
 import { FiSun, FiMoon } from 'react-icons/fi'
 
 export default function ThemeToggle({ className = '' }) {
-  const [isDark, setIsDark] = useState(false)
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    // On mount, sync with current document state
-    const hasDark = document.documentElement.classList.contains('dark')
-    setIsDark(hasDark)
-    setMounted(true)
-  }, [])
-
-  const toggle = () => {
-    const next = !isDark
-    setIsDark(next)
-    document.documentElement.classList.toggle('dark', next)
-    try {
-      localStorage.setItem('theme', next ? 'dark' : 'light')
-    } catch {}
-  }
+  const { theme, toggleTheme, mounted } = useTheme()
+  const isDark = theme === 'dark'
 
   // Avoid icon mismatch before hydration
   if (!mounted) return (
@@ -36,7 +20,7 @@ export default function ThemeToggle({ className = '' }) {
   return (
     <button
       aria-label="Toggle theme"
-      onClick={toggle}
+      onClick={toggleTheme}
       className={`p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${className}`}
     >
       {isDark ? <FiSun className="h-5 w-5" /> : <FiMoon className="h-5 w-5" />}
