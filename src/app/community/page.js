@@ -25,30 +25,32 @@ import ComingSoon from '@/components/common/ComingSoon'
 const Community = () => {
   return (
     <div className='relative'>
-      <Navbar />
+      <main className="relative">
+        <Navbar />
 
-      <ComingSoon />
-      {/* <Topbar /> */}
-      {/* <XponentialCommunity />
-      <ValueProposition />
-      <CommunityStructure /> */}
-      {/* <CommunityBanner />
-      <WhatGain />
-      <PricingPlan />
-      <Media />
-      <Quote />
-      <Newsletter />
-      <BookBanner />
-      <Testimonial />
-      <BookInfo />
-      <InsideBook />
-      <MeetAuthor />
-      <AboutTitle />
-      <Keynotes />
-      <Industries />
-      <CalltoAction /> */}
-      
-      <Footer />
+        <ComingSoon />
+        {/* <Topbar /> */}
+        {/* <XponentialCommunity />
+        <ValueProposition />
+        <CommunityStructure /> */}
+        {/* <CommunityBanner />
+        <WhatGain />
+        <PricingPlan />
+        <Media />
+        <Quote />
+        <Newsletter />
+        <BookBanner />
+        <Testimonial />
+        <BookInfo />
+        <InsideBook />
+        <MeetAuthor />
+        <AboutTitle />
+        <Keynotes />
+        <Industries />
+        <CalltoAction /> */}
+        
+        <Footer />
+      </main>
     </div>
   )
 }
