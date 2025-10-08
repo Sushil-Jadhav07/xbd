@@ -5,7 +5,8 @@ import InsideBook from '@/components/book/InsideBook'
 import MeetAuthor from '@/components/book/MeetAuthor'
 import Testimonial from '@/components/book/Testimonial'
 import ToolsFrameworksTimeline from '@/components/book/ToolsFrameworksTimeline'
-import Newsletter from '@/components/Community/Newsletter'
+import Newsletters from '@/components/Community/Newsletters'
+import Newsletter from '@/components/Community/Newsletters'
 import Footer from '@/components/Layout/Footer'
 import Navbar from '@/components/Layout/Navbar'
 import { getBookBannerData, getBookInfoData, getBookTestimonialData, getInsideBookData, getMeetAuthorData, getNewsletterSignupData } from '@/lib/sanityQueries'
@@ -37,7 +38,7 @@ export default async function Page() {
         <ToolsFrameworksTimeline/>
         <InsideBook insideBookData={insideBookData}/>
         <MeetAuthor meetAuthorData={meetAuthorData}/>
-        <Newsletter newsletterSignupData={newsletterSignupData}/>
+        <Newsletters newsletterSignupData={newsletterSignupData}/>
         <Footer />
       </main>
     </div>

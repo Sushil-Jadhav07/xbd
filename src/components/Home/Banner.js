@@ -13,11 +13,11 @@ const Banner = ({ bannerData }) => {
   return (
     <>
     <section className="bg-white py-12 md:py-16 border-b border-gray-200">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left side - Image (keeping your existing image) */}
           <div className="order-1">
-            <div className="flex items-center justify-center relative overflow-hidden">
+            <div className="flex items-center justify-center rounded-4xl relative overflow-hidden">
               <Image src={HomeMainBanner} alt="Home Main Banner" />
               <div className="absolute inset-0 from-gray-200 to-gray-400 opacity-20"></div>
             </div>

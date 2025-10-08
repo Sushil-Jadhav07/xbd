@@ -1,40 +1,87 @@
-import React from 'react'
-import { HiOutlineSparkles } from 'react-icons/hi'
+'use client'
+import React, { useState } from 'react'
 
 const Newsletter = ({newsletterData}) => {
-   // Fallback data
-   const fallbackData = {
-    label: "Newsletter",
+  const [email, setEmail] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // Fallback data
+  const fallbackData = {
+    label: "NEWS LETTER",
     title: "Join our monthly newsletter",
-    subtitle: '"join 5,000+ leaders getting practical growth stratergies straight to their inbox."'
+    description: "Join 5,000+ leaders getting practical growth strategies straight to their inbox.",
+    inputPlaceholder: "Enter your email address",
+    buttonText: "Subscribe",
+    privacyNote: "No spam, unsubscribe at any time."
   };
 
   const data = newsletterData || fallbackData;
 
-  return (
-    <section className="bg-white lg:px-12 lg:py-6 md:py-12 py-8  border-b border-gray-200">
-          <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Header */}
-            <div className="flex flex-col justify-start items-start text-start">
-              {/* Label */}
-              <div className="flex items-left justify-start gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
-                <HiOutlineSparkles className="text-lg" />
-                {data.label}
-              </div>
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (!email) return
     
-              {/* Title */}
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900 leading-tight ">
-                {data.title}
-              </h2>
+    setIsSubmitting(true)
+    // TODO: Implement actual newsletter subscription logic
+    console.log('Newsletter subscription:', email)
     
-              {/* Subtitle */}
-              <p className="text-lg sm:text-xl text-gray-700 max-w-4xl leading-relaxed">
-                {data.subtitle}              
-              </p>
-            </div>
+    // Simulate API call
+    setTimeout(() => {
+      setIsSubmitting(false)
+      setEmail('')
+      alert('Thank you for subscribing!')
+    }, 1000)
+  }
 
-            </div>
-            </section>
+  return (
+    <section className="bg-white py-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          
+          {/* Top Label */}
+          <div className="mb-4">
+            <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">
+              {data.label}
+            </span>
+          </div>
+          
+          {/* Main Title */}
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            {data.title}
+          </h2>
+          
+          {/* Description */}
+          <p className="text-lg lg:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed mb-8">
+            {data.description}
+          </p>
+          
+          {/* Newsletter Signup Form */}
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
+            <input 
+              type="email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder={data.inputPlaceholder}
+              className="flex-1 w-full sm:w-auto bg-gray-100 text-gray-900 placeholder-gray-500 px-6 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gray-400 focus:outline-none focus:border-gray-400 text-base"
+              required
+            />
+            <button 
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full sm:w-auto bg-gray-900 text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-base disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? 'Subscribing...' : data.buttonText}
+            </button>
+          </form>
+          
+          {/* Privacy Note */}
+          <p className="text-sm text-gray-500 mt-4">
+            {data.privacyNote}
+          </p>
+          
+        </div>
+      </div>
+    </section>
   )
 }
 

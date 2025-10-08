@@ -8,7 +8,7 @@ const ExponentialEconomy = ({ exponentialData }) => {
 
   return (
     <section className="bg-white py-16 md:py-20 lg:py-24 border-b border-gray-200">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 lg:mb-16 gap-8">
           <div className="flex-1">

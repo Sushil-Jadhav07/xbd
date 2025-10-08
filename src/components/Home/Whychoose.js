@@ -168,8 +168,8 @@ const Whychoose = ({ whyChooseData }) => {
   };
 
   return (
-    <section className="bg-white dark:bg-[#020202] py-16 md:py-20 lg:py-24 border-b border-gray-200 dark:border-gray-800">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-16 md:py-20 lg:py-24 border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Left Content */}
           <div className="flex-1 space-y-6">
