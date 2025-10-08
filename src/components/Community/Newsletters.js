@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-const Newsletter = ({ newsletterData }) => {
+const Newsletters = ({ newsletterData }) => {
   // Fallback data
   const fallbackData = {
     label: "News Letter",
@@ -62,4 +62,4 @@ const Newsletter = ({ newsletterData }) => {
   )
 }
 
-export default Newsletter
+export default Newsletters

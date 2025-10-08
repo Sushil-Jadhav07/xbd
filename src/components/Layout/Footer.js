@@ -21,7 +21,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-gray-50 text-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-12 lg:py-16">
@@ -36,7 +36,7 @@ const Footer = () => {
               </div>
               
               {/* Description */}
-              <p className="text-gray-300 leading-relaxed mb-6">
+              <p className="text-gray-600 leading-relaxed mb-6">
                 Accelerating exponential growth for leaders and organizations worldwide through proven frameworks and strategies.
               </p>
 
@@ -57,13 +57,13 @@ const Footer = () => {
 
             {/* Navigation Links */}
             <div className="lg:col-span-1">
-              <h3 className="font-semibold text-white mb-6">Quick Links</h3>
+              <h3 className="font-semibold text-black mb-6">Quick Links</h3>
               <ul className="space-y-4">
                 {navItems.map((item) => (
                   <li key={item.name}>
                     <a
                       href={item.href}
-                      className="text-gray-300 hover:text-white transition-colors duration-200"
+                      className="text-gray-400 hover:text-white transition-colors duration-200"
                     >
                       {item.name}
                     </a>
@@ -74,30 +74,30 @@ const Footer = () => {
 
             {/* Resources */}
             <div className="lg:col-span-1">
-              <h3 className="font-semibold text-white mb-6">Resources</h3>
+              <h3 className="font-semibold text-black mb-6">Resources</h3>
               <ul className="space-y-4">
                 <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
                     Growth Framework
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
                     Case Studies
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
                     Success Stories
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
                     Tools & Templates
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
                     Blog
                   </a>
                 </li>
@@ -106,23 +106,23 @@ const Footer = () => {
 
             {/* Contact Info */}
             <div className="lg:col-span-1">
-              <h3 className="font-semibold text-white mb-6">Get in Touch</h3>
+              <h3 className="font-semibold text-black mb-6">Get in Touch</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <HiOutlineMail className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <HiOutlineMail className="w-5 h-5 text-gray-800 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-gray-300">Email us</p>
-                    <a href="mailto:hello@anuj.com" className="text-white hover:text-gray-300 transition-colors duration-200">
+                    <p className="text-gray-800">Email us</p>
+                    <a href="mailto:hello@anuj.com" className="text-black hover:text-gray-800 transition-colors duration-200">
                       hello@anuj.com
                     </a>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-3">
-                  <HiOutlinePhone className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <HiOutlinePhone className="w-5 h-5 text-gray-800 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-gray-300">Call us</p>
-                    <a href="tel:+1234567890" className="text-white hover:text-gray-300 transition-colors duration-200">
+                    <p className="text-gray-800">Call us</p>
+                    <a href="tel:+1234567890" className="text-black hover:text-gray-800 transition-colors duration-200">
                       +1 (234) 567-890
                     </a>
                   </div>

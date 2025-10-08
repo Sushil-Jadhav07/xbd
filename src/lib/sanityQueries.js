@@ -233,18 +233,20 @@ export async function getPricingPlanData() {
 
 export async function getNewsletterData() {
   const query = `*[_type =="newsletter"][0]{
-  label,
-  title,
-  subtitle,
+    label,
+    title,
+    description,
+    inputPlaceholder,
+    buttonText,
+    privacyNote
   }`
 
   try {
     return await client.fetch(query)
   }catch (error){
     console.error('Error fetching newsletter:', error)
-  return null
+    return null
   }
-  
 }
 
 

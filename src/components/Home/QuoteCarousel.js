@@ -57,17 +57,17 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
 
   return (
     <>
-    <section className="bg-white dark:bg-black py-16 md:py-20 lg:py-24 border-b border-gray-200 dark:border-gray-800">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-16 md:py-20 lg:py-24 border-b border-gray-200 dark:border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16">
-          <p className="text-lg sm:text-xl text-gray-700 dark:text-white max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             {data.subtitle}
           </p>
         </div>
 
         {/* Main Content */}
-        <div className="bg-[#dbdbdb] dark:bg-gray-900 rounded-3xl relative overflow-hidden">
+        <div className="bg-[#dbdbdb] rounded-3xl relative overflow-hidden">
           {/* Large Quote Mark */}
           <div className="absolute top-8 left-8 text-gray-400 text-8xl md:text-9xl font-serif leading-none opacity-50 z-10">
             ❝
