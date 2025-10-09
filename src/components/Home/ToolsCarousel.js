@@ -8,6 +8,7 @@ import XtractEmotions from "../../asset/X-tract Emotions.png"
 import XtendValue from "../../asset/X-tend Value.png"
 import Image from 'next/image';
 import Link from 'next/link';
+import starsBg from '../../asset/pattern0.png';
 
 const ToolsCarousel = ({ toolsCarouselData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -156,8 +157,20 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
   };
 
   return (
-    <section className="bg-white py-16 md:pt-24 md:pb-0 ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 md:pt-24 md:pb-0 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={starsBg}
+          alt="Stars background"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+      
+      {/* Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="mb-12 lg:mb-16">
           {/* Label */}

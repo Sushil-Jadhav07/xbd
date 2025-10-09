@@ -5,6 +5,7 @@ import { HiOutlineSparkles, HiChevronLeft, HiChevronRight } from 'react-icons/hi
 import { MdImage, MdSecurity, MdFlashOn, MdVerifiedUser } from 'react-icons/md';
 import Image from 'next/image';
 import Link from 'next/link';
+import starsBg from '../../asset/testimonial_bg.jpeg';
 
 const PricingPlan = ({ pricingPlanData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);

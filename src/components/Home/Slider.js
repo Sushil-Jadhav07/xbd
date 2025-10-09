@@ -5,6 +5,8 @@ import { HiOutlineSparkles, HiChevronLeft, HiChevronRight } from 'react-icons/hi
 import { MdImage } from 'react-icons/md';
 import { HiOutlineDocument, HiOutlinePlay, HiOutlinePhone, HiOutlineMicrophone } from 'react-icons/hi';
 import Link from 'next/link';
+import Image from 'next/image';
+import starsBg from '../../asset/testimonial_bg.jpeg';
 
 const Slider = ({ resourcesSliderData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -92,8 +94,20 @@ const Slider = ({ resourcesSliderData }) => {
   };
 
   return (
-    <section className="bg-white py-16 md:py-20 lg:py-24 border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className=" py-16 md:py-20 lg:py-24 border-b border-gray-200 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={starsBg}
+          alt="Stars background"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+      
+      {/* Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="mb-12 lg:mb-16">
           {/* Label */}
