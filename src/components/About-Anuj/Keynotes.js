@@ -135,12 +135,12 @@ const Keynotes = ({ keynotesData }) => {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-950 py-16 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8">
+    <div className="bg-white py-16">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6">
         
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold text-black dark:text-white">
+          <h2 className="text-3xl md:text-4xl font-bold text-black">
             {data.title}
           </h2>
         </div>
@@ -159,7 +159,7 @@ const Keynotes = ({ keynotesData }) => {
                   key={index} 
                   className={`flex-shrink-0 px-4 ${itemsPerView === 2 ? 'w-1/2' : 'w-full'}`}
                 >
-                  <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-6 lg:p-8 transition-colors h-full">
+                  <div className="bg-gray-100 rounded-lg p-6 lg:p-8 h-full">
                     
                     {/* Video Player */}
                     <div className="flex justify-center mb-6">
@@ -169,7 +169,7 @@ const Keynotes = ({ keynotesData }) => {
                           onClick={() => openVideoModal(keynote.videoUrl)}
                         >
                           {/* YouTube Thumbnail */}
-                          <div className="w-full aspect-video bg-gradient-to-br from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center relative">
+                          <div className="w-full aspect-video bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center relative">
                             {/* YouTube Thumbnail Image */}
                             {(() => {
                               let thumbnailUrl = ''
@@ -194,60 +194,60 @@ const Keynotes = ({ keynotesData }) => {
                             
                             {/* Play Button Overlay */}
                             <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-100 group-hover:bg-black/30 transition-all duration-200">
-                              <div className="bg-white/90 dark:bg-gray-800/90 rounded-full w-16 h-16 lg:w-20 lg:h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                                <MdPlayArrow className="text-gray-800 dark:text-gray-200 text-3xl lg:text-4xl ml-1" />
+                              <div className="bg-white/90 rounded-full w-16 h-16 lg:w-20 lg:h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                                <MdPlayArrow className="text-gray-800 text-3xl lg:text-4xl ml-1" />
                               </div>
                             </div>
                           </div>
                         </div>
                       ) : (
-                        <div className="w-full aspect-video bg-gradient-to-br from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-800 rounded-lg flex items-center justify-center">
-                          <div className="bg-gray-400 dark:bg-gray-600 rounded-full w-20 h-20 lg:w-24 lg:h-24 flex items-center justify-center">
-                            <MdPlayArrow className="text-gray-600 dark:text-gray-200 text-3xl lg:text-4xl ml-1" />
+                        <div className="w-full aspect-video bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg flex items-center justify-center">
+                          <div className="bg-gray-400 rounded-full w-20 h-20 lg:w-24 lg:h-24 flex items-center justify-center">
+                            <MdPlayArrow className="text-gray-600 text-3xl lg:text-4xl ml-1" />
                           </div>
                         </div>
                       )}
                     </div>
                     
                     {/* Title */}
-                    <h3 className="text-xl lg:text-2xl font-bold text-black dark:text-white mb-2 text-center">
+                    <h3 className="text-lg md:text-xl font-bold text-black mb-2 text-center">
                       {keynote.title}
                     </h3>
                     
                     {/* Subtitle */}
-                    <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 mb-4 text-center">
+                    <p className="text-sm md:text-base text-gray-700 mb-4 text-center">
                       {keynote.subtitle}
                     </p>
                     
                     {/* Tags/Buttons */}
                     <div className="flex flex-wrap justify-center gap-3 mb-6">
                       {keynote.duration && (
-                        <div className="bg-gray-200 dark:bg-gray-700 text-black dark:text-gray-200 text-sm px-4 py-2 rounded-full flex items-center gap-2">
-                          <MdAccessTime className="text-gray-600 dark:text-gray-300 text-base" />
+                        <div className="bg-gray-200 text-black text-sm px-4 py-2 rounded-full flex items-center gap-2">
+                          <MdAccessTime className="text-gray-600 text-base" />
                           <span className="font-medium">{keynote.duration}</span>
                         </div>
                       )}
                       {keynote.availability && (
-                        <div className="bg-gray-200 dark:bg-gray-700 text-black dark:text-gray-200 text-sm px-4 py-2 rounded-full flex items-center gap-2">
-                          <MdLanguage className="text-gray-600 dark:text-gray-300 text-base" />
+                        <div className="bg-gray-200 text-black text-sm px-4 py-2 rounded-full flex items-center gap-2">
+                          <MdLanguage className="text-gray-600 text-base" />
                           <span className="font-medium">{keynote.availability}</span>
                         </div>
                       )}
                       {keynote.mode && (
-                        <div className="bg-gray-200 dark:bg-gray-700 text-black dark:text-gray-200 text-sm px-4 py-2 rounded-full flex items-center gap-2">
-                          <MdEvent className="text-gray-600 dark:text-gray-300 text-base" />
+                        <div className="bg-gray-200 text-black text-sm px-4 py-2 rounded-full flex items-center gap-2">
+                          <MdEvent className="text-gray-600 text-base" />
                           <span className="font-medium">{keynote.mode}</span>
                         </div>
                       )}
                     </div>
                     
                     {/* Description */}
-                    <p className="text-gray-800 dark:text-gray-300 text-base lg:text-lg text-center mb-6 leading-relaxed">
+                    <p className="text-gray-800 text-sm md:text-base text-center mb-4 leading-relaxed">
                       {keynote.description}
                     </p>
                     
                     {/* Footer */}
-                    <p className="text-sm text-gray-700 dark:text-gray-300 text-center">
+                    <p className="text-sm text-gray-700 text-center">
                       {keynote.trustText || "Trusted by leaders"}
                     </p>
                     
@@ -260,7 +260,7 @@ const Keynotes = ({ keynotesData }) => {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute -left-15 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 text-black dark:text-white p-3 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 z-10"
+            className="absolute -left-15 top-1/2 -translate-y-1/2 bg-white text-black p-3 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-200 z-10"
             aria-label="Previous slide"
           >
             <MdChevronLeft className="text-4xl" />
@@ -268,7 +268,7 @@ const Keynotes = ({ keynotesData }) => {
           
           <button
             onClick={nextSlide}
-            className="absolute -right-15 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 text-black dark:text-white p-3 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 z-10"
+            className="absolute -right-15 top-1/2 -translate-y-1/2 bg-white text-black p-3 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-200 z-10"
             aria-label="Next slide"
           >
             <MdChevronRight className="text-4xl" />
@@ -282,8 +282,8 @@ const Keynotes = ({ keynotesData }) => {
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? 'bg-gray-800 dark:bg-white w-8'
-                    : 'bg-gray-400 dark:bg-gray-600 hover:bg-gray-600 dark:hover:bg-gray-400'
+                    ? 'bg-gray-800 w-8'
+                    : 'bg-gray-400 hover:bg-gray-600'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />

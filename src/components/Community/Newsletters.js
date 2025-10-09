@@ -21,9 +21,7 @@ const Newsletters = ({ newsletterData }) => {
           
           {/* Top Label with Icon */}
           <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="w-5 h-5 bg-black rounded-sm flex items-center justify-center">
-              <div className="w-3 h-3 bg-white rounded-sm"></div>
-            </div>
+            
             <span className="text-sm font-medium text-black uppercase tracking-wide">
               {data.label}
             </span>

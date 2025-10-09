@@ -39,7 +39,12 @@ const Newsletter = ({newsletterData}) => {
         <div className="text-center">
           
           {/* Top Label */}
-          <div className="mb-4">
+          <div className="flex items-center justify-center mb-4">
+          <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center mr-3">
+            <svg className="w-5 h-5 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
             <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">
               {data.label}
             </span>
