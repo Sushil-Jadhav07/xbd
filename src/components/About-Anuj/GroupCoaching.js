@@ -78,20 +78,20 @@ const GroupCoaching = ({ groupCoachingData }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-950 pt-16 pb-0 transition-colors">
-      <div className="max-w-full mx-auto px-4 lg:px-8">
+    <div className="bg-white py-16">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8">
         
         {/* Header Section */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold text-black dark:text-white">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-black">
             {data.sectionTitle}
           </h2>
         </div>
         
         {/* Content Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {data.sessions?.map((session, index) => (
-            <div key={index} className="bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 p-6 lg:p-8 shadow-sm hover:shadow-md transition-all duration-200">
+            <div key={index} className="bg-white rounded-lg border border-gray-200 p-6 lg:p-8 shadow-sm hover:shadow-md transition-all duration-200">
               
               {/* Media (Image or Video) */}
               {renderMedia(session) && (
@@ -101,12 +101,12 @@ const GroupCoaching = ({ groupCoachingData }) => {
               )}
               
               {/* Title */}
-              <h3 className="text-xl lg:text-2xl font-bold text-black dark:text-white mb-3 text-center">
+              <h3 className="text-lg md:text-xl font-bold text-black mb-3 text-center">
                 {session.title}
               </h3>
               
               {/* Description */}
-              <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 mb-6 text-center leading-relaxed">
+              <p className="text-sm md:text-base text-gray-700 mb-6 text-center leading-relaxed">
                 {session.description}
               </p>
               
@@ -115,8 +115,8 @@ const GroupCoaching = ({ groupCoachingData }) => {
                 {session.tags?.map((tag, tagIndex) => {
                   const IconComponent = getIcon(tag.iconType)
                   return (
-                    <div key={tagIndex} className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-sm px-4 py-2 rounded-full flex items-center gap-2">
-                      <IconComponent className="text-gray-600 dark:text-gray-300 text-base" />
+                    <div key={tagIndex} className="bg-gray-100 text-gray-700 text-sm px-4 py-2 rounded-full flex items-center gap-2">
+                      <IconComponent className="text-gray-600 text-sm" />
                       <span className="font-medium">{tag.text}</span>
                     </div>
                   )
@@ -124,7 +124,7 @@ const GroupCoaching = ({ groupCoachingData }) => {
               </div>
               
               {/* Footer */}
-              <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
+              <p className="text-sm text-gray-500 text-center">
                 {session.footer}
               </p>
               

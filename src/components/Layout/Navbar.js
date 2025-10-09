@@ -15,9 +15,9 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Book', href: '/book' },
-    { name: 'Learning Hub', href: '/learning-hub' },
+    // { name: 'Learning Hub', href: '/learning-hub' },
     { name: 'About Anuj', href: '/about-anuj' },
-    { name: 'Work with Anuj', href: '/community' },
+    // { name: 'Work with Anuj', href: '/community' },
   ];
 
   return (
@@ -26,7 +26,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 w-[130px]">
+          <Link href="/" className="flex-shrink-0 w-[130px] cursor-pointer">
             <Image src={LogoMain} alt="Logo Main" />
           </Link>
 

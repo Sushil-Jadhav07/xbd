@@ -39,7 +39,7 @@ export default function ToolsFrameworksTimeline() {
     }
     
     // Timeline 2 - DESIGN EXPERIENCE
-    if (activeTimeline === 1) {
+    if (activeTimeline === 2) {
       if (activeSubTab === 2) {
         return (
           <>
@@ -72,7 +72,7 @@ export default function ToolsFrameworksTimeline() {
     }
 
     // Timeline 3 - DESIGN VALUE
-    if (activeTimeline === 1) {
+    if (activeTimeline === 3) {
       if (activeSubTab === 3) {
         return (
           <>
@@ -104,6 +104,37 @@ export default function ToolsFrameworksTimeline() {
       }
     }
 
+    // Timeline 4 - DESIGN SCALE
+    if (activeTimeline === 4) {
+      if (activeSubTab === 4) {
+        return (
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 sm:p-12 lg:p-16 flex items-center justify-center min-h-[400px]">
+            <div className="text-center">
+              <p className="text-xl sm:text-2xl lg:text-3xl text-gray-300 leading-relaxed">
+                Design systems that scale with{' '}
+                <span className="text-yellow-500 font-semibold">Multiplier Effects.</span>
+              </p>
+            </div>
+          </div>
+        );
+      }
+    }
+
+    // Timeline 5 - DESIGN EXPONENTIALITY
+    if (activeTimeline === 5) {
+      if (activeSubTab === 5) {
+        return (
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 sm:p-12 lg:p-16 flex items-center justify-center min-h-[400px]">
+            <div className="text-center">
+              <p className="text-xl sm:text-2xl lg:text-3xl text-gray-300 leading-relaxed">
+                <span className="text-yellow-500 font-semibold">Formation</span> of Exponential Organizations
+              </p>
+            </div>
+          </div>
+        );
+      }
+    }
+
     // Default content for other combinations
     return (
       <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 sm:p-12 lg:p-16 flex items-center justify-center min-h-[400px]">
@@ -115,7 +146,7 @@ export default function ToolsFrameworksTimeline() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#f5f1eb] text-black py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-center mb-8 sm:mb-12 lg:mb-16">
@@ -135,7 +166,7 @@ export default function ToolsFrameworksTimeline() {
                   <button
                     onClick={() => {
                       setActiveTimeline(step.id);
-                      setActiveSubTab(1);
+                      setActiveSubTab(step.id);
                     }}
                     className={`w-12 h-12 rounded-full border-2 flex items-center justify-center font-bold text-lg transition-all duration-300 ${
                       activeTimeline === step.id
@@ -165,7 +196,7 @@ export default function ToolsFrameworksTimeline() {
                     <button
                       onClick={() => {
                         setActiveTimeline(step.id);
-                        setActiveSubTab(1);
+                        setActiveSubTab(step.id);
                       }}
                       className={`w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold transition-all duration-300 ${
                         activeTimeline === step.id
