@@ -94,9 +94,9 @@ const Slider = ({ resourcesSliderData }) => {
   };
 
   return (
-    <section className=" py-16 md:py-20 lg:py-24 border-b border-gray-200 relative overflow-hidden">
+    <section className=" bg-[#f5f1eb] py-16 md:py-20 lg:py-24 border-b border-gray-200 relative overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      {/* <div className="absolute inset-0 z-0">
         <Image
           src={starsBg}
           alt="Stars background"
@@ -104,7 +104,7 @@ const Slider = ({ resourcesSliderData }) => {
           className="object-cover"
           priority
         />
-      </div>
+      </div> */}
       
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
