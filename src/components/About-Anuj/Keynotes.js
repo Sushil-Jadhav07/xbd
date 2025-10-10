@@ -1,6 +1,8 @@
 'use client'
 import React, { useState } from 'react'
 import { MdPlayArrow, MdAccessTime, MdLanguage, MdEvent, MdChevronLeft, MdChevronRight, MdClose } from 'react-icons/md'
+import Image from 'next/image'
+// import BgImage from "../../asset/pattern-10.png"
 
 const Keynotes = ({ keynotesData }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -135,8 +137,19 @@ const Keynotes = ({ keynotesData }) => {
   }
 
   return (
-    <div className="bg-white py-16">
-      <div className="max-w-7xl mx-auto px-4 lg:px-6">
+    <div className="bg-[#f5f1eb] py-16 relative overflow-hidden">
+      {/* Background Image */}
+      {/* <div className="absolute inset-0 opacity-10">
+        <Image 
+          src={BgImage} 
+          alt="Background" 
+          fill 
+          className="object-cover"
+          priority
+        />
+      </div> */}
+
+      <div className="max-w-7xl mx-auto px-4 lg:px-6 relative z-10">
         
         {/* Header Section */}
         <div className="text-center mb-12">

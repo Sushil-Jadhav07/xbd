@@ -45,7 +45,7 @@ const AnujNewsletter = ({ anujNewsletterData }) => {
   }
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-[#f5f1eb] flex flex-col items-center justify-center px-4 py-12">
       {/* Header Section */}
       <div className="text-center mb-12">
         <div className="flex items-center justify-center mb-4">
