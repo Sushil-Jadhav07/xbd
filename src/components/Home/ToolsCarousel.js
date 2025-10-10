@@ -157,7 +157,7 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
   };
 
   return (
-    <section className="py-16 md:pt-24 md:pb-0 relative overflow-hidden">
+    <section className="py-12 md:py-12 relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
