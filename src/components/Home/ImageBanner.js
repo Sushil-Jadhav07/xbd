@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import FeatureImageOne from "../../asset/feature1.png"
 import FeatureImageTwo from "../../asset/feature2.png"
+import BgImage from "../../asset/pattern-12.png"
 
 const ImageBannerCarousel = ({ imageBannerData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -48,8 +49,19 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
   };
 
   return (
-    <section className="bg-white py-16 md:py-20 lg:py-24 border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-16 md:py-20 lg:py-24 border-b border-gray-200 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 opacity-40">
+        <Image 
+          src={BgImage} 
+          alt="Background" 
+          fill 
+          className="object-cover"
+          priority
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-left mb-6 lg:mb-8">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4">

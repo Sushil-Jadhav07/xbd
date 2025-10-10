@@ -47,7 +47,7 @@ const Footer = () => {
                     key={index}
                     href={social.href}
                     aria-label={social.label}
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                    className="text-gray-400 hover:text-black transition-colors duration-200"
                   >
                     <social.icon className="w-5 h-5" />
                   </a>
@@ -63,7 +63,7 @@ const Footer = () => {
                   <li key={item.name}>
                     <a
                       href={item.href}
-                      className="text-gray-400 hover:text-white transition-colors duration-200"
+                      className="text-gray-400 hover:text-black transition-colors duration-200"
                     >
                       {item.name}
                     </a>
@@ -77,27 +77,27 @@ const Footer = () => {
               <h3 className="font-semibold text-black mb-6">Resources</h3>
               <ul className="space-y-4">
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-gray-400 hover:text-black transition-colors duration-200">
                     Growth Framework
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-gray-400 hover:text-black transition-colors duration-200">
                     Case Studies
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-gray-400 hover:text-black transition-colors duration-200">
                     Success Stories
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-gray-400 hover:text-black transition-colors duration-200">
                     Tools & Templates
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-gray-400 hover:text-black transition-colors duration-200">
                     Blog
                   </a>
                 </li>
@@ -132,7 +132,7 @@ const Footer = () => {
                 <div className="pt-4">
                   <a
                     href="/contact"
-                    className="inline-block bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-200"
+                    className="inline-block bg-gradient-to-br from-[#9d7035] to-[#c1a35e] text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-200"
                   >
                     Start Your Growth
                   </a>
@@ -152,13 +152,13 @@ const Footer = () => {
 
             {/* Legal Links */}
             <div className="flex gap-6">
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+              <a href="#" className="text-gray-400 hover:text-black text-sm transition-colors duration-200">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+              <a href="#" className="text-gray-400 hover:text-black text-sm transition-colors duration-200">
                 Terms of Service
               </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+              <a href="#" className="text-gray-400 hover:text-black text-sm transition-colors duration-200">
                 Cookie Policy
               </a>
             </div>

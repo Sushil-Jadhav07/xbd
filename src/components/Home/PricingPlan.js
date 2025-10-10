@@ -6,6 +6,7 @@ import { MdImage, MdSecurity, MdFlashOn, MdVerifiedUser } from 'react-icons/md';
 import Image from 'next/image';
 import Link from 'next/link';
 import starsBg from '../../asset/testimonial_bg.jpeg';
+import BgImage from "../../asset/pattern-8.png";
 
 const PricingPlan = ({ pricingPlanData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -95,8 +96,19 @@ const PricingPlan = ({ pricingPlanData }) => {
   const slideWidth = 100 / visibleSlides;
 
   return (
-    <section className="bg-gray-100 py-16 md:py-20 border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-gray-100 py-16 md:py-20 border-b border-gray-200 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 opacity-10">
+        <Image 
+          src={BgImage} 
+          alt="Background" 
+          fill 
+          className="object-cover"
+          priority
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-12 lg:mb-0">
           <div className="flex items-center justify-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
