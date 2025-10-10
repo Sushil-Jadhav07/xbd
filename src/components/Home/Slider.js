@@ -216,6 +216,25 @@ const Slider = ({ resourcesSliderData }) => {
               />
             ))}
           </div>
+
+          {/* Bottom Navigation Buttons - Visible on all devices */}
+          <div className="flex justify-center items-center gap-4 mt-6">
+            <button
+              onClick={prevSlide}
+              disabled={currentSlide === 0}
+              className="bg-white shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <HiChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+            
+            <button
+              onClick={nextSlide}
+              disabled={currentSlide >= data.resources.length - getVisibleSlides()}
+              className="bg-white shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <HiChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

@@ -6,7 +6,7 @@ import { MdImage, MdSecurity, MdFlashOn, MdVerifiedUser } from 'react-icons/md';
 import Image from 'next/image';
 import Link from 'next/link';
 import starsBg from '../../asset/testimonial_bg.jpeg';
-import BgImage from "../../asset/pattern-8.png";
+import BgImage from "../../asset/pattern-9.png";
 
 const PricingPlan = ({ pricingPlanData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -98,7 +98,7 @@ const PricingPlan = ({ pricingPlanData }) => {
   return (
     <section className="bg-gray-100 py-16 md:py-20 border-b border-gray-200 relative overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-100">
         <Image 
           src={BgImage} 
           alt="Background" 

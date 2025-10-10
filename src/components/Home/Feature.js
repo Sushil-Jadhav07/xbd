@@ -88,7 +88,7 @@ const Feature = ({ whatIsExponentialData }) => {
         try {
           const videoUrl = feature.uploadedVideo.asset.url;
           return (
-            <div className="relative w-full h-[300px] rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-2xl overflow-hidden shadow-xl">
               <video
                 controls
                 autoPlay={false}
@@ -118,7 +118,7 @@ const Feature = ({ whatIsExponentialData }) => {
         const isPlaying = isVideoPlaying[videoKey];
         
         return (
-          <div className="relative w-full h-[300px] rounded-2xl overflow-hidden shadow-xl">
+          <div className="relative w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-2xl overflow-hidden shadow-xl">
             {isPlaying ? (
               <iframe
                 src={getEmbedUrl(feature.videoUrl)}
@@ -165,7 +165,7 @@ const Feature = ({ whatIsExponentialData }) => {
     // Handle image media type
     else if (feature.mediaType === 'image' && feature.image) {
       return (
-        <div className="relative w-full h-[300px] rounded-2xl overflow-hidden shadow-xl">
+        <div className="relative w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-2xl overflow-hidden shadow-xl">
           <Image
             src={urlFor(feature.image).width(1000).height(1000).url()}
             alt={feature.image.alt || feature.title}
@@ -180,7 +180,7 @@ const Feature = ({ whatIsExponentialData }) => {
     // Handle legacy useImage (for backward compatibility)
     else if (feature.useImage && feature.image) {
       return (
-        <div className="relative w-full h-[300px] rounded-2xl overflow-hidden shadow-xl">
+        <div className="relative w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-2xl overflow-hidden shadow-xl">
           <Image
             src={urlFor(feature.image).width(1000).height(1000).url()}
             alt={feature.image.alt || feature.title}
@@ -212,7 +212,7 @@ const Feature = ({ whatIsExponentialData }) => {
 
   return (
     <section className="bg-[#f5f1eb] py-16 md:py-24 border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 lg:px-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-14">
         {/* Header */}
         <div className="mb-12 lg:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -230,8 +230,8 @@ const Feature = ({ whatIsExponentialData }) => {
             spaceBetween={30}
             slidesPerView={1}
             navigation={{
-              nextEl: '.swiper-button-next-custom',
-              prevEl: '.swiper-button-prev-custom',
+              nextEl: '.swiper-button-next-mobile',
+              prevEl: '.swiper-button-prev-mobile',
             }}
             pagination={{
               clickable: true,
@@ -277,10 +277,10 @@ const Feature = ({ whatIsExponentialData }) => {
 
                   {/* Button (conditional) */}
                   {feature.hasButton && (
-                    <div className="pt-4 flex justify-center">
+                    <div className="pt-4 flex justify-left">
                       <Link
                         href={feature.buttonLink || '#'}
-                        className="inline-block bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200"
+                        className="inline-block bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200 text-center"
                       >
                         {feature.buttonText || "Take a quick look"}
                       </Link>
@@ -291,20 +291,23 @@ const Feature = ({ whatIsExponentialData }) => {
             ))}
           </Swiper>
 
-          {/* Custom Navigation Buttons */}
-          <button className="swiper-button-prev-custom absolute left-[-4rem] top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button className="swiper-button-next-custom absolute right-[-4rem] top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-
           {/* Custom Pagination */}
           <div className="swiper-pagination-custom flex justify-center mt-8 space-x-2"></div>
+
+          {/* Bottom Navigation Buttons - Visible on all devices */}
+          <div className="flex justify-center items-center gap-4 mt-6">
+            <button className="swiper-button-prev-mobile bg-white shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            
+            <button className="swiper-button-next-mobile bg-white shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>
