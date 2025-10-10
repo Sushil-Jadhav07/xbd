@@ -3,6 +3,7 @@ import React from 'react'
 import { MdImage } from 'react-icons/md'
 import Image from 'next/image'
 import Link from 'next/link'
+import BgImage from "../../asset/pattern-11.png"
 
 const BookInfo = ({ bookInfoData }) => {
   // Fallback data
@@ -48,8 +49,19 @@ const BookInfo = ({ bookInfoData }) => {
   const data = bookInfoData || fallbackData
 
   return (
-    <div className="bg-white py-16">
-      <div className="max-w-full mx-auto px-4 lg:px-8">
+    <div className="bg-white py-16 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 opacity-10">
+        <Image 
+          src={BgImage} 
+          alt="Background" 
+          fill 
+          className="object-cover"
+          priority
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
         
         {/* Main Hero Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
@@ -77,12 +89,12 @@ const BookInfo = ({ bookInfoData }) => {
             <div className="mt-8">
               <div className="space-y-6">
                 {/* Title */}
-                <h2 className="text-2xl lg:text-3xl font-bold text-black">
+                <h2 className="text-xl md:text-2xl font-bold text-black">
                   {data.supportingTitle}
                 </h2>
                 
                 {/* Description */}
-                <p className="text-base lg:text-lg text-gray-700 leading-relaxed max-w-2xl">
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed max-w-2xl">
                   {data.supportingDescription}
                 </p>
                 
@@ -117,13 +129,13 @@ const BookInfo = ({ bookInfoData }) => {
             
             {/* Top Label */}
             <div className="flex items-center gap-2 mb-4">
-              <h2 className="text-lg md:text-4xl font-medium text-black uppercase tracking-wide">
+              <h2 className="text-xl md:text-3xl font-medium text-black uppercase tracking-wide">
                 {data.topLabel}
               </h2>
             </div>
             
             {/* Headline */}
-            <h1 className="text-sm md:text-xl font-medium text-black leading-tight">
+            <h1 className="text-base md:text-lg font-medium text-black leading-tight">
               {data.headline} <strong>{data.headlineBold}</strong>
             </h1>
             
@@ -136,7 +148,7 @@ const BookInfo = ({ bookInfoData }) => {
             <div className="grid grid-cols-2 gap-4 pt-4">
               {data.metrics?.map((metric, index) => (
                 <div key={index} className="bg-gray-100 rounded-lg p-4">
-                  <div className="text-3xl lg:text-4xl font-bold text-black mb-1">
+                  <div className="text-2xl lg:text-3xl font-bold text-black mb-1">
                     {metric.value}
                   </div>
                   <div className="text-sm font-bold text-black mb-2">
@@ -150,11 +162,11 @@ const BookInfo = ({ bookInfoData }) => {
             </div>
             
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-6">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               {data.primaryButton && (
                 <Link
                   href={data.primaryButton.link || '#'}
-                  className="bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-lg"
+                  className="bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-base"
                 >
                   {data.primaryButton.text}
                 </Link>
@@ -162,7 +174,7 @@ const BookInfo = ({ bookInfoData }) => {
               {data.secondaryButton && (
                 <Link
                   href={data.secondaryButton.link || '#'}
-                  className="text-black font-medium hover:text-gray-700 transition-colors duration-200 flex items-center text-lg"
+                  className="text-black font-medium hover:text-gray-700 transition-colors duration-200 flex items-center text-base"
                 >
                   {data.secondaryButton.text}
                 </Link>
@@ -170,7 +182,7 @@ const BookInfo = ({ bookInfoData }) => {
             </div>
             
             {/* Trust Indicator */}
-            <p className="text-sm text-gray-600 pt-4">
+            <p className="text-sm text-gray-600 pt-0">
               {data.trustIndicator}
             </p>
           </div>

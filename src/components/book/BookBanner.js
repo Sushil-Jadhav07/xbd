@@ -32,12 +32,12 @@ const BookBanner = ({ bookBannerData }) => {
   return (
     <>
     <div className="bg-white py-16">
-      <div className="max-w-full mx-auto px-4 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           
           {/* Left Column - Book Cover */}
           <div className="lg:col-span-1">
-            <div className="bg-gray-200 rounded-lg h-96 lg:h-full flex items-center justify-center relative">
+            <div className="bg-gray-200 rounded-lg h-80 lg:h-full flex items-center justify-center relative">
               {data.bookCoverImage ? (
                 <Image 
                   src={data.bookCoverImage}
@@ -60,25 +60,25 @@ const BookBanner = ({ bookBannerData }) => {
           <div className="lg:col-span-1 space-y-6">
             
             {/* Category Tag */}
-            <div className="inline-block bg-gray-100 text-black text-sm px-4 py-2 rounded-full font-medium">
+            <div className="inline-block bg-gray-100 text-black text-xs px-4 py-2 rounded-full font-medium">
               {data.categoryTag}
             </div>
             
             {/* Main Title */}
             <div className="space-y-2">
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-medium text-black leading-tight">
+              <h1 className="text-3xl md:text-4xl  font-medium text-black leading-tight">
                 {data.titleLine1}
               </h1>
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-medium text-black leading-tight">
+              <h1 className="text-3xl md:text-4xl  font-medium text-black leading-tight">
                 {data.titleLine2}
               </h1>
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-black leading-tight">
+              <h1 className="text-3xl md:text-4xl  font-bold text-black leading-tight">
                 {data.titleLine3}
               </h1>
             </div>
             
             {/* Description */}
-            <p className="text-lg lg:text-xl text-black max-w-2xl leading-relaxed">
+            <p className="text-base md:text-lg text-black max-w-4xl leading-relaxed">
               {data.description}
             </p>
             
@@ -87,8 +87,8 @@ const BookBanner = ({ bookBannerData }) => {
               <ul className="space-y-3">
                 {data.keyFeatures.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <span className="text-black text-lg mt-1">•</span>
-                    <span className="text-black text-base">{feature}</span>
+                    <span className="text-black text-lg mt-0">•</span>
+                    <span className="text-black text-sm mt-1">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -111,7 +111,7 @@ const BookBanner = ({ bookBannerData }) => {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(true)}
-                  className="bg-black text-white px-8 py-4 rounded-lg cursor-pointer font-medium hover:bg-gray-800 transition-colors duration-200 text-lg"
+                  className="bg-black text-white px-8 py-4 rounded-lg cursor-pointer font-medium hover:bg-gray-800 transition-colors duration-200 text-base"
                 >
                   {data.primaryButton.text}
                 </button>
@@ -119,7 +119,7 @@ const BookBanner = ({ bookBannerData }) => {
               {data.secondaryButton && (
                 <Link
                   href={data.secondaryButton.link || '#'}
-                  className="bg-white text-black px-8 py-4 rounded-lg font-medium border-2 border-black hover:bg-gray-50 transition-colors duration-200 text-lg"
+                  className="bg-white text-black px-8 py-4 rounded-lg font-medium border-2 border-black hover:bg-gray-50 transition-colors duration-200 text-base"
                 >
                   {data.secondaryButton.text}
                 </Link>
