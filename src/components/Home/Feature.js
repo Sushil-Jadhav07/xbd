@@ -211,7 +211,7 @@ const Feature = ({ whatIsExponentialData }) => {
 
 
   return (
-    <section className="bg-white py-16 md:py-24 border-b border-gray-200">
+    <section className="bg-[#f5f1eb] py-16 md:py-24 border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 lg:px-14">
         {/* Header */}
         <div className="mb-12 lg:mb-16">

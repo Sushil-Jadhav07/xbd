@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
+// import BgPattern from "../../asset/pattern-8.png"
 
 const Testimonial = ({ testimonialData }) => {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -119,8 +120,46 @@ const Testimonial = ({ testimonialData }) => {
   // }, [testimonials.length, itemsPerView])
 
   return (
-    <div className="bg-white py-16">
-      <div className="max-w-full mx-auto px-4 lg:px-8">
+    <div className="bg-[#f5f1eb] py-16 relative overflow-hidden">
+      {/* Background Pattern */}
+      {/* <div className="absolute inset-0 opacity-10">
+        <Image 
+          src={BgPattern} 
+          alt="Background Pattern" 
+          fill 
+          className="object-cover"
+          priority
+        />
+      </div> */}
+
+      {/* Animated Floating Shapes */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Floating Circle 1 */}
+        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-gradient-to-br from-[#9d7035]/10 to-[#c1a35e]/10 animate-float-slow"></div>
+        
+        {/* Floating Circle 2 */}
+        <div className="absolute top-40 right-20 w-24 h-24 rounded-full bg-gradient-to-br from-amber-400/15 to-yellow-400/10 animate-float-medium"></div>
+        
+        {/* Floating Square */}
+        <div className="absolute bottom-32 left-1/4 w-20 h-20 bg-gradient-to-br from-[#c1a35e]/10 to-amber-300/10 rotate-45 animate-float-slow-reverse"></div>
+        
+        {/* Floating Triangle */}
+        <div className="absolute top-1/3 right-1/3 w-0 h-0 border-l-[40px] border-l-transparent border-r-[40px] border-r-transparent border-b-[70px] border-b-[#9d7035]/10 animate-float-medium-reverse"></div>
+        
+        {/* Large Circle Background */}
+        <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-gradient-to-br from-amber-300/10 to-transparent animate-pulse-slow"></div>
+        
+        {/* Small Accent Circles */}
+        <div className="absolute bottom-20 right-1/4 w-16 h-16 rounded-full bg-gradient-to-br from-yellow-300/15 to-amber-300/10 animate-float-fast"></div>
+        
+        {/* Hexagon-like shape */}
+        <div className="absolute top-1/2 left-12 w-24 h-24 bg-gradient-to-br from-[#9d7035]/10 to-amber-400/10 rotate-12 animate-float-slow"></div>
+        
+        {/* Small accent dot */}
+        <div className="absolute bottom-40 left-1/3 w-12 h-12 rounded-full bg-gradient-to-br from-amber-400/15 to-orange-400/15 animate-float-fast-reverse"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
         
         {/* Header Section */}
         <div className="text-center mb-12">

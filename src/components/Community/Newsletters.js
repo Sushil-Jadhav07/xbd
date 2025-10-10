@@ -15,7 +15,7 @@ const Newsletters = ({ newsletterData }) => {
   const data = newsletterData || fallbackData
 
   return (
-    <div className="bg-white py-16">
+    <div className="bg-[#f5f1eb] py-16">
       <div className="max-w-full mx-auto px-4 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           
