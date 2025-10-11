@@ -51,12 +51,12 @@ const Newsletter = ({newsletterData}) => {
           </div>
           
           {/* Main Title */}
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             {data.title}
           </h2>
           
           {/* Description */}
-          <p className="text-lg lg:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed mb-8">
+          <p className="text-base md:text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-8">
             {data.description}
           </p>
           

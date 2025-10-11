@@ -96,7 +96,7 @@ const PricingPlan = ({ pricingPlanData }) => {
   const slideWidth = 100 / visibleSlides;
 
   return (
-    <section className="bg-gray-100 py-16 md:py-20 border-b border-gray-200 relative overflow-hidden">
+    <section className="bg-gray-100 py-16 md:py-20 relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 opacity-100">
         <Image 
@@ -110,17 +110,17 @@ const PricingPlan = ({ pricingPlanData }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-12 lg:mb-0">
+        <div className="text-center mb-8 lg:mb-0">
           <div className="flex items-center justify-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
             <HiOutlineSparkles className="text-lg" />
             {data.label}
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
             {data.title} <span className="font-black">{data.highlightText}</span>
           </h2>
 
-          <p className="text-lg sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
             {data.subtitle}
           </p>
         </div>
@@ -183,7 +183,7 @@ const PricingPlan = ({ pricingPlanData }) => {
 
                       {/* Content */}
                       <div className="flex-1 flex flex-col space-y-6">
-                        <h3 className="text-2xl font-bold text-gray-900 text-center">
+                        <h3 className="text-xl font-bold text-gray-900 text-center">
                           {plan.title}
                         </h3>
 
@@ -221,7 +221,7 @@ const PricingPlan = ({ pricingPlanData }) => {
           {data.mainCtaButton && (
             <Link
               href={data.mainCtaButton.link || '#'}
-              className="inline-block bg-black text-white px-12 py-4 rounded-lg font-semibold text-lg hover:bg-gray-800 transition-colors duration-200 text-center"
+              className="inline-block bg-black text-white px-12 py-4 rounded-lg font-semibold text-base hover:bg-gray-800 transition-colors duration-200 text-center"
             >
               {data.mainCtaButton.text}
             </Link>

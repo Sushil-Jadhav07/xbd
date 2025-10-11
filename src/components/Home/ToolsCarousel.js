@@ -157,9 +157,9 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
   };
 
   return (
-    <section className="py-12 md:py-12 relative overflow-hidden">
+    <section className="bg-[#f5f1eb] py-12 md:py-12 relative overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      {/* <div className="absolute inset-0 z-0">
         <Image
           src={starsBg}
           alt="Stars background"
@@ -167,7 +167,7 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
           className="object-cover"
           priority
         />
-      </div>
+      </div> */}
       
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -180,12 +180,12 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
           </div>
 
           {/* Headline */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+          <h2 className="text-3xl  lg:text-4xl font-bold text-gray-900 leading-tight mb-2">
             {data.title} <span className="font-black">{data.highlightText}</span>
           </h2>
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-xl text-gray-700 max-w-3xl">
+          <p className="text-base md:text-lg text-gray-700 max-w-3xl">
             {data.subtitle}
           </p>
         </div>

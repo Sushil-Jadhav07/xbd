@@ -56,7 +56,7 @@ const ExponentialEconomy = ({ exponentialData }) => {
           {exponentialData.learnMoreButton && (
             <Link
               href={exponentialData.learnMoreButton.link || '#'}
-              className="bg-[#ff8c00] hover:bg-[#e67e00] text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200 inline-block"
+              className="bg-gradient-to-br !from-[#9d7035] !to-[#c1a35e] text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 inline-block"
             >
               {exponentialData.learnMoreButton.text || 'Learn More'}
             </Link>

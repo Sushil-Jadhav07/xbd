@@ -57,11 +57,11 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
 
   return (
     <>
-    <section className="bg-[#f5f1eb] py-12 md:py-16 border-b border-gray-200 ">
+    <section className="bg-white py-12 md:py-16 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+        <div className="text-center mb-4 lg:mb-6">
+          <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
             {data.subtitle}
           </p>
         </div>
