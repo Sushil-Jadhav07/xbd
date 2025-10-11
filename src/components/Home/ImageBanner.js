@@ -93,9 +93,9 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
         .animate-bounce-medium { animation: bounce-medium 3s ease-in-out infinite; }
       `}</style>
       
-      <section className="bg-white py-16 md:py-20 lg:py-24 border-b border-gray-200 relative overflow-hidden">
+      <section className="bg-[#f5f1eb] py-16 md:py-20 lg:py-24 relative overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 opacity-70">
+      {/* <div className="absolute inset-0 opacity-70">
         <Image 
           src={BgImage} 
           alt="Background" 
@@ -103,27 +103,9 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
           className="object-cover"
           priority
         />
-      </div>
+      </div> */}
 
-      {/* Floating Moving Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Floating Circles */}
-        <div className="absolute top-20 left-10 w-14 h-14 bg-blue-400/30 rounded-full animate-float-slow"></div>
-        <div className="absolute top-40 right-20 w-16 h-16 bg-purple-400/20 rounded-full animate-float-medium"></div>
-        <div className="absolute bottom-32 left-16 w-30 h-30 bg-green-400/25 rounded-full animate-float-fast"></div>
-        <div className="absolute bottom-20 right-12 w-50 h-50 bg-orange-400/30 rounded-full animate-float-slow"></div>
-        <div className="absolute top-60 left-1/3 w-2 h-2 bg-pink-400/35 rounded-full animate-float-medium"></div>
-        <div className="absolute bottom-40 right-1/4 w-4 h-4 bg-cyan-400/20 rounded-full animate-float-fast"></div>
-
-        {/* Floating Squares */}
-        <div className="absolute top-32 right-1/3 w-30 h-30 bg-indigo-400/25 rotate-45 animate-spin-slow"></div>
-        <div className="absolute bottom-60 left-1/4 w-4 h-4 bg-red-400/30 rotate-45 animate-spin-medium"></div>
-        <div className="absolute top-80 right-16 w-10 h-10 bg-yellow-400/35 rotate-45 animate-spin-slow"></div>
-
-        {/* Floating Triangles */}
-        <div className="absolute top-48 left-1/2 w-30 h-30 border-l-4 border-r-4 border-b-6 border-l-transparent border-r-transparent border-b-blue-400/25 animate-bounce-slow"></div>
-        <div className="absolute bottom-48 right-1/2 w-20 h-20 border-l-3 border-r-3 border-b-5 border-l-transparent border-r-transparent border-b-purple-400/30 animate-bounce-medium"></div>
-      </div>
+  
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}

@@ -94,7 +94,7 @@ const Slider = ({ resourcesSliderData }) => {
   };
 
   return (
-    <section className=" bg-[#f5f1eb] py-16 md:py-20 lg:py-24 border-b border-gray-200 relative overflow-hidden">
+    <section className=" bg-white py-16 md:py-20 lg:py-24  relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 z-0">
         <Image

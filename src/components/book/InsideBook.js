@@ -56,7 +56,7 @@ const InsideBook = ({ insideBookData }) => {
 
   return (
     <div className="bg-white py-16">
-      <div className="max-w-full mx-auto px-4 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2 md:px-0">
         
         {/* Header Section */}
         <div className="text-center mb-12">

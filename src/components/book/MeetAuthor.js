@@ -19,42 +19,12 @@ const MeetAuthor = ({ meetAuthorData }) => {
   return (
     <div className="bg-white py-16 relative overflow-hidden">
       {/* Animated Floating Shapes - Unique Variations */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Extra Large Circle - Top Right */}
-        <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-gradient-to-br from-blue-400/10 to-purple-400/5 animate-pulse-slow"></div>
-        
-        {/* Large Floating Square */}
-        <div className="absolute top-20 left-[8%] w-36 h-36 bg-gradient-to-br from-indigo-400/15 to-blue-400/10 rotate-[25deg] animate-float-slow"></div>
-        
-        {/* Medium Circle - Left Side */}
-        <div className="absolute top-1/2 left-16 w-28 h-28 rounded-full bg-gradient-to-br from-cyan-400/15 to-teal-400/10 animate-float-medium"></div>
-        
-        {/* Large Triangle - Bottom Left */}
-        <div className="absolute bottom-24 left-[15%] w-0 h-0 border-l-[55px] border-l-transparent border-r-[55px] border-r-transparent border-b-[90px] border-b-indigo-400/15 animate-float-slow-reverse"></div>
-        
-        {/* Medium Diamond Shape */}
-        <div className="absolute top-32 right-[20%] w-26 h-26 bg-gradient-to-br from-purple-400/15 to-pink-400/10 rotate-45 animate-float-medium-reverse"></div>
-        
-        {/* Small Accent Circle - Top */}
-        <div className="absolute top-16 left-1/3 w-18 h-18 rounded-full bg-gradient-to-br from-blue-500/15 to-cyan-400/10 animate-float-fast"></div>
-        
-        {/* Large Hexagon-like shape - Bottom Right */}
-        <div className="absolute bottom-16 right-[12%] w-32 h-32 bg-gradient-to-br from-teal-400/10 to-cyan-300/10 rotate-[15deg] animate-float-slow"></div>
-        
-        {/* Small Square - Middle Right */}
-        <div className="absolute top-[95%] right-24 w-20 h-20 bg-gradient-to-br from-indigo-500/15 to-purple-400/10 rotate-[35deg] animate-float-fast-reverse"></div>
-        
-        {/* Medium Circle - Bottom Center */}
-        <div className="absolute bottom-10 left-[45%] w-24 h-24 rounded-full bg-gradient-to-br from-purple-400/15 to-indigo-400/10 animate-float-medium"></div>
-        
-        {/* Tiny Accent Dot */}
-        <div className="absolute top-[90%] left-[20%] w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500/15 to-blue-400/10 animate-float-fast"></div>
-      </div>
+     
 
-      <div className="max-w-full mx-auto px-4 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-2 md:px-0 relative z-10">
         
         {/* Header Section */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-6">
           <h2 className="text-3xl md:text-4xl font-bold text-black">
             {data.title}
           </h2>
@@ -66,19 +36,19 @@ const MeetAuthor = ({ meetAuthorData }) => {
             
             {/* Left Side - Quote and Author Info */}
             <div className="space-y-2">
-              <div className="text-gray-400 text-6xl lg:text-8xl mt-2">
+              <div className="text-gray-400 text-6xl lg:text-8xl mt-0">
                 "
               </div>
               {/* Quote */}
               <div className="flex items-start gap-2">
-                <blockquote className="text-2xl md:text-3xl font-bold text-black leading-tight">
+                <blockquote className="text-xl md:text-2xl font-bold text-black leading-tight">
                   {data.quote}
                 </blockquote>
               </div>
               
               {/* Author Details */}
               <div className="space-y-3">
-                <p className="text-sm md:text-base text-black leading-relaxed">
+                <p className="text-xs md:text-sm text-black leading-relaxed">
                   {data.authorBio}
                 </p>
                 {data.previousBook && (

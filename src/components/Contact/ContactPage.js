@@ -29,8 +29,8 @@ const ContactPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="text-center max-w-3xl mx-auto mb-16">
           <p className="md:text-[42px] text-lg font-semibold text-[#b69352] tracking-wide uppercase mb-3">Contact</p>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">We would love to hear from you</h1>
-          <p className="text-lg text-gray-600">
+          <h1 className="text-3xl md:text-4xl  font-bold text-gray-900 mb-6">We would love to hear from you</h1>
+          <p className="text-base text-gray-600">
             Whether you have a question about our programs, partnership opportunities, or anything else, the XBD team is ready to answer all your questions.
           </p>
         </header>
@@ -103,10 +103,10 @@ const ContactPage = () => {
               </ul>
             </div>
 
-            <div className="bg-gray-900 text-white rounded-3xl p-10">
-              <h2 className="text-2xl font-semibold mb-4">Prefer a quick call?</h2>
-              <p className="text-gray-200 mb-6">Schedule a discovery call with our advisory team and explore how XBD can support your growth.</p>
-              <Link href="/book-a-call" className="inline-block bg-gradient-to-br from-[#9d7035] to-[#c1a35e] text-gray-900 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors duration-200">Book a call</Link>
+            <div className="bg-gray-200 text-white rounded-3xl p-10">
+              <h2 className=" text-black text-2xl font-semibold mb-4">Prefer a quick call?</h2>
+              <p className="text-gray-800 mb-6">Schedule a discovery call with our advisory team and explore how XBD can support your growth.</p>
+              <Link href="/book-a-call" className="inline-block bg-gradient-to-br from-[#9d7035] to-[#c1a35e] text-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors duration-200">Book a call</Link>
             </div>
           </div>
         </div>
