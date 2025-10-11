@@ -1,117 +1,66 @@
 "use client";
 import Link from 'next/link'
-import { HiOutlineSparkles } from 'react-icons/hi';
-import { MdImage } from 'react-icons/md';
+import Image from 'next/image'
 
 const ExponentialEconomy = ({ exponentialData }) => {
   if (!exponentialData) return null;
 
   return (
-    <section className="bg-white py-16 md:py-20 lg:py-24 border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 lg:mb-16 gap-8">
-          <div className="flex-1">
-            {/* Label */}
-            <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
-              <HiOutlineSparkles className="text-lg" />
-              {exponentialData.label}
-            </div>
+    <section className="bg-[#ffff] py-16 md:py-20 lg:py-24">
+      <div className="max-w-7xl mx-auto px-2 md:px-8">
+        {/* Header Section */}
+        <div className="text-center mb-8">
+          {/* Main Question */}
+          <p className="text-black text-base md:text-lg mb-4">
+            {exponentialData.mainQuestion || 'Do you want to be part of this'}{" "}
+            <span className="text-[#ff8c00] font-bold">
+              {exponentialData.highlightedWord || 'Exponential'}
+            </span>{" "}
+            economy?
+          </p>
 
-            {/* Title */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4">
-              {exponentialData.title}{" "}
-              <span className="font-black">{exponentialData.highlightText}</span>
-            </h2>
+          {/* Framework Title */}
+          <h1 className="text-3xl md:text-4xl font-bold text-black mb-8 leading-tight">
+            {exponentialData.frameworkTitle || 'How to Transform: The \'X\' Framework'}
+          </h1>
 
-            {/* Subtitle */}
-            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
-              {exponentialData.subtitle}
-            </p>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 lg:flex-shrink-0">
-            {exponentialData.primaryButton && (
-              <Link
-                href={exponentialData.primaryButton.link || '#'}
-                className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap"
-              >
-                {exponentialData.primaryButton.text}
-              </Link>
-            )}
-            
-            {exponentialData.secondaryButton && (
-              <Link
-                href={exponentialData.secondaryButton.link || '#'}
-                className="text-gray-900 font-semibold hover:text-black transition-colors duration-200 underline decoration-2 underline-offset-4"
-              >
-                {exponentialData.secondaryButton.text}
-              </Link>
-            )}
-          </div>
+          {/* Description */}
+          <p className="text-black text-base md:text-lg max-w-5xl mx-auto leading-relaxed mb-8">
+            {exponentialData.description || 'Our proprietary framework, backed by tools simplifies this complex assignment. This framework squeezes and extracts the growth secrets behind the prominently exponential organizations like Google, Amazon, Uber, NVIDIA and now OpenAI to distill the complexity into a simple framework to lead exponential growth. Every successful transformation maps back to the converging and diverging forces that create multiplier effects, creating agile and adaptable entities that evolve with the market.'}
+          </p>
         </div>
 
-        {/* Main Content */}
-        <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
-          {/* Left Image (keeping placeholder) */}
-          <div className="flex-1 w-full">
-            <div className="bg-[#dbdbdb] rounded-3xl aspect-[4/3] flex items-center justify-center relative overflow-hidden">
-              <div className="bg-gray-400 rounded-lg p-4 w-20 h-16 flex items-center justify-center">
-                <MdImage className="text-gray-500 text-2xl" />
+        {/* Main X Framework Layout */}
+        <div className="relative flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
+
+          {/* Center - Banner Image */}
+          <div className="relative w-full flex items-center justify-center">
+            {exponentialData.bannerImage?.asset?.url && (
+              <div className="relative w-full max-w-7xl aspect-video">
+                <Image
+                  src={exponentialData.bannerImage.asset.url}
+                  alt={exponentialData.bannerImage.alt || 'X Framework Banner'}
+                  fill
+                  className="object-cover rounded-lg"
+                  priority
+                />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20"></div>
-            </div>
+            )}
           </div>
 
-          {/* Right Content */}
-          <div className="flex-1 w-full space-y-12">
-            {/* Converging Forces */}
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-6">
-                Converging forces
-              </h3>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {exponentialData.convergingForces?.map((force, index) => (
-                  <div key={index} className="space-y-3">
-                    <div className="bg-gray-300 rounded-lg p-3 w-12 h-12 flex items-center justify-center">
-                      <HiOutlineSparkles className="text-gray-600 text-lg" />
-                    </div>
-                    <h4 className="font-bold text-gray-900">
-                      {force.title}
-                    </h4>
-                    <p className="text-gray-700 text-sm leading-relaxed">
-                      {force.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Diverging Forces */}
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-6">
-                Diverging Forces
-              </h3>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {exponentialData.divergingForces?.map((force, index) => (
-                  <div key={index} className="space-y-3">
-                    <div className="bg-gray-300 rounded-lg p-3 w-12 h-12 flex items-center justify-center">
-                      <HiOutlineSparkles className="text-gray-600 text-lg" />
-                    </div>
-                    <h4 className="font-bold text-gray-900">
-                      {force.title}
-                    </h4>
-                    <p className="text-gray-700 text-sm leading-relaxed">
-                      {force.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+        </div>
+
+        {/* Learn More Button */}
+        <div className="text-left mt-6">
+          {exponentialData.learnMoreButton && (
+            <Link
+              href={exponentialData.learnMoreButton.link || '#'}
+              className="bg-[#ff8c00] hover:bg-[#e67e00] text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200 inline-block"
+            >
+              {exponentialData.learnMoreButton.text || 'Learn More'}
+            </Link>
+          )}
         </div>
       </div>
     </section>

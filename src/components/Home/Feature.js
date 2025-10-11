@@ -256,6 +256,10 @@ const Feature = ({ whatIsExponentialData }) => {
               },
             }}
             className="pb-12"
+            onSwiper={(swiper) => {
+              // Store swiper instance for manual navigation if needed
+              window.swiperInstance = swiper;
+            }}
           >
             {features.map((feature, index) => (
               <SwiperSlide key={index}>
@@ -291,18 +295,32 @@ const Feature = ({ whatIsExponentialData }) => {
             ))}
           </Swiper>
 
-          {/* Custom Pagination */}
-          <div className="swiper-pagination-custom flex justify-center mt-8 space-x-2"></div>
+          {/* Custom Pagination - Hidden on desktop */}
+          <div className="swiper-pagination-custom flex justify-center mt-8 space-x-2 md:hidden"></div>
 
           {/* Bottom Navigation Buttons - Visible on all devices */}
           <div className="flex justify-center items-center gap-4 mt-6">
-            <button className="swiper-button-prev-mobile bg-white shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200">
+            <button 
+              className="swiper-button-prev-mobile bg-white shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200"
+              onClick={() => {
+                if (window.swiperInstance) {
+                  window.swiperInstance.slidePrev();
+                }
+              }}
+            >
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             
-            <button className="swiper-button-next-mobile bg-white shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200">
+            <button 
+              className="swiper-button-next-mobile bg-white shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200"
+              onClick={() => {
+                if (window.swiperInstance) {
+                  window.swiperInstance.slideNext();
+                }
+              }}
+            >
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>

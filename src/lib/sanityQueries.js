@@ -22,14 +22,18 @@ export async function getBannerData() {
 
 export async function getExponentialEconomyData() {
   const query = `*[_type == "exponentialEconomy"][0]{
-    label,
-    title,
-    highlightText,
-    subtitle,
-    primaryButton,
-    secondaryButton,
-    convergingForces,
-    divergingForces
+    mainQuestion,
+    highlightedWord,
+    frameworkTitle,
+    description,
+    bannerImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    learnMoreButton
   }`
   
   try {
