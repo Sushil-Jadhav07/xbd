@@ -119,7 +119,7 @@ const BookBanner = ({ bookBannerData }) => {
               {data.secondaryButton && (
                 <Link
                   href={data.secondaryButton.link || '#'}
-                  className="bg-white text-black px-8 py-4 rounded-lg font-medium border-2 border-black hover:bg-gray-50 transition-colors duration-200 text-base"
+                  className="bg-white text-black px-8 py-4 rounded-lg text-center md:text-left font-medium border-2 border-black hover:bg-gray-50 transition-colors duration-200 text-base"
                 >
                   {data.secondaryButton.text}
                 </Link>

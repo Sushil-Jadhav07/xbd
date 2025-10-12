@@ -117,7 +117,7 @@ const AnujNewsletter = ({ anujNewsletterData }) => {
       </form>
 
       {/* Footer CTA Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4">
+      <div className="flex flex-col sm:flex-row items-center  gap-4">
         <Link href={data.ctaButtons?.primaryButtonLink || '#'}>
           <button className="px-8 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors">
             {data.ctaButtons?.primaryButtonText}

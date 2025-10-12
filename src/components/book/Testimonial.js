@@ -163,10 +163,10 @@ const Testimonial = ({ testimonialData }) => {
         
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">
+          <h2 className="text-3xl lg:text-4xl font-bold text-black mb-4">
             {data.title}
           </h2>
-          <p className="text-lg lg:text-xl text-black max-w-3xl mx-auto">
+          <p className="text-base lg:text-xl text-black max-w-3xl mx-auto">
             {data.subtitle}
           </p>
         </div>

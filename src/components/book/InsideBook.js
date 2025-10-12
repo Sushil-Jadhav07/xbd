@@ -60,16 +60,16 @@ const InsideBook = ({ insideBookData }) => {
         
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
             {data.title}
           </h2>
-          <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base lg:text-xl text-gray-600 max-w-3xl mx-auto">
             {data.subtitle}
           </p>
         </div>
         
         {/* Main Content Container */}
-        <div className="bg-gray-100 rounded-lg p-8 lg:p-12">
+        <div className="bg-gray-100 rounded-lg p-4 lg:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             
             {/* Left Section: Modules */}
@@ -77,8 +77,8 @@ const InsideBook = ({ insideBookData }) => {
               {/* Table Headers */}
               <div className="bg-gray-200 rounded-lg p-4 mb-3">
                 <div className="grid grid-cols-2 gap-6">
-                  <div className="font-bold text-black text-lg">Module</div>
-                  <div className="font-bold text-black text-lg">Description</div>
+                  <div className="font-bold text-black md:text-lg text-base">Module</div>
+                  <div className="font-bold text-black md:text-lg text-base">Description</div>
                 </div>
               </div>
               
@@ -87,10 +87,10 @@ const InsideBook = ({ insideBookData }) => {
                 {data.modules?.map((item, index) => (
                   <div key={index} className="bg-white rounded-lg p-4 border border-gray-200">
                     <div className="grid grid-cols-2 gap-6">
-                      <div className="font-bold text-black text-lg">
+                      <div className="font-bold text-black md:text-lg text-base">
                         {item.module}
                       </div>
-                      <div className="text-gray-700 text-base leading-relaxed">
+                      <div className="text-gray-700 md:text-lg text-base leading-relaxed">
                         {item.description}
                       </div>
                     </div>
@@ -101,7 +101,7 @@ const InsideBook = ({ insideBookData }) => {
             
             {/* Right Section: Endorsements */}
             <div className="lg:col-span-1">
-              <h3 className="text-2xl font-bold text-black mb-6">
+              <h3 className="md:text-2xl text-xl font-bold text-black mb-6">
                 {data.endorsementsTitle}
               </h3>
               
@@ -109,10 +109,10 @@ const InsideBook = ({ insideBookData }) => {
               <div className="space-y-4">
                 {data.endorsements?.map((endorsement, index) => (
                   <div key={index} className="bg-white rounded-lg p-4 border border-gray-200">
-                    <blockquote className="text-gray-700 text-base mb-3 leading-relaxed">
+                    <blockquote className="text-gray-700 md:text-base text-sm mb-3 leading-relaxed">
                       "{endorsement.quote}"
                     </blockquote>
-                    <cite className="text-black font-medium text-sm">
+                    <cite className="text-black font-medium md:text-sm text-xs">
                       — {endorsement.author}
                     </cite>
                   </div>
@@ -124,7 +124,7 @@ const InsideBook = ({ insideBookData }) => {
                 {data.primaryButton && (
                   <Link
                     href={data.primaryButton.link || '#'}
-                    className="w-full text-center bg-black text-white py-2 px-6 rounded-lg font-medium border-2 border-black hover:bg-gray-800 transition-colors duration-200 text-lg"
+                    className="w-full text-center bg-black text-white py-2 px-6 rounded-lg font-medium border-2 border-black hover:bg-gray-800 transition-colors duration-200 md:text-lg text-base"
                   >
                     {data.primaryButton.text}
                   </Link>
@@ -132,7 +132,7 @@ const InsideBook = ({ insideBookData }) => {
                 {data.secondaryButton && (
                   <Link
                     href={data.secondaryButton.link || '#'}
-                    className="w-full text-center bg-white text-black py-2 px-6 rounded-lg font-medium border-2 border-black hover:bg-gray-50 transition-colors duration-200 text-lg"
+                    className="w-full text-center bg-white text-black py-2 px-6 rounded-lg font-medium border-2 border-black hover:bg-gray-50 transition-colors duration-200 md:text-lg text-base"
                   >
                     {data.secondaryButton.text}
                   </Link>
