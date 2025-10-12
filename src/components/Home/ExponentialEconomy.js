@@ -52,7 +52,7 @@ const ExponentialEconomy = ({ exponentialData }) => {
         </div>
 
         {/* Learn More Button */}
-        <div className="text-left mt-6">
+        {/* <div className="text-left mt-6">
           {exponentialData.learnMoreButton && (
             <Link
               href={exponentialData.learnMoreButton.link || '#'}
@@ -61,7 +61,7 @@ const ExponentialEconomy = ({ exponentialData }) => {
               {exponentialData.learnMoreButton.text || 'Learn More'}
             </Link>
           )}
-        </div>
+        </div> */}
       </div>
     </section>
   );
