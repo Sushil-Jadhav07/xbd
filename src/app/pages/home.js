@@ -64,10 +64,7 @@ export default async function Home() {
         <ExponentialEconomy exponentialData={exponentialData} />
       </section>
 
-      {/* ExponentialJourney Section - with data */}
-      <section className="relative pt-[0px]">
-        <ExponentialJourney journeyData={exponentialJourneyData} />
-      </section>
+      
 
       <section className="relative pt-[0px]">
       <ToolsCarousel toolsCarouselData={toolsCarouselData} />
@@ -77,9 +74,14 @@ export default async function Home() {
         <QuoteCarousel quoteCarouselData={quoteCarouselData} />
       </section>
 
+      {/* ExponentialJourney Section - with data */}
       <section className="relative pt-[0px]">
-        <PricingPlan pricingPlanData={pricingPlanData}/>
+        <ExponentialJourney journeyData={exponentialJourneyData} />
       </section>
+
+      {/* <section className="relative pt-[0px]">
+        <PricingPlan pricingPlanData={pricingPlanData}/>
+      </section> */}
 
       <section className="relative pt-[0px]">
         <Newsletter newsletterData={newsletterData}/>

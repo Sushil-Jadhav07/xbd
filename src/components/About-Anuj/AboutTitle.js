@@ -36,7 +36,7 @@ const AboutTitle = ({ aboutTitleData }) => {
           
           {/* Left Column - Image */}
           <div className="">
-            <div className="bg-gray-200 rounded-lg w-80 h-96 lg:w-full lg:h-full flex items-center justify-center overflow-hidden relative">
+            <div className="bg-gray-200 rounded-lg w-full h-98 lg:w-full lg:h-full flex items-center justify-center overflow-hidden relative">
               {data.profileImage?.asset ? (
                 <Image 
                   src={urlFor(data.profileImage).width(800).height(600).url()}

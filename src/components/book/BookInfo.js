@@ -64,7 +64,7 @@ const BookInfo = ({ bookInfoData }) => {
       <div className="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
         
         {/* Main Hero Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 md:mb-16 mb-2">
           
           {/* Left Side - Large Image */}
           <div className="lg:col-span-1">

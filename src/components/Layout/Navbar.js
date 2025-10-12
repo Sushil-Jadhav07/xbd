@@ -58,7 +58,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center gap-3">
             <button
               onClick={toggleMenu}
-              className="text-white hover:text-gray-300 focus:outline-none focus:text-gray-300 transition-colors duration-200"
+              className="text-black hover:text-gray-800 focus:outline-none focus:text-gray-700 transition-colors duration-200"
             >
               {isMenuOpen ? (
                 <HiX className="h-6 w-6" />
@@ -72,13 +72,13 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black border-t border-gray-800">
+        <div className="md:hidden bg-[#f5f1eb] border-t border-gray-300">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="block px-3 py-2 text-white hover:text-gray-300 font-medium transition-colors duration-200"
+                className="block px-3 py-2 text-black hover:text-gray-800 font-medium transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}

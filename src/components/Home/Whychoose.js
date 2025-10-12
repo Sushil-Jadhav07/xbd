@@ -64,7 +64,7 @@ const Whychoose = ({ whyChooseData }) => {
         // For file assets, use the direct URL instead of urlFor
         const videoUrl = data.uploadedVideo.asset.url;
         return (
-          <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden">
+          <div className="relative w-full h-full min-h-[250px] md:min-h-[400px] rounded-3xl overflow-hidden">
             <video
               controls
               autoPlay={false}
