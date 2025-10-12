@@ -44,6 +44,22 @@ export async function getExponentialEconomyData() {
   }
 }
 
+export async function getExponentialJourneyData() {
+  const query = `*[_type == "exponentialJourney"][0]{
+    title,
+    subtitle
+  }`
+  
+  try {
+    const data = await client.fetch(query)
+    console.log('Fetched exponential journey data:', data)
+    return data
+  } catch (error) {
+    console.error('Error fetching exponential journey data:', error)
+    return null
+  }
+}
+
 
 export async function getWhatIsExponentialData() {
   const query = `*[_type == "whatIsExponential"][0]{
