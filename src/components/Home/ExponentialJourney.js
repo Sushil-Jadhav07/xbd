@@ -23,7 +23,7 @@ export default function ExponentialJourney() {
           {/* Header Text Overlay on Mountain */}
           <div className="absolute top-4 md:top-8 left-0 right-0 text-center px-4 z-10">
             <h1 className="text-lg md:text-4xl font-light mb-0 md:mb-4">
-              <span className="text-yellow-500 font-semibold">Design</span> your <span className="text-yellow-500 font-semibold">Exponential</span> journey now
+              <span className="text-[#c1a35e] font-semibold">Design</span> your <span className="text-[#c1a35e] font-semibold">Exponential</span> journey now
             </h1>
             <p className="text-gray-100 text-xs md:text-base max-w-3xl mx-auto">
               Whether you're leading a transformation, preparing for AI, or scaling innovation, we have a path for you.
@@ -34,8 +34,8 @@ export default function ExponentialJourney() {
           {/* Foundation Point */}
           <div className="absolute md:left-[2%] left-[2%] md:bottom-[5%] bottom-[10%] flex items-center space-x-3">
             <div className="relative">
-              <div className="md:w-10 md:h-10  w-4 h-4 rounded-full bg-yellow-500 flex items-center justify-center border-4 border-gray-800">
-                <div className="md:w-4 md:h-4 w-2 h-2 rounded-full bg-yellow-600"></div>
+              <div className="md:w-10 md:h-10  w-4 h-4 rounded-full bg-[#9d7035]  flex items-center justify-center border-4 border-gray-800">
+                <div className="md:w-4 md:h-4 w-2 h-2 rounded-full bg-[#c1a35e]"></div>
               </div>
             </div>
             <span className="text-white text-sm font-medium">Foundation</span>
@@ -90,7 +90,7 @@ export default function ExponentialJourney() {
             onClick={() => setActiveTab('leaders')}
             className={`w-full md:w-auto px-4 md:px-8 py-2 md:py-3 text-sm md:text-base font-medium transition-colors ${
               activeTab === 'leaders'
-                ? 'bg-yellow-500 text-black'
+                ? 'bg-gradient-to-br !from-[#9d7035] !to-[#c1a35e] text-black'
                 : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
             }`}
           >
@@ -100,7 +100,7 @@ export default function ExponentialJourney() {
             onClick={() => setActiveTab('organisations')}
             className={`w-full md:w-auto px-4 md:px-8 py-2 md:py-3 text-sm md:text-base font-medium transition-colors ${
               activeTab === 'organisations'
-                ? 'bg-yellow-500 text-black'
+                ? 'bg-gradient-to-br !from-[#9d7035] !to-[#c1a35e] text-black'
                 : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
             }`}
           >
@@ -112,11 +112,11 @@ export default function ExponentialJourney() {
         <div className="flex flex-col lg:flex-row gap-0 border border-gray-200 rounded-lg overflow-hidden">
           {/* Stage 1 Foundation - 30% */}
           <div className="w-full lg:w-[30%] bg-transparent p-4 md:p-8 flex flex-col items-center justify-center border-b lg:border-b-0 lg:border-r border-gray-700">
-            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-yellow-500 flex items-center justify-center mb-3 md:mb-4">
-              <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-yellow-600"></div>
+            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#9d7035] flex items-center justify-center mb-3 md:mb-4">
+              <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#c1a35e]"></div>
             </div>
             <p className="text-gray-400 text-xs md:text-sm mb-1 md:mb-2">STAGE 1</p>
-            <h3 className="text-yellow-500 text-xl md:text-2xl font-semibold">FOUNDATION</h3>
+            <h3 className="text-[#c1a35e] text-xl md:text-2xl font-semibold">FOUNDATION</h3>
           </div>
 
           {/* Middle Column - Journey Stages - 20% */}
@@ -132,7 +132,7 @@ export default function ExponentialJourney() {
                 <h4 className="text-white text-base md:text-lg font-medium text-center">REFLECTION</h4>
               </div>
               <div className="p-3 md:p-6">
-                <h4 className="text-yellow-500 text-base md:text-lg font-medium text-center">FOUNDATION</h4>
+                <h4 className="text-[#c1a35e] text-base md:text-lg font-medium text-center">FOUNDATION</h4>
               </div>
             </div>
           </div>

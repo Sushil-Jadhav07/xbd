@@ -50,9 +50,9 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
 
   return (
     <>
-    <section className="bg-white py-16 md:py-20 lg:py-24 border-b border-gray-200 relative overflow-hidden">
+    <section className="bg-gray-100 py-16 md:py-20 lg:py-24  relative overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 opacity-100">
+      {/* <div className="absolute inset-0 opacity-100">
         <Image 
           src={BgImage} 
           alt="Background" 
@@ -60,7 +60,7 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
           className="object-cover"
           priority
         />
-      </div>
+      </div> */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
