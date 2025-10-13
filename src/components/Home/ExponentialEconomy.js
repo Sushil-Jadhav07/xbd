@@ -13,7 +13,7 @@ const ExponentialEconomy = ({ exponentialData }) => {
           {/* Main Question */}
           <p className="text-black text-base md:text-lg mb-4">
             {exponentialData.mainQuestion || 'Do you want to be part of this'}{" "}
-            <span className="text-[#ff8c00] font-bold">
+            <span className="text-[#c1a35e] font-bold">
               {exponentialData.highlightedWord || 'Exponential'}
             </span>{" "}
             economy?

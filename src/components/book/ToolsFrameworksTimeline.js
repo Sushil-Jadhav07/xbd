@@ -30,7 +30,7 @@ export default function ToolsFrameworksTimeline() {
             <div className="text-center">
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
                 Design product that reach needs at the{' '}
-                <span className="text-yellow-500 font-semibold">Point of Origin.</span>
+                <span className="text-[#c1a35e] font-semibold">Point of Origin.</span>
               </p>
             </div>
           </div>
@@ -60,10 +60,10 @@ export default function ToolsFrameworksTimeline() {
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 border-t border-gray-700">
-              <div className="bg-yellow-600 text-black font-bold text-center py-3 sm:py-4 text-sm sm:text-base">
+              <div className="bg-[#c1a35e] text-black font-bold text-center py-3 sm:py-4 text-sm sm:text-base">
                 IVR
               </div>
-              <div className="bg-yellow-600 text-black font-bold text-center py-3 sm:py-4 text-sm sm:text-base border-t sm:border-t-0 sm:border-l border-yellow-700">
+              <div className="bg-[#c1a35e] text-black font-bold text-center py-3 sm:py-4 text-sm sm:text-base border-t sm:border-t-0 sm:border-l border-yellow-700">
               </div>
             </div>
           </>
@@ -93,9 +93,9 @@ export default function ToolsFrameworksTimeline() {
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 border-t border-gray-700">
-              <div className="bg-yellow-600 text-black font-bold text-center py-3 sm:py-4 text-sm sm:text-base">
+              <div className="bg-[#c1a35e] text-black font-bold text-center py-3 sm:py-4 text-sm sm:text-base">
               </div>
-              <div className="bg-yellow-600 text-black font-bold text-center py-3 sm:py-4 text-sm sm:text-base border-t sm:border-t-0 sm:border-l border-yellow-700">
+              <div className="bg-[#c1a35e] text-black font-bold text-center py-3 sm:py-4 text-sm sm:text-base border-t sm:border-t-0 sm:border-l border-yellow-700">
                 REACH Interconnect
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function ToolsFrameworksTimeline() {
             <div className="text-center">
               <p className="text-xl sm:text-2xl lg:text-3xl text-gray-300 leading-relaxed">
                 Design systems that scale with{' '}
-                <span className="text-yellow-500 font-semibold">Multiplier Effects.</span>
+                <span className="text-[#c1a35e] font-semibold">Multiplier Effects.</span>
               </p>
             </div>
           </div>
@@ -127,7 +127,7 @@ export default function ToolsFrameworksTimeline() {
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 sm:p-12 lg:p-16 flex items-center justify-center min-h-[400px]">
             <div className="text-center">
               <p className="text-xl sm:text-2xl lg:text-3xl text-gray-300 leading-relaxed">
-                <span className="text-yellow-500 font-semibold">Formation</span> of Exponential Organizations
+                <span className="text-[#c1a35e] font-semibold">Formation</span> of Exponential Organizations
               </p>
             </div>
           </div>
@@ -203,8 +203,8 @@ export default function ToolsFrameworksTimeline() {
                     }}
                     className={`w-12 h-12 rounded-full border-2 flex items-center justify-center font-bold text-lg transition-all duration-300 ${
                       activeTimeline === step.id
-                        ? 'bg-yellow-600 border-yellow-600 text-black scale-110'
-                        : 'bg-black border-white text-white hover:border-yellow-600'
+                        ? 'bg-[#c1a35e] border-[#c1a35e] text-black scale-110'
+                        : 'bg-black border-white text-white hover:border-[#c1a35e]'
                     }`}
                   >
                     {step.id}
@@ -233,7 +233,7 @@ export default function ToolsFrameworksTimeline() {
                       }}
                       className={`w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold transition-all duration-300 ${
                         activeTimeline === step.id
-                          ? 'bg-yellow-600 border-yellow-600 text-black scale-110'
+                          ? 'bg-[#c1a35e] border-yellow-400 text-black scale-110'
                           : 'bg-black border-white text-white'
                       }`}
                     >
@@ -257,14 +257,14 @@ export default function ToolsFrameworksTimeline() {
               onClick={() => setActiveSubTab(tab.id)}
               className={`p-3 sm:p-4 text-xs md:text-xs font-bold border-b border-r border-gray-700 transition-all duration-300 text-center ${
                 activeSubTab === tab.id
-                  ? 'bg-yellow-600 text-black'
+                  ? 'bg-[#c1a35e] text-black'
                   : 'bg-gray-800 text-white hover:bg-gray-700'
               }`}
             >
               <div className="leading-tight">
                 {tab.id === 5 ? (
                   <>
-                    <span className="text-yellow-500">Formation</span> of Exponential Organizations
+                    <span className="text-[#c1a35e]">Formation</span> of Exponential Organizations
                   </>
                 ) : (
                   tab.label
