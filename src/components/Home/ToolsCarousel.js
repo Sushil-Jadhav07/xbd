@@ -157,7 +157,7 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
   };
 
   return (
-    <section className="bg-[#f5f1eb] py-12 md:py-12 relative overflow-hidden">
+    <section className="bg-[#f5f1eb] mx-[15px] pt-12 md:pt-12 relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 z-0">
         <Image
@@ -170,9 +170,9 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
       </div> */}
       
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 pt-12 md:pt-12 md:px-6  relative z-10">
         {/* Header */}
-        <div className="mb-12 lg:mb-16">
+        <div className="mb-4 lg:mb-8">
           {/* Label */}
           <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
             <HiOutlineSparkles className="text-lg" />
@@ -181,7 +181,7 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
 
           {/* Headline */}
           <h2 className="text-3xl  lg:text-4xl font-bold text-gray-900 leading-tight mb-2">
-            {data.title} <span className="font-black">{data.highlightText}</span>
+            {data.title} <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent">{data.highlightText}</span>
           </h2>
 
           {/* Subtitle */}
@@ -193,7 +193,7 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
         {/* Carousel Container */}
         <div className="relative">
           {/* Navigation Buttons */}
-          <div className="hidden md:flex absolute -top-16 right-0 gap-2 z-10">
+          {/* <div className="hidden md:flex absolute -top-16 right-0 gap-2 z-10">
             <button
               onClick={prevSlide}
               disabled={currentSlide === 0}
@@ -210,7 +210,7 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
             >
               <HiChevronRight className="w-5 h-5 text-gray-600" />
             </button>
-          </div>
+          </div> */}
 
           {/* Carousel */}
           <div className="overflow-hidden" ref={carouselRef}>

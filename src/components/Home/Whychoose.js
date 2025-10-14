@@ -168,33 +168,8 @@ const Whychoose = ({ whyChooseData }) => {
   };
 
   return (
-    <section className="bg-white py-16 md:py-20 lg:py-24 border-b border-gray-200 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Floating Circle 1 */}
-        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-gradient-to-br from-[#9d7035]/10 to-[#c1a35e]/10 animate-float-slow"></div>
-        
-        {/* Floating Circle 2 */}
-        <div className="absolute top-40 right-20 w-24 h-24 rounded-full bg-gradient-to-br from-blue-400/40 to-purple-400/10 animate-float-medium"></div>
-        
-        {/* Floating Square */}
-        <div className="absolute bottom-16 left-1/2 w-30 h-30 bg-gradient-to-br from-[#c1a35e]/10 to-amber-300/10 rotate-45 animate-float-slow-reverse"></div>
-        
-        {/* Floating Triangle */}
-        <div className="absolute top-1/3 right-1/3 w-0 h-0 border-l-[40px] border-l-transparent border-r-[40px] border-r-transparent border-b-[70px] border-b-[#9d7035]/10 animate-float-medium-reverse"></div>
-        
-        {/* Large Circle Background */}
-        <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-gradient-to-br from-[#9d7035]/5 to-transparent animate-pulse-slow"></div>
-        
-        {/* Small Accent Circles */}
-        <div className="absolute bottom-20 right-1/4 w-16 h-16 rounded-full bg-gradient-to-br from-purple-300/10 to-pink-300/10 animate-float-fast"></div>
-        
-        {/* Hexagon-like shape */}
-        <div className="absolute top-1/2 left-12 w-24 h-24 bg-gradient-to-br from-indigo-400/10 to-cyan-400/10 rotate-12 animate-float-slow"></div>
-        
-        {/* Small accent dot */}
-        <div className="absolute bottom-40 left-1/3 w-12 h-12 rounded-full bg-gradient-to-br from-amber-400/15 to-orange-400/15 animate-float-fast-reverse"></div>
-      </div>
+    <section className="bg-white py-16 md:py-20 lg:py-24  relative overflow-hidden">
+      
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">

@@ -50,7 +50,7 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
 
   return (
     <>
-    <section className="bg-gray-100 py-16 md:py-20 lg:py-24  relative overflow-hidden">
+    <section className="bg-[#f5f1eb] mx-[15px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 opacity-100">
         <Image 
@@ -73,7 +73,7 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
 
           {/* Headline */}
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
-            {data.title} <span className="font-black">{data.highlightText}</span>
+            {data.title} <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent">{data.highlightText}</span>
           </h2>
 
           {/* Subtitle */}
@@ -97,12 +97,12 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
               {data.stats?.map((stat, index) => (
                 <div key={index} className="text-center space-y-3">
                   {/* Number */}
-                  <div className="text-2xl md:text-4xl font-bold text-gray-900">
+                  <div className="text-2xl md:text-4xl font-bold bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent ">
                     {stat.number}
                   </div>
                   
                   {/* Title */}
-                  <div className="text-sm md:text-base font-bold text-gray-900">
+                  <div className="text-sm md:text-base font-bold bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent">
                     {stat.title}
                   </div>
                   

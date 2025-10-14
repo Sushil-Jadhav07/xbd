@@ -56,14 +56,14 @@ const Feature = ({ whatIsExponentialData }) => {
   const getYouTubeEmbedUrl = (url) => {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
-    return match && match[2].length === 11 ? `https://www.youtube.com/embed/${match[2]}` : url;
+    return match && match[2].length === 11 ? `https://www.youtube.com/embed/${match[2]}?autoplay=1&mute=1&loop=1&playlist=${match[2]}` : url;
   };
 
   // Function to get Vimeo embed URL
   const getVimeoEmbedUrl = (url) => {
     const regExp = /vimeo\.com\/(\d+)/;
     const match = url.match(regExp);
-    return match ? `https://player.vimeo.com/video/${match[1]}` : url;
+    return match ? `https://player.vimeo.com/video/${match[1]}?autoplay=1&muted=1&loop=1` : url;
   };
 
   // Function to get embed URL based on video source
@@ -91,7 +91,9 @@ const Feature = ({ whatIsExponentialData }) => {
             <div className="relative w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-2xl overflow-hidden shadow-xl">
               <video
                 controls
-                autoPlay={false}
+                autoPlay={true}
+                muted
+                loop
                 className="w-full h-full object-cover"
                 poster={feature.videoThumbnail && feature.videoThumbnail.asset ? urlFor(feature.videoThumbnail).width(500).height(400).url() : undefined}
               >
@@ -211,12 +213,12 @@ const Feature = ({ whatIsExponentialData }) => {
 
 
   return (
-    <section className="bg-[#f5f1eb] py-16 md:py-24 border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-14">
+    <section className="bg-[#f5f1eb] mx-[15px] py-16 md:py-24 border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Header */}
         <div className="mb-12 lg:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {title} <span className="font-black">{highlightText}</span>
+            {title} <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent">{highlightText}</span>
           </h2>
           <p className="text-sm md:text-base text-gray-700 max-w-3xl">
             {subtitle}
@@ -226,7 +228,7 @@ const Feature = ({ whatIsExponentialData }) => {
         {/* Features Carousel */}
         <div className="relative">
           <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
+            modules={[ Autoplay]}
             spaceBetween={30}
             slidesPerView={1}
             navigation={{
@@ -243,15 +245,15 @@ const Feature = ({ whatIsExponentialData }) => {
             // }}
             breakpoints={{
               640: {
-                slidesPerView: 1,
+                slidesPerView: 1.8,
                 spaceBetween: 20,
               },
               768: {
-                slidesPerView: 2,
+                slidesPerView: 2.2,
                 spaceBetween: 30,
               },
               1024: {
-                slidesPerView: 3,
+                slidesPerView: 2.5,
                 spaceBetween: 40,
               },
             }}
@@ -299,7 +301,7 @@ const Feature = ({ whatIsExponentialData }) => {
           <div className="swiper-pagination-custom flex justify-center mt-8 space-x-2 md:hidden"></div>
 
           {/* Bottom Navigation Buttons - Visible on all devices */}
-          <div className="flex justify-center items-center gap-4 mt-6">
+          {/* <div className="flex justify-center items-center gap-4 mt-6">
             <button 
               className="swiper-button-prev-mobile bg-white shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200"
               onClick={() => {
@@ -325,7 +327,7 @@ const Feature = ({ whatIsExponentialData }) => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
