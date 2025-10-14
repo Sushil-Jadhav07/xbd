@@ -94,7 +94,7 @@ const Slider = ({ resourcesSliderData }) => {
   };
 
   return (
-    <section className=" bg-white py-16 md:py-20 lg:py-24  relative overflow-hidden">
+    <section className=" bg-white mx-[10px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 z-0">
         <Image
@@ -109,7 +109,7 @@ const Slider = ({ resourcesSliderData }) => {
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="mb-12 lg:mb-16">
+        <div className="mb-4 lg:mb-8">
           {/* Label */}
           <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
             <HiOutlineSparkles className="text-lg" />
@@ -118,7 +118,7 @@ const Slider = ({ resourcesSliderData }) => {
 
           {/* Headline */}
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
-            {data.title} <span className="font-black">{data.highlightText}</span>
+            {data.title} <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent">{data.highlightText}</span>
           </h2>
 
           {/* Subtitle */}
@@ -130,7 +130,7 @@ const Slider = ({ resourcesSliderData }) => {
         {/* Carousel Container */}
         <div className="relative">
           {/* Navigation Buttons */}
-          <div className="hidden md:flex absolute -top-16 right-0 gap-2 z-10">
+          {/* <div className="hidden md:flex absolute -top-16 right-0 gap-2 z-10">
             <button
               onClick={prevSlide}
               disabled={currentSlide === 0}
@@ -145,7 +145,7 @@ const Slider = ({ resourcesSliderData }) => {
             >
               <HiChevronRight className="w-5 h-5 text-gray-600" />
             </button>
-          </div>
+          </div> */}
 
           {/* Carousel */}
           <div className="overflow-hidden" ref={carouselRef}>
@@ -205,7 +205,7 @@ const Slider = ({ resourcesSliderData }) => {
           </div>
 
           {/* Mobile Navigation Dots */}
-          <div className="flex justify-center gap-2 mt-8 md:hidden">
+          {/* <div className="flex justify-center gap-2 mt-8 md:hidden">
             {Array.from({ length: data.resources.length }).map((_, index) => (
               <button
                 key={index}
@@ -215,10 +215,10 @@ const Slider = ({ resourcesSliderData }) => {
                 }`}
               />
             ))}
-          </div>
+          </div> */}
 
           {/* Bottom Navigation Buttons - Visible on all devices */}
-          <div className="flex justify-center items-center gap-4 mt-6">
+          {/* <div className="flex justify-center items-center gap-4 mt-6">
             <button
               onClick={prevSlide}
               disabled={currentSlide === 0}
@@ -234,7 +234,7 @@ const Slider = ({ resourcesSliderData }) => {
             >
               <HiChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

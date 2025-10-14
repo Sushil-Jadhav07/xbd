@@ -13,7 +13,7 @@ const ExponentialEconomy = ({ exponentialData }) => {
           {/* Main Question */}
           <p className="text-black text-base md:text-lg mb-4">
             {exponentialData.mainQuestion || 'Do you want to be part of this'}{" "}
-            <span className="text-[#c1a35e] font-bold">
+            <span className="bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent font-bold">
               {exponentialData.highlightedWord || 'Exponential'}
             </span>{" "}
             economy?
@@ -25,7 +25,7 @@ const ExponentialEconomy = ({ exponentialData }) => {
           </h1>
 
           {/* Description */}
-          <p className="text-black text-base md:text-lg max-w-5xl mx-auto leading-relaxed mb-8">
+          <p className="text-black text-sm md:text-base max-w-5xl mx-auto leading-relaxed mb-8">
             {exponentialData.description || 'Our proprietary framework, backed by tools simplifies this complex assignment. This framework squeezes and extracts the growth secrets behind the prominently exponential organizations like Google, Amazon, Uber, NVIDIA and now OpenAI to distill the complexity into a simple framework to lead exponential growth. Every successful transformation maps back to the converging and diverging forces that create multiplier effects, creating agile and adaptable entities that evolve with the market.'}
           </p>
         </div>
