@@ -47,8 +47,9 @@ export async function getExponentialEconomyData() {
 export async function getExponentialJourneyData() {
   const query = `*[_type == "exponentialJourney"][0]{
     heroSection{
-      title,
-      highlightWords,
+      titleStart,
+      highlightText,
+      titleEnd,
       subtitle,
       mountainImage{
         asset->{

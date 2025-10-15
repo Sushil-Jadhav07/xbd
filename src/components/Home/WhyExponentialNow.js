@@ -2,7 +2,7 @@
 
 import { HiOutlineSparkles } from 'react-icons/hi';
 import { useState } from 'react';
-import WhyHyperGrowth from "../../asset/whyhypergrowth.png"
+import WhyHyperGrowth from "../../asset/Exponential-rise-of-ai.png"
 import BgImage from "../../asset/pattern-2.png"
 import Image from 'next/image';
 import LeadFormModal from '../common/LeadFormModal';
@@ -85,7 +85,7 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
         {/* Main Content */}
         <div className="flex flex-col items-center space-y-12">
           {/* Center Image */}
-          <div className="w-full max-w-2xl">
+          <div className="w-full max-w-7xl">
             <div className="flex items-center justify-center relative overflow-hidden">
               <Image src={WhyHyperGrowth} alt="Why Hyper Growth" className="object-contain" />
             </div>

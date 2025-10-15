@@ -61,9 +61,10 @@ export default function ExponentialJourney({ journeyData }) {
   }, [stages]);
 
   // Get hero section data
-  const heroTitle = journeyData?.heroSection?.title || 'Design your Exponential journey now';
+  const titleStart = journeyData?.heroSection?.titleStart || 'Design your';
+  const highlightText = journeyData?.heroSection?.highlightText || 'Exponential journey';
+  const titleEnd = journeyData?.heroSection?.titleEnd || 'now';
   const heroSubtitle = journeyData?.heroSection?.subtitle || "Whether you're leading a transformation, preparing for AI, or scaling innovation, we have a path for you.";
-  const highlightWords = journeyData?.heroSection?.highlightWords || { word1: 'Design', word2: 'Exponential' };
   const mountainImageUrl = journeyData?.heroSection?.mountainImage?.asset?.url;
   const journeyPoints = journeyData?.heroSection?.journeyPoints || [];
 
@@ -84,17 +85,7 @@ export default function ExponentialJourney({ journeyData }) {
           {/* Header Text Overlay on Mountain */}
           <div className="absolute top-4 md:top-8 left-0 right-0 text-center px-4 z-10">
             <h1 className="text-lg md:text-4xl font-light mb-0 md:mb-4">
-              {heroTitle.split(highlightWords.word1 || 'Design').map((part, idx) => (
-                <React.Fragment key={idx}>
-                  {idx > 0 && <span className="text-[#c1a35e] font-semibold">{highlightWords.word1}</span>}
-                  {part.split(highlightWords.word2 || 'Exponential').map((subPart, subIdx) => (
-                    <React.Fragment key={subIdx}>
-                      {subIdx > 0 && <span className="text-[#c1a35e] font-semibold">{highlightWords.word2}</span>}
-                      {subPart}
-                    </React.Fragment>
-                  ))}
-                </React.Fragment>
-              ))}
+              {titleStart} <span className="text-[#c1a35e] font-semibold">{highlightText}</span> {titleEnd}
             </h1>
             <p className="text-gray-100 text-xs md:text-base max-w-3xl mx-auto">
               {heroSubtitle}
@@ -148,7 +139,8 @@ export default function ExponentialJourney({ journeyData }) {
           <input
             type="text"
             placeholder="Book"
-            className="bg-gray-800 border border-gray-600 text-gray-400 md:px-4 px-2 md:py-2 py-1 rounded md:w-64 w-32 focus:outline-none focus:border-gray-500"
+            className="bg-gray-800 border
+            -gray-600 text-gray-400 md:px-4 px-2 md:py-2 py-1 rounded md:w-64 w-32 focus:outline-none focus:border-gray-500"
           />
         </div>
       </div>
