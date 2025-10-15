@@ -22,9 +22,9 @@ export default function ToolsFrameworksTimeline() {
   ];
 
   const getContent = () => {
-    // Timeline 1 - DESIGN PRODUCT
-    if (activeTimeline === 1) {
-      if (activeSubTab === 1) {
+    // Show content based on activeSubTab (the actual tab selected)
+    switch (activeSubTab) {
+      case 1:
         return (
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 sm:p-12 lg:p-16 flex items-center justify-center min-h-[400px]">
             <div className="text-center">
@@ -35,12 +35,8 @@ export default function ToolsFrameworksTimeline() {
             </div>
           </div>
         );
-      }
-    }
-    
-    // Timeline 2 - DESIGN EXPERIENCE
-    if (activeTimeline === 2) {
-      if (activeSubTab === 2) {
+      
+      case 2:
         return (
           <>
             <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[400px]">
@@ -68,12 +64,8 @@ export default function ToolsFrameworksTimeline() {
             </div>
           </>
         );
-      }
-    }
 
-    // Timeline 3 - DESIGN VALUE
-    if (activeTimeline === 3) {
-      if (activeSubTab === 3) {
+      case 3:
         return (
           <>
             <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[400px]">
@@ -101,12 +93,8 @@ export default function ToolsFrameworksTimeline() {
             </div>
           </>
         );
-      }
-    }
 
-    // Timeline 4 - DESIGN SCALE
-    if (activeTimeline === 4) {
-      if (activeSubTab === 4) {
+      case 4:
         return (
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 sm:p-12 lg:p-16 flex items-center justify-center min-h-[400px]">
             <div className="text-center">
@@ -117,12 +105,8 @@ export default function ToolsFrameworksTimeline() {
             </div>
           </div>
         );
-      }
-    }
 
-    // Timeline 5 - DESIGN EXPONENTIALITY
-    if (activeTimeline === 5) {
-      if (activeSubTab === 5) {
+      case 5:
         return (
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 sm:p-12 lg:p-16 flex items-center justify-center min-h-[400px]">
             <div className="text-center">
@@ -132,17 +116,16 @@ export default function ToolsFrameworksTimeline() {
             </div>
           </div>
         );
-      }
-    }
 
-    // Default content for other combinations
-    return (
-      <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 sm:p-12 lg:p-16 flex items-center justify-center min-h-[400px]">
-        <div className="text-gray-500 text-lg">
-          Content for Timeline {activeTimeline} - Tab {activeSubTab}
-        </div>
-      </div>
-    );
+      default:
+        return (
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 sm:p-12 lg:p-16 flex items-center justify-center min-h-[400px]">
+            <div className="text-gray-500 text-lg">
+              Content for Tab {activeSubTab}
+            </div>
+          </div>
+        );
+    }
   };
 
   return (
@@ -170,7 +153,7 @@ export default function ToolsFrameworksTimeline() {
                       setActiveSubTab(step.id);
                     }}
                     className={`w-12 h-12 rounded-full border-2 flex items-center justify-center font-bold text-lg transition-all duration-300 ${
-                      activeTimeline === step.id
+                      activeTimeline === step.id && activeSubTab === step.id
                         ? 'bg-[#c1a35e] border-[#c1a35e] text-black scale-110'
                         : 'bg-black border-white text-white hover:border-[#c1a35e]'
                     }`}
@@ -200,7 +183,7 @@ export default function ToolsFrameworksTimeline() {
                         setActiveSubTab(step.id);
                       }}
                       className={`w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold transition-all duration-300 ${
-                        activeTimeline === step.id
+                        activeTimeline === step.id && activeSubTab === step.id
                           ? 'bg-[#c1a35e] border-yellow-400 text-black scale-110'
                           : 'bg-black border-white text-white'
                       }`}
@@ -222,9 +205,12 @@ export default function ToolsFrameworksTimeline() {
           {subTabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveSubTab(tab.id)}
+              onClick={() => {
+                setActiveSubTab(tab.id);
+                setActiveTimeline(tab.id);
+              }}
               className={`p-3 sm:p-4 text-xs md:text-xs font-bold border-b border-r border-gray-700 transition-all duration-300 text-center ${
-                activeSubTab === tab.id
+                activeSubTab === tab.id && activeTimeline === tab.id
                   ? 'bg-[#c1a35e] text-black'
                   : 'bg-gray-800 text-white hover:bg-gray-700'
               }`}

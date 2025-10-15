@@ -5,6 +5,7 @@ import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import LogoMain from "../../asset/logomain.png"
 import Image from 'next/image';
 import Link from 'next/link';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,7 +22,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-[#f5f1eb] md:sticky md:top-0 md:z-50">
+    <nav className="bg-[#f5f1eb] dark:bg-gray-900 md:sticky md:top-0 md:z-50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-2 md:px-0 py-3">
         <div className="flex justify-between items-center h-16">
           
@@ -38,12 +39,15 @@ const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-black hover:text-gray-700 font-medium transition-colors duration-200"
+                  className="text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300 font-medium transition-colors duration-200"
                 >
                   {item.name}
                 </a>
               ))}
             </div>
+            
+            {/* Theme Toggle */}
+            <ThemeToggle />
             
             {/* Contact Button */}
             <a
@@ -56,9 +60,10 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-3">
+            <ThemeToggle />
             <button
               onClick={toggleMenu}
-              className="text-black hover:text-gray-800 focus:outline-none focus:text-gray-700 transition-colors duration-200"
+              className="text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-300 focus:outline-none focus:text-gray-700 transition-colors duration-200"
             >
               {isMenuOpen ? (
                 <HiX className="h-6 w-6" />
@@ -72,13 +77,13 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-[#f5f1eb] border-t border-gray-300">
+        <div className="md:hidden bg-[#f5f1eb] dark:bg-gray-900 border-t border-gray-300 dark:border-gray-700">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="block px-3 py-2 text-black hover:text-gray-800 font-medium transition-colors duration-200"
+                className="block px-3 py-2 text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-300 font-medium transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}

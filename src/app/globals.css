@@ -13,12 +13,16 @@ html {
   color-scheme: dark;
 }
 .dark body {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #000000 !important;
+  color: #ffffff !important;
 }
 
 /* Backgrounds */
-.dark .bg-white { background-color: #020202 !important; }
+.dark .bg-white,
+.dark [class*="bg-white"],
+.dark [class*="bg-[#ffff]"] { 
+  background-color: #000000 !important; 
+}
 .dark .bg-gray-50 { background-color: #0a0a0a !important; }
 .dark .bg-gray-100 { background-color: #111827 !important; }
 .dark .bg-gray-200 { background-color: #1f2937 !important; }
@@ -28,13 +32,40 @@ html {
 .dark .bg-gray-700 { background-color: #374151 !important; }
 .dark .bg-gray-800 { background-color: #1f2937 !important; }
 
+/* Custom beige/cream background - converts to black in dark mode */
+.dark [class*="bg-[#f5f1eb]"],
+.dark .bg-\[\#f5f1eb\] { 
+  background-color: #000000 !important; 
+}
+
 /* Text colors */
-.dark .text-black { color: #f3f4f6 !important; }
+.dark .text-white { color: #ffffff !important; }
+.dark .text-black { color: #ffffff !important; }
 .dark .text-gray-900 { color: #f3f4f6 !important; }
 .dark .text-gray-800 { color: #e5e7eb !important; }
 .dark .text-gray-700 { color: #d1d5db !important; }
 .dark .text-gray-600 { color: #9ca3af !important; }
 .dark .text-gray-500 { color: #9ca3af !important; }
+
+/* Ensure text on white and beige backgrounds is readable in dark mode */
+.dark [class*="bg-white"] .text-black,
+.dark [class*="bg-white"] .text-gray-900,
+.dark [class*="bg-white"] .text-gray-800,
+.dark [class*="bg-white"] .text-gray-700,
+.dark [class*="bg-white"] .text-gray-600 {
+  color: #ffffff !important;
+}
+
+.dark [class*="bg-[#f5f1eb]"] .text-black,
+.dark .bg-\[\#f5f1eb\] .text-black,
+.dark [class*="bg-[#f5f1eb]"] .text-gray-900,
+.dark .bg-\[\#f5f1eb\] .text-gray-900,
+.dark [class*="bg-[#f5f1eb]"] .text-gray-800,
+.dark .bg-\[\#f5f1eb\] .text-gray-800,
+.dark [class*="bg-[#f5f1eb]"] .text-gray-700,
+.dark .bg-\[\#f5f1eb\] .text-gray-700 {
+  color: #ffffff !important;
+}
 
 /* Borders */
 .dark .border-gray-50,
@@ -86,9 +117,10 @@ html {
 }
 
 body {
-  background: #ffffff;
+  background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Floating Animation Keyframes */
