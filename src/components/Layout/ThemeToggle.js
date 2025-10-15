@@ -11,7 +11,7 @@ export default function ThemeToggle({ className = '' }) {
   if (!mounted) return (
     <button
       aria-label="Toggle theme"
-      className={`p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${className}`}
+      className={`p-2.5 rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-amber-400 hover:bg-gradient-to-br hover:from-[#9d7035] hover:to-[#c1a35e] hover:text-white hover:border-transparent transition-all duration-300 ${className}`}
     >
       <FiMoon className="h-5 w-5" />
     </button>
@@ -21,7 +21,7 @@ export default function ThemeToggle({ className = '' }) {
     <button
       aria-label="Toggle theme"
       onClick={toggleTheme}
-      className={`p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${className}`}
+      className={`p-2.5 rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-amber-400 hover:bg-gradient-to-br hover:from-[#9d7035] hover:to-[#c1a35e] hover:text-white hover:border-transparent transition-all duration-300 ${className}`}
     >
       {isDark ? <FiSun className="h-5 w-5" /> : <FiMoon className="h-5 w-5" />}
     </button>
