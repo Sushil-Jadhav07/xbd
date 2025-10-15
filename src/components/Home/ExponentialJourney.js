@@ -1,43 +1,71 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import MountainImage from '../../asset/mountainimg.png';
+import { urlFor } from '../../lib/sanity';
 
-export default function ExponentialJourney() {
-  const [activeTab, setActiveTab] = useState('leaders');
-  const [activeStage, setActiveStage] = useState('foundation');
+export default function ExponentialJourney({ journeyData }) {
+  // Default data if Sanity data is not available
+  const defaultTabs = [
+    { id: 'leaders', label: 'For X-ponential Leaders' },
+    { id: 'organisations', label: 'For X-ponential Organisations' }
+  ];
 
-  // Stage data with content for each stage
-  const stageData = {
-    foundation: {
+  const defaultStages = [
+    {
+      id: 'foundation',
       stageNumber: 1,
       title: 'FOUNDATION',
       promise: 'Learn the why and what of exponential growth',
       features: ['Book', 'Access to Tools & Resources', '60+ hours of Online Learning'],
       price: '₹49,000'
     },
-    reflection: {
+    {
+      id: 'reflection',
       stageNumber: 2,
       title: 'REFLECTION',
       promise: 'Reflect on your current state and identify growth opportunities',
       features: ['Assessment Tools', 'Personal Reflection Guide', 'Growth Opportunity Analysis'],
       price: '₹75,000'
     },
-    implementor: {
+    {
+      id: 'implementor',
       stageNumber: 3,
       title: 'IMPLEMENTOR',
       promise: 'Implement exponential strategies in your organization',
       features: ['Implementation Framework', 'Strategy Templates', 'Change Management Tools'],
       price: '₹1,25,000'
     },
-    practitioner: {
+    {
+      id: 'practitioner',
       stageNumber: 4,
       title: 'PRACTITIONER',
       promise: 'Master the art of exponential thinking and execution',
       features: ['Advanced Certification', 'Mentorship Program', 'Exclusive Community Access'],
       price: '₹2,00,000'
     }
-  };
+  ];
+
+  const tabs = journeyData?.tabs || defaultTabs;
+  const stages = journeyData?.stages || defaultStages;
+  
+  const [activeTab, setActiveTab] = useState(tabs[0]?.id || 'leaders');
+  const [activeStage, setActiveStage] = useState(stages[0]?.id || 'foundation');
+
+  // Convert stages array to object for easier lookup
+  const stageData = useMemo(() => {
+    return stages.reduce((acc, stage) => {
+      acc[stage.id] = stage;
+      return acc;
+    }, {});
+  }, [stages]);
+
+  // Get hero section data
+  const heroTitle = journeyData?.heroSection?.title || 'Design your Exponential journey now';
+  const heroSubtitle = journeyData?.heroSection?.subtitle || "Whether you're leading a transformation, preparing for AI, or scaling innovation, we have a path for you.";
+  const highlightWords = journeyData?.heroSection?.highlightWords || { word1: 'Design', word2: 'Exponential' };
+  const mountainImageUrl = journeyData?.heroSection?.mountainImage?.asset?.url;
+  const journeyPoints = journeyData?.heroSection?.journeyPoints || [];
 
   return (
     <div className="min-h-screen bg-black text-white mx-[15px] pb-12 md:pb-16">
@@ -46,8 +74,8 @@ export default function ExponentialJourney() {
         {/* Mountain Silhouette with Journey Points */}
         <div className="absolute bottom-0 left-0 right-0 h-[100%]">
           <Image
-            src={MountainImage}
-            alt="Mountain Background"
+            src={mountainImageUrl || MountainImage}
+            alt={journeyData?.heroSection?.mountainImage?.alt || "Mountain Background"}
             fill
             className="object-cover"
             priority
@@ -56,10 +84,20 @@ export default function ExponentialJourney() {
           {/* Header Text Overlay on Mountain */}
           <div className="absolute top-4 md:top-8 left-0 right-0 text-center px-4 z-10">
             <h1 className="text-lg md:text-4xl font-light mb-0 md:mb-4">
-              <span className="text-[#c1a35e] font-semibold">Design</span> your <span className="text-[#c1a35e] font-semibold">Exponential</span> journey now
+              {heroTitle.split(highlightWords.word1 || 'Design').map((part, idx) => (
+                <React.Fragment key={idx}>
+                  {idx > 0 && <span className="text-[#c1a35e] font-semibold">{highlightWords.word1}</span>}
+                  {part.split(highlightWords.word2 || 'Exponential').map((subPart, subIdx) => (
+                    <React.Fragment key={subIdx}>
+                      {subIdx > 0 && <span className="text-[#c1a35e] font-semibold">{highlightWords.word2}</span>}
+                      {subPart}
+                    </React.Fragment>
+                  ))}
+                </React.Fragment>
+              ))}
             </h1>
             <p className="text-gray-100 text-xs md:text-base max-w-3xl mx-auto">
-              Whether you're leading a transformation, preparing for AI, or scaling innovation, we have a path for you.
+              {heroSubtitle}
             </p>
           </div>
 
@@ -119,103 +157,77 @@ export default function ExponentialJourney() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Tabs */}
         <div className="flex flex-col md:flex-row mb-8 gap-2 md:gap-0">
-          <button
-            onClick={() => setActiveTab('leaders')}
-            className={`w-full md:w-auto px-4 md:px-8 py-2 md:py-3 text-sm md:text-base font-medium transition-colors ${
-              activeTab === 'leaders'
-                ? 'bg-gradient-to-br !from-[#9d7035] !to-[#c1a35e] text-black'
-                : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-            }`}
-          >
-            For X-ponential Leaders
-          </button>
-          <button
-            onClick={() => setActiveTab('organisations')}
-            className={`w-full md:w-auto px-4 md:px-8 py-2 md:py-3 text-sm md:text-base font-medium transition-colors ${
-              activeTab === 'organisations'
-                ? 'bg-gradient-to-br !from-[#9d7035] !to-[#c1a35e] text-black'
-                : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-            }`}
-          >
-            For X-ponential Organisations
-          </button>
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`w-full md:w-auto px-4 md:px-8 py-2 md:py-3 text-sm md:text-base font-medium transition-colors ${
+                activeTab === tab.id
+                  ? 'bg-gradient-to-br !from-[#9d7035] !to-[#c1a35e] text-black'
+                  : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
         {/* Content Grid */}
         <div className="flex flex-col lg:flex-row gap-0 border border-gray-200 rounded-lg overflow-hidden">
           {/* Left Column - Stage Info - 30% */}
           <div className="w-full lg:w-[30%] bg-transparent p-4 md:p-8 flex flex-col items-center justify-center border-b lg:border-b-0 lg:border-r border-gray-700">
-            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#9d7035] flex items-center justify-center mb-3 md:mb-4">
-              <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#c1a35e]"></div>
-            </div>
-            <p className="text-gray-400 text-xs md:text-sm mb-1 md:mb-2">STAGE {stageData[activeStage].stageNumber}</p>
-            <h3 className="text-[#c1a35e] text-xl md:text-2xl font-semibold">{stageData[activeStage].title}</h3>
+            {stageData[activeStage] && (
+              <>
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#9d7035] flex items-center justify-center mb-3 md:mb-4">
+                  <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#c1a35e]"></div>
+                </div>
+                <p className="text-gray-400 text-xs md:text-sm mb-1 md:mb-2">STAGE {stageData[activeStage].stageNumber}</p>
+                <h3 className="text-[#c1a35e] text-xl md:text-2xl font-semibold">{stageData[activeStage].title}</h3>
+              </>
+            )}
           </div>
 
           {/* Middle Column - Journey Stages - 20% */}
           <div className="w-full lg:w-[20%] bg-transparent border-b lg:border-b-0 lg:border-r border-gray-700 flex items-center justify-center">
             <div className="w-full">
-              <div 
-                className={`p-3 md:p-6 border-b border-gray-700 cursor-pointer transition-all duration-200 hover:bg-gray-800 ${
-                  activeStage === 'practitioner' ? 'bg-gray-800' : ''
-                }`}
-                onClick={() => setActiveStage('practitioner')}
-              >
-                <h4 className={`text-base md:text-lg font-medium text-center transition-colors duration-200 ${
-                  activeStage === 'practitioner' ? 'text-[#c1a35e]' : 'text-white'
-                }`}>PRACTITIONER</h4>
-              </div>
-              <div 
-                className={`p-3 md:p-6 border-b border-gray-700 cursor-pointer transition-all duration-200 hover:bg-gray-800 ${
-                  activeStage === 'implementor' ? 'bg-gray-800' : ''
-                }`}
-                onClick={() => setActiveStage('implementor')}
-              >
-                <h4 className={`text-base md:text-lg font-medium text-center transition-colors duration-200 ${
-                  activeStage === 'implementor' ? 'text-[#c1a35e]' : 'text-white'
-                }`}>IMPLEMENTOR</h4>
-              </div>
-              <div 
-                className={`p-3 md:p-6 border-b border-gray-700 cursor-pointer transition-all duration-200 hover:bg-gray-800 ${
-                  activeStage === 'reflection' ? 'bg-gray-800' : ''
-                }`}
-                onClick={() => setActiveStage('reflection')}
-              >
-                <h4 className={`text-base md:text-lg font-medium text-center transition-colors duration-200 ${
-                  activeStage === 'reflection' ? 'text-[#c1a35e]' : 'text-white'
-                }`}>REFLECTION</h4>
-              </div>
-              <div 
-                className={`p-3 md:p-6 cursor-pointer transition-all duration-200 hover:bg-gray-800 ${
-                  activeStage === 'foundation' ? 'bg-gray-800' : ''
-                }`}
-                onClick={() => setActiveStage('foundation')}
-              >
-                <h4 className={`text-base md:text-lg font-medium text-center transition-colors duration-200 ${
-                  activeStage === 'foundation' ? 'text-[#c1a35e]' : 'text-white'
-                }`}>FOUNDATION</h4>
-              </div>
+              {[...stages].sort((a, b) => b.stageNumber - a.stageNumber).map((stage, index, arr) => (
+                <div 
+                  key={stage.id}
+                  className={`p-3 md:p-6 ${index < arr.length - 1 ? 'border-b border-gray-700' : ''} cursor-pointer transition-all duration-200 hover:bg-gray-800 ${
+                    activeStage === stage.id ? 'bg-gray-800' : ''
+                  }`}
+                  onClick={() => setActiveStage(stage.id)}
+                >
+                  <h4 className={`text-base md:text-lg font-medium text-center transition-colors duration-200 ${
+                    activeStage === stage.id ? 'text-[#c1a35e]' : 'text-white'
+                  }`}>{stage.title}</h4>
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Right Column - Details - 50% */}
           <div className="w-full lg:w-[50%] bg-transparent p-4 md:p-8">
-            <h3 className="text-white text-lg md:text-xl font-semibold mb-3 md:mb-4">Promise</h3>
-            <p className="text-gray-300 text-sm md:text-base mb-6 md:mb-8">
-              {stageData[activeStage].promise}
-            </p>
+            {stageData[activeStage] && (
+              <>
+                <h3 className="text-white text-lg md:text-xl font-semibold mb-3 md:mb-4">Promise</h3>
+                <p className="text-gray-300 text-sm md:text-base mb-6 md:mb-8">
+                  {stageData[activeStage].promise}
+                </p>
 
-            <h4 className="text-white text-base md:text-lg font-semibold mb-3 md:mb-4">What you get</h4>
-            <ul className="space-y-2 mb-8 md:mb-12">
-              {stageData[activeStage].features.map((feature, index) => (
-                <li key={index} className="text-gray-300 text-sm md:text-base flex items-start">
-                  <span className="mr-2">•</span>
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
+                <h4 className="text-white text-base md:text-lg font-semibold mb-3 md:mb-4">What you get</h4>
+                <ul className="space-y-2 mb-8 md:mb-12">
+                  {stageData[activeStage].features?.map((feature, index) => (
+                    <li key={index} className="text-gray-300 text-sm md:text-base flex items-start">
+                      <span className="mr-2">•</span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
 
-            <div className="text-2xl md:text-4xl font-bold text-white">{stageData[activeStage].price}</div>
+                <div className="text-2xl md:text-4xl font-bold text-white">{stageData[activeStage].price}</div>
+              </>
+            )}
           </div>
         </div>
       </div>

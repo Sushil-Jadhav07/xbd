@@ -137,8 +137,8 @@ const Keynotes = ({ keynotesData }) => {
   }
 
   return (
-    <div className="bg-[#f5f1eb] py-8 md:py-16 relative overflow-hidden">
-      {/* Background Image */}
+    <div className="bg-[#f5f1eb] mx-[15px] py-8 md:py-16 relative overflow-hidden">
+      {/* Background Image */} 
       {/* <div className="absolute inset-0 opacity-10">
         <Image 
           src={BgImage} 

@@ -146,43 +146,11 @@ export default function ToolsFrameworksTimeline() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f1eb] text-black py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Animated Floating Shapes - Different Sizes & Shapes */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Large Floating Circle */}
-        <div className="absolute top-32 left-16 w-40 h-40 rounded-full bg-gradient-to-br from-yellow-400/15 to-amber-400/10 animate-float-slow"></div>
-        
-        {/* Medium Floating Square */}
-        <div className="absolute top-64 right-32 w-28 h-28 bg-gradient-to-br from-[#9d7035]/15 to-[#c1a35e]/10 rotate-12 animate-float-medium"></div>
-        
-        {/* Small Floating Circle */}
-        <div className="absolute bottom-48 left-1/3 w-20 h-20 rounded-full bg-gradient-to-br from-orange-400/15 to-yellow-400/10 animate-float-fast"></div>
-        
-        {/* Large Triangle */}
-        <div className="absolute top-1/4 right-1/4 w-0 h-0 border-l-[50px] border-l-transparent border-r-[50px] border-r-transparent border-b-[85px] border-b-amber-400/15 animate-float-slow-reverse"></div>
-        
-        {/* Extra Large Circle Background */}
-        <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-gradient-to-br from-yellow-300/10 to-transparent animate-pulse-slow"></div>
-        
-        {/* Medium Accent Circle */}
-        <div className="absolute top-1/2 right-16 w-24 h-24 rounded-full bg-gradient-to-br from-amber-500/15 to-orange-400/10 animate-float-medium-reverse"></div>
-        
-        {/* Small Hexagon-like shape */}
-        <div className="absolute bottom-10 right-[10%] w-16 h-16 bg-gradient-to-br from-yellow-400/15 to-amber-300/10 rotate-45 animate-float-fast-reverse"></div>
-        
-        {/* Tiny accent dots */}
-        <div className="absolute top-1/7 left-1/4 w-10 h-10 rounded-full bg-gradient-to-br from-[#9d7035]/15 to-amber-400/10 animate-float-fast"></div>
-        
-        {/* Large Diamond Shape */}
-        <div className="absolute bottom-0 left-1/2 w-32 h-32 bg-gradient-to-br from-orange-300/10 to-yellow-300/10 rotate-45 animate-float-slow"></div>
-        
-        {/* Medium Floating Circle */}
-        <div className="absolute bottom-10 left-[2%] w-36 h-36 rounded-full bg-gradient-to-br from-amber-400/20 to-yellow-300/30 animate-float-medium"></div>
-      </div>
+    <div className="min-h-screen mx-[15px] bg-[#f5f1eb] text-black py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 lg:mb-16">
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12">
           Understand the Tools and Frameworks for
         </h1>
 
@@ -211,7 +179,7 @@ export default function ToolsFrameworksTimeline() {
                   </button>
                 </div>
                 {index < timelineSteps.length - 1 && (
-                  <div className="flex-1 h-0.5 bg-gray-600 mx-2"></div>
+                  <div className="flex-1 h-0.5 bg-gray-300 mx-2"></div>
                 )}
               </div>
             ))}

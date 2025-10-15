@@ -8,7 +8,7 @@ import BgImage from "../../asset/pattern-9.png"
 const GroupCoaching = ({ groupCoachingData }) => {
   // Fallback data
   const fallbackData = {
-    sectionTitle: "Group Coaching Sessions & Keynote",
+    sectionTitle: "Group Coaching Sessions, Keynote & Consultancy",
     sessions: [
       {
         title: "Group X Sessions",
@@ -29,6 +29,16 @@ const GroupCoaching = ({ groupCoachingData }) => {
           { text: "Onsite Mode", iconType: "device" }
         ],
         footer: "Applied a pilot canvas and sequencing plan across customer lifecycle."
+      },
+      {
+        title: "Consultancy",
+        description: "Strategic guidance to transform your organization's growth trajectory.",
+        tags: [
+          { text: "Custom Duration", iconType: "time" },
+          { text: "On Request", iconType: "language" },
+          { text: "Flexible Mode", iconType: "device" }
+        ],
+        footer: "Tailored consulting solutions for sustainable business transformation."
       }
     ]
   }
@@ -79,9 +89,9 @@ const GroupCoaching = ({ groupCoachingData }) => {
   };
 
   return (
-    <div className="bg-white py-16 relative overflow-hidden">
+    <div className="bg-white pb-16 relative overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 opacity-100">
+      {/* <div className="absolute inset-0 opacity-100">
         <Image 
           src={BgImage} 
           alt="Background" 
@@ -89,7 +99,7 @@ const GroupCoaching = ({ groupCoachingData }) => {
           className="object-cover"
           priority
         />
-      </div>
+      </div> */}
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
         
@@ -101,7 +111,7 @@ const GroupCoaching = ({ groupCoachingData }) => {
         </div>
         
         {/* Content Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {data.sessions?.map((session, index) => (
             <div key={index} className="bg-white rounded-lg border border-gray-200 p-6 lg:p-8 shadow-sm hover:shadow-md transition-all duration-200">
               
