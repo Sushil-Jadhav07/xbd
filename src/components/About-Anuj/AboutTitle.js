@@ -35,15 +35,18 @@ const AboutTitle = ({ aboutTitleData }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-8">
           
           {/* Left Column - Image */}
-          <div className="">
-            <div className="bg-gray-200 rounded-lg w-full h-98 lg:w-full lg:h-full flex items-center justify-center overflow-hidden relative">
+          <div className="flex items-center justify-center">
+            <div className="bg-gray-200 rounded-lg w-full max-w-md h-auto flex items-center justify-center overflow-hidden relative">
               {data.profileImage?.asset ? (
-                <Image 
-                  src={urlFor(data.profileImage).width(800).height(600).url()}
-                  alt={data.profileImage.alt || data.mainHeading}
-                  fill
-                  className="object-cover"
-                />
+                <div className="relative w-full h-auto">
+                  <Image 
+                    src={urlFor(data.profileImage).width(650).height(1000).url()}
+                    alt={data.profileImage.alt || data.mainHeading}
+                    width={600}
+                    height={800}
+                    className="object-contain w-full h-auto rounded-lg"
+                  />
+                </div>
               ) : (
                 <>
                   <div className="bg-gray-400 rounded-lg p-6 w-24 h-20 flex items-center justify-center">
