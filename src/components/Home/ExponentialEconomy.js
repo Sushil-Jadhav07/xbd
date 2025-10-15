@@ -6,12 +6,12 @@ const ExponentialEconomy = ({ exponentialData }) => {
   if (!exponentialData) return null;
 
   return (
-    <section className="bg-white dark:bg-black mx-[15px] py-16 md:py-20 lg:py-24 transition-colors duration-300">
+    <section className="bg-black dark:bg-white mx-[15px] py-16 md:py-20 lg:py-24 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-2 md:px-8">
         {/* Header Section */}
         <div className="text-center mb-8">
           {/* Main Question */}
-          <p className="text-black dark:text-white text-base md:text-lg mb-4 transition-colors duration-300">
+          <p className="dark:text-black text-white text-base md:text-lg mb-4 transition-colors duration-300">
             {exponentialData.mainQuestion || 'Do you want to be part of this'}{" "}
             <span className="bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent font-bold">
               {exponentialData.highlightedWord || 'Exponential'}
@@ -20,12 +20,12 @@ const ExponentialEconomy = ({ exponentialData }) => {
           </p>
 
           {/* Framework Title */}
-          <h1 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-8 leading-tight transition-colors duration-300">
+          <h1 className="text-3xl md:text-4xl font-bold dark:text-black text-white mb-8 leading-tight transition-colors duration-300">
             {exponentialData.frameworkTitle || 'How to Transform: The \'X\' Framework'}
           </h1>
 
           {/* Description */}
-          <p className="text-black dark:text-white text-sm md:text-base max-w-5xl mx-auto leading-relaxed mb-8 transition-colors duration-300">
+          <p className="dark:text-black text-white text-sm md:text-base max-w-5xl mx-auto leading-relaxed mb-8 transition-colors duration-300">
             {exponentialData.description || 'Our proprietary framework, backed by tools simplifies this complex assignment. This framework squeezes and extracts the growth secrets behind the prominently exponential organizations like Google, Amazon, Uber, NVIDIA and now OpenAI to distill the complexity into a simple framework to lead exponential growth. Every successful transformation maps back to the converging and diverging forces that create multiplier effects, creating agile and adaptable entities that evolve with the market.'}
           </p>
         </div>
