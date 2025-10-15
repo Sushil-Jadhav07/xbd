@@ -2,6 +2,12 @@
 import React, { useState } from 'react'
 import { MdImage, MdExpandMore } from 'react-icons/md'
 import Image from 'next/image'
+import { urlFor } from '@/lib/sanity'
+
+// Import fallback images
+import fallbackMainImage from '../../asset/industry/1.webp'
+import fallbackSmallImage1 from '../../asset/industry/2.webp'
+import fallbackSmallImage2 from '../../asset/industry/3.webp'
 
 const CalltoAction = ({ callToActionData }) => {
   const [formData, setFormData] = useState({
@@ -20,7 +26,10 @@ const CalltoAction = ({ callToActionData }) => {
     buttonText: "Request a call",
     privacyText: "We respect your privacy — we only use contact details to respond.",
     privacyLinkText: "Privacy",
-    socialLinks: {}
+    socialLinks: {},
+    mainImage: { asset: { url: fallbackMainImage } },
+    smallImage1: { asset: { url: fallbackSmallImage1 } },
+    smallImage2: { asset: { url: fallbackSmallImage2 } }
   }
 
   const data = callToActionData || fallbackData
@@ -49,9 +58,16 @@ const CalltoAction = ({ callToActionData }) => {
             
             {/* Top Block - Large Image */}
             <div className="bg-gray-200 rounded-lg h-64 lg:h-80 flex items-center justify-center relative overflow-hidden">
-              {data.mainImage ? (
+              {data.mainImage?.asset?.url ? (
                 <Image 
-                  src={data.mainImage}
+                  src={data.mainImage.asset.url}
+                  alt={data.mainImage.alt || "Call to action"}
+                  fill
+                  className="object-cover"
+                />
+              ) : data.mainImage?.fallbackImage ? (
+                <Image 
+                  src={data.mainImage.fallbackImage}
                   alt="Call to action"
                   fill
                   className="object-cover"
@@ -66,9 +82,16 @@ const CalltoAction = ({ callToActionData }) => {
             {/* Bottom Block - Two Images */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div className="bg-gray-200 rounded-lg h-48 lg:h-64 flex items-center justify-center relative overflow-hidden">
-                {data.smallImage1 ? (
+                {data.smallImage1?.asset?.url ? (
                   <Image 
-                    src={data.smallImage1}
+                    src={data.smallImage1.asset.url}
+                    alt={data.smallImage1.alt || "Small image 1"}
+                    fill
+                    className="object-cover"
+                  />
+                ) : data.smallImage1?.fallbackImage ? (
+                  <Image 
+                    src={data.smallImage1.fallbackImage}
                     alt="Small image 1"
                     fill
                     className="object-cover"
@@ -80,9 +103,16 @@ const CalltoAction = ({ callToActionData }) => {
                 )}
               </div>
               <div className="bg-gray-200 rounded-lg h-48 lg:h-64 flex items-center justify-center relative overflow-hidden">
-                {data.smallImage2 ? (
+                {data.smallImage2?.asset?.url ? (
                   <Image 
-                    src={data.smallImage2}
+                    src={data.smallImage2.asset.url}
+                    alt={data.smallImage2.alt || "Small image 2"}
+                    fill
+                    className="object-cover"
+                  />
+                ) : data.smallImage2?.fallbackImage ? (
+                  <Image 
+                    src={data.smallImage2.fallbackImage}
                     alt="Small image 2"
                     fill
                     className="object-cover"

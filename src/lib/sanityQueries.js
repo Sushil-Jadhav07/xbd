@@ -478,8 +478,23 @@ export async function getIndustriesData() {
   const query = `*[_type == "industries"][0]{
     title,
     mainFocusText,
-    mainFocusImage,
-    industriesList
+    mainFocusImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    industriesList[]{
+      name,
+      icon{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    }
   }`
   
   try {
@@ -502,9 +517,27 @@ export async function getCallToActionData() {
     privacyText,
     privacyLinkText,
     socialLinks,
-    mainImage,
-    smallImage1,
-    smallImage2
+    mainImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    smallImage1{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    smallImage2{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    }
   }`
   
   try {

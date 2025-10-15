@@ -26,9 +26,9 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 w-[130px] cursor-pointer">
+          <a href="/" className="flex-shrink-0 w-[130px] cursor-pointer">
             <Image src={LogoMain} alt="Logo Main" />
-          </Link>
+          </a>
 
           {/* Right Side - Navigation Links and Contact Button */}
           <div className="hidden md:flex items-center space-x-8">
