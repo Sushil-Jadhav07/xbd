@@ -40,10 +40,10 @@ const AboutTitle = ({ aboutTitleData }) => {
               {data.profileImage?.asset ? (
                 <div className="relative w-full h-auto">
                   <Image 
-                    src={urlFor(data.profileImage).width(650).height(1000).url()}
+                    src={urlFor(data.profileImage).width(1800).height(2100).url()}
                     alt={data.profileImage.alt || data.mainHeading}
-                    width={600}
-                    height={800}
+                    width={6000}
+                    height={7000}
                     className="object-contain w-full h-auto rounded-lg"
                   />
                 </div>
