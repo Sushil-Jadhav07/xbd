@@ -168,7 +168,7 @@ const Whychoose = ({ whyChooseData }) => {
   };
 
   return (
-    <section className="bg-white mx-[15px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
+    <section className="dark:bg-white bg-white mx-[15px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
       
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -176,13 +176,13 @@ const Whychoose = ({ whyChooseData }) => {
           {/* Left Content */}
           <div className="flex-1 space-y-6">
             {/* Label */}
-            <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide">
+            <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">
               <HiOutlineSparkles className="text-lg" />
               {data.label}
             </div>
 
             {/* Headline */}
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold dark:text-gray-900 text-white leading-tight">
               {data.titleStart}{" "}
               <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent inline">
                 {data.highlightText}
@@ -192,16 +192,16 @@ const Whychoose = ({ whyChooseData }) => {
             </h2>
 
             {/* Quote */}
-            <blockquote className="text-sm md:text-base text-gray-700 leading-relaxed">
+            <blockquote className="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
               "{data.quote}"
             </blockquote>
 
             {/* Author Info */}
             <div className="space-y-1">
-              <div className="font-bold text-gray-900 text-lg">
+              <div className="font-bold text-gray-900 dark:text-white text-lg">
                 {data.authorName}
               </div>
-              <div className="text-gray-600">
+              <div className="text-gray-600 dark:text-gray-400">
                 {data.authorTitle}
               </div>
             </div>
@@ -211,7 +211,7 @@ const Whychoose = ({ whyChooseData }) => {
               {data.primaryButton && (
                 <Link
                   href={data.primaryButton.link || '#'}
-                  className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200"
+                  className="bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200"
                 >
                   {data.primaryButton.text}
                 </Link>
@@ -220,7 +220,7 @@ const Whychoose = ({ whyChooseData }) => {
               {data.secondaryButton && (
                 <Link
                   href={data.secondaryButton.link || '#'}
-                  className="text-gray-900 font-semibold hover:text-black transition-colors duration-200 underline decoration-2 underline-offset-4"
+                  className="text-gray-900 dark:text-white font-semibold hover:text-black dark:hover:text-gray-300 transition-colors duration-200 underline decoration-2 underline-offset-4"
                 >
                   {data.secondaryButton.text}
                 </Link>
