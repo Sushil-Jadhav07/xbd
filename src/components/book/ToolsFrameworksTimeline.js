@@ -1,5 +1,16 @@
 'use client'
 import { useState } from 'react';
+import Image from 'next/image';
+import IVRDiagram from '@/asset/tools/design products/Figure 11_Spheres of a hyperconnected product_1_11zon.webp';
+import ReachInterconnect from '@/asset/tools/design products/Figure 29_The strategic imperative of Reach Interconnects_3_11zon.webp';
+import ScienceOfAssociation from '@/asset/tools/design experience/Figure 32_The Science of Association_1_11zon.webp';
+import EngagementFlywheel from '@/asset/tools/design experience/Figure 39_Engagement flywheel (1)_3_11zon.webp';
+import ValueExchangeNetwork from '@/asset/tools/design value/Figure 55_Value Exchange Network_1_11zon.webp';
+import ValueLineage from '@/asset/tools/design value/Figure 61_Value lineage across extended value chains_2_11zon.webp';
+import VenNetworkEffects from '@/asset/tools/multiplier effect/Figure 57_Network effects of VEN (Value Exchange Network)_2_11zon.webp';
+import PositioningOfferService from '@/asset/tools/multiplier effect/Figure 83_Positioning, Offer and Service value driving Value lifecycle_3_11zon.webp';
+import CognitiveEnterprise from '@/asset/tools/design exponential/Figure 68_Cognitive Inference the new frontier of a Cognitive Enterprise_2_11zon.webp';
+import CognitiveNetwork from '@/asset/tools/design exponential/Figure 76_Cognitive Network across Connect, Emotional and Value Network_3_11zon.webp';
 
 export default function ToolsFrameworksTimeline() {
   const [activeTimeline, setActiveTimeline] = useState(1);
@@ -26,93 +37,328 @@ export default function ToolsFrameworksTimeline() {
     switch (activeSubTab) {
       case 1:
         return (
-          <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 sm:p-12 lg:p-16 flex items-center justify-center min-h-[400px]">
-            <div className="text-center">
-              <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                Design product that reach needs at the{' '}
-                <span className="text-[#c1a35e] font-semibold">Point of Origin.</span>
-              </p>
+          <div className="min-h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
+            <div className="flex h-full items-stretch">
+              {/* Left Side - Content (35%) */}
+              <div className="w-[35%] h-full p-8 md:p-12  flex flex-col justify-center border-r border-gray-600">
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-[#c1a35e] mb-6">
+                    Hyper-converged Product Design Framework
+                  </h2>
+                  <div className="mb-6">
+                    <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-4">
+                      Design products that reach needs at the{' '}
+                      <span className="text-[#c1a35e] font-semibold">Point of Origin</span> — before your customers even articulate them.
+                    </p>
+                    <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-4">
+                      Learn how intelligent, self-learning, and context-aware products converge physical, digital, and cognitive dimensions.
+                    </p>
+                    <p className="text-sm md:text-base text-gray-400 leading-relaxed">
+                      Think Tesla's over-the-air upgrades or Samsung's Ballie — products that evolve with users.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Right Side - Two Images (65%) */}
+              <div className="w-[65%] grid grid-cols-2 justify-center h-full">
+                {/* First Image - IVR Diagram */}
+                <div className="bg-gray-700 flex flex-col border-r border-gray-600">
+                  <div className="flex-1 p-4 flex items-center justify-center">
+                    <Image
+                      src={IVRDiagram}
+                      alt="Spheres of a hyperconnected product - IVR Diagram"
+                      className="max-w-full max-h-full object-contain rounded-lg"
+                      width={300}
+                      height={300}
+                      priority
+                    />
+                  </div>
+                  {/* IVR Button below image */}
+                  <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    IVR
+                  </div>
+                </div>
+                
+                {/* Second Image - REACH Interconnect */}
+                <div className="bg-gray-700 flex flex-col">
+                  <div className="flex-1 p-4 flex items-center justify-center">
+                    <Image
+                      src={ReachInterconnect}
+                      alt="The strategic imperative of Reach Interconnects"
+                      className="max-w-full max-h-full object-contain rounded-lg"
+                      width={300}
+                      height={300}
+                      priority
+                    />
+                  </div>
+                  {/* REACH Interconnect Button below image */}
+                  <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    REACH Interconnect
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         );
       
       case 2:
         return (
-          <>
-            <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[400px]">
-              <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 sm:p-8 lg:p-12 flex items-center justify-center">
-                <div className="relative w-48 h-48 sm:w-64 sm:h-64">
-                  <div className="absolute inset-0 rounded-full border-2 border-white opacity-30"></div>
-                  <div className="absolute inset-8 rounded-full border-2 border-white opacity-50"></div>
-                  <div className="absolute inset-16 rounded-full border-2 border-white opacity-70"></div>
-                  <div className="absolute inset-24 rounded-full border-2 border-white flex items-center justify-center">
-                    <div className="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center">
-                      <div className="w-6 h-6 bg-white rounded-full"></div>
-                    </div>
+          <div className="min-h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
+            <div className="flex h-full items-stretch">
+              {/* Left Side - Content (35%) */}
+              <div className="w-[35%] h-full p-8 md:p-12 flex flex-col justify-center border-r border-gray-600">
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-[#c1a35e] mb-6">
+                    Hyper-Converged Experience Design Framework
+                  </h2>
+                  <div className="mb-6">
+                    <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-4">
+                      Design experiences that extract emotions in the{' '}
+                      <span className="text-[#c1a35e] font-semibold">Moment of Truth</span> — when customers make critical decisions.
+                    </p>
+                    <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-4">
+                      Discover how adaptive experiences bridge real-time context, emotional network effects, and intent-driven journeys.
+                    </p>
+                    <p className="text-sm md:text-base text-gray-400 leading-relaxed">
+                      Think Blinkit or Netflix's personalized micro-moments — experiences that adapt to user emotions.
+                    </p>
                   </div>
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 sm:p-8 lg:p-12 flex items-center justify-center border-l border-gray-700">
+              
+              {/* Right Side - Two Images (65%) */}
+              <div className="w-[65%] grid grid-cols-2 justify-center h-full">
+                {/* First Image - Science of Associations */}
+                <div className="bg-gray-700 flex flex-col border-r border-gray-600">
+                  <div className="flex-1 p-4 flex items-center justify-center">
+                    <Image
+                      src={ScienceOfAssociation}
+                      alt="The Science of Association - Emotional triggers and associations"
+                      className="max-w-full max-h-full object-contain rounded-lg"
+                      width={300}
+                      height={300}
+                      priority
+                    />
+                  </div>
+                  {/* Science of Associations Button below image */}
+                  <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    SCIENCE OF ASSOCIATIONS
+                  </div>
+                </div>
+                
+                {/* Second Image - Engagement Flywheel */}
+                <div className="bg-gray-700 flex flex-col">
+                  <div className="flex-1 p-4 flex items-center justify-center">
+                    <Image
+                      src={EngagementFlywheel}
+                      alt="Engagement Flywheel - Brand equity building process"
+                      className="max-w-full max-h-full object-contain rounded-lg"
+                      width={300}
+                      height={300}
+                      priority
+                    />
+                  </div>
+                  {/* Engagement Flywheel Button below image */}
+                  <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    ENGAGEMENT FLYWHEEL
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 border-t border-gray-700">
-              <div className="bg-[#c1a35e] text-black font-bold text-center py-3 sm:py-4 text-sm sm:text-base">
-                IVR
-              </div>
-              <div className="bg-[#c1a35e] text-black font-bold text-center py-3 sm:py-4 text-sm sm:text-base border-t sm:border-t-0 sm:border-l border-yellow-700">
-              </div>
-            </div>
-          </>
+          </div>
         );
 
       case 3:
         return (
-          <>
-            <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[400px]">
-              <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 sm:p-8 lg:p-12 flex items-center justify-center">
+          <div className="min-h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
+            <div className="flex h-full items-stretch">
+              {/* Left Side - Content (35%) */}
+              <div className="w-[35%] h-[500px] p-8 md:p-12 flex flex-col justify-center border-r border-gray-600">
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-[#c1a35e] mb-6">
+                    Hyper-converged Value Design Frameworks
+                  </h2>
+                  <div className="mb-6">
+                    <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-4">
+                      Design co-creation to extend value at the <span className="text-[#c1a35e] font-semibold">Tipping Point</span>.
+                    </p>
+                    <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-4">
+                      Build value networks that align product, platform, and ecosystem to multiply returns exponentially.
+                    </p>
+                    <p className="text-sm md:text-base text-gray-400 leading-relaxed">
+                      Think Amazon’s flywheel or AirAsia’s travel lifestyle ecosystem.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 sm:p-8 lg:p-12 flex items-center justify-center border-l border-gray-700">
-                <div className="relative w-full h-64 sm:h-80 flex items-center justify-center">
-                  <svg width="300" height="300" viewBox="0 0 300 300" className="w-full h-full max-w-xs sm:max-w-sm">
-                    <path d="M 150 50 L 250 150 L 150 250 L 50 150 Z" fill="white" opacity="0.1" stroke="white" strokeWidth="2"/>
-                    <circle cx="150" cy="150" r="30" fill="#4B5563" stroke="white" strokeWidth="2"/>
-                    <circle cx="150" cy="80" r="25" fill="#4B5563" stroke="white" strokeWidth="2"/>
-                    <circle cx="150" cy="220" r="25" fill="#4B5563" stroke="white" strokeWidth="2"/>
-                    <circle cx="80" cy="150" r="25" fill="#4B5563" stroke="white" strokeWidth="2"/>
-                    <circle cx="220" cy="150" r="25" fill="#4B5563" stroke="white" strokeWidth="2"/>
-                  </svg>
+
+              {/* Right Side - Two Images (65%) */}
+              <div className="w-[65%] grid grid-cols-2 justify-center h-full">
+                {/* First Image - Value Exchange Network */}
+                <div className="bg-gray-700 flex flex-col border-r border-gray-600">
+                  <div className="flex-1 p-4 flex items-center justify-center">
+                    <Image
+                      src={ValueExchangeNetwork}
+                      alt="Value Exchange Network"
+                      className="max-w-full max-h-full object-contain rounded-lg"
+                      width={300}
+                      height={300}
+                      priority
+                    />
+                  </div>
+                  {/* Button below image */}
+                  <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    VALUE EXCHANGE NETWORK
+                  </div>
+                </div>
+
+                {/* Second Image - Value Lineage */}
+                <div className="bg-gray-700 flex flex-col">
+                  <div className="flex-1 p-4 flex items-center justify-center">
+                    <Image
+                      src={ValueLineage}
+                      alt="Value Lineage across extended value chains"
+                      className="max-w-full max-h-full object-contain rounded-lg"
+                      width={300}
+                      height={300}
+                      priority
+                    />
+                  </div>
+                  {/* Button below image */}
+                  <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    VALUE LINEAGE
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 border-t border-gray-700">
-              <div className="bg-[#c1a35e] text-black font-bold text-center py-3 sm:py-4 text-sm sm:text-base">
-              </div>
-              <div className="bg-[#c1a35e] text-black font-bold text-center py-3 sm:py-4 text-sm sm:text-base border-t sm:border-t-0 sm:border-l border-yellow-700">
-                REACH Interconnect
-              </div>
-            </div>
-          </>
+          </div>
         );
 
       case 4:
         return (
-          <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 sm:p-12 lg:p-16 flex items-center justify-center min-h-[400px]">
-            <div className="text-center">
-              <p className="text-xl sm:text-2xl lg:text-3xl text-gray-300 leading-relaxed">
-                Design systems that scale with{' '}
-                <span className="text-[#c1a35e] font-semibold">Multiplier Effects.</span>
-              </p>
+          <div className="min-h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
+            <div className="flex h-full items-stretch">
+              {/* Left Side - Content (35%) */}
+              <div className="w-[35%] h-[500px] p-8 md:p-12 flex flex-col justify-center border-r border-gray-600">
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-[#c1a35e] mb-6">
+                    Multiplier effects to design Scale
+                  </h2>
+                  <div className="mb-6">
+                    <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-4">
+                      Scale is not about size — it’s about <span className="text-[#c1a35e] font-semibold">network velocity</span> enabled by multiplier effects.
+                    </p>
+                    <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-4">
+                      Learn how to design multiplier effects that amplify value exchange and accelerate ecosystem compounding.
+                    </p>
+                    <p className="text-sm md:text-base text-gray-400 leading-relaxed">
+                      Example: NVIDIA’s platform scaling through ecosystem leverage.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Side - Two Images (65%) */}
+              <div className="w-[65%] grid grid-cols-2 justify-center h-full">
+                {/* First Image - Science of Associations (use VEN network effects here) */}
+                <div className="bg-gray-700 flex flex-col border-r border-gray-600">
+                  <div className="flex-1 p-4 flex items-center justify-center">
+                    <Image
+                      src={VenNetworkEffects}
+                      alt="Network effects of Value Exchange Network"
+                      className="max-w-full max-h-full object-contain rounded-lg"
+                      width={300}
+                      height={300}
+                      priority
+                    />
+                  </div>
+                  <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    SCIENCE OF ASSOCIATIONS
+                  </div>
+                </div>
+
+                {/* Second Image - Engagement Flywheel (use Positioning/Offer/Service) */}
+                <div className="bg-gray-700 flex flex-col">
+                  <div className="flex-1 p-4 flex items-center justify-center">
+                    <Image
+                      src={PositioningOfferService}
+                      alt="Positioning, Offer and Service value driving Value lifecycle"
+                      className="max-w-full max-h-full object-contain rounded-lg"
+                      width={300}
+                      height={300}
+                      priority
+                    />
+                  </div>
+                  <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    ENGAGEMENT FLYWHEEL
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         );
 
       case 5:
         return (
-          <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 sm:p-12 lg:p-16 flex items-center justify-center min-h-[400px]">
-            <div className="text-center">
-              <p className="text-xl sm:text-2xl lg:text-3xl text-gray-300 leading-relaxed">
-                <span className="text-[#c1a35e] font-semibold">Formation</span> of Exponential Organizations
-              </p>
+          <div className="min-h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
+            <div className="flex h-full items-stretch">
+              {/* Left Side - Content (35%) */}
+              <div className="w-[35%] h-[500px] p-8 md:p-12 flex flex-col justify-center border-r border-gray-600">
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-[#c1a35e] mb-6">
+                    Formation of Exponential Organizations
+                  </h2>
+                  <div className="mb-6">
+                    <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-4">
+                      Exponential organizations are <span className="text-[#c1a35e] font-semibold">born from design</span>, not chance.
+                    </p>
+                    <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-4">
+                      Understand how AI, data, and network effects enable self-scaling and self-evolving enterprises.
+                    </p>
+                    <p className="text-sm md:text-base text-gray-400 leading-relaxed">
+                      Example: OpenAI, CRED, SpaceX, and Tesla’s digital DNA.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Side - Two Images (65%) */}
+              <div className="w-[65%] grid grid-cols-2 justify-center h-full">
+                {/* First Image - Cognitive Enterprise */}
+                <div className="bg-gray-700 flex flex-col border-r border-gray-600">
+                  <div className="flex-1 p-4 flex items-center justify-center">
+                    <Image
+                      src={CognitiveEnterprise}
+                      alt="Cognitive Enterprise"
+                      className="max-w-full max-h-full object-contain rounded-lg"
+                      width={300}
+                      height={300}
+                      priority
+                    />
+                  </div>
+                  <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    COGNITIVE ENTERPRISE
+                  </div>
+                </div>
+
+                {/* Second Image - Cognitive Network */}
+                <div className="bg-gray-700 flex flex-col">
+                  <div className="flex-1 p-4 flex items-center justify-center">
+                    <Image
+                      src={CognitiveNetwork}
+                      alt="Cognitive Network across Connect, Emotional and Value Network"
+                      className="max-w-full max-h-full object-contain rounded-lg"
+                      width={300}
+                      height={300}
+                      priority
+                    />
+                  </div>
+                  <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    COGNITIVE NETWORK
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         );
@@ -216,13 +462,7 @@ export default function ToolsFrameworksTimeline() {
               }`}
             >
               <div className="leading-tight">
-                {tab.id === 5 ? (
-                  <>
-                    <span className="text-[#c1a35e]">Formation</span> of Exponential Organizations
-                  </>
-                ) : (
-                  tab.label
-                )}
+                {tab.label}
               </div>
             </button>
           ))}
