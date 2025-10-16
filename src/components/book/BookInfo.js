@@ -49,7 +49,7 @@ const BookInfo = ({ bookInfoData }) => {
   const data = bookInfoData || fallbackData
 
   return (
-    <div className="bg-white py-16 relative overflow-hidden">
+    <div className="bg-white mx-[15px] py-16 relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 opacity-10">
         <Image 
