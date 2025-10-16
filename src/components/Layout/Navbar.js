@@ -22,7 +22,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-[#f5f1eb] dark:bg-gray-900 md:sticky md:top-0 md:z-50 transition-colors duration-300">
+    <nav className="dark:bg-[#f5f1eb] bg-gray-900 md:sticky md:top-0 md:z-50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-2 md:px-0 py-3">
         <div className="flex justify-between items-center h-16">
           
@@ -39,7 +39,7 @@ const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300 font-medium transition-colors duration-200"
+                  className="dark:text-black text-white hover:text-gray-700 dark:hover:text-gray-300 font-medium transition-colors duration-200"
                 >
                   {item.name}
                 </a>

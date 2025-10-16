@@ -17,7 +17,7 @@ const MeetAuthor = ({ meetAuthorData }) => {
   const data = meetAuthorData || fallbackData
 
   return (
-    <div className="bg-white pb-16 relative overflow-hidden">
+    <div className="bg-white mx-[15px] pb-16 relative overflow-hidden">
       {/* Animated Floating Shapes - Unique Variations */}
      
 
