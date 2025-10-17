@@ -2,7 +2,7 @@
 
 import { HiOutlineSparkles } from 'react-icons/hi';
 import { useState } from 'react';
-import WhyHyperGrowth from "../../asset/Exponential-rise-of-ai.png"
+import WhyHyperGrowth from "../../asset/The-exponential-growth.jpg"
 import BgImage from "../../asset/pattern-2.png"
 import Image from 'next/image';
 import LeadFormModal from '../common/LeadFormModal';
@@ -50,7 +50,7 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
 
   return (
     <>
-    <section className="bg-[#f5f1eb] mx-[15px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
+    <section className="dark:bg-white bg-white mx-[15px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 opacity-100">
         <Image 
