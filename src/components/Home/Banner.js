@@ -22,7 +22,7 @@ const Banner = ({ bannerData }) => {
 
   return (
     <>
-    <section className="bg-white mx-[15px] py-12 md:py-16 ">
+    <section className="!bg-black mx-[15px] py-12 md:py-16 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left side - Image (keeping your existing image) */}
@@ -40,7 +40,7 @@ const Banner = ({ bannerData }) => {
           {/* Right side - Content (now dynamic) */}
           <div className="order-2 space-y-6">
             {/* Headline */}
-            <h1 className={`text-3xl md:text-4xl font-bold text-gray-900 leading-tight transition-all duration-1000 ease-out delay-200 ${
+            <h1 className={`text-3xl md:text-4xl font-bold text-white leading-tight transition-all duration-1000 ease-out delay-200 ${
               isVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-4'
@@ -53,7 +53,7 @@ const Banner = ({ bannerData }) => {
             </h1>
 
             {/* Subheadline */}
-            <p className={`text-sm md:text-base text-gray-700 leading-relaxed max-w-lg transition-all duration-1000 ease-out delay-400 ${
+            <p className={`text-sm md:text-base text-white leading-relaxed max-w-lg transition-all duration-1000 ease-out delay-400 ${
               isVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-4'
@@ -80,7 +80,7 @@ const Banner = ({ bannerData }) => {
               {bannerData.secondaryButton && (
                 <Link
                   href={bannerData.secondaryButton.link || '#'}
-                  className="text-gray-900 font-semibold text-base hover:text-black transition-colors duration-200 underline decoration-2 underline-offset-4"
+                  className="text-white font-semibold text-base hover:text-white transition-colors duration-200 underline decoration-2 underline-offset-4"
                 >
                   {bannerData.secondaryButton.text}
                 </Link>

@@ -157,7 +157,7 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
   };
 
   return (
-    <section className="bg-[#f5f1eb] mx-[15px] pt-0 md:pt-12 relative overflow-hidden">
+    <section className="dark:bg-white bg-white mx-[15px] pt-0 md:pt-12 relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 z-0">
         <Image

@@ -168,7 +168,7 @@ const Whychoose = ({ whyChooseData }) => {
   };
 
   return (
-    <section className="dark:bg-white bg-white mx-[15px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
+    <section className="bg-[#f5f1eb] mx-[15px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
       
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -192,16 +192,16 @@ const Whychoose = ({ whyChooseData }) => {
             </h2>
 
             {/* Quote */}
-            <blockquote className="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+            <blockquote className="text-sm md:text-base text-gray-700 dark:text-gray-900 leading-relaxed">
               "{data.quote}"
             </blockquote>
 
             {/* Author Info */}
             <div className="space-y-1">
-              <div className="font-bold text-gray-900 dark:text-white text-lg">
+              <div className="font-bold text-gray-900 dark:text-gray-900 text-lg">
                 {data.authorName}
               </div>
-              <div className="text-gray-600 dark:text-gray-400">
+              <div className="text-gray-600 dark:text-gray-900">
                 {data.authorTitle}
               </div>
             </div>
@@ -220,7 +220,7 @@ const Whychoose = ({ whyChooseData }) => {
               {data.secondaryButton && (
                 <Link
                   href={data.secondaryButton.link || '#'}
-                  className="text-gray-900 dark:text-white font-semibold hover:text-black dark:hover:text-gray-300 transition-colors duration-200 underline decoration-2 underline-offset-4"
+                  className="text-gray-900 dark:text-gray-900 font-semibold hover:text-black dark:hover:text-gray-300 transition-colors duration-200 underline decoration-2 underline-offset-4"
                 >
                   {data.secondaryButton.text}
                 </Link>
