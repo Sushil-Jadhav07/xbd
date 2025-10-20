@@ -2,7 +2,7 @@
 
 import { HiOutlineSparkles } from 'react-icons/hi';
 import { useState } from 'react';
-import WhyHyperGrowth from "../../asset/The-exponential-growth.jpg"
+import WhyHyperGrowth from "../../asset/exponential-growth2.png"
 import BgImage from "../../asset/pattern-2.png"
 import Image from 'next/image';
 import LeadFormModal from '../common/LeadFormModal';
@@ -50,7 +50,7 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
 
   return (
     <>
-    <section className="dark:bg-white bg-white mx-[15px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
+    <section className="dark:bg-black bg-white mx-[15px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 opacity-100">
         <Image 
@@ -66,18 +66,18 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16">
           {/* Label */}
-          <div className="flex items-center justify-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
+          <div className="flex items-center justify-center gap-2 text-sm font-semibold text-white uppercase tracking-wide mb-4">
             <HiOutlineSparkles className="text-lg" />
             {data.label}
           </div>
 
           {/* Headline */}
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-6">
             {data.title} <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent">{data.highlightText}</span>
           </h2>
 
           {/* Subtitle */}
-          <p className="text-sm md:text-base text-gray-700 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-sm md:text-base text-white max-w-4xl mx-auto leading-relaxed">
             {data.subtitle}
           </p>
         </div>
@@ -107,7 +107,7 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
                   </div>
                   
                   {/* Description */}
-                  <p className="text-xs md:text-base text-gray-700 leading-relaxed">
+                  <p className="text-xs md:text-base text-white leading-relaxed">
                     {stat.description}
                   </p>
                 </div>
