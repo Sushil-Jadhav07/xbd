@@ -1,9 +1,12 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { MdPlayArrow } from 'react-icons/md'
 
 const MeetAuthor = ({ meetAuthorData }) => {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
+  
   // Fallback data
   const fallbackData = {
     title: "Meet the Author Behind the Framework",
@@ -11,10 +14,45 @@ const MeetAuthor = ({ meetAuthorData }) => {
     authorBio: "Over 2 decades of consulting corporations, An enterprise architect and a design thinker",
     previousBook: "Author of DISRUPTIVE DIGITAL: THE NEW NORMAL (published 2018).",
     primaryButton: { text: "Contact ABC" },
-    secondaryButton: { text: "See How It Works" }
+    secondaryButton: { text: "See How It Works" },
+    videoSection: {
+      videoTitle: "Watch the Author",
+      videoDescription: "Learn more about the author and the framework",
+      mediaType: "url",
+      videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    }
   }
 
   const data = meetAuthorData || fallbackData
+  
+  // Get video data
+  const videoSection = data.videoSection || {}
+  const videoUrl = videoSection.videoUrl
+  const uploadedVideo = videoSection.uploadedVideo?.asset?.url
+  const videoThumbnail = videoSection.videoThumbnail?.asset?.url
+  const mediaType = videoSection.mediaType || 'url'
+  
+  // Determine which video to use
+  const finalVideoUrl = mediaType === 'upload' ? uploadedVideo : videoUrl
+  const hasVideo = finalVideoUrl && finalVideoUrl.trim() !== ''
+  
+  // Debug logging (commented out for production)
+  // console.log('Video Section Data:', videoSection)
+  // console.log('Video Thumbnail URL:', videoThumbnail)
+  // console.log('Has Video:', hasVideo)
+  
+  // Handle video click
+  const handleVideoClick = () => {
+    if (!hasVideo) return
+    
+    if (mediaType === 'url' && videoUrl) {
+      // Open external video in new tab
+      window.open(videoUrl, '_blank')
+    } else if (mediaType === 'upload' && uploadedVideo) {
+      // Open modal for uploaded video
+      setIsVideoModalOpen(true)
+    }
+  }
 
   return (
     <div className="bg-white mx-[15px] pb-16 relative overflow-hidden">
@@ -85,18 +123,101 @@ const MeetAuthor = ({ meetAuthorData }) => {
               </div>
             </div>
             
-            {/* Right Side - Video Placeholder */}
+            {/* Right Side - Video Section */}
             <div className="flex justify-center lg:justify-center">
-              <div 
-                className="bg-gray-300 rounded-full w-32 h-32 lg:w-40 lg:h-40 flex items-center justify-center cursor-pointer hover:bg-gray-400 transition-colors duration-200"
-                onClick={() => data.videoUrl && window.open(data.videoUrl, '_blank')}
-              >
-                <MdPlayArrow className="text-white text-4xl lg:text-5xl ml-2" />
+              <div className="relative">
+                {/* Video Thumbnail Container */}
+                <div 
+                  className="relative bg-gray-300 rounded-lg w-64 h-48 md:w-[30rem] md:h-[20rem] flex items-center justify-center cursor-pointer hover:bg-gray-400 transition-colors duration-200 overflow-hidden group"
+                  onClick={handleVideoClick}
+                  style={{ minHeight: '192px' }}
+                >
+                  {videoThumbnail ? (
+                    <Image
+                      src={videoThumbnail}
+                      alt={videoSection.videoThumbnail?.alt || "Video thumbnail"}
+                      fill
+                      sizes="(max-width: 768px) 256px, 320px"
+                      className="object-cover"
+                      priority
+                      onError={(e) => {
+                        e.target.style.display = 'none'
+                      }}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center">
+                      <span className="text-white text-lg font-medium">Video</span>
+                    </div>
+                  )}
+                  
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center transition-all duration-200">
+                    <div className="bg-white bg-opacity-60 group-hover:bg-opacity-90 rounded-full p-2 lg:p-3 transition-all duration-200 transform group-hover:scale-110 shadow-lg">
+                      <MdPlayArrow className="text-gray-800 text-xl lg:text-2xl" />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Video Title */}
+                {videoSection.videoTitle && (
+                  <p className="text-center text-sm text-gray-600 mt-3 font-medium">
+                    {videoSection.videoTitle}
+                  </p>
+                )}
+                
+                {/* Video Description */}
+                {videoSection.videoDescription && (
+                  <p className="text-center text-xs text-gray-500 mt-1 max-w-xs mx-auto">
+                    {videoSection.videoDescription}
+                  </p>
+                )}
+                
               </div>
             </div>
           </div>
         </div>
       </div>
+      
+      {/* Video Modal for Uploaded Videos */}
+      {isVideoModalOpen && uploadedVideo && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+          <div className="relative w-full max-w-4xl max-h-[90vh] bg-black rounded-lg overflow-hidden">
+            {/* Close Button */}
+            <button
+              onClick={() => setIsVideoModalOpen(false)}
+              className="absolute top-4 right-4 z-10 bg-black bg-opacity-50 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-75 transition-colors"
+            >
+              ×
+            </button>
+            
+            {/* Video Player */}
+            <div className="relative w-full h-0 pb-[56.25%]"> {/* 16:9 aspect ratio */}
+              <video
+                controls
+                autoPlay
+                className="absolute top-0 left-0 w-full h-full"
+                poster={videoThumbnail}
+              >
+                <source src={uploadedVideo} type="video/mp4" />
+                <source src={uploadedVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            
+            {/* Video Info */}
+            {(videoSection.videoTitle || videoSection.videoDescription) && (
+              <div className="p-4 text-white">
+                {videoSection.videoTitle && (
+                  <h3 className="text-lg font-semibold mb-2">{videoSection.videoTitle}</h3>
+                )}
+                {videoSection.videoDescription && (
+                  <p className="text-gray-300">{videoSection.videoDescription}</p>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

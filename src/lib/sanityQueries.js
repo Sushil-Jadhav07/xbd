@@ -394,11 +394,31 @@ export async function getMeetAuthorData() {
     previousBook,
     primaryButton,
     secondaryButton,
-    videoUrl
+    videoSection{
+      videoTitle,
+      videoDescription,
+      mediaType,
+      videoUrl,
+      uploadedVideo{
+        asset->{
+          _id,
+          url,
+          mimeType
+        }
+      },
+      videoThumbnail{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    }
   }`
   
   try {
-    return await client.fetch(query)
+    const data = await client.fetch(query)
+    return data
   } catch (error) {
     console.error('Error fetching meet author data:', error)
     return null
