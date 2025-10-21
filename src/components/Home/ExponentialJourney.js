@@ -47,18 +47,32 @@ export default function ExponentialJourney({ journeyData }) {
   ];
 
   const tabs = journeyData?.tabs || defaultTabs;
-  const stages = journeyData?.stages || defaultStages;
+  // Fix duplicate stage numbers by ensuring unique stage numbers
+  const stages = (journeyData?.stages || defaultStages).map((stage, index) => ({
+    ...stage,
+    stageNumber: stage.stageNumber !== undefined ? stage.stageNumber : index + 1
+  }));
+  
+  // Ensure unique stage numbers by renumbering duplicates
+  const fixedStages = stages.map((stage, index) => {
+    const prevStages = stages.slice(0, index);
+    const duplicateStageNumber = prevStages.find(prev => prev.stageNumber === stage.stageNumber);
+    return {
+      ...stage,
+      stageNumber: duplicateStageNumber ? index + 1 : stage.stageNumber
+    };
+  });
   
   const [activeTab, setActiveTab] = useState(tabs[0]?.id || 'leaders');
-  const [activeStage, setActiveStage] = useState(stages[0]?.id || 'foundation');
+  const [activeStage, setActiveStage] = useState(fixedStages[0]?.id || 'foundation');
 
   // Convert stages array to object for easier lookup
   const stageData = useMemo(() => {
-    return stages.reduce((acc, stage) => {
+    return fixedStages.reduce((acc, stage) => {
       acc[stage.id] = stage;
       return acc;
     }, {});
-  }, [stages]);
+  }, [fixedStages]);
 
   // Get hero section data
   const titleStart = journeyData?.heroSection?.titleStart || 'Design your';
@@ -139,8 +153,7 @@ export default function ExponentialJourney({ journeyData }) {
           <input
             type="text"
             placeholder="Book"
-            className="bg-gray-800 border
-            -gray-600 text-gray-400 md:px-4 px-2 md:py-2 py-1 rounded md:w-64 w-32 focus:outline-none focus:border-gray-500"
+            className="bg-gray-800 border-gray-600 text-gray-400 md:px-4 px-2 md:py-2 py-1 rounded md:w-64 w-32 focus:outline-none focus:border-gray-500"
           />
         </div>
       </div>
@@ -182,7 +195,7 @@ export default function ExponentialJourney({ journeyData }) {
           {/* Middle Column - Journey Stages - 20% */}
           <div className="w-full lg:w-[20%] bg-transparent border-b lg:border-b-0 lg:border-r border-gray-700 flex items-center justify-center">
             <div className="w-full">
-              {[...stages].sort((a, b) => b.stageNumber - a.stageNumber).map((stage, index, arr) => (
+              {[...fixedStages].sort((a, b) => b.stageNumber - a.stageNumber).map((stage, index, arr) => (
                 <div 
                   key={stage.id}
                   className={`p-3 md:p-6 ${index < arr.length - 1 ? 'border-b border-gray-700' : ''} cursor-pointer transition-all duration-200 hover:bg-gray-800 ${
