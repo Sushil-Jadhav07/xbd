@@ -69,11 +69,11 @@ const MeetAuthor = ({ meetAuthorData }) => {
         </div>
         
         {/* Main Content Container */}
-        <div className="bg-gray-100 rounded-lg p-8 lg:p-16">
+        <div className="bg-gray-100 rounded-lg p-0 lg:p-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             
             {/* Left Side - Quote and Author Info */}
-            <div className="space-y-2">
+            <div className="space-y-2 p-6 lg:p-16">
               <div className="text-gray-400 text-6xl lg:text-8xl mt-0">
                 "
               </div>
@@ -125,10 +125,10 @@ const MeetAuthor = ({ meetAuthorData }) => {
             
             {/* Right Side - Video Section */}
             <div className="flex justify-center lg:justify-center">
-              <div className="relative">
+              <div className="relative w-full">
                 {/* Video Thumbnail Container */}
                 <div 
-                  className="relative bg-gray-300 rounded-lg w-64 h-48 md:w-[30rem] md:h-[20rem] flex items-center justify-center cursor-pointer hover:bg-gray-400 transition-colors duration-200 overflow-hidden group"
+                  className="relative bg-gray-300 md:rounded-br-2xl md:rounded-tr-2xl w-full h-48 md:h-[30rem] flex items-center justify-center cursor-pointer hover:bg-gray-400 transition-colors duration-200 overflow-hidden group"
                   onClick={handleVideoClick}
                   style={{ minHeight: '192px' }}
                 >
