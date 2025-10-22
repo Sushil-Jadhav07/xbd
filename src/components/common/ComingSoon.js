@@ -17,6 +17,7 @@ const ComingSoon = ({
 }) => {
   const [timeLeft, setTimeLeft] = useState({});
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -43,22 +44,23 @@ const ComingSoon = ({
     return () => clearInterval(timer);
   }, [launchDate]);
 
-  const handleEmailSubmit = async (e) => {
+  const handlePreRegisterSubmit = async (e) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email || !phone) return;
 
     setIsSubmitting(true);
     try {
       if (onEmailSubmit) {
-        await onEmailSubmit(email);
+        await onEmailSubmit({ email, phone });
       } else {
         // Default behavior - just simulate success
         await new Promise(resolve => setTimeout(resolve, 1000));
       }
       setIsSubmitted(true);
       setEmail('');
+      setPhone('');
     } catch (error) {
-      console.error('Error submitting email:', error);
+      console.error('Error submitting pre-registration:', error);
     } finally {
       setIsSubmitting(false);
     }
@@ -118,33 +120,40 @@ const ComingSoon = ({
 
          
 
-          {/* Email Signup */}
+          {/* Pre-Registration */}
           {showEmailSignup && (
             <div className="mb-12">
               <div className="max-w-md mx-auto">
                 {!isSubmitted ? (
-                  <form onSubmit={handleEmailSubmit} className="space-y-4">
+                  <form onSubmit={handlePreRegisterSubmit} className="space-y-4">
                     <div className="flex items-center justify-center gap-2 text-gray-300 mb-4">
                       <HiOutlineMail className="text-lg" />
-                      <span className="text-sm font-medium">Get notified when we launch</span>
+                      <span className="text-sm font-medium">Pre-Register Now</span>
                     </div>
-                    <div className="flex flex-col sm:flex-row gap-3">
+                    <div className="flex flex-col gap-3">
                       <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email address"
-                        className="flex-1 px-4 py-3 rounded-lg bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                        placeholder="Enter your email"
+                        className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                        required
+                      />
+                      <input
+                        type="tel"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        placeholder="Enter your phone number"
+                        className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                         required
                       />
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="px-6 py-3 cursor-pointer bg-black dark:bg-white text-white dark:text-black font-semibold rounded-lg  hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full px-6 py-3 cursor-pointer bg-black dark:bg-white text-white dark:text-black font-semibold rounded-lg  hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        {isSubmitting ? 'Subscribing...' : 'Notify Me'}
+                        {isSubmitting ? 'Submitting...' : 'Pre-Register'}
                       </button>
-
                     </div>
                   </form>
                 ) : (
@@ -155,7 +164,7 @@ const ComingSoon = ({
                       </svg>
                       <span className="text-sm font-medium">You're all set!</span>
                     </div>
-                    <p className="text-gray-300 text-sm">We'll notify you when we launch.</p>
+                    <p className="text-gray-300 text-sm">Thank you for pre-registering!</p>
                   </div>
                 )}
               </div>

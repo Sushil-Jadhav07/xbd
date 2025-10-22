@@ -1,6 +1,7 @@
 "use client";
 
-import { MdImage } from 'react-icons/md';
+import Image from 'next/image';
+import LogoMain from "../../asset/logomain.png";
 import { HiOutlineMail, HiOutlinePhone } from 'react-icons/hi';
 import { FaTwitter, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
 
@@ -30,9 +31,9 @@ const Footer = () => {
             <div className="lg:col-span-1">
               {/* Logo */}
               <div className="mb-6">
-                <div className="bg-gray-700 rounded-lg p-3 w-12 h-12 flex items-center justify-center">
-                  <MdImage className="text-gray-300 text-xl" />
-                </div>
+                <a href="/" className="flex-shrink-0 w-[130px] cursor-pointer inline-block">
+                  <Image src={LogoMain} alt="Logo Main" />
+                </a>
               </div>
               
               {/* Description */}
