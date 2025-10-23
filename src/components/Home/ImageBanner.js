@@ -10,6 +10,9 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
+  // Debug: Log the received data
+  console.log('ImageBanner received data:', imageBannerData);
+
   // Fallback data
   const fallbackData = {
     title: "Featured Banner",
@@ -21,6 +24,9 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
 
   const data = imageBannerData || fallbackData;
   const slides = data.slides || fallbackData.slides;
+  
+  // Debug: Log the processed slides
+  console.log('Processed slides:', slides);
 
   // Auto-play functionality
   useEffect(() => {
@@ -118,7 +124,7 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
         {/* Carousel Container */}
         <div className="relative">
           {/* Main Carousel */}
-          <div className="relative overflow-hidden rounded-lg aspect-[16/9] md:aspect-[21/9] shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
+          <div className="relative overflow-hidden rounded-lg aspect-[16/9]  shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
             {/* Slides Container */}
             <div 
               className="flex w-full transition-all duration-700 ease-in-out h-full"
@@ -146,6 +152,15 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
                         alt={slide.alt || `Banner ${index + 1}`}
                         fill
                       />
+                    ) : slide.image?.asset?.url ? (
+                      <Image 
+                        className={`w-full h-full object-cover transition-all duration-700 ${
+                          index === currentSlide ? 'scale-105' : 'scale-100'
+                        }`}
+                        src={slide.image.asset.url} 
+                        alt={slide.image.alt || slide.alt || `Banner ${index + 1}`}
+                        fill
+                      />
                     ) : (
                       <Image 
                         className={`w-full h-full object-cover transition-all duration-700 ${
@@ -153,6 +168,7 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
                         }`}
                         src={slide.image} 
                         alt={slide.alt || `Banner ${index + 1}`}
+                        fill
                       />
                     )
                   )}

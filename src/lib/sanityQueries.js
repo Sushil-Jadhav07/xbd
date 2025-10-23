@@ -287,7 +287,17 @@ export async function getNewsletterData() {
 export async function getImageBannerData() {
   const query = `*[_type == "imageBanner"][0]{
     title,
-    slides
+    slides[]{
+      _key,
+      image{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      alt
+    }
   }`
   
   try {
