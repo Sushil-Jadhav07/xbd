@@ -1,7 +1,11 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Newsletters = ({ newsletterData }) => {
+  const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState({ type: '', text: '' })
+
   // Fallback data
   const fallbackData = {
     label: "News Letter",
@@ -14,52 +18,99 @@ const Newsletters = ({ newsletterData }) => {
 
   const data = newsletterData || fallbackData
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    setMessage({ type: '', text: '' })
+
+    try {
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setMessage({ 
+          type: 'success', 
+          text: result.message || 'Successfully subscribed!' 
+        })
+        setEmail('') // Clear input on success
+      } else {
+        setMessage({ 
+          type: 'error', 
+          text: result.error || 'Something went wrong. Please try again.' 
+        })
+      }
+    } catch (error) {
+      console.error('Subscription error:', error)
+      setMessage({ 
+        type: 'error', 
+        text: 'Network error. Please check your connection and try again.' 
+      })
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
-    <div className="bg-[#f5f1eb] mx-[15px] py-16">
-      <div className="max-w-7xl mx-auto px-4 md:px-0">
-        <div className="text-center max-w-3xl mx-auto">
-          
-          {/* Top Label with Icon */}
-          
-          <div className="flex items-center justify-center gap-2 mb-4">
-          <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center mr-3">
-            <svg className="w-5 h-5 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-            <span className="text-sm font-medium text-black uppercase tracking-wide">
-              {data.label}
-            </span>
-          </div>
-          
-          {/* Main Title */}
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-            {data.title}
-          </h2>
-          
-          {/* Subtitle/Description */}
-          <p className="text-sm lg:text-base text-black max-w-2xl mx-auto leading-relaxed">
-            {data.description}
-          </p>
-          
-          {/* Newsletter Signup Form */}
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
-            <input 
-              type="email" 
-              placeholder={data.inputPlaceholder}
-              className="flex-1 w-full sm:w-auto bg-gray-100 text-gray-700 px-6 py-3 rounded-lg border-none focus:ring-2 focus:ring-gray-400 focus:outline-none text-base"
-            />
-            <button className="cursor-pointer w-full sm:w-auto bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-base">
-              {data.buttonText}
-            </button>
-          </div>
-          
-          {/* Privacy Note */}
-          <p className="text-sm text-gray-500 mt-4">
-            {data.privacyNote}
-          </p>
-          
+    <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className="text-center">
+        {/* Top Label with Icon */}
+        <div className="inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700 mb-4">
+          <span className="text-lg">📧</span>
+          <span>{data.label}</span>
         </div>
+
+        {/* Main Title */}
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          {data.title}
+        </h2>
+
+        {/* Subtitle/Description */}
+        <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
+          {data.description}
+        </p>
+
+        {/* Newsletter Signup Form */}
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-4">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder={data.inputPlaceholder}
+            required
+            disabled={loading}
+            className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50 disabled:cursor-not-allowed transition-all"
+          />
+          <button 
+            type="submit" 
+            disabled={loading}
+            className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all whitespace-nowrap"
+          >
+            {loading ? 'Subscribing...' : data.buttonText}
+          </button>
+        </form>
+
+        {/* Status Message */}
+        {message.text && (
+          <div className={`max-w-md mx-auto mb-4 p-4 rounded-lg text-sm font-medium ${
+            message.type === 'success' 
+              ? 'bg-green-50 text-green-800 border border-green-200' 
+              : 'bg-red-50 text-red-800 border border-red-200'
+          }`}>
+            {message.text}
+          </div>
+        )}
+
+        {/* Privacy Note */}
+        <p className="text-sm text-gray-500 mt-4">
+          {data.privacyNote}
+        </p>
       </div>
     </div>
   )
