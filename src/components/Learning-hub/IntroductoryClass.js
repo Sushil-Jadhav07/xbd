@@ -2,8 +2,8 @@ import React from 'react';
 
 const IntroductoryClass = () => {
   return (
-    <div className="bg-gray-100 py-16 px-4">
-      <div className="max-w-6xl mx-auto">
+    <div className="bg-white mx-[15px] py-16 px-4">
+      <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Column - Video Player Placeholder */}

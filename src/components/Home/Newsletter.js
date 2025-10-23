@@ -62,7 +62,7 @@ const Newsletters = ({ newsletterData }) => {
       <div className="text-center">
         {/* Top Label with Icon */}
         <div className="inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700 mb-4">
-          <span className="text-lg">📧</span>
+          {/* <span className="text-lg">📧</span> */}
           <span>{data.label}</span>
         </div>
 
@@ -85,12 +85,12 @@ const Newsletters = ({ newsletterData }) => {
             placeholder={data.inputPlaceholder}
             required
             disabled={loading}
-            className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50 disabled:cursor-not-allowed transition-all"
+            className="flex-1 px-4 py-3 border border-gray-600 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent disabled:bg-gray-200 disabled:cursor-not-allowed transition-all placeholder-gray-600"
           />
           <button 
             type="submit" 
             disabled={loading}
-            className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all whitespace-nowrap"
+            className="px-6 py-3 cursor-pointer bg-black text-white font-medium rounded-lg  transition-all"
           >
             {loading ? 'Subscribing...' : data.buttonText}
           </button>

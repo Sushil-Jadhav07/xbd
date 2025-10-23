@@ -2,7 +2,7 @@ import React from 'react';
 
 const WhatLearn = () => {
   return (
-    <div className="bg-white lg:py-16 py-8 lg:px-12 px-4">
+    <div className="bg-[#f5f1eb] mx-[15px] lg:py-16 py-8 lg:px-12 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-7 lg:gap-12 gap-4">
           

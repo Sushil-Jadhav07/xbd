@@ -2,7 +2,7 @@ import React from 'react';
 
 const Programs = () => {
   return (
-    <div className="bg-white lg:py-16 py-8 px-4">
+    <div className="bg-[#f5f1eb] mx-[15px] lg:py-16 py-8 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Main Title */}
         <h2 className="text-3xl md:text-5xl font-medium text-black  lg:mb-16 mb-8">

@@ -15,14 +15,14 @@ const page = () => {
     <div className='relative'>
       <main className="relative">
         <Navbar />
-        <ComingSoon />
-        {/* <LearningBanner />
+        {/* <ComingSoon /> */}
+        <LearningBanner />
         <Programs />
         <IndustryFocus />
         <WhatLearn />
         <IntroductoryClass />
         <Faqs />
-        <Newsletter /> */}
+        <Newsletter />
         <Footer />
       </main>
     </div>
