@@ -9,14 +9,20 @@ const IndustryFocus = () => {
           {/* Left Column */}
           <div className="space-y-8 order-2 lg:order-1 lg:col-span-3">
             
-            {/* Video Player Placeholder */}
+            {/* Video Player */}
             <div className='bg-gray-200 rounded-lg p-4'>
-            <div className="bg-white rounded-lg h-80 flex items-center justify-center relative">
-              <div className="w-20 h-20 bg-gray-600 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-700 transition-colors">
-                <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                </svg>
-              </div>
+            <div className="bg-white rounded-lg h-80 relative overflow-hidden">
+              <video 
+                className="w-full h-full object-contain rounded-lg"
+                controls
+                autoPlay
+                muted
+                loop
+                preload="metadata"
+              >
+                <source src="/Video3_programme-summary-final.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
 
             {/* Meet the Instructor Section */}

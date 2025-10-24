@@ -70,7 +70,7 @@ const MeetAuthor = ({ meetAuthorData }) => {
         
         {/* Main Content Container */}
         <div className="bg-gray-100 rounded-lg p-0 lg:p-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-stretch min-h-[500px]">
             
             {/* Left Side - Quote and Author Info */}
             <div className="space-y-2 p-6 lg:p-16">
@@ -124,38 +124,21 @@ const MeetAuthor = ({ meetAuthorData }) => {
             </div>
             
             {/* Right Side - Video Section */}
-            <div className="flex justify-center lg:justify-center">
-              <div className="relative w-full">
-                {/* Video Thumbnail Container */}
-                <div 
-                  className="relative bg-gray-300 md:rounded-br-2xl md:rounded-tr-2xl w-full h-48 md:h-[30rem] flex items-center justify-center cursor-pointer hover:bg-gray-400 transition-colors duration-200 overflow-hidden group"
-                  onClick={handleVideoClick}
-                  style={{ minHeight: '192px' }}
-                >
-                  {videoThumbnail ? (
-                    <Image
-                      src={videoThumbnail}
-                      alt={videoSection.videoThumbnail?.alt || "Video thumbnail"}
-                      fill
-                      sizes="(max-width: 768px) 256px, 320px"
-                      className="object-cover"
-                      priority
-                      onError={(e) => {
-                        e.target.style.display = 'none'
-                      }}
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center">
-                      <span className="text-white text-lg font-medium">Video</span>
-                    </div>
-                  )}
-                  
-                  {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center transition-all duration-200">
-                    <div className="bg-white bg-opacity-60 group-hover:bg-opacity-90 rounded-full p-2 lg:p-3 transition-all duration-200 transform group-hover:scale-110 shadow-lg">
-                      <MdPlayArrow className="text-gray-800 text-xl lg:text-2xl" />
-                    </div>
-                  </div>
+            <div className="flex justify-center lg:justify-center h-full">
+              <div className="relative w-full h-full">
+                {/* Video Player Container - Full Height */}
+                <div className="relative w-full h-full md:rounded-br-2xl md:rounded-tr-2xl overflow-hidden">
+                  <video 
+                    className="w-full h-full object-cover"
+                    controls
+                    autoPlay
+                    muted
+                    loop
+                    preload="metadata"
+                  >
+                    <source src="/XBD_A Short-Connect.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
                 
                 {/* Video Title */}
