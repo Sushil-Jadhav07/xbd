@@ -647,3 +647,252 @@ export async function getAnujNewsletterData() {
 }
 
 
+// Learning Hub Section Queries
+export async function getLearningBannerData() {
+  const query = `*[_type == "learningBanner"][0]{
+    topLabel,
+    mainHeading,
+    description,
+    keyFeatures,
+    primaryButton{
+      text,
+      link
+    },
+    secondaryButton{
+      text,
+      link
+    },
+    tertiaryButton{
+      text,
+      link
+    },
+    disclaimerText,
+    bannerImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    }
+  }`
+  
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching learning banner data:', error)
+    return null
+  }
+}
+
+export async function getProgramsData() {
+  const query = `*[_type == "programs"][0]{
+    sectionTitle,
+    programs[]{
+      programType,
+      title,
+      description,
+      price,
+      features,
+      attributes[]{
+        icon,
+        text
+      },
+      primaryButton{
+        text,
+        link
+      },
+      secondaryButton{
+        text,
+        link
+      },
+      rating{
+        score,
+        learners
+      },
+      footerText
+    }
+  }`
+  
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching programs data:', error)
+    return null
+  }
+}
+
+export async function getIndustryFocusData() {
+  const query = `*[_type == "industryFocus"][0]{
+    focusLabel,
+    mainTitle,
+    subTitle,
+    courseOverview,
+    videoSection{
+      videoTitle,
+      videoDescription,
+      mediaType,
+      videoUrl,
+      uploadedVideo{
+        asset->{
+          _id,
+          url,
+          mimeType
+        }
+      },
+      videoThumbnail{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    },
+    instructorSection{
+      title,
+      description,
+      trustText
+    },
+    learningOptions{
+      title,
+      metrics[]{
+        value,
+        label
+      },
+      formatTitle,
+      formatDescription
+    },
+    featureSections[]{
+      category,
+      title,
+      description
+    },
+    ctaSection{
+      primaryButton{
+        text,
+        link
+      },
+      secondaryLink{
+        text,
+        url
+      },
+      disclaimer
+    }
+  }`
+  
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching industry focus data:', error)
+    return null
+  }
+}
+
+export async function getWhatLearnData() {
+  const query = `*[_type == "whatLearn"][0]{
+    sectionTag,
+    mainHeading,
+    description,
+    featureHighlights[]{
+      title,
+      description
+    },
+    modules[]{
+      number,
+      title,
+      description
+    },
+    requestInfoButton{
+      text,
+      link
+    },
+    sidebarContent{
+      courseRating{
+        title,
+        rating,
+        students
+      },
+      ctaButtons[]{
+        text,
+        link,
+        style
+      },
+      whatYouGain{
+        title,
+        benefits
+      },
+      trustedBy{
+        label,
+        companies
+      },
+      clientResults{
+        results,
+        note
+      },
+      pricing{
+        price
+      }
+    }
+  }`
+  
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching what learn data:', error)
+    return null
+  }
+}
+
+export async function getIntroductoryClassData() {
+  const query = `*[_type == "introductoryClass"][0]{
+    mainHeading,
+    description,
+    ctaButton{
+      text,
+      link
+    },
+    videoSection{
+      mediaType,
+      videoUrl,
+      uploadedVideo{
+        asset->{
+          _id,
+          url,
+          mimeType
+        }
+      },
+      videoThumbnail{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    }
+  }`
+  
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching introductory class data:', error)
+    return null
+  }
+}
+
+export async function getFaqsData() {
+  const query = `*[_type == "faqs"][0]{
+    sectionTitle,
+    faqs[]{
+      question,
+      answer
+    }
+  }`
+  
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching faqs data:', error)
+    return null
+  }
+}
+
+

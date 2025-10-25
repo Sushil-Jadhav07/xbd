@@ -1,27 +1,33 @@
 'use client'
 import React, { useState } from 'react';
 
-const Faqs = () => {
+const Faqs = ({ faqsData }) => {
   const [openIndex, setOpenIndex] = useState(0);
 
-  const faqData = [
-    {
-      question: "Who is this course for?",
-      answer: "CXOs, business leaders, strategists and consultants who want to master exponential growth."
-    },
-    {
-      question: "What formats are available?",
-      answer: "Self-paced modules, live workshops, and cohort activation labs with flexible learning options."
-    },
-    {
-      question: "How do I enroll a team?",
-      answer: "Contact us for team enrollment options and custom pricing for organizations."
-    },
-    {
-      question: "What is the refund policy?",
-      answer: "30-day money-back guarantee with no questions asked."
-    }
-  ];
+  // Fallback data
+  const fallbackData = {
+    sectionTitle: "Frequently Asked Questions",
+    faqs: [
+      {
+        question: "Who is this course for?",
+        answer: "CXOs, business leaders, strategists and consultants who want to master exponential growth."
+      },
+      {
+        question: "What formats are available?",
+        answer: "Self-paced modules, live workshops, and cohort activation labs with flexible learning options."
+      },
+      {
+        question: "How do I enroll a team?",
+        answer: "Contact us for team enrollment options and custom pricing for organizations."
+      },
+      {
+        question: "What is the refund policy?",
+        answer: "30-day money-back guarantee with no questions asked."
+      }
+    ]
+  };
+
+  const data = faqsData || fallbackData;
 
   const toggleFaq = (index) => {
     setOpenIndex(openIndex === index ? -1 : index);
@@ -45,12 +51,12 @@ const Faqs = () => {
 
         {/* Main Heading */}
         <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 lg:mb-12">
-          Frequently Asked Questions
+          {data.sectionTitle}
         </h2>
 
         {/* FAQ Items */}
         <div className="space-y-4">
-          {faqData.map((faq, index) => (
+          {data.faqs?.map((faq, index) => (
             <div key={index} className="bg-gray-200 rounded-lg">
               <button
                 className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-300 transition-colors"

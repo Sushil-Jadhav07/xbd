@@ -128,17 +128,28 @@ const MeetAuthor = ({ meetAuthorData }) => {
               <div className="relative w-full h-full">
                 {/* Video Player Container - Full Height */}
                 <div className="relative w-full h-full md:rounded-br-2xl md:rounded-tr-2xl overflow-hidden">
-                  <video 
-                    className="w-full h-full object-cover"
-                    controls
-                    autoPlay
-                    muted
-                    loop
-                    preload="metadata"
-                  >
-                    <source src="/XBD_A Short-Connect.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+                  {hasVideo ? (
+                    <video 
+                      className="w-full h-full object-cover"
+                      controls
+                      autoPlay
+                      muted
+                      loop
+                      preload="metadata"
+                      poster={videoThumbnail}
+                    >
+                      <source src={finalVideoUrl} type="video/mp4" />
+                      <source src={finalVideoUrl} type="video/webm" />
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                      <div className="text-center text-gray-500">
+                        <MdPlayArrow className="w-16 h-16 mx-auto mb-2" />
+                        <p className="text-sm">No video available</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
                 
                 {/* Video Title */}

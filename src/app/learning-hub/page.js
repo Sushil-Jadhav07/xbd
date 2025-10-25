@@ -8,25 +8,33 @@ import IntroductoryClass from '@/components/Learning-hub/IntroductoryClass'
 import LearningBanner from '@/components/Learning-hub/LearningBanner'
 import Programs from '@/components/Learning-hub/Programs'
 import WhatLearn from '@/components/Learning-hub/WhatLearn'
+import { getLearningBannerData, getProgramsData, getIndustryFocusData, getWhatLearnData, getIntroductoryClassData, getFaqsData } from '@/lib/sanityQueries'
 import React from 'react'
 
-const page = () => {
+export default async function Page() {
+  const [learningBannerData, programsData, industryFocusData, whatLearnData, introductoryClassData, faqsData] = await Promise.all([
+    getLearningBannerData(),
+    getProgramsData(),
+    getIndustryFocusData(),
+    getWhatLearnData(),
+    getIntroductoryClassData(),
+    getFaqsData(),
+  ])
+
   return (
     <div className='relative'>
       <main className="relative">
         <Navbar />
         {/* <ComingSoon /> */}
-        <LearningBanner />
-        <Programs />
-        <IndustryFocus />
-        <WhatLearn />
-        <IntroductoryClass />
-        <Faqs />
+        <LearningBanner learningBannerData={learningBannerData} />
+        <Programs programsData={programsData} />
+        <IndustryFocus industryFocusData={industryFocusData} />
+        <WhatLearn whatLearnData={whatLearnData} />
+        <IntroductoryClass introductoryClassData={introductoryClassData} />
+        <Faqs faqsData={faqsData} />
         <Newsletter />
         <Footer />
       </main>
     </div>
   )
 }
-
-export default page
