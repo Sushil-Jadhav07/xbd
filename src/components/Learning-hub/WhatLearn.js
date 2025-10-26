@@ -56,8 +56,7 @@ const WhatLearn = ({ whatLearnData }) => {
         students: "50K+ students"
       },
       ctaButtons: [
-        { text: "Watch Intro", link: "#", style: "primary" },
-        { text: "Start 7-day trial", link: "#", style: "secondary" }
+        { text: "Join The Waitlist", link: "#", style: "primary" }
       ],
       whatYouGain: {
         title: "What you'll gain",
@@ -140,7 +139,7 @@ const WhatLearn = ({ whatLearnData }) => {
                 {/* Last module with Request Info Button */}
                 {data.modules?.length > 4 && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:space-x-4">
-                    <div className="bg-gray-200 rounded-lg lg:p-6 p-3 flex items-start space-x-4 lg:flex-1">
+                    <div className="bg-gray-200 rounded-lg !mr-0 md:p-6 p-3 flex items-start space-x-4 lg:flex-1">
                       <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
                         <span className="text-black font-bold text-sm">{data.modules[4].number}</span>
                       </div>
@@ -153,7 +152,7 @@ const WhatLearn = ({ whatLearnData }) => {
                     {data.requestInfoButton && (
                       <Link
                         href={data.requestInfoButton.link || '#'}
-                        className="bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors whitespace-nowrap"
+                        className="text-lg md:text-2xl font-bold bg-black text-white text-center flex items-center justify-center px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors whitespace-nowrap"
                       >
                         {data.requestInfoButton.text}
                       </Link>
@@ -191,7 +190,7 @@ const WhatLearn = ({ whatLearnData }) => {
                     href={button.link || '#'}
                     className={`w-full py-3 px-6 rounded-lg font-medium transition-colors ${
                       button.style === 'primary' 
-                        ? 'bg-black text-white hover:bg-gray-800' 
+                        ? 'bg-gradient-to-br !from-[#9d7035] !to-[#c1a35e]' 
                         : 'bg-white text-black hover:bg-gray-50 border border-gray-300'
                     }`}
                   >

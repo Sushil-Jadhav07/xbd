@@ -28,12 +28,12 @@ const Community = () => {
       <main className="relative">
         <Navbar />
 
-        {/* <ComingSoon /> */}
+        <ComingSoon />
         {/* <Topbar /> */}
         
-        <XponentialCommunity />
+        {/* <XponentialCommunity />
         <ValueProposition />
-        <CommunityStructure />
+        <CommunityStructure /> */}
 
         {/* <CommunityBanner />
         <WhatGain />
