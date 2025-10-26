@@ -10,7 +10,7 @@ const Footer = () => {
     { name: 'Book', href: '/book' },
     { name: 'Learning Hub', href: '/learning-hub' },
     { name: 'About Anuj', href: '/about' },
-    { name: 'Work with Anuj', href: '/work' },
+    // { name: 'Work with Anuj', href: '/work' },
     { name: 'Contact', href: '/contact' }
   ];
 
@@ -113,8 +113,8 @@ const Footer = () => {
                   <HiOutlineMail className="w-5 h-5 text-gray-800 dark:text-gray-400 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-gray-800 dark:text-gray-400">Email us</p>
-                    <a href="mailto:hello@anuj.com" className="text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-300 transition-colors duration-200">
-                      hello@anuj.com
+                    <a href="mailto:anuj@xbd.co.in" className="text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-300 transition-colors duration-200">
+                      anuj@xbd.co.in
                     </a>
                   </div>
                 </div>

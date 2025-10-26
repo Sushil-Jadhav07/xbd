@@ -12,8 +12,8 @@ const infoItems = [
   {
     title: 'General enquiries',
     description: 'Drop us an email and we will get back to you within one business day.',
-    primary: 'hello@anuj.com',
-    href: 'mailto:hello@anuj.com'
+    primary: 'anuj@xbd.co.in',
+    href: 'mailto:anuj@xbd.co.in'
   },
   {
     title: 'Visit the XBD office',
