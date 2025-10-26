@@ -33,7 +33,7 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, slides.length]);
@@ -123,7 +123,11 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
         {/* Carousel Container */}
         <div className="relative">
           {/* Main Carousel */}
-          <div className="relative overflow-hidden rounded-lg aspect-[16/9]  shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
+          <div 
+            className="relative overflow-hidden rounded-lg aspect-[16/9]  shadow-2xl transform hover:scale-[1.02] transition-transform duration-500"
+            onMouseEnter={() => setIsAutoPlaying(false)}
+            onMouseLeave={() => setIsAutoPlaying(true)}
+          >
             {/* Slides Container */}
             <div 
               className="flex w-full transition-all duration-700 ease-in-out h-full"
