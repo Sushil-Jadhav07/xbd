@@ -21,7 +21,7 @@ const Programs = ({ programsData }) => {
           { icon: "location", text: "Anywhere" },
           { icon: "mode", text: "Hybrid Mode" }
         ],
-        primaryButton: { text: "Buy Now", link: "#" },
+        primaryButton: { text: "Join The Waitlist", link: "#" },
         secondaryButton: { text: "Preview", link: "#" },
         rating: { score: "5.0", learners: "50k learners" },
         footerText: "30-day money-back guarantee"
@@ -145,23 +145,23 @@ const Programs = ({ programsData }) => {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex gap-3 mb-6">
+              <div className="flex items-center justify-center gap-3 mb-6">
                 {program.primaryButton && (
                   <Link
                     href={program.primaryButton.link || '#'}
-                    className="flex-1 bg-black text-white py-2 px-4 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                    className="flex w-full items-center justify-center bg-black text-white py-2 px-4 rounded-lg font-medium hover:bg-gray-800 transition-colors"
                   >
                     {program.primaryButton.text}
                   </Link>
                 )}
-                {program.secondaryButton && (
+                {/* {program.secondaryButton && (
                   <Link
                     href={program.secondaryButton.link || '#'}
                     className="flex-1 border border-gray-300 text-black py-2 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                   >
                     {program.secondaryButton.text}
                   </Link>
-                )}
+                )} */}
               </div>
 
               {/* Footer */}
