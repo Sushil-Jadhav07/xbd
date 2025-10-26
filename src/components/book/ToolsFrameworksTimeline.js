@@ -55,10 +55,10 @@ export default function ToolsFrameworksTimeline() {
     switch (activeSubTab) {
       case 1:
         return (
-          <div className="h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
-            <div className="flex h-full items-stretch">
+          <div className="min-h-[500px] lg:h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
+            <div className="flex flex-col lg:flex-row h-full items-stretch">
               {/* Left Side - Content (30%) */}
-              <div className="w-[30%] h-full p-6 md:p-8 flex flex-col justify-center border-r border-gray-600">
+              <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
                 <div>
                   <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
                     Hyper-converged Product Design Framework
@@ -79,14 +79,14 @@ export default function ToolsFrameworksTimeline() {
               </div>
               
               {/* Right Side - Scrollable Content (70%) */}
-              <div className="w-[70%] h-full overflow-y-auto">
+              <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
                 {/* Two Images Section */}
-                <div className="grid grid-cols-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2">
                   {/* First Image - IVR Diagram */}
-                  <div className={`bg-gray-700 flex flex-col border-r border-gray-600 transition-all duration-1000 ease-out ${
+                  <div className={`bg-gray-700 flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-4 flex items-center justify-center min-h-[300px]">
+                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={IVRDiagram}
                         alt="Spheres of a hyperconnected product - IVR Diagram"
@@ -97,7 +97,7 @@ export default function ToolsFrameworksTimeline() {
                       />
                     </div>
                     {/* IVR Button below image */}
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
                       IVR
                     </div>
                   </div>
@@ -106,7 +106,7 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-gray-700 flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-4 flex items-center justify-center min-h-[300px]">
+                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={ReachInterconnect}
                         alt="The strategic imperative of Reach Interconnects"
@@ -117,43 +117,43 @@ export default function ToolsFrameworksTimeline() {
                       />
                     </div>
                     {/* REACH Interconnect Button below image */}
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
                       REACH Interconnect
                     </div>
                   </div>
                 </div>
 
                 {/* Framework Description and Key Pillars - Scrollable Content */}
-                <div className={`bg-white p-6 transition-all duration-1000 ease-out delay-500 ${
+                <div className={`bg-white p-4 sm:p-6 transition-all duration-1000 ease-out delay-500 ${
                   isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <div className="max-w-4xl mx-auto">
-                    <h3 className="text-xl font-bold text-gray-800 mb-4">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                       Framework Overview
                     </h3>
-                    <p className="text-base text-gray-700 leading-relaxed mb-6">
+                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
                       Products today are not just built — they're designed to sense, learn, and evolve. This framework helps leaders architect products that merge physical, digital, and cognitive dimensions. It begins where the customer journey starts — at the point of origin of need. By embedding intelligence into every layer, organizations can anticipate behavior, enable self-upgrades, and deliver contextual value before demand is even expressed.
                     </p>
                     
-                    <h4 className="text-lg font-bold text-gray-800 mb-3">
+                    <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
                       Key Pillars
                     </h4>
-                    <div className="space-y-3">
+                    <div className="space-y-2 sm:space-y-3">
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-xs sm:text-sm text-gray-700">
                           <span className="font-semibold text-gray-800">Convergence:</span> Integrate data, design, and device intelligence.
                         </p>
                       </div>
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-xs sm:text-sm text-gray-700">
                           <span className="font-semibold text-gray-800">Context:</span> Anticipate needs in real time.
                         </p>
                       </div>
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-xs sm:text-sm text-gray-700">
                           <span className="font-semibold text-gray-800">Continuity:</span> Enable self-evolving products through AI feedback loops.
                         </p>
                       </div>
@@ -167,10 +167,10 @@ export default function ToolsFrameworksTimeline() {
       
       case 2:
         return (
-          <div className="h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
-            <div className="flex h-full items-stretch">
+          <div className="min-h-[500px] lg:h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
+            <div className="flex flex-col lg:flex-row h-full items-stretch">
               {/* Left Side - Content (30%) */}
-              <div className="w-[30%] h-full p-6 md:p-8 flex flex-col justify-center border-r border-gray-600">
+              <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
                 <div>
                   <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
                     Hyper-Converged Experience Design Framework
@@ -191,14 +191,14 @@ export default function ToolsFrameworksTimeline() {
               </div>
               
               {/* Right Side - Scrollable Content (70%) */}
-              <div className="w-[70%] h-full overflow-y-auto">
+              <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
                 {/* Two Images Section */}
-                <div className="grid grid-cols-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2">
                   {/* First Image - Science of Associations */}
-                  <div className={`bg-gray-700 flex flex-col border-r border-gray-600 transition-all duration-1000 ease-out ${
+                  <div className={`bg-gray-700 flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-4 flex items-center justify-center min-h-[300px]">
+                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={ScienceOfAssociation}
                         alt="The Science of Association - Emotional triggers and associations"
@@ -209,7 +209,7 @@ export default function ToolsFrameworksTimeline() {
                       />
                     </div>
                     {/* Science of Associations Button below image */}
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
                       SCIENCE OF ASSOCIATIONS
                     </div>
                   </div>
@@ -218,7 +218,7 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-gray-700 flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-4 flex items-center justify-center min-h-[300px]">
+                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={EngagementFlywheel}
                         alt="Engagement Flywheel - Brand equity building process"
@@ -229,43 +229,43 @@ export default function ToolsFrameworksTimeline() {
                       />
                     </div>
                     {/* Engagement Flywheel Button below image */}
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
                       ENGAGEMENT FLYWHEEL
                     </div>
                   </div>
                 </div>
 
                 {/* Framework Description and Key Pillars - Scrollable Content */}
-                <div className={`bg-white p-6 transition-all duration-1000 ease-out delay-500 ${
+                <div className={`bg-white p-4 sm:p-6 transition-all duration-1000 ease-out delay-500 ${
                   isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <div className="max-w-4xl mx-auto">
-                    <h3 className="text-xl font-bold text-gray-800 mb-4">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                       Experience is no longer built — it's <em>continuously designed through intelligence</em>.
                     </h3>
-                    <p className="text-base text-gray-700 leading-relaxed mb-6">
+                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
                       This framework redefines experience from a collection of touchpoints to a stream of adaptive interactions. It enables brands to orchestrate micro-moments that respond to user intent, emotion, and context. By converging physical, digital, and emotional data, organizations can deliver frictionless journeys that feel personal, predictive, and persistent.
                     </p>
                     
-                    <h4 className="text-lg font-bold text-gray-800 mb-3">
+                    <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
                       Key Pillars
                     </h4>
-                    <div className="space-y-3">
+                    <div className="space-y-2 sm:space-y-3">
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-xs sm:text-sm text-gray-700">
                           <span className="font-semibold text-gray-800">Intent Recognition:</span> Understand what drives each interaction.
                         </p>
                       </div>
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-xs sm:text-sm text-gray-700">
                           <span className="font-semibold text-gray-800">Adaptive Orchestration:</span> Use AI to tailor journeys in real time.
                         </p>
                       </div>
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-xs sm:text-sm text-gray-700">
                           <span className="font-semibold text-gray-800">Emotional Network:</span> Build lasting connections through experience loops.
                         </p>
                       </div>
@@ -279,10 +279,10 @@ export default function ToolsFrameworksTimeline() {
 
       case 3:
         return (
-          <div className="h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
-            <div className="flex h-full items-stretch">
+          <div className="min-h-[500px] lg:h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
+            <div className="flex flex-col lg:flex-row h-full items-stretch">
               {/* Left Side - Content (30%) */}
-              <div className="w-[30%] h-full p-6 md:p-8 flex flex-col justify-center border-r border-gray-600">
+              <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
                 <div>
                   <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
                     Hyper-converged Value Design Frameworks
@@ -302,14 +302,14 @@ export default function ToolsFrameworksTimeline() {
               </div>
 
               {/* Right Side - Scrollable Content (70%) */}
-              <div className="w-[70%] h-full overflow-y-auto">
+              <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
                 {/* Two Images Section */}
-                <div className="grid grid-cols-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2">
                   {/* First Image - Value Exchange Network */}
-                  <div className={`bg-gray-700 flex flex-col border-r border-gray-600 transition-all duration-1000 ease-out ${
+                  <div className={`bg-gray-700 flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-4 flex items-center justify-center min-h-[300px]">
+                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={ValueExchangeNetwork}
                         alt="Value Exchange Network"
@@ -320,7 +320,7 @@ export default function ToolsFrameworksTimeline() {
                       />
                     </div>
                     {/* Button below image */}
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
                       VALUE EXCHANGE NETWORK
                     </div>
                   </div>
@@ -329,7 +329,7 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-gray-700 flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-4 flex items-center justify-center min-h-[300px]">
+                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={ValueLineage}
                         alt="Value Lineage across extended value chains"
@@ -340,43 +340,43 @@ export default function ToolsFrameworksTimeline() {
                       />
                     </div>
                     {/* Button below image */}
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
                       VALUE LINEAGE
                     </div>
                   </div>
                 </div>
 
                 {/* Framework Description and Key Pillars - Scrollable Content */}
-                <div className={`bg-white p-6 transition-all duration-1000 ease-out delay-500 ${
+                <div className={`bg-white p-4 sm:p-6 transition-all duration-1000 ease-out delay-500 ${
                   isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <div className="max-w-4xl mx-auto">
-                    <h3 className="text-xl font-bold text-gray-800 mb-4">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                       Value isn't delivered. It's <em>co-created through convergence</em>.
                     </h3>
-                    <p className="text-base text-gray-700 leading-relaxed mb-6">
+                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
                       This framework enables organizations to move from transactional relationships to participatory ecosystems — where every actor contributes data, insights, or capabilities that multiply collective value. It helps design value networks that operate at zero marginal cost and compound with every interaction.
                     </p>
                     
-                    <h4 className="text-lg font-bold text-gray-800 mb-3">
+                    <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
                       Key Pillars
                     </h4>
-                    <div className="space-y-3">
+                    <div className="space-y-2 sm:space-y-3">
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-xs sm:text-sm text-gray-700">
                           <span className="font-semibold text-gray-800">Network Effects:</span> Build compounding value across ecosystem nodes.
                         </p>
                       </div>
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-xs sm:text-sm text-gray-700">
                           <span className="font-semibold text-gray-800">Data Exchange:</span> Treat data as the currency of collaboration.
                         </p>
                       </div>
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-xs sm:text-sm text-gray-700">
                           <span className="font-semibold text-gray-800">Trust Infrastructure:</span> Enable frictionless participation at scale.
                         </p>
                       </div>
@@ -390,10 +390,10 @@ export default function ToolsFrameworksTimeline() {
 
       case 4:
         return (
-          <div className="h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
-            <div className="flex h-full items-stretch">
+          <div className="min-h-[500px] lg:h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
+            <div className="flex flex-col lg:flex-row h-full items-stretch">
               {/* Left Side - Content (30%) */}
-              <div className="w-[30%] h-full p-6 md:p-8 flex flex-col justify-center border-r border-gray-600">
+              <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
                 <div>
                   <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
                     Multiplier effects to design Scale
@@ -413,14 +413,14 @@ export default function ToolsFrameworksTimeline() {
               </div>
 
               {/* Right Side - Scrollable Content (70%) */}
-              <div className="w-[70%] h-full overflow-y-auto">
+              <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
                 {/* Two Images Section */}
-                <div className="grid grid-cols-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2">
                   {/* First Image - VEN Network Effects */}
-                  <div className={`bg-gray-700 flex flex-col border-r border-gray-600 transition-all duration-1000 ease-out ${
+                  <div className={`bg-gray-700 flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-4 flex items-center justify-center min-h-[300px]">
+                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={VenNetworkEffects}
                         alt="Network effects of Value Exchange Network"
@@ -430,7 +430,7 @@ export default function ToolsFrameworksTimeline() {
                         priority
                       />
                     </div>
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
                       VEN NETWORK EFFECTS
                     </div>
                   </div>
@@ -439,7 +439,7 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-gray-700 flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-4 flex items-center justify-center min-h-[300px]">
+                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={PositioningOfferService}
                         alt="Positioning, Offer and Service value driving Value lifecycle"
@@ -449,43 +449,43 @@ export default function ToolsFrameworksTimeline() {
                         priority
                       />
                     </div>
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
                       POSITIONING & SERVICE
                     </div>
                   </div>
                 </div>
 
                 {/* Framework Description and Key Pillars - Scrollable Content */}
-                <div className={`bg-white p-6 transition-all duration-1000 ease-out delay-500 ${
+                <div className={`bg-white p-4 sm:p-6 transition-all duration-1000 ease-out delay-500 ${
                   isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <div className="max-w-4xl mx-auto">
-                    <h3 className="text-xl font-bold text-gray-800 mb-4">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                       Scale isn't about size — it's about <em>velocity and amplification</em>.
                     </h3>
-                    <p className="text-base text-gray-700 leading-relaxed mb-6">
+                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
                       This framework reveals how organizations can design multiplier effects that accelerate growth geometrically, not linearly. By connecting product, platform, and ecosystem levers, leaders can create self-reinforcing loops where each success feeds the next. It's a guide to turning every input into a catalyst for compounding returns.
                     </p>
                     
-                    <h4 className="text-lg font-bold text-gray-800 mb-3">
+                    <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
                       Key Pillars
                     </h4>
-                    <div className="space-y-3">
+                    <div className="space-y-2 sm:space-y-3">
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-xs sm:text-sm text-gray-700">
                           <span className="font-semibold text-gray-800">Feedback Loops:</span> Use data to continuously enhance performance.
                         </p>
                       </div>
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-xs sm:text-sm text-gray-700">
                           <span className="font-semibold text-gray-800">Platform Leverage:</span> Amplify reach and efficiency.
                         </p>
                       </div>
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-xs sm:text-sm text-gray-700">
                           <span className="font-semibold text-gray-800">Network Density:</span> Increase value with every new participant.
                         </p>
                       </div>
@@ -499,10 +499,10 @@ export default function ToolsFrameworksTimeline() {
 
       case 5:
         return (
-          <div className="h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
-            <div className="flex h-full items-stretch">
+          <div className="min-h-[500px] lg:h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
+            <div className="flex flex-col lg:flex-row h-full items-stretch">
               {/* Left Side - Content (30%) */}
-              <div className="w-[30%] h-full p-6 md:p-8 flex flex-col justify-center border-r border-gray-600">
+              <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
                 <div>
                   <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
                     Formation of Exponential Organizations
@@ -522,14 +522,14 @@ export default function ToolsFrameworksTimeline() {
               </div>
 
               {/* Right Side - Scrollable Content (70%) */}
-              <div className="w-[70%] h-full overflow-y-auto">
+              <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
                 {/* Two Images Section */}
-                <div className="grid grid-cols-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2">
                   {/* First Image - Cognitive Enterprise */}
-                  <div className={`bg-gray-700 flex flex-col border-r border-gray-600 transition-all duration-1000 ease-out ${
+                  <div className={`bg-gray-700 flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-4 flex items-center justify-center min-h-[300px]">
+                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={CognitiveEnterprise}
                         alt="Cognitive Enterprise"
@@ -539,7 +539,7 @@ export default function ToolsFrameworksTimeline() {
                         priority
                       />
                     </div>
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
                       COGNITIVE ENTERPRISE
                     </div>
                   </div>
@@ -548,7 +548,7 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-gray-700 flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-4 flex items-center justify-center min-h-[300px]">
+                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={CognitiveNetwork}
                         alt="Cognitive Network across Connect, Emotional and Value Network"
@@ -558,44 +558,44 @@ export default function ToolsFrameworksTimeline() {
                         priority
                       />
                     </div>
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-3 text-sm">
+                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
                       COGNITIVE NETWORK
                     </div>
                   </div>
                 </div>
 
                 {/* Framework Description and Key Pillars - Scrollable Content */}
-                <div className={`bg-white p-6 transition-all duration-1000 ease-out delay-500 ${
+                <div className={`bg-white p-4 sm:p-6 transition-all duration-1000 ease-out delay-500 ${
                   isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <div className="max-w-4xl mx-auto">
-                    <h3 className="text-xl font-bold text-gray-800 mb-4">
-                      Exponential organizations are <em>architected for intelligence</em>, not just growth.
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
+                    Exponential organizations are  <em>designed to evolve</em>
                     </h3>
-                    <p className="text-base text-gray-700 leading-relaxed mb-6">
-                      This framework reveals how to design organizations that scale exponentially through cognitive capabilities, adaptive systems, and self-evolving architectures. It transforms traditional hierarchies into intelligent networks that learn, predict, and optimize autonomously. The result: organizations that grow smarter and more valuable with every interaction.
+                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
+                    This final framework integrates all previous principles into the operating DNA of an organization. It helps leaders design organizations that scale without friction — where AI, data, and networks form self-learning systems. From structure to culture, it enables enterprises to move from efficiency to exponentiality.
                     </p>
                     
-                    <h4 className="text-lg font-bold text-gray-800 mb-3">
+                    <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
                       Key Pillars
                     </h4>
-                    <div className="space-y-3">
+                    <div className="space-y-2 sm:space-y-3">
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Cognitive Architecture:</span> Build AI-native organizational DNA.
+                        <p className="text-xs sm:text-sm text-gray-700">
+                          <span className="font-semibold text-gray-800">Autonomous Systems:</span> Build AI-augmented operations.
                         </p>
                       </div>
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Adaptive Systems:</span> Enable self-evolving capabilities.
+                        <p className="text-xs sm:text-sm text-gray-700">
+                          <span className="font-semibold text-gray-800">Network-Driven Growth:</span> Scale through external ecosystems.
                         </p>
                       </div>
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Intelligence Networks:</span> Connect cognitive capabilities across the ecosystem.
+                        <p className="text-xs sm:text-sm text-gray-700">
+                          <span className="font-semibold text-gray-800">Purpose Alignment:</span> Anchor exponential growth to a unifying mission.
                         </p>
                       </div>
                     </div>
@@ -618,7 +618,7 @@ export default function ToolsFrameworksTimeline() {
   };
 
   return (
-    <div className="min-h-screen mx-[15px] bg-[#f5f1eb] text-black py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div className="min-h-screen mx-[15px] bg-[#f5f1eb] text-black py-8 md:py-12 px-4 sm:px-6 md:px-8 relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}

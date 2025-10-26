@@ -5,7 +5,6 @@ import { HiOutlineSparkles, HiChevronLeft, HiChevronRight } from 'react-icons/hi
 import { MdImage, MdSecurity, MdFlashOn, MdVerifiedUser } from 'react-icons/md';
 import Image from 'next/image';
 import Link from 'next/link';
-import starsBg from '../../asset/testimonial_bg.jpeg';
 import BgImage from "../../asset/pattern-9.png";
 
 const PricingPlan = ({ pricingPlanData }) => {

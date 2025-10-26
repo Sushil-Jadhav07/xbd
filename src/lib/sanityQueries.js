@@ -213,7 +213,34 @@ export async function getToolsCarouselData() {
     title,
     highlightText,
     subtitle,
-    tools
+    tools[]{
+      title,
+      description,
+      buttonText,
+      buttonLink,
+      mediaType,
+      videoUrl,
+      videoFile{
+        asset->{
+          _id,
+          url
+        }
+      },
+      thumbnail{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      image{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    }
   }`
   
   try {

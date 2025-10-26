@@ -6,7 +6,6 @@ import { MdImage } from 'react-icons/md';
 import { HiOutlineDocument, HiOutlinePlay, HiOutlinePhone, HiOutlineMicrophone } from 'react-icons/hi';
 import Link from 'next/link';
 import Image from 'next/image';
-import starsBg from '../../asset/testimonial_bg.jpeg';
 
 const Slider = ({ resourcesSliderData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);

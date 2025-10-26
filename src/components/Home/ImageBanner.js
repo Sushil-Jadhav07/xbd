@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import FeatureImageOne from "../../asset/feature1.png"
 import FeatureImageTwo from "../../asset/feature2.png"
-import BgImage from "../../asset/pattern-10.png"
 
 const ImageBannerCarousel = ({ imageBannerData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);

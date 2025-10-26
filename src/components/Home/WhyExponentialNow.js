@@ -3,7 +3,6 @@
 import { HiOutlineSparkles } from 'react-icons/hi';
 import { useState } from 'react';
 import WhyHyperGrowth from "../../asset/exponential-growth2.png"
-import BgImage from "../../asset/pattern-2.png"
 import Image from 'next/image';
 import LeadFormModal from '../common/LeadFormModal';
 

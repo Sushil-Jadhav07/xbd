@@ -108,7 +108,7 @@ export default function ExponentialJourney({ journeyData }) {
 
           {/* Journey Points */}
           {/* Foundation Point */}
-          <div className="absolute md:left-[2%] left-[2%] md:bottom-[0%] bottom-[0%] flex items-center space-x-3">
+          <div className="absolute md:left-[2%] left-[2%] md:bottom-[0%] bottom-[10%] flex items-center space-x-3">
             <div className="relative">
               <div className="md:w-10 md:h-10  w-4 h-4 rounded-full bg-[#9d7035]  flex items-center justify-center border-4 border-gray-800">
                 <div className="md:w-4 md:h-4 w-2 h-2 rounded-full bg-[#c1a35e]"></div>
@@ -118,7 +118,7 @@ export default function ExponentialJourney({ journeyData }) {
           </div>
 
           {/* Reflector Point */}
-          <div className="absolute md:left-[20%] left-[18%] md:bottom-[8%] bottom-[8%] flex items-center space-x-3">
+          <div className="absolute md:left-[20%] left-[20%] md:bottom-[8%] bottom-[22%] flex items-center space-x-3">
             <div className="relative">
               <div className="md:w-10 md:h-10  w-4 h-4 rounded-full bg-gray-700 flex items-center justify-center border-4 border-gray-800">
                 <div className="md:w-4 md:h-4 w-2 h-2 rounded-full bg-gray-500"></div>
@@ -149,7 +149,7 @@ export default function ExponentialJourney({ journeyData }) {
         </div>
 
         {/* Book Button */}
-        <div className="absolute md:left-[13%] left-[30%] md:bottom-[0%] bottom-[0%]">
+        <div className="absolute md:left-[13%] left-[0%] md:bottom-[0%] bottom-[-3%]">
           <input
             type="text"
             placeholder="Book"

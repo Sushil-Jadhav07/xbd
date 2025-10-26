@@ -3,7 +3,6 @@ import React from 'react'
 import { MdImage } from 'react-icons/md'
 import Image from 'next/image'
 import Link from 'next/link'
-import BgImage from "../../asset/pattern-11.png"
 
 const BookInfo = ({ bookInfoData }) => {
   // Fallback data
@@ -49,7 +48,7 @@ const BookInfo = ({ bookInfoData }) => {
   const data = bookInfoData || fallbackData
 
   return (
-    <div className="bg-white mx-[15px] py-16 relative overflow-hidden">
+    <div className="bg-white mx-[15px] py-12 relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 opacity-10">
         <Image 

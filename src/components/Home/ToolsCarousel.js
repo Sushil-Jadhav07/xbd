@@ -8,7 +8,6 @@ import XtractEmotions from "../../asset/X-tract Emotions.png"
 import XtendValue from "../../asset/X-tend Value.png"
 import Image from 'next/image';
 import Link from 'next/link';
-import starsBg from '../../asset/pattern0.png';
 
 const ToolsCarousel = ({ toolsCarouselData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -119,7 +118,10 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
   }, [currentSlide]);
 
   const renderMedia = (tool, index) => {
-    if (tool.mediaType === 'video' && tool.videoUrl) {
+    // Get video source - prioritize uploaded file over URL
+    const videoSource = tool.videoFile?.asset?.url || tool.videoUrl;
+    
+    if (tool.mediaType === 'video' && videoSource) {
       return (
         <video
           ref={(el) => (videoRefs.current[index] = el)}
@@ -128,14 +130,15 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
           playsInline
           className="w-full h-full object-cover"
           preload="metadata"
+          poster={tool.thumbnail?.asset?.url}
         >
-          <source src={tool.videoUrl} type="video/mp4" />
+          <source src={videoSource} type="video/mp4" />
         </video>
       );
     } else if (tool.mediaType === 'image' && tool.image) {
       return (
         <Image 
-          src={urlFor(tool.image).url()} 
+          src={tool.image.asset.url} 
           alt={tool.title} 
           className="w-full h-full object-cover"
           width={400}
