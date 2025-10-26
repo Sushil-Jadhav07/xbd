@@ -55,9 +55,8 @@ const WhatLearn = ({ whatLearnData }) => {
         rating: "5★",
         students: "50K+ students"
       },
-      ctaButtons: [
-        { text: "Join The Waitlist", link: "#", style: "primary" }
-      ],
+      primaryButton: { text: "Join The Waitlist", link: "#" },
+      secondaryButton: null,
       whatYouGain: {
         title: "What you'll gain",
         benefits: [
@@ -182,23 +181,24 @@ const WhatLearn = ({ whatLearnData }) => {
             )}
 
             {/* Call-to-Action Buttons */}
-            {data.sidebarContent?.ctaButtons && (
-              <div className="text-center mb-8 space-y-3">
-                {data.sidebarContent.ctaButtons.map((button, index) => (
-                  <Link
-                    key={index}
-                    href={button.link || '#'}
-                    className={`w-full py-3 px-6 rounded-lg font-medium transition-colors ${
-                      button.style === 'primary' 
-                        ? 'bg-gradient-to-br !from-[#9d7035] !to-[#c1a35e]' 
-                        : 'bg-white text-black hover:bg-gray-50 border border-gray-300'
-                    }`}
-                  >
-                    {button.text}
-                  </Link>
-                ))}
-              </div>
-            )}
+            <div className="text-center mb-8 space-y-3">
+              {data.sidebarContent?.primaryButton && (
+                <Link
+                  href={data.sidebarContent.primaryButton.link || '#'}
+                  className="w-full py-3 px-6 rounded-lg font-medium transition-colors bg-gradient-to-br !from-[#9d7035] !to-[#c1a35e] text-white hover:from-yellow-500 hover:to-yellow-700"
+                >
+                  {data.sidebarContent.primaryButton.text}
+                </Link>
+              )}
+              {data.sidebarContent?.secondaryButton && (
+                <Link
+                  href={data.sidebarContent.secondaryButton.link || '#'}
+                  className="w-full py-3 px-6 rounded-lg font-medium transition-colors bg-white text-black hover:bg-gray-50 border border-gray-300"
+                >
+                  {data.sidebarContent.secondaryButton.text}
+                </Link>
+              )}
+            </div>
 
             {/* What you'll gain Section */}
             {data.sidebarContent?.whatYouGain && (

@@ -149,19 +149,19 @@ const Programs = ({ programsData }) => {
                 {program.primaryButton && (
                   <Link
                     href={program.primaryButton.link || '#'}
-                    className="flex w-full items-center justify-center bg-black text-white py-2 px-4 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                    className="flex-1 flex items-center justify-center bg-black text-white py-2 px-4 rounded-lg font-medium hover:bg-gray-800 transition-colors"
                   >
                     {program.primaryButton.text}
                   </Link>
                 )}
-                {/* {program.secondaryButton && (
+                {program.secondaryButton && (
                   <Link
                     href={program.secondaryButton.link || '#'}
-                    className="flex-1 border border-gray-300 text-black py-2 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                    className="flex-1 flex items-center justify-center border border-gray-300 text-black py-2 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                   >
                     {program.secondaryButton.text}
                   </Link>
-                )} */}
+                )}
               </div>
 
               {/* Footer */}
