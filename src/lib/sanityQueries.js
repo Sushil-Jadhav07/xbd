@@ -700,6 +700,26 @@ export async function getLearningBannerData() {
         url
       },
       alt
+    },
+    videoSection{
+      videoTitle,
+      videoDescription,
+      mediaType,
+      videoUrl,
+      uploadedVideo{
+        asset->{
+          _id,
+          url,
+          mimeType
+        }
+      },
+      videoThumbnail{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
     }
   }`
   

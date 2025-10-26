@@ -16,19 +16,66 @@ const LearningBanner = ({ learningBannerData }) => {
     primaryButton: { text: "Enroll Now", link: "#" },
     secondaryButton: { text: "Preview Free Class", link: "#" },
     tertiaryButton: { text: "Program Details", link: "#" },
-    disclaimerText: "Low-risk: Cancel within 14 days for a full refund. Teams discount available."
+    disclaimerText: "Low-risk: Cancel within 14 days for a full refund. Teams discount available.",
+    videoSection: {
+      videoTitle: "Program Overview",
+      videoDescription: "Watch this short video to understand what you'll learn and achieve.",
+      mediaType: "url",
+      videoUrl: "/Video3_programme-summary-final.mp4"
+    }
   }
 
   const data = learningBannerData || fallbackData;
+
+  // Get video data
+  const videoSection = data.videoSection || {};
+  const videoUrl = videoSection.videoUrl;
+  const uploadedVideo = videoSection.uploadedVideo?.asset?.url;
+  const videoThumbnail = videoSection.videoThumbnail?.asset?.url;
+  const mediaType = videoSection.mediaType || 'url';
+  
+  // Determine which video to use
+  const finalVideoUrl = mediaType === 'upload' ? uploadedVideo : videoUrl;
+  const hasVideo = finalVideoUrl && finalVideoUrl.trim() !== '';
 
   return (
     <div className="bg-white mx-[15px] lg:py-16 py-8 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
-          {/* Left Column - Image */}
+          {/* Left Column - Video or Image */}
           <div className="bg-gray-200 rounded-lg h-96 lg:h-full flex items-center justify-center">
-            {data.bannerImage?.asset?.url ? (
+            {hasVideo ? (
+              /* Video Player */
+              <div className="w-full h-full bg-white rounded-lg p-4 flex flex-col">
+                <div className="flex-1 bg-white rounded-lg relative overflow-hidden">
+                  <video 
+                    className="w-full h-full object-contain rounded-lg"
+                    controls
+                    autoPlay
+                    muted
+                    loop
+                    preload="metadata"
+                    poster={videoThumbnail}
+                  >
+                    <source src={finalVideoUrl} type="video/mp4" />
+                    <source src={finalVideoUrl} type="video/webm" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                
+                {/* Video Info */}
+                {videoSection.videoTitle && (
+                  <div className="mt-3">
+                    <h3 className="text-lg font-bold text-black mb-2">{videoSection.videoTitle}</h3>
+                    {videoSection.videoDescription && (
+                      <p className="text-gray-700 text-sm">{videoSection.videoDescription}</p>
+                    )}
+                  </div>
+                )}
+              </div>
+            ) : data.bannerImage?.asset?.url ? (
+              /* Banner Image */
               <Image
                 src={data.bannerImage.asset.url}
                 alt={data.bannerImage.alt || "Learning Hub Banner"}
@@ -37,6 +84,7 @@ const LearningBanner = ({ learningBannerData }) => {
                 className="w-full h-full object-cover rounded-lg"
               />
             ) : (
+              /* Fallback placeholder */
               <div className="w-24 h-24 bg-gray-400 rounded-lg flex items-center justify-center">
                 <svg className="w-16 h-16 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
