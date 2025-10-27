@@ -258,7 +258,30 @@ export async function getQuoteCarouselData() {
     quoteText,
     primaryButton,
     secondaryButton,
-    slides
+    mediaType,
+    image{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    imageAlt,
+    videoUrl,
+    uploadedVideo{
+      asset->{
+        _id,
+        url,
+        mimeType
+      }
+    },
+    videoThumbnail{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    }
   }`
   
   try {

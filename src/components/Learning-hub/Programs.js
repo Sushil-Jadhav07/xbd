@@ -165,7 +165,7 @@ const Programs = ({ programsData }) => {
               </div>
 
               {/* Footer */}
-              <div className="text-center flex items-center justify-between">
+              {/* <div className="text-center flex items-center justify-between">
                 {program.rating && (
                   <div className="flex items-center justify-center space-x-1">
                     <svg className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
@@ -178,7 +178,7 @@ const Programs = ({ programsData }) => {
                 {program.footerText && (
                   <div className="text-xs text-gray-600">{program.footerText}</div>
                 )}
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

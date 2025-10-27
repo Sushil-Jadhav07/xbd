@@ -42,12 +42,20 @@ export default function ToolsFrameworksTimeline() {
     { id: 5, title: "DESIGN EXPONENTIALITY" }
   ];
 
+  // const subTabs = [
+  //   { id: 1, label: "Hyper-converged Product Design Framework" },
+  //   { id: 2, label: "Hyper-Converged Experience Design Framework" },
+  //   { id: 3, label: "Hyper-converged Value Design Framework" },
+  //   { id: 4, label: "Multiplier effects to design Scale" },
+  //   { id: 5, label: "Formation of Exponential Organizations" }
+  // ];
+
   const subTabs = [
-    { id: 1, label: "Hyper-converged Product Design Framework" },
-    { id: 2, label: "Hyper-Converged Experience Design Framework" },
-    { id: 3, label: "Hyper-converged Value Design Framework" },
-    { id: 4, label: "Multiplier effects to design Scale" },
-    { id: 5, label: "Formation of Exponential Organizations" }
+    { id: 1, label: "DESIGN PRODUCT" },
+    { id: 2, label: "DESIGN EXPERIENCE" },
+    { id: 3, label: "DESIGN VALUE" },
+    { id: 4, label: "DESIGN SCALE" },
+    { id: 5, label: "DESIGN EXPONENTIALITY" }
   ];
 
   const getContent = () => {
@@ -83,7 +91,7 @@ export default function ToolsFrameworksTimeline() {
                 {/* Two Images Section */}
                 <div className="grid grid-cols-1 sm:grid-cols-2">
                   {/* First Image - IVR Diagram */}
-                  <div className={`bg-gray-700 flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
+                  <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
                     <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
@@ -103,7 +111,7 @@ export default function ToolsFrameworksTimeline() {
                   </div>
                   
                   {/* Second Image - REACH Interconnect */}
-                  <div className={`bg-gray-700 flex flex-col transition-all duration-1000 ease-out delay-300 ${
+                  <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
                     <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
@@ -195,7 +203,7 @@ export default function ToolsFrameworksTimeline() {
                 {/* Two Images Section */}
                 <div className="grid grid-cols-1 sm:grid-cols-2">
                   {/* First Image - Science of Associations */}
-                  <div className={`bg-gray-700 flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
+                  <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
                     <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
@@ -215,7 +223,7 @@ export default function ToolsFrameworksTimeline() {
                   </div>
                   
                   {/* Second Image - Engagement Flywheel */}
-                  <div className={`bg-gray-700 flex flex-col transition-all duration-1000 ease-out delay-300 ${
+                  <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
                     <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
@@ -306,7 +314,7 @@ export default function ToolsFrameworksTimeline() {
                 {/* Two Images Section */}
                 <div className="grid grid-cols-1 sm:grid-cols-2">
                   {/* First Image - Value Exchange Network */}
-                  <div className={`bg-gray-700 flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
+                  <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
                     <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
@@ -326,7 +334,7 @@ export default function ToolsFrameworksTimeline() {
                   </div>
 
                   {/* Second Image - Value Lineage */}
-                  <div className={`bg-gray-700 flex flex-col transition-all duration-1000 ease-out delay-300 ${
+                  <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
                     <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
@@ -417,7 +425,7 @@ export default function ToolsFrameworksTimeline() {
                 {/* Two Images Section */}
                 <div className="grid grid-cols-1 sm:grid-cols-2">
                   {/* First Image - VEN Network Effects */}
-                  <div className={`bg-gray-700 flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
+                  <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
                     <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
@@ -436,7 +444,7 @@ export default function ToolsFrameworksTimeline() {
                   </div>
 
                   {/* Second Image - Positioning/Offer/Service */}
-                  <div className={`bg-gray-700 flex flex-col transition-all duration-1000 ease-out delay-300 ${
+                  <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
                     <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
@@ -526,7 +534,7 @@ export default function ToolsFrameworksTimeline() {
                 {/* Two Images Section */}
                 <div className="grid grid-cols-1 sm:grid-cols-2">
                   {/* First Image - Cognitive Enterprise */}
-                  <div className={`bg-gray-700 flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
+                  <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
                     <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
@@ -545,7 +553,7 @@ export default function ToolsFrameworksTimeline() {
                   </div>
 
                   {/* Second Image - Cognitive Network */}
-                  <div className={`bg-gray-700 flex flex-col transition-all duration-1000 ease-out delay-300 ${
+                  <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
                     <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">

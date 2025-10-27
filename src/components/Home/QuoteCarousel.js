@@ -1,13 +1,16 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { MdImage } from 'react-icons/md';
+import { useState, useEffect, useRef } from 'react';
+import { MdImage, MdPlayCircle } from 'react-icons/md';
 import Image from 'next/image';
 import Link from 'next/link';
 import LeadFormModal from '../common/LeadFormModal';
 
 const QuoteCarousel = ({ quoteCarouselData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const videoRef = useRef(null);
 
   // Fallback data
   const fallbackData = {
@@ -15,10 +18,146 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
     quoteText: "The Only Thing That's Changed In The World Is Everything",
     primaryButton: { text: "Start My Growth" },
     secondaryButton: { text: "See How It Works" },
+    mediaType: 'image',
     image: { alt: "Growth Image" }
   };
 
   const data = quoteCarouselData || fallbackData;
+
+
+  // Handle hover events for video
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+    setIsVideoPlaying(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    setIsVideoPlaying(false);
+  };
+
+  // Control video playback based on isVideoPlaying state
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isVideoPlaying) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0; // Reset to beginning when hover ends
+      }
+    }
+  }, [isVideoPlaying]);
+
+  // Helper function to get YouTube video ID
+  const getYouTubeVideoId = (url) => {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+  };
+
+  // Helper function to get Vimeo video ID
+  const getVimeoVideoId = (url) => {
+    if (!url) return null;
+    const regExp = /vimeo.com\/(\d+)/;
+    const match = url.match(regExp);
+    return match ? match[1] : null;
+  };
+
+  // Render media content
+  const renderMedia = () => {
+    const mediaType = data.mediaType || 'image';
+
+    if (mediaType === 'image' && data.image) {
+      const imageUrl = data.image?.asset?.url || data.image;
+      const altText = data.imageAlt || data.image?.alt || "Quote Carousel Image";
+      
+      return (
+        <div className="w-full h-full relative min-h-[400px]">
+          <Image 
+            src={imageUrl}
+            alt={altText}
+            fill
+            className="object-cover"
+          />
+        </div>
+      );
+    }
+
+    if (mediaType === 'video' && data.videoUrl) {
+      const youtubeId = getYouTubeVideoId(data.videoUrl);
+      const vimeoId = getVimeoVideoId(data.videoUrl);
+
+      if (youtubeId) {
+        return (
+          <div className="w-full h-full min-h-[400px]">
+            <iframe
+              src={`https://www.youtube.com/embed/${youtubeId}?autoplay=0&rel=0`}
+              title="YouTube video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full min-h-[400px]"
+              style={{ border: 'none' }}
+            />
+          </div>
+        );
+      }
+
+      if (vimeoId) {
+        return (
+          <div className="w-full h-full min-h-[400px]">
+            <iframe
+              src={`https://player.vimeo.com/video/${vimeoId}?autoplay=0`}
+              title="Vimeo video"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full min-h-[400px]"
+              style={{ border: 'none' }}
+            />
+          </div>
+        );
+      }
+    }
+
+    if (mediaType === 'videoUpload' && data.uploadedVideo?.asset?.url) {
+      return (
+        <div 
+          className="w-full h-full relative min-h-[400px]"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {/* Thumbnail - shown when video is not playing */}
+          {!isVideoPlaying && data.videoThumbnail?.asset?.url && (
+            <Image
+              src={data.videoThumbnail.asset.url}
+              alt={data.videoThumbnail.alt || "Video Thumbnail"}
+              fill
+              className="object-cover"
+            />
+          )}
+          
+          {/* Video - shown when playing or no thumbnail */}
+          {(isVideoPlaying || !data.videoThumbnail?.asset?.url) && (
+            <video
+              ref={videoRef}
+              src={data.uploadedVideo.asset.url}
+              controls={isVideoPlaying && !isHovering}
+              autoPlay={isVideoPlaying}
+              muted
+              loop
+              className="w-full h-full min-h-[400px] object-cover"
+              playsInline
+            >
+              Your browser does not support the video tag.
+            </video>
+          )}
+        </div>
+      );
+    }
+
+    // Fallback placeholder
+    return <MdImage className="text-gray-500 dark:text-gray-300 text-5xl" />;
+  };
 
   return (
     <>
@@ -71,27 +210,20 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
               </div>
             </div>
 
-            {/* Right Image - Edge to Edge */}
-            <div className="flex-1 relative">
-              {/* Image Container */}
-              <div className="relative overflow-hidden h-full bg-[#dbdbdb] dark:bg-gray-900 lg:rounded-r-3xl">
-                {/* Single Image */}
-                <div className="w-full h-full relative">
-                  {/* Image */}
-                  <div className="w-full h-full bg-[#dbdbdb] dark:bg-gray-900 flex items-center justify-center relative">
-                    {data.image ? (
-                      <Image 
-                        src={typeof data.image === 'string' ? data.image : data.image}
-                        alt={data.image.alt || "Growth Image"}
-                        fill
-                        className="object-cover"
-                      />
-                    ) : (
-                      <MdImage className="text-gray-500 dark:text-gray-300 text-5xl" />
-                    )}
+            {/* Right Media - Edge to Edge */}
+            <div className="flex-1 relative min-h-[400px] lg:min-h-0">
+              {/* Media Container */}
+              <div className="relative overflow-hidden h-full w-full bg-[#dbdbdb] dark:bg-gray-900 lg:rounded-r-3xl">
+                {/* Single Media Item */}
+                <div className="w-full h-full relative min-h-[400px] lg:min-h-0">
+                  {/* Media Content */}
+                  <div className="w-full h-full bg-[#dbdbdb] dark:bg-gray-900 flex items-center justify-center relative min-h-[400px] lg:min-h-0">
+                    {renderMedia()}
                     
-                    {/* Subtle gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 opacity-30"></div>
+                    {/* Subtle gradient overlay - only for images */}
+                    {(data.mediaType === 'image' || !data.mediaType) && (
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 opacity-30 pointer-events-none"></div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -106,7 +238,6 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
       title="Start My Growth"
       onSubmit={async (values) => {
         // TODO: integrate with your API
-        console.log('Submitting form:', values);
       }}
     />
     </>

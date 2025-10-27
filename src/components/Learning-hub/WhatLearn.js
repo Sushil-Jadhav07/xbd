@@ -166,7 +166,7 @@ const WhatLearn = ({ whatLearnData }) => {
           <div className="bg-gray-200 rounded-lg lg:p-8 p-3 h-fit lg:col-span-3">
             
             {/* Course Rating */}
-            {data.sidebarContent?.courseRating && (
+            {/* {data.sidebarContent?.courseRating && (
               <div className="text-center bg-gray-100 py-6 px-6 rounded-lg mb-8">
                 <h3 className="text-black font-medium mb-3">{data.sidebarContent.courseRating.title}</h3>
                 <div className="flex justify-center space-x-1 mb-2">
@@ -178,10 +178,27 @@ const WhatLearn = ({ whatLearnData }) => {
                 </div>
                 <p className="text-black">Average {data.sidebarContent.courseRating.rating} • {data.sidebarContent.courseRating.students}</p>
               </div>
+            )} */}
+
+           
+
+            {/* What you'll gain Section */}
+            {data.sidebarContent?.whatYouGain && (
+              <div className="mb-6 bg-gray-100 py-6 px-6 rounded-lg">
+                <h4 className="text-black font-medium mb-3">{data.sidebarContent.whatYouGain.title}</h4>
+                <div className="space-y-2">
+                  {data.sidebarContent.whatYouGain.benefits?.map((benefit, index) => (
+                    <div key={index} className="flex items-start space-x-2">
+                      <div className="w-4 h-4 bg-black rounded mt-1 flex-shrink-0"></div>
+                      <p className="text-black text-sm">{benefit}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             )}
 
-            {/* Call-to-Action Buttons */}
-            <div className="text-center mb-8 space-y-3">
+             {/* Call-to-Action Buttons */}
+             <div className="text-center  my-8 space-y-3">
               {data.sidebarContent?.primaryButton && (
                 <Link
                   href={data.sidebarContent.primaryButton.link || '#'}
@@ -199,21 +216,6 @@ const WhatLearn = ({ whatLearnData }) => {
                 </Link>
               )}
             </div>
-
-            {/* What you'll gain Section */}
-            {data.sidebarContent?.whatYouGain && (
-              <div className="mb-6 bg-gray-100 py-6 px-6 rounded-lg">
-                <h4 className="text-black font-medium mb-3">{data.sidebarContent.whatYouGain.title}</h4>
-                <div className="space-y-2">
-                  {data.sidebarContent.whatYouGain.benefits?.map((benefit, index) => (
-                    <div key={index} className="flex items-start space-x-2">
-                      <div className="w-4 h-4 bg-black rounded mt-1 flex-shrink-0"></div>
-                      <p className="text-black text-sm">{benefit}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {/* Trusted by teams Section */}
             {data.sidebarContent?.trustedBy && (

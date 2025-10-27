@@ -114,10 +114,10 @@ const IndustryFocus = ({ industryFocusData }) => {
             </div>
             </div>
             {/* Learning Options Section */}
-            <div className='bg-gray-200 rounded-lg lg:p-6 p-3'>
+              {/* Key Metrics */}
+            {/* <div className='bg-gray-200 rounded-lg lg:p-6 p-3'>
               <h3 className="text-xl font-bold text-black mb-4">{data.learningOptions?.title}</h3>
               
-              {/* Key Metrics */}
               <div className="grid grid-cols-3 gap-4 mb-4">
                 {data.learningOptions?.metrics?.map((metric, index) => (
                   <div key={index} className="bg-gray-300 rounded-lg p-4 text-center">
@@ -130,7 +130,8 @@ const IndustryFocus = ({ industryFocusData }) => {
               <p className="text-gray-700">
                 {data.learningOptions?.formatDescription}
               </p>
-            </div>
+            </div> */}
+            
           </div>
 
           {/* Right Column */}

@@ -74,6 +74,26 @@ export default function ExponentialJourney({ journeyData }) {
     }, {});
   }, [fixedStages]);
 
+
+  // Safeguard: If active stage doesn't exist in data, reset to first stage
+  React.useEffect(() => {
+    if (!stageData[activeStage] && fixedStages.length > 0) {
+      setActiveStage(fixedStages[0].id);
+    }
+  }, [activeStage, stageData, fixedStages]);
+
+  // Helper function to check if a stage exists
+  const isValidStage = (stageId) => {
+    return stageData.hasOwnProperty(stageId);
+  };
+
+  // Safe stage setter that validates the stage exists
+  const setStageIfValid = (stageId) => {
+    if (isValidStage(stageId)) {
+      setActiveStage(stageId);
+    }
+  };
+
   // Get hero section data
   const titleStart = journeyData?.heroSection?.titleStart || 'Design your';
   const highlightText = journeyData?.heroSection?.highlightText || 'Exponential journey';
@@ -81,6 +101,14 @@ export default function ExponentialJourney({ journeyData }) {
   const heroSubtitle = journeyData?.heroSection?.subtitle || "Whether you're leading a transformation, preparing for AI, or scaling innovation, we have a path for you.";
   const mountainImageUrl = journeyData?.heroSection?.mountainImage?.asset?.url;
   const journeyPoints = journeyData?.heroSection?.journeyPoints || [];
+
+  // Define visual point positions for each stage (by stage number)
+  const visualPointPositions = {
+    1: { left: '2%', bottom: '0%', leftMobile: '2%', bottomMobile: '10%', label: 'Foundation' },
+    2: { left: '20%', bottom: '8%', leftMobile: '20%', bottomMobile: '22%', label: 'Reflector' },
+    3: { left: '35%', top: '57%', leftMobile: '30%', topMobile: '50%', label: 'Implementor' },
+    4: { left: '49%', top: '37%', leftMobile: '49%', topMobile: '37%', label: 'Practitioner' }
+  };
 
   return (
     <div className="min-h-screen bg-black text-white mx-[15px] pb-12 md:pb-16">
@@ -106,46 +134,59 @@ export default function ExponentialJourney({ journeyData }) {
             </p>
           </div>
 
-          {/* Journey Points */}
-          {/* Foundation Point */}
-          <div className="absolute md:left-[2%] left-[2%] md:bottom-[0%] bottom-[10%] flex items-center space-x-3">
-            <div className="relative">
-              <div className="md:w-10 md:h-10  w-4 h-4 rounded-full bg-[#9d7035]  flex items-center justify-center border-4 border-gray-800">
-                <div className="md:w-4 md:h-4 w-2 h-2 rounded-full bg-[#c1a35e]"></div>
-              </div>
-            </div>
-            <span className="text-white text-sm font-medium">Foundation</span>
-          </div>
+          {/* Journey Points - Dynamically rendered based on actual stages */}
+          {fixedStages.map((stage) => {
+            const position = visualPointPositions[stage.stageNumber];
+            if (!position) return null;
 
-          {/* Reflector Point */}
-          <div className="absolute md:left-[20%] left-[20%] md:bottom-[8%] bottom-[22%] flex items-center space-x-3">
-            <div className="relative">
-              <div className="md:w-10 md:h-10  w-4 h-4 rounded-full bg-gray-700 flex items-center justify-center border-4 border-gray-800">
-                <div className="md:w-4 md:h-4 w-2 h-2 rounded-full bg-gray-500"></div>
-              </div>
-            </div>
-            <span className="text-white text-sm font-medium">Reflector</span>
-          </div>
+            return (
+              <>
+                {/* Mobile version */}
+                <div 
+                  key={`${stage.id}-mobile`}
+                  className="md:hidden absolute flex items-center space-x-3 cursor-pointer transition-transform hover:scale-110 z-10"
+                  style={position.topMobile 
+                    ? { left: position.leftMobile, top: position.topMobile }
+                    : { left: position.leftMobile, bottom: position.bottomMobile }
+                  }
+                  onClick={() => setActiveStage(stage.id)}
+                >
+                  <div className="relative">
+                    <div className={`w-4 h-4 rounded-full flex items-center justify-center border-4 border-gray-800 transition-colors ${
+                      activeStage === stage.id ? 'bg-[#9d7035]' : 'bg-gray-700'
+                    }`}>
+                      <div className={`w-2 h-2 rounded-full transition-colors ${
+                        activeStage === stage.id ? 'bg-[#c1a35e]' : 'bg-gray-500'
+                      }`}></div>
+                    </div>
+                  </div>
+                  <span className="text-white text-xs md:text-sm font-medium">{stage.title}</span>
+                </div>
 
-          {/* Implementor Point */}
-          <div className="absolute md:left-[35%] left-[30%] md:top-[57%] top-[50%] flex items-center space-x-3">
-            <div className="relative">
-              <div className="md:w-10 md:h-10  w-4 h-4 rounded-full bg-gray-700 flex items-center justify-center border-4 border-gray-800">
-                <div className="md:w-4 md:h-4 w-2 h-2 rounded-full bg-gray-500"></div>
-              </div>
-            </div>
-            <span className="text-white text-sm font-medium">Implementor</span>
-          </div>
-
-          {/* Practitioner Point */}
-          <div className="absolute left-[49%] top-[37%] flex items-center space-x-3">
-            <div className="relative">
-              <div className="md:w-10 md:h-10  w-4 h-4 rounded-full bg-gray-700 flex items-center justify-center border-4 border-gray-800">
-                <div className="md:w-4 md:h-4 w-2 h-2 rounded-full bg-gray-500"></div>
-              </div>
-            </div>
-            <span className="text-white text-sm font-medium">Practitioner</span>
-          </div>
+                {/* Desktop version */}
+                <div 
+                  key={`${stage.id}-desktop`}
+                  className="hidden md:flex absolute items-center space-x-3 cursor-pointer transition-transform hover:scale-110 z-10"
+                  style={position.top 
+                    ? { left: position.left, top: position.top }
+                    : { left: position.left, bottom: position.bottom }
+                  }
+                  onClick={() => setActiveStage(stage.id)}
+                >
+                  <div className="relative">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center border-4 border-gray-800 transition-colors ${
+                      activeStage === stage.id ? 'bg-[#9d7035]' : 'bg-gray-700'
+                    }`}>
+                      <div className={`w-4 h-4 rounded-full transition-colors ${
+                        activeStage === stage.id ? 'bg-[#c1a35e]' : 'bg-gray-500'
+                      }`}></div>
+                    </div>
+                  </div>
+                  <span className="text-white text-xs md:text-sm font-medium">{stage.title}</span>
+                </div>
+              </>
+            );
+          })}
         </div>
 
         {/* Book Button */}

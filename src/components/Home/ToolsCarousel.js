@@ -14,6 +14,8 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
   const [visibleSlides, setVisibleSlides] = useState(3);
   const carouselRef = useRef(null);
   const videoRefs = useRef([]);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   // Fallback data
   const fallbackData = {
@@ -34,7 +36,7 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
         description: "Win customers by inspiring action, not just attention.",
         buttonText: "Amplify Influence",
         mediaType: "video",
-        videoUrl: 'https://res.cloudinary.com/dbjtwrdxo/video/upload/v1757166895/1_tjzu6w.mp4'
+        // videoUrl: 'https://res.cloudinary.com/dbjtwrdxo/video/upload/v1757166895/1_tjzu6w.mp4'
       },
       {
         title: "X-tend Value",
@@ -82,6 +84,34 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
   const goToSlide = (index) => {
     const maxSlide = data.tools.length - visibleSlides;
     setCurrentSlide(Math.min(index, maxSlide));
+  };
+
+  // Touch/swipe handlers for mobile
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeThreshold = 50; // minimum distance for swipe
+    const diff = touchStartX.current - touchEndX.current;
+
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swiped left - go to next
+        nextSlide();
+      } else {
+        // Swiped right - go to previous
+        prevSlide();
+      }
+    }
+
+    // Reset
+    touchStartX.current = 0;
+    touchEndX.current = 0;
   };
 
   const slideWidth = 100 / visibleSlides;
@@ -195,7 +225,7 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
 
         {/* Carousel Container */}
         <div className="relative">
-          {/* Navigation Buttons */}
+          {/* Navigation Buttons - Desktop */}
           {/* <div className="hidden md:flex absolute -top-16 right-0 gap-2 z-10">
             <button
               onClick={prevSlide}
@@ -215,8 +245,36 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
             </button>
           </div> */}
 
+          {/* Navigation Arrows - Mobile (Positioned over carousel) */}
+          {/* {data.tools.length > 1 && (
+            <>
+              <button
+                onClick={prevSlide}
+                disabled={currentSlide === 0}
+                className="md:hidden absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/90 shadow-lg hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                aria-label="Previous slide"
+              >
+                <HiChevronLeft className="w-6 h-6 text-gray-800" />
+              </button>
+              <button
+                onClick={nextSlide}
+                disabled={currentSlide >= data.tools.length - visibleSlides}
+                className="md:hidden absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/90 shadow-lg hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                aria-label="Next slide"
+              >
+                <HiChevronRight className="w-6 h-6 text-gray-800" />
+              </button>
+            </>
+          )} */}
+
           {/* Carousel */}
-          <div className="overflow-hidden" ref={carouselRef}>
+          <div 
+            className="overflow-hidden" 
+            ref={carouselRef}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{
@@ -265,6 +323,28 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
               ))}
             </div>
           </div>
+
+          {/* Dot Indicators - Mobile */}
+          {/* {data.tools.length > 1 && (
+            <div className="md:hidden flex justify-center gap-2 mt-6">
+              {data.tools.map((_, index) => {
+                // Only show dots that make sense for current visible slides
+                if (index > data.tools.length - visibleSlides) return null;
+                return (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                      currentSlide === index 
+                        ? 'bg-gray-800 w-8' 
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                );
+              })}
+            </div>
+          )} */}
         </div>
       </div>
     </section>

@@ -149,14 +149,14 @@ const LearningBanner = ({ learningBannerData }) => {
             </div>
 
             {/* Disclaimer/Guarantee */}
-            <div className="flex items-center space-x-2 pt-4">
+            {/* <div className="flex items-center space-x-2 pt-4">
               <div className="w-5 h-5 bg-gray-600 rounded-full flex items-center justify-center">
                 <span className="text-white text-xs font-bold">i</span>
               </div>
               <p className="text-sm text-gray-600">
                 {data.disclaimerText}
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
