@@ -14,6 +14,7 @@ import Banner from '../../components/Home/Banner'
 import ExponentialEconomy from '../../components/Home/ExponentialEconomy'
 import ExponentialJourney from '../../components/Home/ExponentialJourney'
 import { getBannerData, getExponentialEconomyData, getExponentialJourneyData, getWhatIsExponentialData, getWhyChooseData, getWhyExponentialNowData, getResourcesSliderData, getToolsCarouselData, getQuoteCarouselData, getPricingPlanData, getNewsletterData, getImageBannerData } from '../../lib/sanityQueries'
+import LinkedInFeed from '@/components/LinkedInFeed'
 export default async function Home() {
   const [bannerData, exponentialData, exponentialJourneyData, whatIsExponentialData, whyChooseData, whyExponentialNowData, resourcesSliderData, toolsCarouselData, quoteCarouselData, pricingPlanData, newsletterData, imageBannerData] = await Promise.all([
     getBannerData(),
@@ -86,6 +87,8 @@ export default async function Home() {
       <section className="relative pt-[0px]">
         <Newsletter newsletterData={newsletterData}/>
       </section>
+
+      <LinkedInFeed />
 
       <Footer/>
     </div>
