@@ -126,10 +126,6 @@ const AboutTitle = ({ aboutTitleData }) => {
       open={isModalOpen}
       onClose={() => setIsModalOpen(false)}
       title="Request a free 15-minute discovery"
-      onSubmit={async (values) => {
-        // TODO: integrate with your API
-        console.log('Submitting form:', values);
-      }}
     />
     </>
   )

@@ -236,9 +236,6 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
       open={isModalOpen}
       onClose={() => setIsModalOpen(false)}
       title="Start My Growth"
-      onSubmit={async (values) => {
-        // TODO: integrate with your API
-      }}
     />
     </>
   );

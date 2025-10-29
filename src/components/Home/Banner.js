@@ -94,10 +94,6 @@ const Banner = ({ bannerData }) => {
       open={isModalOpen}
       onClose={() => setIsModalOpen(false)}
       title="Book a Strategy Call"
-      onSubmit={async (values) => {
-        // Integrate with API here
-        console.log('Submitting form:', values);
-      }}
     />
     </>
   );

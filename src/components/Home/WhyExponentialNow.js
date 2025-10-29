@@ -132,10 +132,6 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
       open={isModalOpen}
       onClose={() => setIsModalOpen(false)}
       title="Start Scaling Today"
-      onSubmit={async (values) => {
-        // TODO: integrate with your API
-        console.log('Submitting form:', values);
-      }}
     />
     </>
   );

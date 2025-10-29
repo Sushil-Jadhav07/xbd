@@ -142,10 +142,6 @@ const BookBanner = ({ bookBannerData }) => {
       open={isModalOpen}
       onClose={() => setIsModalOpen(false)}
       title="Get Your Copy Now"
-      onSubmit={async (values) => {
-        // TODO: integrate with your API
-        console.log('Submitting form:', values);
-      }}
     />
     </>
   )

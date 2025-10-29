@@ -48,44 +48,97 @@ export default function LeadFormModal({ open, onClose, title = 'Book a Strategy 
         await onSubmit(formValues);
         setSuccessMessage('Thank you! We\'ll be in touch soon.');
       } else {
-        // Otherwise, submit to our Mailchimp API
-        const response = await fetch('/api/lead/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formValues),
+        // Submit to Mailchimp using JSONP to avoid CORS issues
+        await submitToMailchimp(formValues);
+        
+        setSuccessMessage('Thank you! We will contact you soon.');
+        // Clear form on success
+        setFormValues({ 
+          name: '', 
+          email: '', 
+          organization: '', 
+          designation: '', 
+          country: '', 
+          message: '' 
         });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          setSuccessMessage(result.message || 'Thank you! We\'ll be in touch soon.');
-          // Clear form on success
-          setFormValues({ 
-            name: '', 
-            email: '', 
-            organization: '', 
-            designation: '', 
-            country: '', 
-            message: '' 
-          });
-          
-          // Close modal after 2 seconds
-          setTimeout(() => {
-            onClose?.();
-            setSuccessMessage('');
-          }, 2000);
-        } else {
-          setErrorMessage(result.error || 'Something went wrong. Please try again.');
-        }
+        
+        // Close modal after 2 seconds
+        setTimeout(() => {
+          onClose?.();
+          setSuccessMessage('');
+        }, 2000);
       }
     } catch (err) {
       console.error('Form submission error:', err);
-      setErrorMessage('Network error. Please check your connection and try again.');
+      setErrorMessage(err.message || 'Something went wrong. Please try again.');
     } finally {
       setSubmitting(false);
     }
+  }
+
+  function submitToMailchimp(formData) {
+    return new Promise((resolve, reject) => {
+      // Mailchimp form details from embed code
+      const MAILCHIMP_URL = 'https://xbd.us11.list-manage.com/subscribe/post-json';
+      const u = '279a02443a57a9821b4e42c23';
+      const id = '345dda8b10';
+      
+      // Build the URL with parameters
+      const params = new URLSearchParams({
+        u: u,
+        id: id,
+        EMAIL: formData.email,
+        FNAME: formData.name,
+        ORG: formData.organization,
+        DES: formData.designation,
+        COUNTRY: formData.country,
+        MESSAGE: formData.message,
+        'b_279a02443a57a9821b4e42c23_345dda8b10': '', // Honeypot field
+      });
+
+      // Use JSONP to submit to Mailchimp (avoids CORS issues)
+      const callbackName = 'mailchimpCallback_' + Date.now();
+      const url = `${MAILCHIMP_URL}?${params.toString()}&c=${callbackName}`;
+
+      // Create callback function
+      window[callbackName] = (data) => {
+        delete window[callbackName];
+        document.body.removeChild(script);
+
+        if (data.result === 'success') {
+          resolve(data);
+        } else {
+          // Mailchimp returns result='error' even for "already subscribed"
+          // Check the message to see if it's actually okay
+          if (data.msg && (data.msg.includes('already subscribed') || data.msg.includes('is already'))) {
+            resolve(data); // Treat as success
+          } else {
+            reject(new Error(data.msg || 'Subscription failed'));
+          }
+        }
+      };
+
+      // Create and append script tag
+      const script = document.createElement('script');
+      script.src = url;
+      script.onerror = () => {
+        delete window[callbackName];
+        document.body.removeChild(script);
+        reject(new Error('Network error. Please try again.'));
+      };
+      document.body.appendChild(script);
+
+      // Timeout after 10 seconds
+      setTimeout(() => {
+        if (window[callbackName]) {
+          delete window[callbackName];
+          if (script.parentNode) {
+            document.body.removeChild(script);
+          }
+          reject(new Error('Request timeout. Please try again.'));
+        }
+      }, 10000);
+    });
   }
 
   if (!open) return null;

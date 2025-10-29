@@ -1,11 +1,11 @@
 // src/app/api/lead/submit/route.js
 import { NextResponse } from 'next/server';
-import mailchimp from '@mailchimp/mailchimp_marketing';
 
-mailchimp.setConfig({
-  apiKey: process.env.MAILCHIMP_API_KEY,
-  server: process.env.MAILCHIMP_API_SERVER,
-});
+// Mailchimp embed form URL
+const MAILCHIMP_FORM_URL = 'https://xbd.us11.list-manage.com/subscribe/post';
+const MAILCHIMP_U = '279a02443a57a9821b4e42c23';
+const MAILCHIMP_ID = '345dda8b10';
+const MAILCHIMP_F_ID = '00792fe1f0';
 
 export async function POST(request) {
   try {
@@ -28,100 +28,88 @@ export async function POST(request) {
       );
     }
 
-    // Prepare merge fields (only include fields that have values)
-    const mergeFields = {};
-    if (name) {
-      // Split name into first and last name
-      const nameParts = name.trim().split(' ');
-      mergeFields.FNAME = nameParts[0] || '';
-      if (nameParts.length > 1) {
-        mergeFields.LNAME = nameParts.slice(1).join(' ');
-      }
-    }
-    if (message) mergeFields.MESSAGE = message;
-    if (organization) mergeFields.MMERGE2 = organization; // Update with your actual merge tag
-    if (designation) mergeFields.MMERGE8 = designation;   // Update with your actual merge tag
-    if (country) mergeFields.MMERGE9 = country;           // Update with your actual merge tag
+    // Prepare form data for Mailchimp
+    const mailchimpData = new URLSearchParams({
+      u: MAILCHIMP_U,
+      id: MAILCHIMP_ID,
+      f_id: MAILCHIMP_F_ID,
+      EMAIL: email,
+      FNAME: name || '',
+      ORG: organization || '',
+      DES: designation || '',
+      COUNTRY: country || '',
+      MESSAGE: message || '',
+      // Honeypot field (leave empty to prove we're not a bot)
+      [`b_${MAILCHIMP_U}_${MAILCHIMP_ID}`]: '',
+    });
 
-    console.log('Submitting lead to Mailchimp:', { email, mergeFields });
+    console.log('Submitting to Mailchimp:', { email, name, organization });
 
-    // Try to add the subscriber
-    try {
-      const response = await mailchimp.lists.addListMember(
-        process.env.MAILCHIMP_AUDIENCE_ID,
-        {
-          email_address: email,
-          status: 'subscribed',
-          merge_fields: mergeFields,
-          tags: ['lead-form'], // Tag to identify lead form submissions
-        }
-      );
+    // Submit to Mailchimp
+    const response = await fetch(MAILCHIMP_FORM_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: mailchimpData.toString(),
+    });
 
-      console.log('Mailchimp success:', response);
-
+    // Mailchimp returns HTML even on success, so we check if the response is ok
+    const responseText = await response.text();
+    
+    // Check if the response contains success indicators
+    if (responseText.includes('Almost finished') || 
+        responseText.includes('Thank you for subscribing') ||
+        responseText.includes('already subscribed')) {
+      
+      console.log('Mailchimp submission successful');
+      
       return NextResponse.json(
         { 
           success: true, 
           message: 'Thank you! We will contact you soon.',
-          data: response 
         },
         { status: 200 }
       );
-
-    } catch (addError) {
-      // If member already exists, update their information instead
-      if (addError.response?.body?.title === 'Member Exists') {
-        console.log('Member exists, updating instead...');
-
-        // Get the subscriber hash (MD5 of lowercase email)
-        const crypto = require('crypto');
-        const subscriberHash = crypto
-          .createHash('md5')
-          .update(email.toLowerCase())
-          .digest('hex');
-
-        // Update the existing member
-        const updateResponse = await mailchimp.lists.updateListMember(
-          process.env.MAILCHIMP_AUDIENCE_ID,
-          subscriberHash,
-          {
-            merge_fields: mergeFields,
-            // Also add the lead-form tag
-          }
-        );
-
-        // Add tag separately (tags need to be added via a different endpoint)
-        await mailchimp.lists.updateListMemberTags(
-          process.env.MAILCHIMP_AUDIENCE_ID,
-          subscriberHash,
-          {
-            tags: [{ name: 'lead-form', status: 'active' }]
-          }
-        );
-
-        console.log('Mailchimp update success:', updateResponse);
-
-        return NextResponse.json(
-          { 
-            success: true, 
-            message: 'Your information has been updated!',
-            data: updateResponse 
-          },
-          { status: 200 }
-        );
-      }
-
-      // If it's a different error, throw it to be caught by outer catch
-      throw addError;
     }
 
+    // Check for common error messages
+    if (responseText.includes('already subscribed')) {
+      return NextResponse.json(
+        { 
+          success: true, 
+          message: 'You are already subscribed. We\'ll be in touch soon!',
+        },
+        { status: 200 }
+      );
+    }
+
+    if (responseText.includes('invalid') || responseText.includes('error')) {
+      console.error('Mailchimp error response:', responseText.substring(0, 500));
+      return NextResponse.json(
+        { error: 'Please check your email address and try again.' },
+        { status: 400 }
+      );
+    }
+
+    // If we get here, assume success (Mailchimp's response format can vary)
+    console.log('Mailchimp response received, assuming success');
+    
+    return NextResponse.json(
+      { 
+        success: true, 
+        message: 'Thank you! We will contact you soon.',
+      },
+      { status: 200 }
+    );
+
   } catch (error) {
-    console.error('Mailchimp Error:', error.response?.body || error);
+    console.error('Mailchimp submission error:', error);
 
     return NextResponse.json(
       { 
         error: 'Something went wrong. Please try again later.',
-        details: error.response?.body?.detail || error.message 
+        details: error.message 
       },
       { status: 500 }
     );
