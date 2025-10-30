@@ -124,7 +124,7 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
         <div className="relative">
           {/* Main Carousel */}
           <div 
-            className="relative overflow-hidden rounded-lg aspect-[16/9]  shadow-2xl transform hover:scale-[1.02] transition-transform duration-500"
+            className="relative overflow-hidden rounded-lg aspect-[16/9]  shadow-2xl transform transition-transform duration-500"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
           >
