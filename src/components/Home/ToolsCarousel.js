@@ -246,26 +246,26 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
           </div> */}
 
           {/* Navigation Arrows - Mobile (Positioned over carousel) */}
-          {/* {data.tools.length > 1 && (
+          {data.tools.length > 1 && (
             <>
               <button
                 onClick={prevSlide}
                 disabled={currentSlide === 0}
-                className="md:hidden absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/90 shadow-lg hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                className="md:hidden absolute -left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/90 shadow-lg hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 border border-gray-200"
                 aria-label="Previous slide"
               >
-                <HiChevronLeft className="w-6 h-6 text-gray-800" />
+                <HiChevronLeft className="w-6 h-6 text-[#9d7035]" />
               </button>
               <button
                 onClick={nextSlide}
                 disabled={currentSlide >= data.tools.length - visibleSlides}
-                className="md:hidden absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/90 shadow-lg hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                className="md:hidden absolute -right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/90 shadow-lg hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 border border-gray-200"
                 aria-label="Next slide"
               >
-                <HiChevronRight className="w-6 h-6 text-gray-800" />
+                <HiChevronRight className="w-6 h-6 text-[#9d7035]" />
               </button>
             </>
-          )} */}
+          )}
 
           {/* Carousel */}
           <div 

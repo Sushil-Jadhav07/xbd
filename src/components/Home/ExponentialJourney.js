@@ -106,7 +106,7 @@ export default function ExponentialJourney({ journeyData }) {
   const visualPointPositions = {
     1: { left: '2%', bottom: '0%', leftMobile: '2%', bottomMobile: '10%', label: 'Foundation' },
     2: { left: '20%', bottom: '8%', leftMobile: '20%', bottomMobile: '22%', label: 'Reflector' },
-    3: { left: '35%', top: '57%', leftMobile: '30%', topMobile: '50%', label: 'Implementor' },
+    3: { left: '35%', top: '57%', leftMobile: '33%', topMobile: '50%', label: 'Implementor' },
     4: { left: '49%', top: '37%', leftMobile: '49%', topMobile: '37%', label: 'Practitioner' }
   };
 

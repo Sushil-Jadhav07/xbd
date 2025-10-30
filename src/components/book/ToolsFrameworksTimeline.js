@@ -94,13 +94,13 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
+                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={IVRDiagram}
                         alt="Spheres of a hyperconnected product - IVR Diagram"
                         className="max-w-full max-h-full object-contain rounded-lg"
-                        width={400}
-                        height={400}
+                        width={800}
+                        height={800}
                         priority
                       />
                     </div>
@@ -114,13 +114,13 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
+                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={ReachInterconnect}
                         alt="The strategic imperative of Reach Interconnects"
                         className="max-w-full max-h-full object-contain rounded-lg"
-                        width={400}
-                        height={400}
+                        width={800}
+                        height={800}
                         priority
                       />
                     </div>
@@ -206,13 +206,13 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
+                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={ScienceOfAssociation}
                         alt="The Science of Association - Emotional triggers and associations"
                         className="max-w-full max-h-full object-contain rounded-lg"
-                        width={400}
-                        height={400}
+                        width={800}
+                        height={800}
                         priority
                       />
                     </div>
@@ -226,13 +226,13 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
+                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={EngagementFlywheel}
                         alt="Engagement Flywheel - Brand equity building process"
                         className="max-w-full max-h-full object-contain rounded-lg"
-                        width={400}
-                        height={400}
+                        width={800}
+                        height={800}
                         priority
                       />
                     </div>
@@ -317,13 +317,13 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
+                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={ValueExchangeNetwork}
                         alt="Value Exchange Network"
                         className="max-w-full max-h-full object-contain rounded-lg"
-                        width={400}
-                        height={400}
+                        width={800}
+                        height={800}
                         priority
                       />
                     </div>
@@ -337,13 +337,13 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
+                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={ValueLineage}
                         alt="Value Lineage across extended value chains"
                         className="max-w-full max-h-full object-contain rounded-lg"
-                        width={400}
-                        height={400}
+                        width={800}
+                        height={800}
                         priority
                       />
                     </div>
@@ -428,13 +428,13 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
+                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={VenNetworkEffects}
                         alt="Network effects of Value Exchange Network"
                         className="max-w-full max-h-full object-contain rounded-lg"
-                        width={400}
-                        height={400}
+                        width={800}
+                        height={800}
                         priority
                       />
                     </div>
@@ -447,13 +447,13 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
+                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={PositioningOfferService}
                         alt="Positioning, Offer and Service value driving Value lifecycle"
                         className="max-w-full max-h-full object-contain rounded-lg"
-                        width={400}
-                        height={400}
+                        width={800}
+                        height={800}
                         priority
                       />
                     </div>
@@ -537,13 +537,13 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
+                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={CognitiveEnterprise}
                         alt="Cognitive Enterprise"
                         className="max-w-full max-h-full object-contain rounded-lg"
-                        width={400}
-                        height={400}
+                        width={800}
+                        height={800}
                         priority
                       />
                     </div>
@@ -556,13 +556,13 @@ export default function ToolsFrameworksTimeline() {
                   <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
                     isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <div className="flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
+                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
                       <Image
                         src={CognitiveNetwork}
                         alt="Cognitive Network across Connect, Emotional and Value Network"
                         className="max-w-full max-h-full object-contain rounded-lg"
-                        width={400}
-                        height={400}
+                        width={800}
+                        height={800}
                         priority
                       />
                     </div>
@@ -699,7 +699,7 @@ export default function ToolsFrameworksTimeline() {
 
         {/* Sub-Tab Headers */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-0 mb-0 border-t border-l border-r border-gray-700">
-          {subTabs.map((tab) => (
+          {subTabs.map((tab, index) => (
             <button
               key={tab.id}
               onClick={() => {
@@ -710,7 +710,7 @@ export default function ToolsFrameworksTimeline() {
                 activeSubTab === tab.id && activeTimeline === tab.id
                   ? 'bg-[#c1a35e] text-black'
                   : 'bg-gray-800 text-white hover:bg-gray-700'
-              }`}
+              } ${index === subTabs.length - 1 ? 'col-span-2 sm:col-span-1' : ''}`}
             >
               <div className="leading-tight">
                 {tab.label}

@@ -9,7 +9,8 @@ const Footer = () => {
   const navItems = [
     { name: 'Book', href: '/book' },
     { name: 'Learning Hub', href: '/learning-hub' },
-    { name: 'About Anuj', href: '/about' },
+    { name: 'About Anuj', href: '/about-anuj' },
+    { name: 'FAQ', href: '/faq' },
     // { name: 'Work with Anuj', href: '/work' },
     { name: 'Contact', href: '/contact' }
   ];
