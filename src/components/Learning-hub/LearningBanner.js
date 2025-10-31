@@ -73,6 +73,20 @@ const LearningBanner = ({ learningBannerData }) => {
                     )}
                   </div>
                 )}
+                
+                {/* Red-bordered Box with Bullet Points */}
+                <div className="mt-4 rounded-lg p-4">
+                  <ul className="space-y-1">
+                    <li className="flex items-center space-x-2">
+                      <span className="text-gray-600 text-4xl mr-2">•</span>
+                      <span className="text-black">Designed and Led by Anuj Pandey</span>
+                    </li>
+                    <li className="flex items-center space-x-2">
+                      <span className="text-gray-600 text-4xl mr-2">•</span>
+                      <span className="text-black">Money-back guarantee</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             ) : data.bannerImage?.asset?.url ? (
               /* Banner Image */
@@ -106,7 +120,7 @@ const LearningBanner = ({ learningBannerData }) => {
             </h1>
 
             {/* Descriptive Paragraph */}
-            <p className="text-lg text-black leading-relaxed">
+            <p className="text-lg text-black font-bold leading-relaxed">
               {data.description}
             </p>
 

@@ -56,7 +56,7 @@ const WhatLearn = ({ whatLearnData }) => {
         students: "50K+ students"
       },
       primaryButton: { text: "Join The Waitlist", link: "#" },
-      secondaryButton: null,
+      secondaryButton: { text: "Preview", link: "#" },
       whatYouGain: {
         title: "What you'll gain",
         benefits: [
@@ -79,7 +79,17 @@ const WhatLearn = ({ whatLearnData }) => {
     }
   };
 
-  const data = whatLearnData || fallbackData;
+  // Merge fallback data with fetched data, ensuring buttons are always available
+  const data = whatLearnData ? {
+    ...fallbackData,
+    ...whatLearnData,
+    sidebarContent: {
+      ...fallbackData.sidebarContent,
+      ...whatLearnData.sidebarContent,
+      primaryButton: whatLearnData.sidebarContent?.primaryButton || fallbackData.sidebarContent.primaryButton,
+      secondaryButton: whatLearnData.sidebarContent?.secondaryButton || fallbackData.sidebarContent.secondaryButton
+    }
+  } : fallbackData;
 
   return (
     <div className="bg-[#f5f1eb] mx-[15px] lg:py-16 py-8 lg:px-12 px-4">
@@ -185,11 +195,11 @@ const WhatLearn = ({ whatLearnData }) => {
             {/* What you'll gain Section */}
             {data.sidebarContent?.whatYouGain && (
               <div className="mb-6 bg-gray-100 py-6 px-6 rounded-lg">
-                <h4 className="text-black font-medium mb-3">{data.sidebarContent.whatYouGain.title}</h4>
+                <h4 className="text-black md:text-xl text-base font-medium mb-3">{data.sidebarContent.whatYouGain.title}</h4>
                 <div className="space-y-2">
                   {data.sidebarContent.whatYouGain.benefits?.map((benefit, index) => (
                     <div key={index} className="flex items-start space-x-2">
-                      <div className="w-4 h-4 bg-black rounded mt-1 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-black rounded-full mt-1 flex-shrink-0"></div>
                       <p className="text-black text-sm">{benefit}</p>
                     </div>
                   ))}
@@ -197,23 +207,24 @@ const WhatLearn = ({ whatLearnData }) => {
               </div>
             )}
 
-             {/* Call-to-Action Buttons */}
-             <div className="text-center  my-8 space-y-3">
-              {data.sidebarContent?.primaryButton && (
+            {/* Call-to-Action Button(s) */}
+            <div className="text-center  my-8 space-y-3">
+              {data.sidebarContent?.primaryButton ? (
                 <Link
                   href={data.sidebarContent.primaryButton.link || '#'}
                   className="w-full py-3 px-6 rounded-lg font-medium transition-colors bg-gradient-to-br !from-[#9d7035] !to-[#c1a35e] text-white hover:from-yellow-500 hover:to-yellow-700"
                 >
                   {data.sidebarContent.primaryButton.text}
                 </Link>
-              )}
-              {data.sidebarContent?.secondaryButton && (
-                <Link
-                  href={data.sidebarContent.secondaryButton.link || '#'}
-                  className="w-full py-3 px-6 rounded-lg font-medium transition-colors bg-white text-black hover:bg-gray-50 border border-gray-300"
-                >
-                  {data.sidebarContent.secondaryButton.text}
-                </Link>
+              ) : (
+                data.sidebarContent?.secondaryButton && (
+                  <Link
+                    href={data.sidebarContent.secondaryButton.link || '#'}
+                    className="w-full py-3 px-6 rounded-lg font-medium transition-colors bg-white text-black hover:bg-gray-50 border border-gray-300"
+                  >
+                    {data.sidebarContent.secondaryButton.text}
+                  </Link>
+                )
               )}
             </div>
 

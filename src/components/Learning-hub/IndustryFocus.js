@@ -20,6 +20,10 @@ const IndustryFocus = ({ industryFocusData }) => {
       description: "Short 60-90s: why this curriculum matters and the outcomes you can expect.",
       trustText: "Trusted by leaders"
     },
+    quoteBlock: {
+      quoteText: "Most transformation programs fail at the last mile. The X Framework fixes that — by turning strategy into measurable outcomes.",
+      attribution: "Anuj Pandey, Author & Founder, XBD Consulting LLP"
+    },
     learningOptions: {
       title: "Learning Options",
       metrics: [
@@ -105,14 +109,34 @@ const IndustryFocus = ({ industryFocusData }) => {
             </div>
 
             {/* Meet the Instructor Section */}
-            <div>
-              <h3 className="text-xl font-bold text-black mt-3 mb-3">{data.instructorSection?.title}</h3>
-              <p className="text-gray-700 mb-2">
-                {data.instructorSection?.description}
-              </p>
-              <p className="text-sm text-gray-500">{data.instructorSection?.trustText}</p>
+            {data.instructorSection && (
+              <div className='bg-gray-200 rounded-lg p-4 mt-4'>
+                <h3 className="text-xl font-bold text-black mb-3">{data.instructorSection.title}</h3>
+                <p className="text-gray-700 mb-2">
+                  {data.instructorSection.description}
+                </p>
+                {data.instructorSection.trustText && (
+                  <p className="text-sm text-gray-500">{data.instructorSection.trustText}</p>
+                )}
+              </div>
+            )}
             </div>
-            </div>
+
+            {/* Quote Section */}
+            {data.quoteBlock && (
+              <div className='bg-white rounded-lg p-4 mt-4'>
+                {data.quoteBlock.quoteText && (
+                  <h3 className="md:text-lg text-base font-medium text-black mt-3 mb-3">
+                    {data.quoteBlock.quoteText}
+                  </h3>
+                )}
+                {data.quoteBlock.attribution && (
+                  <p className="text-gray-700 italic text-sm mb-2">
+                    {data.quoteBlock.attribution}
+                  </p>
+                )}
+              </div>
+            )}
             {/* Learning Options Section */}
               {/* Key Metrics */}
             {/* <div className='bg-gray-200 rounded-lg lg:p-6 p-3'>

@@ -757,6 +757,12 @@ export async function getLearningBannerData() {
 export async function getProgramsData() {
   const query = `*[_type == "programs"][0]{
     sectionTitle,
+    subtitle,
+    earlyAccessSection{
+      heading,
+      noteLabel,
+      noteText
+    },
     programs[]{
       programType,
       title,
@@ -822,6 +828,10 @@ export async function getIndustryFocusData() {
       description,
       trustText
     },
+    quoteBlock{
+      quoteText,
+      attribution
+    },
     learningOptions{
       title,
       metrics[]{
@@ -881,10 +891,13 @@ export async function getWhatLearnData() {
         rating,
         students
       },
-      ctaButtons[]{
+      primaryButton{
         text,
-        link,
-        style
+        link
+      },
+      secondaryButton{
+        text,
+        link
       },
       whatYouGain{
         title,

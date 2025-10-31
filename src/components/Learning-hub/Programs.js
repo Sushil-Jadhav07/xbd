@@ -5,6 +5,12 @@ const Programs = ({ programsData }) => {
   // Fallback data
   const fallbackData = {
     sectionTitle: "Programs & Offerings",
+    subtitle: "Different leaders learn differently. Pick the format that matches your growth goals.",
+    earlyAccessSection: {
+      heading: "Get Early Access Pricing",
+      noteLabel: "Note under table:",
+      noteText: "Self-paced program opens soon. Pre-launch members receive lifetime template updates + 25% off inaugural pricing."
+    },
     programs: [
       {
         programType: "self-paced",
@@ -69,7 +75,13 @@ const Programs = ({ programsData }) => {
     ]
   }
 
-  const data = programsData || fallbackData;
+  // Merge fallback data with fetched data, ensuring subtitle and earlyAccessSection are always available
+  const data = programsData ? {
+    ...fallbackData,
+    ...programsData,
+    subtitle: programsData.subtitle || fallbackData.subtitle,
+    earlyAccessSection: programsData.earlyAccessSection || fallbackData.earlyAccessSection
+  } : fallbackData;
 
   const getIcon = (iconType) => {
     const icons = {
@@ -96,9 +108,16 @@ const Programs = ({ programsData }) => {
     <div className="bg-[#f5f1eb] mx-[15px] lg:py-16 py-8 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Main Title */}
-        <h2 className="text-3xl md:text-5xl font-medium text-black lg:mb-16 mb-8">
+        <h2 className="text-3xl md:text-5xl font-medium text-black lg:mb-4 mb-4">
           {data.sectionTitle}
         </h2>
+
+        {/* Subtitle */}
+        {data.subtitle && (
+          <p className="text-lg text-black lg:mb-4 mb-4">
+            <span className='font-bold'>Choose How You Learn:</span> {data.subtitle}
+          </p>
+        )}
 
         {/* Program Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-8 gap-4">
@@ -111,8 +130,8 @@ const Programs = ({ programsData }) => {
                   <h3 className="lg:text-xl text-lg font-bold text-black">{program.title}</h3>
                 </div>
                 <div className="col-span-1 px-3 py-2 lg:h-[70px] h-[65px] rounded-lg bg-gray-200">
-                  <div className="text-gray-700 py-1 rounded lg:text-sm text-xs font-medium">
-                    {program.programType === 'self-paced' ? 'Most Popular' : 
+                  <div className="text-gray-700 py-1 rounded text-xs font-medium">
+                    {program.programType === 'self-paced' ? 'Pre-Launch Offer Discount' : 
                      program.programType === 'cohorted' ? 'Cohorted' : 'Beginners'}
                   </div>
                   <div className="text-[0.9rem] font-bold text-black">{program.price}</div>
@@ -182,6 +201,27 @@ const Programs = ({ programsData }) => {
             </div>
           ))}
         </div>
+
+        {/* Early Access Pricing Section */}
+        {data.earlyAccessSection && (
+          <div className="mt-12 lg:mt-16">
+            {data.earlyAccessSection.heading && (
+              <h3 className="text-2xl md:text-3xl font-medium text-black mb-4">
+                {data.earlyAccessSection.heading}
+              </h3>
+            )}
+            {data.earlyAccessSection.noteLabel && data.earlyAccessSection.noteText && (
+              <div className="mt-4">
+                <p className="text-base font-bold text-black mb-1">
+                  {data.earlyAccessSection.noteLabel}
+                </p>
+                <p className="text-base italic text-black">
+                  {data.earlyAccessSection.noteText}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

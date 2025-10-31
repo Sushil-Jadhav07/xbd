@@ -9,20 +9,24 @@ export const metadata = {
 
 const faqs = [
   {
-    q: "What is XBD and who is it for?",
-    a: "XBD helps leaders and organizations adopt exponential frameworks to accelerate growth and innovation.",
+    q: "Who is this for?",
+    a: "CXOs, founders, business heads, and consultants who want to design exponential growth for their organizations — not just talk about it.",
   },
   {
-    q: "How do I join the Learning Hub?",
-    a: "Visit the Learning Hub page to explore programs and enroll directly online.",
+    q: "How is it different from other strategy programs?",
+    a: "XBD bridges the last mile from concept to pilot. You’ll finish each module with a deployable artifact tested in real industries.",
   },
   {
-    q: "Do you offer custom workshops for teams?",
-    a: "Yes. We tailor workshops and keynotes to your goals. Use the Contact page to start a conversation.",
+    q: "When does the program start?",
+    a: "The self-paced version opens soon. Early registrants get first access and exclusive pre-launch pricing.",
   },
   {
-    q: "Can I get a consultation before signing up?",
-    a: "Absolutely. Book an intro call via the Contact page and we'll guide you to the right track.",
+    q: "How much time do I need each week?",
+    a: "2–3 focused hours per week is enough to complete the program in 6 weeks.",
+  },
+  {
+    q: "Is there a refund policy?",
+    a: "Yes. If you complete the first module and find it doesn’t deliver value, we’ll refund 100% within 7 days — no questions asked.",
   },
 ];
 

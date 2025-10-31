@@ -59,7 +59,7 @@ const Faqs = ({ faqsData }) => {
           {data.faqs?.map((faq, index) => (
             <div key={index} className="bg-gray-200 rounded-lg">
               <button
-                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-300 transition-colors"
+                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-300 hover:rounded-lg transition-colors"
                 onClick={() => toggleFaq(index)}
               >
                 <span className="text-black font-medium text-lg">
@@ -82,7 +82,7 @@ const Faqs = ({ faqsData }) => {
               
               {/* Answer Section */}
               {openIndex === index && (
-                <div className="px-6 pb-4">
+                <div className="px-6 pb-4 mt-2">
                   <p className="text-gray-700 leading-relaxed">
                     {faq.answer}
                   </p>
