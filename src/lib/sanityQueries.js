@@ -978,4 +978,88 @@ export async function getFaqsData() {
   }
 }
 
+// FAQ Page Query
+export async function getFaqPageData() {
+  const query = `*[_type == "faqPage"][0]{
+    sectionBadge,
+    mainTitle,
+    highlightedTitle,
+    subtitle,
+    faqItems[]{
+      question,
+      answer
+    },
+    ctaSection{
+      title,
+      description,
+      buttonText,
+      buttonLink
+    }
+  }`
+  
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching FAQ page data:', error)
+    return null
+  }
+}
+
+// Insights Page Query
+export async function getInsightsBannerData() {
+  const query = `*[_type == "insightsBanner"][0]{
+    bannerImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    }
+  }`
+  
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching Insights banner data:', error)
+    return null
+  }
+}
+
+export async function getFeaturedArticlesData() {
+  const query = `*[_type == "featuredArticles"][0]{
+    sectionTitle,
+    sectionSubtitle,
+    articles[]{
+      authorName,
+      authorImage{
+        asset->{
+          _id,
+          url
+        }
+      },
+      isVerified,
+      postDate,
+      postSnippet,
+      postTitle,
+      postImage{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      linkedinUrl,
+      likes,
+      comments
+    }
+  }`
+  
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching Featured Articles data:', error)
+    return null
+  }
+}
+
 
