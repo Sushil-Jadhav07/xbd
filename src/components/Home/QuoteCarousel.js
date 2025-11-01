@@ -161,7 +161,7 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
 
   return (
     <>
-    <section className="dark:bg-white bg-white mx-[15px] pt-8 md:pt-12 pb-12 md:pb-16 ">
+    <section className="dark:bg-white bg-white md:mx-[15px] mx-[5px] pt-8 md:pt-12 pb-12 md:pb-16 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-4 lg:mb-6">

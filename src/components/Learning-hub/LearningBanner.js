@@ -39,7 +39,7 @@ const LearningBanner = ({ learningBannerData }) => {
   const hasVideo = finalVideoUrl && finalVideoUrl.trim() !== '';
 
   return (
-    <div className="bg-white mx-[15px] lg:py-16 py-8 px-4">
+    <div className="bg-white md:mx-[15px] mx-[5px] lg:py-16 py-8 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           

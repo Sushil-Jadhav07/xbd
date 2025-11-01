@@ -48,7 +48,7 @@ const BookInfo = ({ bookInfoData }) => {
   const data = bookInfoData || fallbackData
 
   return (
-    <div className="bg-white mx-[15px] py-12 relative overflow-hidden">
+    <div className="bg-white md:mx-[15px] mx-[5px] py-12 relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 opacity-10">
         <Image 

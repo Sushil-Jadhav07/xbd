@@ -27,7 +27,7 @@ const Programs = ({ programsData }) => {
           { icon: "location", text: "Anywhere" },
           { icon: "mode", text: "Hybrid Mode" }
         ],
-        primaryButton: { text: "Join The Waitlist", link: "#" },
+        primaryButton: { text: "Join The pre-launch access", link: "#" },
         secondaryButton: { text: "Preview", link: "#" },
         rating: { score: "5.0", learners: "50k learners" },
         footerText: "30-day money-back guarantee"
@@ -105,7 +105,7 @@ const Programs = ({ programsData }) => {
   };
 
   return (
-    <div className="bg-[#f5f1eb] mx-[15px] lg:py-16 py-8 px-4">
+    <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] lg:py-16 py-8 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Main Title */}
         <h2 className="text-3xl md:text-5xl font-medium text-black lg:mb-4 mb-4">

@@ -105,7 +105,7 @@ const Testimonial = ({ testimonialData }) => {
   return (
     <>
       <style jsx>{swiperStyles}</style>
-      <div className="bg-[#f5f1eb] mx-[15px] py-12 relative overflow-hidden">
+      <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-12 relative overflow-hidden">
       {/* Background Pattern */}
       {/* <div className="absolute inset-0 opacity-10">
         <Image 

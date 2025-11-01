@@ -55,7 +55,7 @@ const WhatLearn = ({ whatLearnData }) => {
         rating: "5★",
         students: "50K+ students"
       },
-      primaryButton: { text: "Join The Waitlist", link: "#" },
+      primaryButton: { text: "Join The pre-launch access", link: "#" },
       secondaryButton: { text: "Preview", link: "#" },
       whatYouGain: {
         title: "What you'll gain",
@@ -92,7 +92,7 @@ const WhatLearn = ({ whatLearnData }) => {
   } : fallbackData;
 
   return (
-    <div className="bg-[#f5f1eb] mx-[15px] lg:py-16 py-8 lg:px-12 px-4">
+    <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] lg:py-16 py-8 lg:px-12 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-7 lg:gap-12 gap-4">
           

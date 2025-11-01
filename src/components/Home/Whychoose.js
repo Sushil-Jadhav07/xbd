@@ -168,7 +168,7 @@ const Whychoose = ({ whyChooseData }) => {
   };
 
   return (
-    <section className="bg-[#f5f1eb] mx-[15px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
+    <section className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
       
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -5,7 +5,7 @@ import Script from 'next/script';
 export default function LinkedInFeed() {
   return (
     <>
-    <div className="linkedin-feed-container mx-[15px] my-10">
+    <div className="linkedin-feed-container md:mx-[15px] mx-[5px] my-10">
       {/* Load Elfsight platform script */}
       <Script
         id="elfsight-platform"

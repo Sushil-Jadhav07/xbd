@@ -91,7 +91,7 @@ const InsideBook = ({ insideBookData }) => {
   }
 
   return (
-    <div className="bg-white mx-[15px] py-16">
+    <div className="bg-white md:mx-[15px] mx-[5px] py-16">
       <div className="max-w-7xl mx-auto px-2 md:px-0">
         
         {/* Header Section */}

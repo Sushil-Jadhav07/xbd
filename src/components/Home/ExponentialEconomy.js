@@ -6,7 +6,7 @@ const ExponentialEconomy = ({ exponentialData }) => {
   if (!exponentialData) return null;
 
   return (
-    <section className="bg-black mx-[15px] py-16 md:py-20 lg:py-24 transition-colors duration-300">
+    <section className="bg-black md:mx-[15px] mx-[5px] py-16 md:py-20 lg:py-24 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-2 md:px-8">
         {/* Header Section */}
         <div className="text-center mb-8">
