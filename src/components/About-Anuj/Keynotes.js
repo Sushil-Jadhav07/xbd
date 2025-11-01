@@ -273,7 +273,7 @@ const Keynotes = ({ keynotesData }) => {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 md:-left-6 lg:-left-12 top-1/2 -translate-y-1/2 bg-white text-black p-2 md:p-3 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-200 z-10"
+            className="absolute left-0 md:-left-6 lg:-left-12 top-1/2 -translate-y-1/2 bg-gradient-to-br from-[#9d7035] to-[#c1a35e] text-white p-2 md:p-3 rounded-full shadow-lg hover:opacity-90 transition-all duration-200 z-10"
             aria-label="Previous slide"
           >
             <MdChevronLeft className="text-2xl md:text-3xl lg:text-4xl" />
@@ -281,7 +281,7 @@ const Keynotes = ({ keynotesData }) => {
           
           <button
             onClick={nextSlide}
-            className="absolute right-0 md:-right-6 lg:-right-12 top-1/2 -translate-y-1/2 bg-white text-black p-2 md:p-3 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-200 z-10"
+            className="absolute right-0 md:-right-6 lg:-right-12 top-1/2 -translate-y-1/2 bg-gradient-to-br from-[#9d7035] to-[#c1a35e] text-white p-2 md:p-3 rounded-full shadow-lg hover:opacity-90 transition-all duration-200 z-10"
             aria-label="Next slide"
           >
             <MdChevronRight className="text-2xl md:text-3xl lg:text-4xl" />
@@ -293,10 +293,10 @@ const Keynotes = ({ keynotesData }) => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
+                className={`h-2 md:h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? 'bg-gray-800 w-6 md:w-8'
-                    : 'bg-gray-400 hover:bg-gray-600'
+                    ? 'bg-gradient-to-br from-[#9d7035] to-[#c1a35e] w-6 md:w-8'
+                    : 'bg-gray-400 hover:bg-gray-500 w-2 md:w-3'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />

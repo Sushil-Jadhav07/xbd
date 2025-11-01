@@ -213,8 +213,23 @@ const Feature = ({ whatIsExponentialData }) => {
 
 
   return (
-    <section className="dark:bg-white bg-white md:mx-[15px] mx-[5px] py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <>
+      <style dangerouslySetInnerHTML={{__html: `
+        .swiper-pagination-custom .swiper-pagination-bullet {
+          width: 10px;
+          height: 10px;
+          background: #d1d5db;
+          opacity: 1;
+          transition: all 0.3s ease;
+        }
+        .swiper-pagination-custom .swiper-pagination-bullet-active {
+          background: linear-gradient(to bottom right, #9d7035, #c1a35e);
+          width: 24px;
+          border-radius: 5px;
+        }
+      `}} />
+      <section className="dark:bg-white bg-white md:mx-[15px] mx-[5px] py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Header */}
         <div className="mb-12 lg:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -226,18 +241,20 @@ const Feature = ({ whatIsExponentialData }) => {
         </div>
 
         {/* Features Carousel */}
-        <div className="relative">
+        <div className="relative pb-16">
           <Swiper
-            modules={[ Autoplay]}
+            modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={30}
             slidesPerView={1}
             navigation={{
-              nextEl: '.swiper-button-next-mobile',
-              prevEl: '.swiper-button-prev-mobile',
+              nextEl: '.swiper-button-next-custom',
+              prevEl: '.swiper-button-prev-custom',
             }}
             pagination={{
               clickable: true,
               el: '.swiper-pagination-custom',
+              dynamicBullets: true,
+              type: 'bullets',
             }}
             // autoplay={{
             //   delay: 5000,
@@ -256,12 +273,8 @@ const Feature = ({ whatIsExponentialData }) => {
                 slidesPerView: 2.5,
                 spaceBetween: 40,
               },
-            }}
-            className="pb-12"
-            onSwiper={(swiper) => {
-              // Store swiper instance for manual navigation if needed
-              window.swiperInstance = swiper;
-            }}
+             }}
+            className="pb-4"
           >
             {features.map((feature, index) => (
               <SwiperSlide key={index}>
@@ -297,40 +310,32 @@ const Feature = ({ whatIsExponentialData }) => {
             ))}
           </Swiper>
 
-          {/* Custom Pagination - Hidden on desktop */}
-          <div className="swiper-pagination-custom flex justify-center mt-8 space-x-2 md:hidden"></div>
+          {/* Left Navigation Arrow */}
+          <button 
+            className="swiper-button-prev-custom absolute left-0 md:-left-13 top-[40%] md:top-1/2 -translate-y-1/2 z-10 bg-gradient-to-br from-[#9d7035] to-[#c1a35e] shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white hover:opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="Previous Slide"
+          >
+            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          {/* Right Navigation Arrow */}
+          <button 
+            className="swiper-button-next-custom absolute right-0 md:right-[-50px] top-[40%] md:top-1/2 -translate-y-1/2 z-10 bg-gradient-to-br from-[#9d7035] to-[#c1a35e] shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white hover:opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="Next Slide"
+          >
+            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
 
-          {/* Bottom Navigation Buttons - Visible on all devices */}
-          {/* <div className="flex justify-center items-center gap-4 mt-6">
-            <button 
-              className="swiper-button-prev-mobile bg-white shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200"
-              onClick={() => {
-                if (window.swiperInstance) {
-                  window.swiperInstance.slidePrev();
-                }
-              }}
-            >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            
-            <button 
-              className="swiper-button-next-mobile bg-white shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200"
-              onClick={() => {
-                if (window.swiperInstance) {
-                  window.swiperInstance.slideNext();
-                }
-              }}
-            >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div> */}
+          {/* Custom Pagination - Absolutely Centered at Bottom */}
+          <div className="swiper-pagination-custom absolute bottom-0 left-0 right-0 flex justify-center items-center space-x-2"></div>
         </div>
       </div>
     </section>
+    </>
   );
 };
 

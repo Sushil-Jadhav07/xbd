@@ -1,16 +1,19 @@
 "use client";
 
-import { useState, useRef } from 'react';
-import { HiOutlineSparkles, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { HiOutlineSparkles } from 'react-icons/hi';
 import { MdImage } from 'react-icons/md';
 import { HiOutlineDocument, HiOutlinePlay, HiOutlinePhone, HiOutlineMicrophone } from 'react-icons/hi';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const Slider = ({ resourcesSliderData }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const carouselRef = useRef(null);
-
   // Fallback data
   const fallbackData = {
     label: "RESOURCES",
@@ -66,34 +69,23 @@ const Slider = ({ resourcesSliderData }) => {
     }
   };
 
-  const nextSlide = () => {
-    if (currentSlide < data.resources.length - getVisibleSlides()) {
-      setCurrentSlide(currentSlide + 1);
-    }
-  };
-
-  const prevSlide = () => {
-    if (currentSlide > 0) {
-      setCurrentSlide(currentSlide - 1);
-    }
-  };
-
-  const getVisibleSlides = () => {
-    if (typeof window !== 'undefined') {
-      if (window.innerWidth >= 1280) return 4; // xl
-      if (window.innerWidth >= 1024) return 3; // lg
-      if (window.innerWidth >= 768) return 2;  // md
-      return 1; // sm
-    }
-    return 4; // default for SSR
-  };
-
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
-
   return (
-    <section className=" bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
+    <>
+      <style dangerouslySetInnerHTML={{__html: `
+        .swiper-pagination-slider .swiper-pagination-bullet {
+          width: 10px;
+          height: 10px;
+          background: #d1d5db;
+          opacity: 1;
+          transition: all 0.3s ease;
+        }
+        .swiper-pagination-slider .swiper-pagination-bullet-active {
+          background: linear-gradient(to bottom right, #9d7035, #c1a35e);
+          width: 24px;
+          border-radius: 5px;
+        }
+      `}} />
+      <section className=" bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 z-0">
         <Image
@@ -127,40 +119,46 @@ const Slider = ({ resourcesSliderData }) => {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative">
-          {/* Navigation Buttons */}
-          {/* <div className="hidden md:flex absolute -top-16 right-0 gap-2 z-10">
-            <button
-              onClick={prevSlide}
-              disabled={currentSlide === 0}
-              className="p-2 rounded-lg border border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-            >
-              <HiChevronLeft className="w-5 h-5 text-gray-600" />
-            </button>
-            <button
-              onClick={nextSlide}
-              disabled={currentSlide >= data.resources.length - getVisibleSlides()}
-              className="p-2 rounded-lg border border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-            >
-              <HiChevronRight className="w-5 h-5 text-gray-600" />
-            </button>
-          </div> */}
-
-          {/* Carousel */}
-          <div className="overflow-hidden" ref={carouselRef}>
-            <div 
-              className="flex transition-transform duration-300 ease-in-out"
-              style={{
-                transform: `translateX(-${currentSlide * (100 / getVisibleSlides())}%)`
-              }}
-            >
-              {data.resources?.map((resource, index) => {
-                const IconComponent = getIcon(resource.iconType);
-                return (
-                  <div 
-                    key={index}
-                    className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 flex-shrink-0 px-2"
-                  >
+        <div className="relative pb-16">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={20}
+            slidesPerView={1}
+            navigation={{
+              nextEl: '.swiper-button-next-slider',
+              prevEl: '.swiper-button-prev-slider',
+            }}
+            pagination={{
+              clickable: true,
+              el: '.swiper-pagination-slider',
+              dynamicBullets: true,
+              type: 'bullets',
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+              1280: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+            }}
+            className="pb-4"
+          >
+            {data.resources?.map((resource, index) => {
+              const IconComponent = getIcon(resource.iconType);
+              return (
+                <SwiperSlide key={index}>
+                  <div className="px-2 h-full">
                     <div className="bg-white border border-gray-200 rounded-2xl p-6 h-full flex flex-col">
                       {/* Image Placeholder */}
                       <div className="bg-[#dbdbdb] rounded-xl aspect-[4/3] flex items-center justify-center mb-6 relative overflow-hidden">
@@ -198,45 +196,37 @@ const Slider = ({ resourcesSliderData }) => {
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
-          </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
 
-          {/* Mobile Navigation Dots */}
-          {/* <div className="flex justify-center gap-2 mt-8 md:hidden">
-            {Array.from({ length: data.resources.length }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                  index === currentSlide ? 'bg-black' : 'bg-gray-300'
-                }`}
-              />
-            ))}
-          </div> */}
+          {/* Left Navigation Arrow */}
+          <button 
+            className="swiper-button-prev-slider absolute left-0 md:-left-[50px] top-[35%] md:top-1/2 -translate-y-1/2 z-10 bg-gradient-to-br from-[#9d7035] to-[#c1a35e] shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white hover:opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="Previous Slide"
+          >
+            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          {/* Right Navigation Arrow */}
+          <button 
+            className="swiper-button-next-slider absolute right-0 md:right-[-50px] top-[35%] md:top-1/2 -translate-y-1/2 z-10 bg-gradient-to-br from-[#9d7035] to-[#c1a35e] shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white hover:opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="Next Slide"
+          >
+            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
 
-          {/* Bottom Navigation Buttons - Visible on all devices */}
-          {/* <div className="flex justify-center items-center gap-4 mt-6">
-            <button
-              onClick={prevSlide}
-              disabled={currentSlide === 0}
-              className="bg-white shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <HiChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
-            
-            <button
-              onClick={nextSlide}
-              disabled={currentSlide >= data.resources.length - getVisibleSlides()}
-              className="bg-white shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <HiChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
-          </div> */}
+          {/* Custom Pagination - Absolutely Centered at Bottom */}
+          <div className="swiper-pagination-slider absolute bottom-0 left-0 right-0 flex justify-center items-center space-x-2"></div>
         </div>
       </div>
     </section>
+    </>
   );
 };
 

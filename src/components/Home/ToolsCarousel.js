@@ -1,21 +1,23 @@
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
-import { HiOutlineSparkles, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { useRef } from 'react';
+import { HiOutlineSparkles } from 'react-icons/hi';
 import { MdImage } from 'react-icons/md';
 import XtremeReach from "../../asset/x-tremereach.png"
 import XtractEmotions from "../../asset/X-tract Emotions.png"
 import XtendValue from "../../asset/X-tend Value.png"
 import Image from 'next/image';
 import Link from 'next/link';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const ToolsCarousel = ({ toolsCarouselData }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [visibleSlides, setVisibleSlides] = useState(3);
-  const carouselRef = useRef(null);
   const videoRefs = useRef([]);
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
 
   // Fallback data
   const fallbackData = {
@@ -50,72 +52,6 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
 
   const data = toolsCarouselData || fallbackData;
 
-  // Update visible slides based on screen size
-  useEffect(() => {
-    const updateVisibleSlides = () => {
-      if (typeof window !== 'undefined') {
-        if (window.innerWidth >= 1024) {
-          setVisibleSlides(3); // lg: show 3
-        } else if (window.innerWidth >= 768) {
-          setVisibleSlides(2); // md: show 2
-        } else {
-          setVisibleSlides(1); // sm: show 1
-        }
-      }
-    };
-
-    updateVisibleSlides();
-    window.addEventListener('resize', updateVisibleSlides);
-    return () => window.removeEventListener('resize', updateVisibleSlides);
-  }, []);
-
-  const nextSlide = () => {
-    if (currentSlide < data.tools.length - visibleSlides) {
-      setCurrentSlide(currentSlide + 1);
-    }
-  };
-
-  const prevSlide = () => {
-    if (currentSlide > 0) {
-      setCurrentSlide(currentSlide - 1);
-    }
-  };
-
-  const goToSlide = (index) => {
-    const maxSlide = data.tools.length - visibleSlides;
-    setCurrentSlide(Math.min(index, maxSlide));
-  };
-
-  // Touch/swipe handlers for mobile
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchMove = (e) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    const swipeThreshold = 50; // minimum distance for swipe
-    const diff = touchStartX.current - touchEndX.current;
-
-    if (Math.abs(diff) > swipeThreshold) {
-      if (diff > 0) {
-        // Swiped left - go to next
-        nextSlide();
-      } else {
-        // Swiped right - go to previous
-        prevSlide();
-      }
-    }
-
-    // Reset
-    touchStartX.current = 0;
-    touchEndX.current = 0;
-  };
-
-  const slideWidth = 100 / visibleSlides;
-
   const handleHoverPlay = (index) => {
     const vid = videoRefs.current[index];
     if (!vid) return;
@@ -138,14 +74,6 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
       vid.currentTime = 0;
     } catch {}
   };
-
-  // Safety: pause all when slide index changes
-  useEffect(() => {
-    videoRefs.current.forEach((v) => {
-      if (!v) return;
-      try { v.pause(); } catch {}
-    });
-  }, [currentSlide]);
 
   const renderMedia = (tool, index) => {
     // Get video source - prioritize uploaded file over URL
@@ -190,7 +118,22 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
   };
 
   return (
-    <section className="dark:bg-white bg-white md:mx-[15px] mx-[5px] pt-0 md:pt-12 relative overflow-hidden">
+    <>
+      <style dangerouslySetInnerHTML={{__html: `
+        .swiper-pagination-tools .swiper-pagination-bullet {
+          width: 10px;
+          height: 10px;
+          background: #d1d5db;
+          opacity: 1;
+          transition: all 0.3s ease;
+        }
+        .swiper-pagination-tools .swiper-pagination-bullet-active {
+          background: linear-gradient(to bottom right, #9d7035, #c1a35e);
+          width: 24px;
+          border-radius: 5px;
+        }
+      `}} />
+      <section className="dark:bg-white bg-white md:mx-[15px] mx-[5px] pt-0 md:pt-12 relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 z-0">
         <Image
@@ -224,130 +167,101 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative">
-          {/* Navigation Buttons - Desktop */}
-          {/* <div className="hidden md:flex absolute -top-16 right-0 gap-2 z-10">
-            <button
-              onClick={prevSlide}
-              disabled={currentSlide === 0}
-              className="p-2 rounded-lg border border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-              aria-label="Previous slide"
-            >
-              <HiChevronLeft className="w-5 h-5 text-gray-600" />
-            </button>
-            <button
-              onClick={nextSlide}
-              disabled={currentSlide >= data.tools.length - visibleSlides}
-              className="p-2 rounded-lg border border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-              aria-label="Next slide"
-            >
-              <HiChevronRight className="w-5 h-5 text-gray-600" />
-            </button>
-          </div> */}
-
-          {/* Navigation Arrows - Mobile (Positioned over carousel) */}
-          {data.tools.length > 1 && (
-            <>
-              <button
-                onClick={prevSlide}
-                disabled={currentSlide === 0}
-                className="md:hidden absolute -left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/90 shadow-lg hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 border border-gray-200"
-                aria-label="Previous slide"
-              >
-                <HiChevronLeft className="w-6 h-6 text-[#9d7035]" />
-              </button>
-              <button
-                onClick={nextSlide}
-                disabled={currentSlide >= data.tools.length - visibleSlides}
-                className="md:hidden absolute -right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/90 shadow-lg hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 border border-gray-200"
-                aria-label="Next slide"
-              >
-                <HiChevronRight className="w-6 h-6 text-[#9d7035]" />
-              </button>
-            </>
-          )}
-
-          {/* Carousel */}
-          <div 
-            className="overflow-hidden" 
-            ref={carouselRef}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
+        <div className="relative pb-16">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={30}
+            slidesPerView={1}
+            navigation={{
+              nextEl: '.swiper-button-next-tools',
+              prevEl: '.swiper-button-prev-tools',
+            }}
+            pagination={{
+              clickable: true,
+              el: '.swiper-pagination-tools',
+              dynamicBullets: true,
+              type: 'bullets',
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+              },
+            }}
+            className="pb-4"
           >
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{
-                transform: `translateX(-${currentSlide * slideWidth}%)`
-              }}
-            >
-              {data.tools?.map((tool, index) => (
-                <div 
-                  key={index}
-                  className="flex-shrink-0 px-3"
-                  style={{ width: `${slideWidth}%` }}
-                >
-                  <div className="h-full flex flex-col">
-                    {/* Media */}
-                    <div 
-                      className="bg-[#dbdbdb] rounded-2xl aspect-[4/3] w-full flex items-center justify-center mb-8 relative overflow-hidden"
-                      onMouseEnter={() => tool.mediaType === 'video' && handleHoverPlay(index)}
-                      onMouseLeave={() => tool.mediaType === 'video' && handleHoverPause(index)}
+            {data.tools?.map((tool, index) => (
+              <SwiperSlide key={index}>
+                <div className="h-full flex flex-col px-3">
+                  {/* Media */}
+                  <div 
+                    className="bg-[#dbdbdb] rounded-2xl aspect-[4/3] w-full flex items-center justify-center mb-8 relative overflow-hidden"
+                    onMouseEnter={() => tool.mediaType === 'video' && handleHoverPlay(index)}
+                    onMouseLeave={() => tool.mediaType === 'video' && handleHoverPause(index)}
+                  >
+                    {renderMedia(tool, index)}
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20 pointer-events-none"></div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 flex flex-col space-y-4">
+                    {/* Title */}
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      {tool.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-gray-700 leading-relaxed flex-1">
+                      "{tool.description}"
+                    </p>
+
+                    {/* Button */}
+                    <Link
+                      href={tool.buttonLink || '#'}
+                      className="text-center bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200 w-full mt-6"
                     >
-                      {renderMedia(tool, index)}
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20 pointer-events-none"></div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 flex flex-col space-y-4">
-                      {/* Title */}
-                      <h3 className="text-2xl font-bold text-gray-900">
-                        {tool.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-gray-700 leading-relaxed flex-1">
-                        "{tool.description}"
-                      </p>
-
-                      {/* Button */}
-                      <Link
-                        href={tool.buttonLink || '#'}
-                        className="text-center bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200 w-full mt-6"
-                      >
-                        {tool.buttonText}
-                      </Link>
-                    </div>
+                      {tool.buttonText}
+                    </Link>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-          {/* Dot Indicators - Mobile */}
-          {/* {data.tools.length > 1 && (
-            <div className="md:hidden flex justify-center gap-2 mt-6">
-              {data.tools.map((_, index) => {
-                // Only show dots that make sense for current visible slides
-                if (index > data.tools.length - visibleSlides) return null;
-                return (
-                  <button
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                      currentSlide === index 
-                        ? 'bg-gray-800 w-8' 
-                        : 'bg-gray-300 hover:bg-gray-400'
-                    }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                );
-              })}
-            </div>
-          )} */}
+          {/* Left Navigation Arrow */}
+          <button 
+            className="swiper-button-prev-tools absolute left-0 md:-left-[50px] top-[30%] md:top-1/2 -translate-y-1/2 z-10 bg-gradient-to-br from-[#9d7035] to-[#c1a35e] shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white hover:opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="Previous Slide"
+          >
+            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          {/* Right Navigation Arrow */}
+          <button 
+            className="swiper-button-next-tools absolute right-0 md:right-[-50px] top-[30%] md:top-1/2 -translate-y-1/2 z-10 bg-gradient-to-br from-[#9d7035] to-[#c1a35e] shadow-lg rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white hover:opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="Next Slide"
+          >
+            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Custom Pagination - Absolutely Centered at Bottom */}
+          <div className="swiper-pagination-tools absolute bottom-0 left-0 right-0 flex justify-center items-center space-x-2"></div>
         </div>
       </div>
     </section>
+    </>
   );
 };
 
