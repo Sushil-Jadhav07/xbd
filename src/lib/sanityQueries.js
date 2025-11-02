@@ -1062,4 +1062,53 @@ export async function getFeaturedArticlesData() {
   }
 }
 
+export async function getYoutubeVideosData() {
+  const query = `*[_type == "youtubeVideos"][0]{
+    sectionTitle,
+    sectionSubtitle,
+    videos[]{
+      videoTitle,
+      videoUrl,
+      videoIframe,
+      videoDuration,
+      publishDate,
+      videoDescription,
+      thumbnailUrl{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    }
+  }`
+  
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching YouTube Videos data:', error)
+    return null
+  }
+}
+
+export async function getInsightsVideosData() {
+  const query = `*[_type == "insightsVideos"][0]{
+    title,
+    subtitle,
+    videosList[]{
+      title,
+      videoUrl,
+      date,
+      duration
+    }
+  }`
+  
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching Insights Videos data:', error)
+    return null
+  }
+}
+
 

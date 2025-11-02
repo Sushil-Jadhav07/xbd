@@ -10,7 +10,7 @@ const Newsletters = ({ newsletterData }) => {
   const fallbackData = {
     label: "News Letter",
     title: "Join our monthly newsletter",
-    description: "Join 5,000+ leaders getting practical growth strategies straight to their inbox.",
+    description: "Join the leaders getting practical growth strategies straight to their inbox.",
     inputPlaceholder: "Enter your email address",
     buttonText: "Subscribe",
     privacyNote: "No spam, unsubscribe at any time."

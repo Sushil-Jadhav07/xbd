@@ -1,10 +1,12 @@
 import InsightsBanner from '@/components/Insights/InsightsBanner'
 import FeaturedArticles from '@/components/Insights/FeaturedArticles'
+import YoutubeVideos from '@/components/Insights/YoutubeVideos'
+import InsightsVideos from '@/components/Insights/InsightsVideos'
 import FAQs from '@/components/Faq/Faq'
 import Newsletter from '@/components/Home/Newsletter'
 import Footer from '@/components/Layout/Footer'
 import Navbar from '@/components/Layout/Navbar'
-import { getInsightsBannerData, getFeaturedArticlesData } from '@/lib/sanityQueries'
+import { getInsightsBannerData, getFeaturedArticlesData, getYoutubeVideosData, getInsightsVideosData } from '@/lib/sanityQueries'
 import React from 'react'
 
 export const metadata = {
@@ -13,9 +15,11 @@ export const metadata = {
 };
 
 export default async function InsightsPage() {
-  const [insightsBannerData, featuredArticlesData] = await Promise.all([
+  const [insightsBannerData, featuredArticlesData, youtubeVideosData, insightsVideosData] = await Promise.all([
     getInsightsBannerData(),
-    getFeaturedArticlesData()
+    getFeaturedArticlesData(),
+    getYoutubeVideosData(),
+    getInsightsVideosData()
   ])
 
   return (
@@ -24,7 +28,9 @@ export default async function InsightsPage() {
         <Navbar />
         <InsightsBanner insightsBannerData={insightsBannerData} />
         <FeaturedArticles featuredArticlesData={featuredArticlesData} />
-        <FAQs />
+        {/* <YoutubeVideos youtubeVideosData={youtubeVideosData} /> */}
+        <InsightsVideos insightsVideosData={insightsVideosData} />
+        {/* <FAQs /> */}
         <Newsletter />
         <Footer />
       </main>
