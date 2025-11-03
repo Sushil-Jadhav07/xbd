@@ -2,14 +2,17 @@
 
 import { useEffect, useState } from 'react';
 
-export default function LeadFormModal({ open, onClose, title = 'Book a Strategy Call', onSubmit }) {
+export default function LeadFormModal({ open, onClose, title = 'Book a 30-min Growth Strategy Call', onSubmit }) {
   const [formValues, setFormValues] = useState({ 
     name: '', 
     email: '', 
     organization: '', 
     designation: '', 
     country: '', 
-    message: '' 
+    primaryGoal: '',
+    context: '',
+    companySize: '',
+    preferredTime: ''
   });
   const [submitting, setSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -33,10 +36,10 @@ export default function LeadFormModal({ open, onClose, title = 'Book a Strategy 
     setErrorMessage('');
     setSuccessMessage('');
 
-    // Validate all fields
+    // Validate all required fields
     if (!formValues.name || !formValues.email || !formValues.organization || 
-        !formValues.designation || !formValues.country || !formValues.message) {
-      setErrorMessage('Please fill in all fields.');
+        !formValues.designation || !formValues.country || !formValues.primaryGoal || !formValues.context) {
+      setErrorMessage('Please fill in all required fields.');
       return;
     }
 
@@ -59,7 +62,10 @@ export default function LeadFormModal({ open, onClose, title = 'Book a Strategy 
           organization: '', 
           designation: '', 
           country: '', 
-          message: '' 
+          primaryGoal: '',
+          context: '',
+          companySize: '',
+          preferredTime: ''
         });
         
         // Close modal after 2 seconds
@@ -92,7 +98,10 @@ export default function LeadFormModal({ open, onClose, title = 'Book a Strategy 
         ORG: formData.organization,
         DES: formData.designation,
         COUNTRY: formData.country,
-        MESSAGE: formData.message,
+        GOAL: formData.primaryGoal,
+        CONTEXT: formData.context,
+        COMPSIZE: formData.companySize || '',
+        PREFTIME: formData.preferredTime || '',
         'b_279a02443a57a9821b4e42c23_345dda8b10': '', // Honeypot field
       });
 
@@ -151,25 +160,26 @@ export default function LeadFormModal({ open, onClose, title = 'Book a Strategy 
     >
       <div className="absolute inset-0 bg-black/60" onClick={onClose} />
 
-      <div className="relative z-10 w-full max-w-md sm:max-w-xl bg-white rounded-xl shadow-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl sm:text-2xl font-semibold text-gray-900">{title}</h2>
+      <div className="relative z-10 w-full max-w-md md:max-w-2xl bg-white dark:bg-gray-900 rounded-xl shadow-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between mb-2">
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">{title}</h2>
           <button 
             type="button" 
             aria-label="Close" 
-            className="text-gray-500 hover:text-gray-700 cursor-pointer text-2xl leading-none" 
+            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 cursor-pointer text-2xl leading-none" 
             onClick={onClose}
           >
             ✕
           </button>
         </div>
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">A few basics so we can make your session count.</p>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
           {/* Name and Email in one row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="lead-name" className="block text-sm font-medium text-gray-700">
-                Name *
+              <label htmlFor="lead-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                Full name *
               </label>
               <input
                 id="lead-name"
@@ -177,15 +187,15 @@ export default function LeadFormModal({ open, onClose, title = 'Book a Strategy 
                 type="text"
                 value={formValues.name}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-gray-800"
-                placeholder="Your full name"
+                className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-gray-900 dark:text-white dark:bg-gray-800 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-gray-500 focus:border-gray-800 dark:focus:border-gray-500"
+                placeholder="e.g., Anuj Pandey"
                 required
                 disabled={submitting}
               />
             </div>
             <div>
-              <label htmlFor="lead-email" className="block text-sm font-medium text-gray-700">
-                Email *
+              <label htmlFor="lead-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                Work email *
               </label>
               <input
                 id="lead-email"
@@ -193,8 +203,8 @@ export default function LeadFormModal({ open, onClose, title = 'Book a Strategy 
                 type="email"
                 value={formValues.email}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-gray-800"
-                placeholder="you@example.com"
+                className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-gray-900 dark:text-white dark:bg-gray-800 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-gray-500 focus:border-gray-800 dark:focus:border-gray-500"
+                placeholder="you@company.com"
                 required
                 disabled={submitting}
               />
@@ -204,7 +214,7 @@ export default function LeadFormModal({ open, onClose, title = 'Book a Strategy 
           {/* Organization and Designation in one row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="lead-organization" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="lead-organization" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Organization *
               </label>
               <input
@@ -213,15 +223,15 @@ export default function LeadFormModal({ open, onClose, title = 'Book a Strategy 
                 type="text"
                 value={formValues.organization}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-gray-800"
-                placeholder="Your organization name"
+                className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-gray-900 dark:text-white dark:bg-gray-800 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-gray-500 focus:border-gray-800 dark:focus:border-gray-500"
+                placeholder="e.g., Adani Airports / Mid-market SaaS"
                 required
                 disabled={submitting}
               />
             </div>
             <div>
-              <label htmlFor="lead-designation" className="block text-sm font-medium text-gray-700">
-                Designation *
+              <label htmlFor="lead-designation" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                Role / designation *
               </label>
               <input
                 id="lead-designation"
@@ -229,8 +239,8 @@ export default function LeadFormModal({ open, onClose, title = 'Book a Strategy 
                 type="text"
                 value={formValues.designation}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-gray-800"
-                placeholder="Your designation"
+                className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-gray-900 dark:text-white dark:bg-gray-800 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-gray-500 focus:border-gray-800 dark:focus:border-gray-500"
+                placeholder="e.g., Group CIO / CMO / COO / Founder"
                 required
                 disabled={submitting}
               />
@@ -239,8 +249,8 @@ export default function LeadFormModal({ open, onClose, title = 'Book a Strategy 
 
           {/* Country field */}
           <div>
-            <label htmlFor="lead-country" className="block text-sm font-medium text-gray-700">
-              Country *
+            <label htmlFor="lead-country" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Country / region *
             </label>
             <input
               id="lead-country"
@@ -248,51 +258,123 @@ export default function LeadFormModal({ open, onClose, title = 'Book a Strategy 
               type="text"
               value={formValues.country}
               onChange={handleChange}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-gray-800"
-              placeholder="Your country"
+              className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-gray-900 dark:text-white dark:bg-gray-800 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-gray-500 focus:border-gray-800 dark:focus:border-gray-500"
+              placeholder="e.g., India / UAE / Singapore / US / EU"
               required
               disabled={submitting}
             />
           </div>
 
-          {/* Message field */}
+          {/* Primary Goal dropdown */}
           <div>
-            <label htmlFor="lead-message" className="block text-sm font-medium text-gray-700">
-              Message *
+            <label htmlFor="lead-primaryGoal" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Primary goal *
+            </label>
+            <select
+              id="lead-primaryGoal"
+              name="primaryGoal"
+              value={formValues.primaryGoal}
+              onChange={handleChange}
+              className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-gray-900 dark:text-white dark:bg-gray-800 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-gray-500 focus:border-gray-800 dark:focus:border-gray-500"
+              required
+              disabled={submitting}
+            >
+              <option value="">Select your primary goal</option>
+              <option value="Seek strategic direction and clarity on growth">Seek strategic direction and clarity on growth</option>
+              <option value="Explore Collaboration / Advisory Possibilities">Explore Collaboration / Advisory Possibilities</option>
+              <option value="Explore Learning & Development Opportunities for my organisation">Explore Learning & Development Opportunities for my organisation</option>
+              <option value="Keynote">Keynote</option>
+              <option value="Other">Other (please describe below)</option>
+            </select>
+          </div>
+
+          {/* Brief context or challenge field */}
+          <div>
+            <label htmlFor="lead-context" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Anything specific you&apos;d like to cover? *
             </label>
             <textarea
-              id="lead-message"
-              name="message"
-              value={formValues.message}
+              id="lead-context"
+              name="context"
+              value={formValues.context}
               onChange={handleChange}
               rows={3}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-gray-800 resize-vertical"
-              placeholder="Tell us about your requirements or any questions you have..."
+              className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-gray-900 dark:text-white dark:bg-gray-800 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-gray-500 focus:border-gray-800 dark:focus:border-gray-500 resize-vertical"
+              placeholder="What's the #1 bottleneck or outcome you want from this call?"
               required
               disabled={submitting}
             />
+          </div>
+
+          {/* Optional: Company size dropdown */}
+          <div>
+            <label htmlFor="lead-companySize" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Company size (optional)
+            </label>
+            <select
+              id="lead-companySize"
+              name="companySize"
+              value={formValues.companySize}
+              onChange={handleChange}
+              className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-gray-900 dark:text-white dark:bg-gray-800 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-gray-500 focus:border-gray-800 dark:focus:border-gray-500"
+              disabled={submitting}
+            >
+              <option value="">Select company size</option>
+              <option value="1-50">1-50</option>
+              <option value="51-500">51-500</option>
+              <option value="501-5000">501-5000</option>
+              <option value="5000+">5000+</option>
+            </select>
+          </div>
+
+          {/* Optional: Preferred time window dropdown */}
+          <div>
+            <label htmlFor="lead-preferredTime" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Preferred time window (optional)
+            </label>
+            <select
+              id="lead-preferredTime"
+              name="preferredTime"
+              value={formValues.preferredTime}
+              onChange={handleChange}
+              className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-gray-900 dark:text-white dark:bg-gray-800 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-gray-500 focus:border-gray-800 dark:focus:border-gray-500"
+              disabled={submitting}
+            >
+              <option value="">Select preferred time</option>
+              <option value="Morning">Morning (your local time)</option>
+              <option value="Afternoon">Afternoon (your local time)</option>
+              <option value="Evening">Evening (your local time)</option>
+            </select>
+          </div>
+
+          {/* Security message */}
+          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 pt-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500 dark:text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+            </svg>
+            <span>Your information is secure and used only to schedule your session.</span>
           </div>
 
           {/* Success Message */}
           {successMessage && (
-            <div className="p-4 rounded-lg bg-green-50 border border-green-200">
-              <p className="text-sm font-medium text-green-800">{successMessage}</p>
+            <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+              <p className="text-sm font-medium text-green-800 dark:text-green-300">{successMessage}</p>
             </div>
           )}
 
           {/* Error Message */}
           {errorMessage && (
-            <div className="p-4 rounded-lg bg-red-50 border border-red-200">
-              <p className="text-sm font-medium text-red-800">{errorMessage}</p>
+            <div className="p-4 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+              <p className="text-sm font-medium text-red-800 dark:text-red-300">{errorMessage}</p>
             </div>
           )}
 
           <button
             type="submit"
             disabled={submitting}
-            className="w-full bg-black text-white px-5 py-3 rounded-lg font-semibold text-base hover:bg-gray-800 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full bg-black dark:bg-white text-white dark:text-black px-5 py-3 rounded-lg font-semibold text-base hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
           >
-            {submitting ? 'Submitting...' : 'Submit'}
+            {submitting ? 'Submitting...' : 'Claim My Strategy Call'}
           </button>
         </form>
       </div>
