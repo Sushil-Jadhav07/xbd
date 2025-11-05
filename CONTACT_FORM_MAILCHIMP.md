@@ -156,3 +156,4 @@ const ContactPage = () => {
 **The contact form is now fully integrated with Mailchimp and ready to capture inquiries!** 🎉
 
 
+

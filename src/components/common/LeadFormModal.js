@@ -98,10 +98,10 @@ export default function LeadFormModal({ open, onClose, title = 'Book a 30-min Gr
         ORG: formData.organization,
         DES: formData.designation,
         COUNTRY: formData.country,
+        MESSAGE: formData.context,
         GOAL: formData.primaryGoal,
-        CONTEXT: formData.context,
-        COMPSIZE: formData.companySize || '',
-        PREFTIME: formData.preferredTime || '',
+        SIZE: formData.companySize || '',
+        TIME: formData.preferredTime || '',
         'b_279a02443a57a9821b4e42c23_345dda8b10': '', // Honeypot field
       });
 

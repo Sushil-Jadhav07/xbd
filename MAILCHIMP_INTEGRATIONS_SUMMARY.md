@@ -26,7 +26,10 @@ Your XBD website now has **complete Mailchimp integration** across all form subm
 - Organization → ORG
 - Designation → DES
 - Country → COUNTRY
-- Message → MESSAGE
+- Context/Questions → MESSAGE
+- Primary Goal → GOAL
+- Company Size → SIZE (optional)
+- Preferred Time → TIME (optional)
 
 **Status:** ✅ **WORKING** - Tested and confirmed
 
@@ -251,7 +254,10 @@ User fills form → Clicks "Request a call" → JSONP to Mailchimp (480c6e3d8c)
 - Organization (ORG)
 - Designation (DES)
 - Country (COUNTRY)
-- Message (MESSAGE)
+- Message/Context (MESSAGE)
+- Primary Goal (GOAL)
+- Company Size (SIZE) - optional
+- Preferred Time (TIME) - optional
 - Tag: `lead-form` (if you add it)
 
 ### Contact Form Contacts Will Have:

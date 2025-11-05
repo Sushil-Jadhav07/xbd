@@ -10,14 +10,17 @@ The Lead Form Modal (`/src/components/common/LeadFormModal.js`) integrates with 
 
 The form fields are mapped to Mailchimp merge fields as follows:
 
-| Form Field | Mailchimp Field | Description |
-|------------|----------------|-------------|
-| email | EMAIL | Email address (required) |
-| name | FNAME | Full name |
-| organization | ORG | Organization name |
-| designation | DES | Job designation/title |
-| country | COUNTRY | Country |
-| message | MESSAGE | User's message |
+| Form Field | Mailchimp Field | Required | Description |
+|------------|----------------|----------|-------------|
+| email | EMAIL | Yes | Email address |
+| name | FNAME | Yes | Full name |
+| organization | ORG | Yes | Organization name |
+| designation | DES | Yes | Job designation/title |
+| country | COUNTRY | Yes | Country |
+| context | MESSAGE | Yes | User's specific questions/context |
+| primaryGoal | GOAL | Yes | Primary goal (dropdown selection) |
+| companySize | SIZE | No | Company size (optional dropdown) |
+| preferredTime | TIME | No | Preferred time window (optional dropdown) |
 
 ## How It Works
 
