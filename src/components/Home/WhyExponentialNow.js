@@ -92,9 +92,12 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
 
           {/* Stats in One Line */}
           <div className="w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8">
+            <div className="flex flex-wrap justify-center gap-x-12 gap-y-8 md:gap-6 lg:flex-nowrap lg:justify-between">
               {data.stats?.map((stat, index) => (
-                <div key={index} className="text-center space-y-3">
+                <div
+                  key={index}
+                  className="w-[40%] md:w-1/3 lg:flex-1 text-center space-y-3"
+                >
                   {/* Number */}
                   <div className="text-2xl md:text-4xl font-bold bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent ">
                     {stat.number}
