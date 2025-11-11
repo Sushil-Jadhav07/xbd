@@ -68,9 +68,9 @@ export default function ToolsFrameworksTimeline() {
               {/* Left Side - Content (30%) */}
               <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
                 <div>
-                  <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
+                  <h1 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
                     Hyper-converged Product Design Framework
-                  </h2>
+                  </h1>
                   <div className="mb-0">
                     <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
                       Design products that reach needs at the{' '}
@@ -136,16 +136,16 @@ export default function ToolsFrameworksTimeline() {
                   isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <div className="max-w-4xl mx-auto">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
+                    <h1 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                       Framework Overview
-                    </h3>
+                    </h1>
                     <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
                       Products today are not just built — they're designed to sense, learn, and evolve. This framework helps leaders architect products that merge physical, digital, and cognitive dimensions. It begins where the customer journey starts — at the point of origin of need. By embedding intelligence into every layer, organizations can anticipate behavior, enable self-upgrades, and deliver contextual value before demand is even expressed.
                     </p>
                     
-                    <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
+                    <h1 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
                       Key Pillars
-                    </h4>
+                    </h1>
                     <div className="space-y-2 sm:space-y-3">
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
@@ -180,9 +180,9 @@ export default function ToolsFrameworksTimeline() {
               {/* Left Side - Content (30%) */}
               <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
                 <div>
-                  <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
+                  <h1 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
                     Hyper-Converged Experience Design Framework
-                  </h2>
+                  </h1>
                   <div className="mb-0">
                     <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
                       Design experiences that extract emotions in the{' '}
@@ -248,16 +248,16 @@ export default function ToolsFrameworksTimeline() {
                   isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <div className="max-w-4xl mx-auto">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
+                    <h1 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                       Experience is no longer built — it's <em>continuously designed through intelligence</em>.
-                    </h3>
+                    </h1>
                     <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
                       This framework redefines experience from a collection of touchpoints to a stream of adaptive interactions. It enables brands to orchestrate micro-moments that respond to user intent, emotion, and context. By converging physical, digital, and emotional data, organizations can deliver frictionless journeys that feel personal, predictive, and persistent.
                     </p>
                     
-                    <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
+                    <h1 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
                       Key Pillars
-                    </h4>
+                    </h1>
                     <div className="space-y-2 sm:space-y-3">
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
@@ -292,9 +292,9 @@ export default function ToolsFrameworksTimeline() {
               {/* Left Side - Content (30%) */}
               <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
                 <div>
-                  <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
+                  <h1 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
                     Hyper-converged Value Design Frameworks
-                  </h2>
+                  </h1>
                   <div className="mb-0">
                     <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
                       Design co-creation to extend value at the <span className="text-[#c1a35e] font-semibold">Tipping Point</span>.
@@ -359,16 +359,16 @@ export default function ToolsFrameworksTimeline() {
                   isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <div className="max-w-4xl mx-auto">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
+                    <h1 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                       Value isn't delivered. It's <em>co-created through convergence</em>.
-                    </h3>
+                    </h1>
                     <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
                       This framework enables organizations to move from transactional relationships to participatory ecosystems — where every actor contributes data, insights, or capabilities that multiply collective value. It helps design value networks that operate at zero marginal cost and compound with every interaction.
                     </p>
                     
-                    <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
+                    <h1 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
                       Key Pillars
-                    </h4>
+                    </h1>
                     <div className="space-y-2 sm:space-y-3">
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
@@ -403,9 +403,9 @@ export default function ToolsFrameworksTimeline() {
               {/* Left Side - Content (30%) */}
               <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
                 <div>
-                  <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
+                  <h1 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
                     Multiplier effects to design Scale
-                  </h2>
+                  </h1>
                   <div className="mb-0">
                     <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
                       Scale is not about size — it's about <span className="text-[#c1a35e] font-semibold">network velocity</span> enabled by multiplier effects.
@@ -468,16 +468,16 @@ export default function ToolsFrameworksTimeline() {
                   isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <div className="max-w-4xl mx-auto">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
+                    <h1 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                       Scale isn't about size — it's about <em>velocity and amplification</em>.
-                    </h3>
+                    </h1>
                     <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
                       This framework reveals how organizations can design multiplier effects that accelerate growth geometrically, not linearly. By connecting product, platform, and ecosystem levers, leaders can create self-reinforcing loops where each success feeds the next. It's a guide to turning every input into a catalyst for compounding returns.
                     </p>
                     
-                    <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
+                    <h1 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
                       Key Pillars
-                    </h4>
+                    </h1>
                     <div className="space-y-2 sm:space-y-3">
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
@@ -512,9 +512,9 @@ export default function ToolsFrameworksTimeline() {
               {/* Left Side - Content (30%) */}
               <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
                 <div>
-                  <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
+                  <h1 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
                     Formation of Exponential Organizations
-                  </h2>
+                  </h1>
                   <div className="mb-0">
                     <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
                       Exponential organizations are <span className="text-[#c1a35e] font-semibold">born from design</span>, not chance.
@@ -577,16 +577,16 @@ export default function ToolsFrameworksTimeline() {
                   isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <div className="max-w-4xl mx-auto">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
+                    <h1 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                     Exponential organizations are  <em>designed to evolve</em>
-                    </h3>
+                    </h1>
                     <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
                     This final framework integrates all previous principles into the operating DNA of an organization. It helps leaders design organizations that scale without friction — where AI, data, and networks form self-learning systems. From structure to culture, it enables enterprises to move from efficiency to exponentiality.
                     </p>
                     
-                    <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
+                    <h1 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
                       Key Pillars
-                    </h4>
+                    </h1>
                     <div className="space-y-2 sm:space-y-3">
                       <div className="flex items-start">
                         <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>

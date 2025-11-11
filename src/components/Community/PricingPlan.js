@@ -55,9 +55,9 @@ const PricingPlan = () => {
             </span>
           </div>
           
-          <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">
+          <h1 className="text-4xl lg:text-5xl font-bold text-black mb-4">
             Community Structure
-          </h2>
+          </h1>
           
           <p className="text-lg text-black max-w-3xl">
             Clear tiers. Transparent value. Choose by outcome, not features. Low-friction entry and upgrade paths.
@@ -78,9 +78,9 @@ const PricingPlan = () => {
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-black mb-2">
+                      <h1 className="text-xl font-bold text-black mb-2">
                         {tier.title}
-                      </h3>
+                      </h1>
                       <p className="text-black mb-2">
                         {tier.content}
                       </p>

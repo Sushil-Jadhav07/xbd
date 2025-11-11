@@ -132,9 +132,9 @@ const InsightsVideos = ({ insightsVideosData }) => {
         
         {/* Header Section */}
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-4xl font-bold text-black px-2 mb-3">
+          <h1 className="text-2xl md:text-4xl font-bold text-black px-2 mb-3">
             {data.title}
-          </h2>
+          </h1>
           {data.subtitle && (
             <p className="text-gray-700 text-base md:text-lg max-w-3xl mx-auto">
               {data.subtitle}
@@ -216,9 +216,9 @@ const InsightsVideos = ({ insightsVideosData }) => {
                     {/* Video Info */}
                     <div className="space-y-3 md:space-y-4">
                       {/* Title */}
-                      <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 text-center line-clamp-2 min-h-[3.5rem]">
+                      <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 text-center line-clamp-2 min-h-[3.5rem]">
                         {video.title}
-                      </h3>
+                      </h1>
                       
                       {/* Date and Duration */}
                       <div className="flex flex-wrap justify-center gap-3 md:gap-4 pt-3 border-t border-gray-200">

@@ -162,7 +162,7 @@ export default function LeadFormModal({ open, onClose, title = 'Book a 30-min Gr
 
       <div className="relative z-10 w-full max-w-md md:max-w-2xl bg-white dark:bg-gray-900 rounded-xl shadow-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-2">
-          <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">{title}</h2>
+          <h1 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">{title}</h1>
           <button 
             type="button" 
             aria-label="Close" 

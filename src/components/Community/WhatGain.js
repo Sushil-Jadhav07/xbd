@@ -7,9 +7,9 @@ const WhatGain = () => {
         
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">
+          <h1 className="text-4xl lg:text-5xl font-bold text-black mb-4">
             What You'll Gain
-          </h2>
+          </h1>
           <p className="text-lg text-black max-w-2xl mx-auto">
             Gain the opportunity to enter the exclusive playing field of the Exponentials.
           </p>

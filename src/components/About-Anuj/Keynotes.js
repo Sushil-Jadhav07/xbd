@@ -153,9 +153,9 @@ const Keynotes = ({ keynotesData }) => {
         
         {/* Header Section */}
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-4xl font-bold text-black px-2">
+          <h1 className="text-2xl md:text-4xl font-bold text-black px-2">
             {data.title}
-          </h2>
+          </h1>
         </div>
         
         {/* Carousel Container */}
@@ -223,9 +223,9 @@ const Keynotes = ({ keynotesData }) => {
                     </div>
                     
                     {/* Title */}
-                    <h3 className="text-base md:text-lg lg:text-xl font-bold text-black mb-2 text-center">
+                    <h1 className="text-base md:text-lg lg:text-xl font-bold text-black mb-2 text-center">
                       {keynote.title}
-                    </h3>
+                    </h1>
                     
                     {/* Subtitle */}
                     <p className="text-xs md:text-sm lg:text-base text-gray-700 mb-3 md:mb-4 text-center">

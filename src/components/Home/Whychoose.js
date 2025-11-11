@@ -182,14 +182,14 @@ const Whychoose = ({ whyChooseData }) => {
             </div>
 
             {/* Headline */}
-            <h2 className="text-3xl md:text-4xl font-bold dark:text-gray-900 text-white leading-tight">
+            <h1 className="text-3xl md:text-4xl font-bold dark:text-gray-900 text-white leading-tight">
               {data.titleStart}{" "}
               <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent inline">
                 {data.highlightText}
               </span>
               {data.titleEnd}{" "}
               <span className="font-black">{data.boldText}</span>
-            </h2>
+            </h1>
 
             {/* Quote */}
             <blockquote className="text-sm md:text-base text-gray-700 dark:text-gray-900 leading-relaxed">

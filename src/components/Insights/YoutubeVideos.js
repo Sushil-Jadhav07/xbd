@@ -119,9 +119,9 @@ const YoutubeVideos = ({ youtubeVideosData }) => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {data.sectionTitle}
-          </h2>
+          </h1>
           {data.sectionSubtitle && (
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               {data.sectionSubtitle}
@@ -210,9 +210,9 @@ const YoutubeVideos = ({ youtubeVideosData }) => {
 
                   {/* Video Info */}
                   <div className="p-5 flex flex-col flex-grow bg-white">
-                    <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 line-clamp-2 min-h-[3.5rem] group-hover:text-[#9d7035] transition-colors duration-300">
+                    <h1 className="text-lg md:text-xl font-bold text-gray-900 mb-2 line-clamp-2 min-h-[3.5rem] group-hover:text-[#9d7035] transition-colors duration-300">
                       {video.videoTitle}
-                    </h3>
+                    </h1>
                     
                     {video.videoDescription && (
                       <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">

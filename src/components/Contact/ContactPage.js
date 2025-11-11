@@ -151,7 +151,7 @@ const ContactPage = () => {
         <div className="grid gap-8 md:grid-cols-3 mb-16">
           {infoItems.map((item) => (
             <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h2>
+              <h1 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h1>
               <p className="text-gray-600 leading-relaxed mb-4">{item.description}</p>
               <Link href={item.href} className="text-[#b69352] font-medium ">
                 {item.primary}
@@ -268,7 +268,7 @@ const ContactPage = () => {
 
           <div className="space-y-8">
             <div className="bg-white rounded-3xl border border-gray-200 shadow-sm p-10">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Why teams reach out</h2>
+              <h1 className="text-2xl font-semibold text-gray-900 mb-4">Why teams reach out</h1>
               <ul className="space-y-4 text-gray-600">
                 <li className="flex items-start gap-3">
                   <span className="mt-1 h-2 w-2 rounded-full bg-gradient-to-br from-[#9d7035] to-[#c1a35e]" />

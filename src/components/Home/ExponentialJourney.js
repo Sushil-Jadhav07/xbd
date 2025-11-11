@@ -228,7 +228,7 @@ export default function ExponentialJourney({ journeyData }) {
                   <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#c1a35e]"></div>
                 </div>
                 <p className="text-gray-400 text-xs md:text-sm mb-1 md:mb-2">STAGE {stageData[activeStage].stageNumber}</p>
-                <h3 className="text-[#c1a35e] text-xl md:text-2xl font-semibold">{stageData[activeStage].title}</h3>
+                <h1 className="text-[#c1a35e] text-xl md:text-2xl font-semibold">{stageData[activeStage].title}</h1>
               </>
             )}
           </div>
@@ -256,7 +256,7 @@ export default function ExponentialJourney({ journeyData }) {
           <div className="w-full lg:w-[50%] bg-transparent p-4 md:p-8">
             {stageData[activeStage] && (
               <>
-                <h3 className="text-white text-lg md:text-xl font-semibold mb-3 md:mb-4">Promise</h3>
+                <h1 className="text-white text-lg md:text-xl font-semibold mb-3 md:mb-4">Promise</h1>
                 <p className="text-gray-300 text-sm md:text-base mb-6 md:mb-8">
                   {stageData[activeStage].promise}
                 </p>

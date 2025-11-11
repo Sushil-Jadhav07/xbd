@@ -63,9 +63,9 @@ const MeetAuthor = ({ meetAuthorData }) => {
         
         {/* Header Section */}
         <div className="text-center mb-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-black">
+          <h1 className="text-3xl md:text-4xl font-bold text-black">
             {data.title}
-          </h2>
+          </h1>
         </div>
         
         {/* Main Content Container */}
@@ -154,9 +154,9 @@ const MeetAuthor = ({ meetAuthorData }) => {
                 
                 {/* Video Title */}
                 {videoSection.videoTitle && (
-                  <p className="text-center text-sm text-gray-600 mt-3 font-medium">
+                  <h1 className="text-center text-sm text-gray-600 mt-3 font-medium">
                     {videoSection.videoTitle}
-                  </p>
+                  </h1>
                 )}
                 
                 {/* Video Description */}
@@ -202,7 +202,7 @@ const MeetAuthor = ({ meetAuthorData }) => {
             {(videoSection.videoTitle || videoSection.videoDescription) && (
               <div className="p-4 text-white">
                 {videoSection.videoTitle && (
-                  <h3 className="text-lg font-semibold mb-2">{videoSection.videoTitle}</h3>
+                  <h1 className="text-lg font-semibold mb-2">{videoSection.videoTitle}</h1>
                 )}
                 {videoSection.videoDescription && (
                   <p className="text-gray-300">{videoSection.videoDescription}</p>

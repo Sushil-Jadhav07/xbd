@@ -105,9 +105,9 @@ const GroupCoaching = ({ groupCoachingData }) => {
         
         {/* Header Section */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-black">
+          <h1 className="text-3xl md:text-4xl font-bold text-black">
             {data.sectionTitle}
-          </h2>
+          </h1>
         </div>
         
         {/* Content Cards */}
@@ -123,9 +123,9 @@ const GroupCoaching = ({ groupCoachingData }) => {
               )}
               
               {/* Title */}
-              <h3 className="text-lg md:text-xl font-bold text-black mb-3 text-center">
+              <h1 className="text-lg md:text-xl font-bold text-black mb-3 text-center">
                 {session.title}
-              </h3>
+              </h1>
               
               {/* Description */}
               <p className="text-sm md:text-base text-gray-700 mb-6 text-center leading-relaxed">

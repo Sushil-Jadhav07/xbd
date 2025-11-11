@@ -108,9 +108,9 @@ const Programs = ({ programsData }) => {
     <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] lg:py-16 py-8 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Main Title */}
-        <h2 className="text-3xl md:text-5xl font-medium text-black lg:mb-4 mb-4">
+        <h1 className="text-3xl md:text-5xl font-medium text-black lg:mb-4 mb-4">
           {data.sectionTitle}
-        </h2>
+        </h1>
 
         {/* Subtitle */}
         {data.subtitle && (
@@ -127,7 +127,7 @@ const Programs = ({ programsData }) => {
               <div className='grid grid-cols-3 grid-flow-row lg:gap-4 gap-2'>
                 <div className="lg:mb-4 mb-2 col-span-2">
                   <div className="text-sm text-gray-600 mb-1 capitalize">{program.programType.replace('-', ' ')}</div>
-                  <h3 className="lg:text-xl text-lg font-bold text-black">{program.title}</h3>
+                  <h1 className="lg:text-xl text-lg font-bold text-black">{program.title}</h1>
                 </div>
                 <div className="col-span-1 px-3 py-2 lg:h-[70px] h-[65px] rounded-lg bg-gray-200">
                   <div className="text-gray-700 py-1 rounded text-xs font-medium">
@@ -206,9 +206,9 @@ const Programs = ({ programsData }) => {
         {data.earlyAccessSection && (
           <div className="mt-12 lg:mt-16">
             {data.earlyAccessSection.heading && (
-              <h3 className="text-2xl md:text-3xl font-medium text-black mb-4">
+              <h1 className="text-2xl md:text-3xl font-medium text-black mb-4">
                 {data.earlyAccessSection.heading}
-              </h3>
+              </h1>
             )}
             {data.earlyAccessSection.noteLabel && data.earlyAccessSection.noteText && (
               <div className="mt-4">

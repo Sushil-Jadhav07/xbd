@@ -115,9 +115,9 @@ const PricingPlan = ({ pricingPlanData }) => {
             {data.label}
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
             {data.title} <span className="font-black">{data.highlightText}</span>
-          </h2>
+          </h1>
 
           <p className="text-base md:text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
             {data.subtitle}
@@ -182,9 +182,9 @@ const PricingPlan = ({ pricingPlanData }) => {
 
                       {/* Content */}
                       <div className="flex-1 flex flex-col space-y-6">
-                        <h3 className="text-xl font-bold text-gray-900 text-center">
+                        <h1 className="text-xl font-bold text-gray-900 text-center">
                           {plan.title}
-                        </h3>
+                        </h1>
 
                         <Link
                           href={plan.buttonLink || '#'}

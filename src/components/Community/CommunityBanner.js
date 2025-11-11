@@ -24,9 +24,9 @@ const CommunityBanner = () => {
           <div className=" space-y-6">
             
             {/* Top Tag */}
-            <div className="inline-block bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full font-medium">
+            <h1 className="inline-block bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full font-medium">
               Framework • Community • Labs
-            </div>
+            </h1>
             
             {/* Main Headline */}
             <div className="space-y-2">

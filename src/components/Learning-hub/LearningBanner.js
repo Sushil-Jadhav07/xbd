@@ -67,7 +67,7 @@ const LearningBanner = ({ learningBannerData }) => {
                 {/* Video Info */}
                 {videoSection.videoTitle && (
                   <div className="mt-3">
-                    <h3 className="text-lg font-bold text-black mb-2">{videoSection.videoTitle}</h3>
+                    <h1 className="text-lg font-bold text-black mb-2">{videoSection.videoTitle}</h1>
                     {videoSection.videoDescription && (
                       <p className="text-gray-700 text-sm">{videoSection.videoDescription}</p>
                     )}

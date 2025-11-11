@@ -71,9 +71,9 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
           </div>
 
           {/* Headline */}
-          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-6">
             {data.title} <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent">{data.highlightText}</span>
-          </h2>
+          </h1>
 
           {/* Subtitle */}
           <p className="text-sm md:text-base text-white max-w-4xl mx-auto leading-relaxed">

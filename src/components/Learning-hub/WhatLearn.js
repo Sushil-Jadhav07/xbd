@@ -118,7 +118,7 @@ const WhatLearn = ({ whatLearnData }) => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {data.featureHighlights?.map((feature, index) => (
                 <div key={index} className="bg-gray-200 rounded-xl lg:p-4 p-3">
-                  <h3 className="font-bold text-black mb-2">{feature.title}</h3>
+                  <h1 className="font-bold text-black mb-2">{feature.title}</h1>
                   <p className="text-black">{feature.description}</p>
                 </div>
               ))}
@@ -126,47 +126,32 @@ const WhatLearn = ({ whatLearnData }) => {
 
             {/* Modules Section */}
             <div>
-              <h2 className="text-2xl font-bold text-black mb-6">Modules</h2>
+              <h1 className="text-2xl font-bold text-black mt-12">Modules</h1>
               
               {/* Modules Grid */}
-              <div className="space-y-4">
-                {/* First 4 modules in 2x2 grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {data.modules?.slice(0, 4).map((module, index) => (
-                    <div key={index} className="bg-gray-200 rounded-lg lg:p-4 p-3 flex items-start space-x-4">
-                      <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-black font-bold text-sm">{module.number}</span>
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-black mb-1">{module.title}</h3>
-                        <p className="text-black">{module.description}</p>
-                      </div>
+              <div className="flex flex-col gap-4 mt-4 md:flex-row md:flex-nowrap md:gap-4 md:overflow-x-auto md:pb-4 lg:overflow-visible lg:pb-0">
+                {data.modules?.map((module, index) => (
+                  <div
+                    key={index}
+                    className="group bg-white/95 border border-[#dedbd6] rounded-2xl px-4 py-5 lg:px-6 lg:py-6 flex flex-col items-center text-center gap-4 shadow-[0_10px_30px_rgba(26,24,22,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(26,24,22,0.12)] w-full md:flex-1 md:min-w-[220px] lg:min-w-[190px]"
+                  >
+                    <div className="w-12 h-12 bg-gray-200  rounded-full flex items-center justify-center">
+                      <span className="text-black font-semibold text-base">{module.number}</span>
                     </div>
-                  ))}
-                </div>
-
-                {/* Last module with Request Info Button */}
-                {data.modules?.length > 4 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:space-x-4">
-                    <div className="bg-gray-200 rounded-lg !mr-0 md:p-6 p-3 flex items-start space-x-4 lg:flex-1">
-                      <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-black font-bold text-sm">{data.modules[4].number}</span>
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-black mb-1">{data.modules[4].title}</h3>
-                        <p className="text-black">{data.modules[4].description}</p>
-                      </div>
+                    <div className="space-y-2">
+                      <h1 className="text-black font-semibold text-lg">{module.title}</h1>
+                      <p className="text-black text-sm leading-relaxed">{module.description}</p>
                     </div>
-                    
-                    {data.requestInfoButton && (
-                      <Link
-                        href={data.requestInfoButton.link || '#'}
-                        className="text-lg md:text-2xl font-bold bg-black text-white text-center flex items-center justify-center px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors whitespace-nowrap"
-                      >
-                        {data.requestInfoButton.text}
-                      </Link>
-                    )}
                   </div>
+                ))}
+
+                {data.requestInfoButton && (
+                  <Link
+                    href={data.requestInfoButton.link || '#'}
+                    className="text-lg md:text-xl font-semibold text-white text-center flex items-center justify-center px-6 py-4 rounded-2xl transition-all duration-300 whitespace-nowrap bg-gradient-to-r from-[#a27538] to-[#caa85d] hover:from-[#b88446] hover:to-[#d9ba69] shadow-[0_12px_35px_rgba(162,117,56,0.35)] hover:-translate-y-1 w-full md:flex-1 md:min-w-[240px] lg:min-w-[200px]"
+                  >
+                    {data.requestInfoButton.text}
+                  </Link>
                 )}
               </div>
             </div>
@@ -178,7 +163,7 @@ const WhatLearn = ({ whatLearnData }) => {
             {/* Course Rating */}
             {/* {data.sidebarContent?.courseRating && (
               <div className="text-center bg-gray-100 py-6 px-6 rounded-lg mb-8">
-                <h3 className="text-black font-medium mb-3">{data.sidebarContent.courseRating.title}</h3>
+                <h1 className="text-black font-medium mb-3">{data.sidebarContent.courseRating.title}</h1>
                 <div className="flex justify-center space-x-1 mb-2">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">

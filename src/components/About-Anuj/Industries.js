@@ -47,9 +47,9 @@ const Industries = ({ industriesData }) => {
         
         {/* Header Section */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-black">
+          <h1 className="text-3xl md:text-4xl font-bold text-black">
             {data.title}
-          </h2>
+          </h1>
         </div>
         
         {/* Grid Layout */}

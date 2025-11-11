@@ -108,9 +108,9 @@ const Slider = ({ resourcesSliderData }) => {
           </div>
 
           {/* Headline */}
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
             {data.title} <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent">{data.highlightText}</span>
-          </h2>
+          </h1>
 
           {/* Subtitle */}
           <p className="text-base md:text-lg text-gray-700 max-w-3xl">
@@ -171,9 +171,9 @@ const Slider = ({ resourcesSliderData }) => {
                       {/* Content */}
                       <div className="flex-1 flex flex-col space-y-4">
                         {/* Title */}
-                        <h3 className="text-base md:text-lg font-bold text-gray-900 leading-tight">
+                        <h1 className="text-base md:text-lg font-bold text-gray-900 leading-tight">
                           {resource.title}
-                        </h3>
+                        </h1>
 
                         {/* Description */}
                         <p className="text-sm md:text-base text-gray-700 leading-relaxed flex-1">

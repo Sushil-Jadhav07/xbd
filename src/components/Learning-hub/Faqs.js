@@ -50,9 +50,9 @@ const Faqs = ({ faqsData }) => {
         </div>
 
         {/* Main Heading */}
-        <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 lg:mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-black mb-6 lg:mb-12">
           {data.sectionTitle}
-        </h2>
+        </h1>
 
         {/* FAQ Items */}
         <div className="space-y-4">

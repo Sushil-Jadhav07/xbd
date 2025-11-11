@@ -96,9 +96,9 @@ const InsideBook = ({ insideBookData }) => {
         
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-black mb-4">
             {data.title}
-          </h2>
+          </h1>
           <p className="text-base lg:text-xl text-gray-600 max-w-3xl mx-auto">
             {data.subtitle}
           </p>
@@ -151,9 +151,9 @@ const InsideBook = ({ insideBookData }) => {
             {/* Right Section: Video */}
             <div className="lg:col-span-1">
               <div className="mb-4 flex items-center justify-between">
-                <h3 className="md:text-2xl text-xl font-bold text-black">
+                <h1 className="md:text-2xl text-xl font-bold text-black">
                   {currentVideo.title}
-                </h3>
+                </h1>
                 {/* {activeModuleIndex !== null && (
                   <button
                     onClick={handleResetVideo}

@@ -111,7 +111,7 @@ const IndustryFocus = ({ industryFocusData }) => {
             {/* Meet the Instructor Section */}
             {data.instructorSection && (
               <div className='bg-gray-200 rounded-lg p-4 mt-4'>
-                <h3 className="text-xl font-bold text-black mb-3">{data.instructorSection.title}</h3>
+                <h1 className="text-xl font-bold text-black mb-3">{data.instructorSection.title}</h1>
                 <p className="text-gray-700 mb-2">
                   {data.instructorSection.description}
                 </p>
@@ -126,9 +126,9 @@ const IndustryFocus = ({ industryFocusData }) => {
             {data.quoteBlock && (
               <div className='bg-white rounded-lg p-4 mt-4'>
                 {data.quoteBlock.quoteText && (
-                  <h3 className="md:text-lg text-base font-medium text-black mt-3 mb-3">
+                  <h1 className="md:text-lg text-base font-medium text-black mt-3 mb-3">
                     {data.quoteBlock.quoteText}
-                  </h3>
+                  </h1>
                 )}
                 {data.quoteBlock.attribution && (
                   <p className="text-gray-700 italic text-sm mb-2">
@@ -140,7 +140,7 @@ const IndustryFocus = ({ industryFocusData }) => {
             {/* Learning Options Section */}
               {/* Key Metrics */}
             {/* <div className='bg-gray-200 rounded-lg lg:p-6 p-3'>
-              <h3 className="text-xl font-bold text-black mb-4">{data.learningOptions?.title}</h3>
+              <h1 className="text-xl font-bold text-black mb-4">{data.learningOptions?.title}</h1>
               
               <div className="grid grid-cols-3 gap-4 mb-4">
                 {data.learningOptions?.metrics?.map((metric, index) => (
@@ -195,9 +195,9 @@ const IndustryFocus = ({ industryFocusData }) => {
                       {section.category}
                     </div>
                     <div className="flex-1">
-                      <h3 className="lg:text-lg text-base font-semibold text-black mb-2">
+                      <h1 className="lg:text-lg text-base font-semibold text-black mb-2">
                         {section.title}
-                      </h3>
+                      </h1>
                       <p className="lg:text-sm text-xs text-gray-700">
                         {section.description}
                       </p>

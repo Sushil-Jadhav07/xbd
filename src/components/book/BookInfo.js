@@ -88,9 +88,9 @@ const BookInfo = ({ bookInfoData }) => {
             <div className="mt-8">
               <div className="space-y-6">
                 {/* Title */}
-                <h2 className="text-xl md:text-2xl font-bold text-black">
+                <h1 className="text-xl md:text-2xl font-bold text-black">
                   {data.supportingTitle}
-                </h2>
+                </h1>
                 
                 {/* Description */}
                 <p className="text-sm md:text-base text-gray-700 leading-relaxed max-w-2xl">
@@ -130,9 +130,9 @@ const BookInfo = ({ bookInfoData }) => {
                   <div className="text-2xl lg:text-3xl font-bold text-black mb-1">
                     {metric.value}
                   </div>
-                  <div className="text-sm font-bold text-black mb-2">
+                  <h1 className="text-sm font-bold text-black mb-2">
                     {metric.title}
-                  </div>
+                  </h1>
                   <div className="text-xs text-gray-700 leading-relaxed">
                     {metric.description}
                   </div>

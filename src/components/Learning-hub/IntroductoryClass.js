@@ -57,9 +57,9 @@ const IntroductoryClass = ({ introductoryClassData }) => {
           {/* Right Column - Content and CTA */}
           <div className="space-y-6">
             {/* Main Headline */}
-            <h2 className="text-4xl md:text-5xl font-medium text-black leading-tight">
+            <h1 className="text-4xl md:text-5xl font-medium text-black leading-tight">
               {data.mainHeading}
-            </h2>
+            </h1>
 
             {/* Description */}
             <p className="text-lg text-black leading-relaxed">

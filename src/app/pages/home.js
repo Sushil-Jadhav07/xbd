@@ -13,10 +13,25 @@ import React from 'react'
 import Banner from '../../components/Home/Banner'
 import ExponentialEconomy from '../../components/Home/ExponentialEconomy'
 import ExponentialJourney from '../../components/Home/ExponentialJourney'
-import { getBannerData, getExponentialEconomyData, getExponentialJourneyData, getWhatIsExponentialData, getWhyChooseData, getWhyExponentialNowData, getResourcesSliderData, getToolsCarouselData, getQuoteCarouselData, getPricingPlanData, getNewsletterData, getImageBannerData } from '../../lib/sanityQueries'
+import { getBannerData, getExponentialEconomyData, getExponentialJourneyData, getWhatIsExponentialData, getWhyChooseData, getWhyExponentialNowData, getResourcesSliderData, getToolsCarouselData, getQuoteCarouselData, getPricingPlanData, getNewsletterData, getImageBannerData, getBookTestimonialData } from '../../lib/sanityQueries'
 import LinkedInFeed from '@/components/LinkedInFeed'
+import Testimonial from '@/components/book/Testimonial'
 export default async function Home() {
-  const [bannerData, exponentialData, exponentialJourneyData, whatIsExponentialData, whyChooseData, whyExponentialNowData, resourcesSliderData, toolsCarouselData, quoteCarouselData, pricingPlanData, newsletterData, imageBannerData] = await Promise.all([
+  const [
+    bannerData,
+    exponentialData,
+    exponentialJourneyData,
+    whatIsExponentialData,
+    whyChooseData,
+    whyExponentialNowData,
+    resourcesSliderData,
+    toolsCarouselData,
+    quoteCarouselData,
+    pricingPlanData,
+    newsletterData,
+    imageBannerData,
+    testimonialData
+  ] = await Promise.all([
     getBannerData(),
     getExponentialEconomyData(),
     getExponentialJourneyData(),
@@ -28,7 +43,8 @@ export default async function Home() {
     getQuoteCarouselData(),
     getPricingPlanData(),
     getNewsletterData(),
-    getImageBannerData()
+    getImageBannerData(),
+    getBookTestimonialData()
   ])
 
   return (
@@ -73,6 +89,10 @@ export default async function Home() {
 
       <section className="relative pt-[0px]">
         <QuoteCarousel quoteCarouselData={quoteCarouselData} />
+      </section>
+
+      <section className="relative pt-[0px]">
+        <Testimonial testimonialData={testimonialData} />
       </section>
 
       {/* ExponentialJourney Section - with data */}

@@ -106,10 +106,10 @@ const ComingSoon = ({
 
           {/* Main Title */}
           <div className="mb-6">
-            <div className="flex items-center justify-center gap-2 text-sm font-semibold text-gray-300 uppercase tracking-wide mb-4">
+            <h1 className="flex items-center justify-center gap-2 text-sm font-semibold text-gray-300 uppercase tracking-wide mb-4">
               <HiOutlineSparkles className="text-lg" />
               Coming Soon
-            </div>
+            </h1>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
               {title}
             </h1>

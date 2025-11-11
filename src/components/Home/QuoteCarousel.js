@@ -165,9 +165,9 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-4 lg:mb-6">
-          <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <h1 className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
             {data.subtitle}
-          </p>
+          </h1>
         </div>
 
         {/* Main Content */}

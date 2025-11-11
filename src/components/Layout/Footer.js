@@ -80,27 +80,27 @@ const Footer = () => {
               <ul className="space-y-4">
                 <li>
                   <a href="#" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
-                    Growth Framework
+                    Book summary
+                  </a>
+                </li>
+                <li>
+                  <a href="/blogs" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
+                    Blogs
+                  </a>
+                </li>
+                {/* <li>
+                  <a href="/blogs-2" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
+                    Blogs 2
+                  </a>
+                </li> */}
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
+                    Assessment
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
-                    Case Studies
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
-                    Success Stories
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
-                    Tools & Templates
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
-                    Blog
+                    Insight
                   </a>
                 </li>
               </ul>

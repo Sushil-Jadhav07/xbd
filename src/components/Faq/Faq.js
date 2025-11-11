@@ -162,9 +162,9 @@ export default function FAQs() {
         {/* CTA Card */}
         {faqData.ctaSection && (
          <div className="mt-16 bg-white rounded-3xl p-12 text-center shadow-2xl">
-          <h3 className="text-3xl font-bold text-black mb-4">
+          <h1 className="text-3xl font-bold text-black mb-4">
             {faqData.ctaSection.title}
-          </h3>
+          </h1>
            <p className="text-black text-lg mb-8 max-w-2xl mx-auto">
             {faqData.ctaSection.description}
           </p>

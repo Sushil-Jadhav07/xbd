@@ -78,9 +78,9 @@ const FeaturedArticles = ({ featuredArticlesData }) => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {data.sectionTitle}
-          </h2>
+          </h1>
           {data.sectionSubtitle && (
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               {data.sectionSubtitle}
@@ -143,9 +143,9 @@ const FeaturedArticles = ({ featuredArticlesData }) => {
                       )}
                       <div>
                         <div className="flex items-center gap-1">
-                          <h4 className="font-semibold text-gray-900 text-sm">
+                          <h1  className="font-semibold text-gray-900 text-sm">
                             {article.authorName || "Anuj Pandey"}
-                          </h4>
+                          </h1>
                           {article.isVerified && (
                             <BsCheckCircleFill className="text-blue-500 text-xs" />
                           )}
