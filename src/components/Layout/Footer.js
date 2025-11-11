@@ -79,7 +79,7 @@ const Footer = () => {
               <h3 className="font-semibold text-black dark:text-white mb-6">Resources</h3>
               <ul className="space-y-4">
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
+                  <a href="/book" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
                     Book summary
                   </a>
                 </li>
@@ -94,12 +94,12 @@ const Footer = () => {
                   </a>
                 </li> */}
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
+                  <a href="https://assessment-xbd.replit.app/" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
                     Assessment
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
+                  <a href="/insights" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
                     Insight
                   </a>
                 </li>
