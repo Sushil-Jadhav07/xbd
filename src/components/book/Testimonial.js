@@ -10,6 +10,25 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 const Testimonial = ({ testimonialData }) => {
+  // Helper function to get initials from author name
+  const getInitials = (name) => {
+    if (!name) return ''
+    const words = name.trim().split(/\s+/)
+    if (words.length === 0) return ''
+    
+    // If first word is 2 characters or less, use it as initial
+    if (words[0].length <= 2) {
+      return words[0].toUpperCase()
+    }
+    
+    // Otherwise, take first char of first word and first char of last word
+    if (words.length === 1) {
+      return words[0].charAt(0).toUpperCase()
+    }
+    
+    return (words[0].charAt(0) + words[words.length - 1].charAt(0)).toUpperCase()
+  }
+
   // Fallback data
   const fallbackData = {
     title: "Trusted by Industry Leaders Worldwide",
@@ -198,7 +217,7 @@ const Testimonial = ({ testimonialData }) => {
                     ) : (
                       <div className="w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center">
                         <span className="text-white text-sm font-bold">
-                          {testimonial.author.charAt(0)}
+                          {getInitials(testimonial.author)}
                         </span>
                       </div>
                     )}

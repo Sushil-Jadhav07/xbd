@@ -430,9 +430,49 @@ export async function getInsideBookData() {
   const query = `*[_type == "insideBook"][0]{
     title,
     subtitle,
-    modules,
+    modules[]{
+      module,
+      description,
+      videoUrl,
+      videoTitle,
+      partLabel,
+      partTitle,
+      videoSubtitle,
+      videoDescription,
+      highlights,
+      caseStudies[]{
+        name,
+        logo{
+          asset->{
+            _id,
+            url
+          },
+          alt
+        }
+      },
+      narrativeCta
+    },
     endorsementsTitle,
     endorsements,
+    videoSection{
+      videoTitle,
+      videoSubtitle,
+      videoDescription,
+      videoUrl,
+      partLabel,
+      partTitle,
+      highlights,
+      caseStudies[]{
+        name,
+        logo{
+          asset->{
+            _id,
+            url
+          },
+          alt
+        }
+      }
+    },
     primaryButton,
     secondaryButton
   }`
