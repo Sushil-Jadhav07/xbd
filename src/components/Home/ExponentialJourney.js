@@ -3,6 +3,7 @@ import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import MountainImage from '../../asset/mountainimg.png';
 import { urlFor } from '../../lib/sanity';
+import EnquireNowModal from '../common/EnquireNowModal';
 
 export default function ExponentialJourney({ journeyData }) {
   // Default data if Sanity data is not available
@@ -65,6 +66,17 @@ export default function ExponentialJourney({ journeyData }) {
   
   const [activeTab, setActiveTab] = useState(tabs[0]?.id || 'leaders');
   const [activeStage, setActiveStage] = useState(fixedStages[0]?.id || 'foundation');
+  const [hoveredStage, setHoveredStage] = useState(null);
+  const [isEnquireModalOpen, setIsEnquireModalOpen] = useState(false);
+  const [selectedStageForEnquiry, setSelectedStageForEnquiry] = useState('');
+  const activeTabData = useMemo(
+    () => tabs.find((tab) => tab.id === activeTab) || null,
+    [tabs, activeTab]
+  );
+  const isOrganisationsTab = activeTabData?.label
+    ?.toLowerCase()
+    ?.includes('organisations');
+  const shouldShowPrice = !isOrganisationsTab;
 
   // Convert stages array to object for easier lookup
   const stageData = useMemo(() => {
@@ -113,9 +125,9 @@ export default function ExponentialJourney({ journeyData }) {
   return (
     <div className="min-h-screen bg-black text-white md:mx-[15px] mx-[5px] pb-12 md:pb-16">
       {/* Hero Section with Mountain Background */}
-      <div className="relative md:h-[800px] h-[300px] bg-gradient-to-b from-gray-800 to-black">
+      <div className="relative md:h-[800px] h-[300px] bg-gradient-to-b from-gray-800 to-black overflow-visible">
         {/* Mountain Silhouette with Journey Points */}
-        <div className="absolute bottom-0 left-0 right-0 h-[100%]">
+        <div className="absolute bottom-0 left-0 right-0 h-[100%] overflow-visible">
           <Image
             src={mountainImageUrl || MountainImage}
             alt={journeyData?.heroSection?.mountainImage?.alt || "Mountain Background"}
@@ -144,14 +156,24 @@ export default function ExponentialJourney({ journeyData }) {
                 {/* Mobile version */}
                 <div 
                   key={`${stage.id}-mobile`}
-                  className="md:hidden absolute flex items-center space-x-3 cursor-pointer transition-transform hover:scale-110 z-10"
+                  className={`md:hidden absolute flex items-center space-x-3 cursor-pointer transition-transform hover:scale-110 isolate ${
+                    hoveredStage === stage.id ? 'z-[100]' : 'z-10'
+                  }`}
                   style={position.topMobile 
                     ? { left: position.leftMobile, top: position.topMobile }
                     : { left: position.leftMobile, bottom: position.bottomMobile }
                   }
                   onClick={() => setActiveStage(stage.id)}
+                  onMouseEnter={(e) => {
+                    e.stopPropagation();
+                    setHoveredStage(stage.id);
+                  }}
+                  onMouseLeave={(e) => {
+                    e.stopPropagation();
+                    setHoveredStage(null);
+                  }}
                 >
-                  <div className="relative">
+                  <div className="relative z-10">
                     <div className={`w-4 h-4 rounded-full flex items-center justify-center border-4 border-gray-800 transition-colors ${
                       activeStage === stage.id ? 'bg-[#9d7035]' : 'bg-gray-700'
                     }`}>
@@ -159,21 +181,64 @@ export default function ExponentialJourney({ journeyData }) {
                         activeStage === stage.id ? 'bg-[#c1a35e]' : 'bg-gray-500'
                       }`}></div>
                     </div>
+                    {/* Mobile Hover Tooltip */}
+                    {hoveredStage === stage.id && (
+                      <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-3 w-72 bg-black/95 backdrop-blur-sm border border-[#c1a35e]/30 rounded-lg shadow-2xl p-4 z-[200] pointer-events-none">
+                        <div className="absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-full w-0 h-0 border-l-8 border-l-transparent border-b-8 border-b-[#c1a35e]/30 border-r-8 border-r-transparent"></div>
+                        <div className="space-y-3">
+                          {/* Promise Section */}
+                          <div>
+                            <h3 className="text-[#c1a35e] text-xs font-semibold mb-1.5 uppercase tracking-wide">Promise</h3>
+                            <p className="text-white text-xs leading-relaxed">{stage.promise}</p>
+                          </div>
+                          
+                          {/* What you get Section */}
+                          <div>
+                            <h3 className="text-[#c1a35e] text-xs font-semibold mb-1.5 uppercase tracking-wide">What you get</h3>
+                            <ul className="space-y-1">
+                              {stage.features?.map((feature, index) => (
+                                <li key={index} className="text-gray-300 text-xs flex items-start">
+                                  <span className="text-[#c1a35e] mr-1.5">•</span>
+                                  <span>{feature}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          
+                          {/* Price Section */}
+                          {shouldShowPrice && (
+                            <div className="pt-1.5 border-t border-gray-700">
+                              <div className="text-xl font-bold text-white">{stage.price}</div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <span className="text-white text-xs md:text-sm font-medium">{stage.title}</span>
+                  <span className="text-white text-xs md:text-sm font-medium relative z-10">{stage.title}</span>
                 </div>
 
                 {/* Desktop version */}
                 <div 
                   key={`${stage.id}-desktop`}
-                  className="hidden md:flex absolute items-center space-x-3 cursor-pointer transition-transform hover:scale-110 z-10"
+                  className={`hidden md:flex absolute items-center space-x-3 cursor-pointer transition-transform hover:scale-110 isolate ${
+                    hoveredStage === stage.id ? 'z-[100]' : 'z-10'
+                  }`}
                   style={position.top 
                     ? { left: position.left, top: position.top }
                     : { left: position.left, bottom: position.bottom }
                   }
                   onClick={() => setActiveStage(stage.id)}
+                  onMouseEnter={(e) => {
+                    e.stopPropagation();
+                    setHoveredStage(stage.id);
+                  }}
+                  onMouseLeave={(e) => {
+                    e.stopPropagation();
+                    setHoveredStage(null);
+                  }}
                 >
-                  <div className="relative">
+                  <div className="relative z-10">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center border-4 border-gray-800 transition-colors ${
                       activeStage === stage.id ? 'bg-[#9d7035]' : 'bg-gray-700'
                     }`}>
@@ -182,7 +247,50 @@ export default function ExponentialJourney({ journeyData }) {
                       }`}></div>
                     </div>
                   </div>
-                  <span className="text-white text-xs md:text-sm font-medium">{stage.title}</span>
+                  <span className="text-white text-xs md:text-sm font-medium relative z-10">{stage.title}</span>
+                  
+                  {/* Hover Tooltip - Positioned relative to the entire journey point container */}
+                  {hoveredStage === stage.id && (
+                    <div className={`absolute top-1/2 transform -translate-y-1/2 w-80 bg-black/95 backdrop-blur-sm border border-[#c1a35e]/30 rounded-lg shadow-2xl p-5 z-[200] pointer-events-none transition-all duration-200 ${
+                      stage.stageNumber >= 3 
+                        ? 'right-full mr-6' 
+                        : 'left-full ml-6'
+                    }`}>
+                      {/* Arrow pointing to the point */}
+                      <div className={`absolute top-1/2 transform -translate-y-1/2 ${
+                        stage.stageNumber >= 3
+                          ? 'right-0 translate-x-full border-l-8 border-l-[#c1a35e]/30 border-t-8 border-t-transparent border-b-8 border-b-transparent'
+                          : 'left-0 -translate-x-full border-r-8 border-r-[#c1a35e]/30 border-t-8 border-t-transparent border-b-8 border-b-transparent'
+                      } w-0 h-0`}></div>
+                      <div className="space-y-4">
+                        {/* Promise Section */}
+                        <div>
+                          <h3 className="text-[#c1a35e] text-sm font-semibold mb-2 uppercase tracking-wide">Promise</h3>
+                          <p className="text-white text-sm leading-relaxed">{stage.promise}</p>
+                        </div>
+                        
+                        {/* What you get Section */}
+                        <div>
+                          <h3 className="text-[#c1a35e] text-sm font-semibold mb-2 uppercase tracking-wide">What you get</h3>
+                          <ul className="space-y-1.5">
+                            {stage.features?.map((feature, index) => (
+                              <li key={index} className="text-gray-300 text-sm flex items-start">
+                                <span className="text-[#c1a35e] mr-2">•</span>
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        
+                        {/* Price Section */}
+                        {shouldShowPrice && (
+                          <div className="pt-2 border-t border-gray-700">
+                            <div className="text-2xl font-bold text-white">{stage.price}</div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </>
             );
@@ -271,12 +379,34 @@ export default function ExponentialJourney({ journeyData }) {
                   ))}
                 </ul>
 
-                <div className="text-2xl md:text-4xl font-bold text-white">{stageData[activeStage].price}</div>
+                {shouldShowPrice && (
+                  <div className="text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6">
+                    {stageData[activeStage].price}
+                  </div>
+                )}
+                
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedStageForEnquiry(stageData[activeStage].title);
+                    setIsEnquireModalOpen(true);
+                  }}
+                  className="w-full md:w-auto bg-gradient-to-br from-[#9d7035] to-[#c1a35e] text-white px-6 md:px-8 py-3 md:py-3.5 rounded-lg font-semibold text-sm md:text-base hover:from-[#8a6230] hover:to-[#b0924d] transition-colors"
+                >
+                  Enquire Now
+                </button>
               </>
             )}
           </div>
         </div>
       </div>
+
+      {/* Enquire Now Modal */}
+      <EnquireNowModal
+        open={isEnquireModalOpen}
+        onClose={() => setIsEnquireModalOpen(false)}
+        stageName={selectedStageForEnquiry}
+      />
     </div>
   );
 }
