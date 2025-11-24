@@ -1,6 +1,8 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import JoinWaitlistForm from '../common/JoinWaitlistForm';
 
 const LearningBanner = ({ learningBannerData }) => {
   // Fallback data
@@ -26,6 +28,7 @@ const LearningBanner = ({ learningBannerData }) => {
   }
 
   const data = learningBannerData || fallbackData;
+  const [showWaitlistForm, setShowWaitlistForm] = useState(false);
 
   // Get video data
   const videoSection = data.videoSection || {};
@@ -137,12 +140,13 @@ const LearningBanner = ({ learningBannerData }) => {
             {/* Call-to-Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               {data.primaryButton && (
-                <Link
-                  href={data.primaryButton.link || '#'}
-                  className="px-8 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+                <button
+                  type="button"
+                  onClick={() => setShowWaitlistForm(true)}
+                  className="px-8 py-3 cursor-pointer bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors"
                 >
                   {data.primaryButton.text}
-                </Link>
+                </button>
               )}
               {data.secondaryButton && (
                 <Link
@@ -174,6 +178,7 @@ const LearningBanner = ({ learningBannerData }) => {
           </div>
         </div>
       </div>
+      <JoinWaitlistForm open={showWaitlistForm} onClose={() => setShowWaitlistForm(false)} />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo, useState } from 'react';
 import { HiOutlineSparkles } from 'react-icons/hi';
 import { MdImage } from 'react-icons/md';
 import { HiOutlineDocument, HiOutlinePlay, HiOutlinePhone, HiOutlineMicrophone } from 'react-icons/hi';
@@ -7,6 +8,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import JoinWaitlistForm from '../common/JoinWaitlistForm';
+import StrategySessionForm from '../common/StrategySessionForm';
+import KeynoteRequestForm from '../common/KeynoteRequestForm';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -32,27 +36,44 @@ const Slider = ({ resourcesSliderData }) => {
         title: "Master the Framework That's Redefining Market Leaders",
         description: "Step-by-step X Framework training with real-world case studies",
         meta: "6 Weeks Live + On-Demand",
-        buttonText: "Start Learning",
-        iconType: "play"
+        buttonText: "Join the Waitlist",
+        iconType: "play",
+        formType: "waitlist"
       },
       {
         title: "Get the Strategy That's Driving Boardroom-Level Breakthroughs",
         description: "Tailored growth roadmaps & leadership advisory for rapid scaling",
         meta: "60-Min Strategy Call",
         buttonText: "Book Your Session",
-        iconType: "phone"
+        iconType: "phone",
+        formType: "strategy"
       },
       {
         title: "Experience the Talk That's Inspiring Industry Game Changers",
         description: "High-impact leadership sessions for transformation & alignment",
         meta: "45-90 Min Session",
         buttonText: "Book the Keynote",
-        iconType: "microphone"
+        iconType: "microphone",
+        formType: "keynote"
       }
     ]
   };
 
   const data = resourcesSliderData || fallbackData;
+  const [activeForm, setActiveForm] = useState(null);
+
+  const buttonTextFormMap = useMemo(() => ({
+    'join the waitlist': 'waitlist',
+    'book your session': 'strategy',
+    'book the keynote': 'keynote',
+  }), []);
+
+  const handleOpenForm = (formType) => {
+    if (!formType) return;
+    setActiveForm(formType);
+  };
+
+  const handleCloseForm = () => setActiveForm(null);
 
   const getIcon = (iconType) => {
     switch(iconType) {
@@ -156,12 +177,13 @@ const Slider = ({ resourcesSliderData }) => {
           >
             {data.resources?.map((resource, index) => {
               const IconComponent = getIcon(resource.iconType);
+              const formType = resource.formType || buttonTextFormMap[resource.buttonText?.toLowerCase?.()];
               return (
                 <SwiperSlide key={index}>
                   <div className="px-2 h-full">
                     <div className="bg-white border border-gray-200 rounded-2xl p-6 h-full flex flex-col">
                       {/* Image Placeholder */}
-                      <div className="bg-[#dbdbdb] rounded-xl aspect-[4/3] flex items-center justify-center mb-6 relative overflow-hidden">
+                      <div className="bg-[#dbdbdbcd] rounded-xl aspect-[4/3] flex items-center justify-center mb-6 relative overflow-hidden">
                         <div className="bg-gray-400 rounded-lg p-3 w-16 h-12 flex items-center justify-center">
                           <MdImage className="text-gray-500 text-xl" />
                         </div>
@@ -187,12 +209,22 @@ const Slider = ({ resourcesSliderData }) => {
                         </div>
 
                         {/* Button */}
-                        <Link 
-                          href={resource.buttonLink || '#'}
-                          className="bg-black text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-gray-800 transition-colors duration-200 w-full mt-4"
-                        >
-                          {resource.buttonText}
-                        </Link>
+                        {formType ? (
+                          <button
+                            type="button"
+                            onClick={() => handleOpenForm(formType)}
+                            className="bg-black text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-gray-800 transition-colors duration-200 w-full mt-4"
+                          >
+                            {resource.buttonText}
+                          </button>
+                        ) : (
+                          <Link 
+                            href={resource.buttonLink || '#'}
+                            className="bg-black text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-gray-800 transition-colors duration-200 w-full mt-4"
+                          >
+                            {resource.buttonText}
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -225,6 +257,9 @@ const Slider = ({ resourcesSliderData }) => {
           <div className="swiper-pagination-slider absolute bottom-0 left-0 right-0 flex justify-center items-center space-x-2"></div>
         </div>
       </div>
+      <JoinWaitlistForm open={activeForm === 'waitlist'} onClose={handleCloseForm} />
+      <StrategySessionForm open={activeForm === 'strategy'} onClose={handleCloseForm} />
+      <KeynoteRequestForm open={activeForm === 'keynote'} onClose={handleCloseForm} />
     </section>
     </>
   );

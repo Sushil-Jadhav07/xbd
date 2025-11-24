@@ -3,11 +3,12 @@ import React from 'react'
 import { useState } from 'react'
 import { MdImage } from 'react-icons/md'
 import Image from 'next/image'
-import Link from 'next/link'
 import LeadFormModal from '../common/LeadFormModal'
+import PreviewChapterForm from '../common/PreviewChapterForm'
 
 const BookBanner = ({ bookBannerData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   
   // Fallback data
   const fallbackData = {
@@ -117,12 +118,13 @@ const BookBanner = ({ bookBannerData }) => {
                 </button>
               )}
               {data.secondaryButton && (
-                <Link
-                  href={data.secondaryButton.link || '#'}
+                <button
+                  type="button"
+                  onClick={() => setIsPreviewOpen(true)}
                   className="bg-white text-black px-8 py-4 rounded-lg text-center md:text-left font-medium border-2 border-black hover:bg-gray-50 transition-colors duration-200 text-base"
                 >
                   {data.secondaryButton.text}
-                </Link>
+                </button>
               )}
             </div>
             
@@ -142,6 +144,10 @@ const BookBanner = ({ bookBannerData }) => {
       open={isModalOpen}
       onClose={() => setIsModalOpen(false)}
       title="Get Your Copy Now"
+    />
+    <PreviewChapterForm
+      open={isPreviewOpen}
+      onClose={() => setIsPreviewOpen(false)}
     />
     </>
   )

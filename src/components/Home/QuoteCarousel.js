@@ -182,7 +182,7 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
             <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col items-center text-center justify-center relative z-20">
               <div className="space-y-8">
                 {/* Quote Text */}
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black dark:!text-black leading-tight">
                   {data.quoteText}
                 </h3>
 
@@ -201,7 +201,7 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
                   {data.secondaryButton && (
                     <Link
                       href={data.secondaryButton.link || '#'}
-                      className="text-gray-900 dark:text-white font-semibold hover:text-black dark:hover:text-white transition-colors duration-200 underline decoration-2 underline-offset-4"
+                      className="text-gray-900 dark:!text-black font-semibold hover:text-black dark:hover:text-white transition-colors duration-200 underline decoration-2 underline-offset-4"
                     >
                       {data.secondaryButton.text}
                     </Link>

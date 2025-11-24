@@ -1,8 +1,9 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { MdImage } from 'react-icons/md'
 import Image from 'next/image'
 import Link from 'next/link'
+import PreviewChapterForm from '../common/PreviewChapterForm'
 
 const BookInfo = ({ bookInfoData }) => {
   // Fallback data
@@ -34,7 +35,7 @@ const BookInfo = ({ bookInfoData }) => {
       }
     ],
     primaryButton: { text: "Explore Framework Playbook" },
-    secondaryButton: { text: "Download summary (PDF)" },
+    secondaryButton: { text: "Download Free Chapter" },
     trustIndicator: "Trusted by 1,200+ leaders • Limited launch edition",
     supportingTitle: "Understanding Framework",
     supportingDescription: "This hyperconverged setup needs a different mindset. It rewires organisational DNA for exponential thinking. Frameworks here are distilled from studying leaders at NVIDIA, Amazon, Google and OpenAI to give you practical tools and templates to implement.",
@@ -46,6 +47,7 @@ const BookInfo = ({ bookInfoData }) => {
   }
 
   const data = bookInfoData || fallbackData
+  const [previewFormOpen, setPreviewFormOpen] = useState(false)
 
   return (
     <div className="bg-white md:mx-[15px] mx-[5px] py-12 relative overflow-hidden">
@@ -151,12 +153,13 @@ const BookInfo = ({ bookInfoData }) => {
                 </Link>
               )}
               {data.secondaryButton && (
-                <Link
-                  href={data.secondaryButton.link || '#'}
-                  className="text-black font-medium hover:text-gray-700 transition-colors duration-200 flex items-center text-base"
+                <button
+                  type="button"
+                  onClick={() => setPreviewFormOpen(true)}
+                  className="text-black cursor-pointer font-medium hover:text-gray-700 transition-colors duration-200 flex items-center text-base"
                 >
                   {data.secondaryButton.text}
-                </Link>
+                </button>
               )}
             </div>
             
@@ -167,6 +170,7 @@ const BookInfo = ({ bookInfoData }) => {
           </div>
         </div>
       </div>
+      <PreviewChapterForm open={previewFormOpen} onClose={() => setPreviewFormOpen(false)} />
     </div>
   )
 }

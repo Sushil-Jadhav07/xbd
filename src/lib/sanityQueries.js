@@ -66,7 +66,6 @@ export async function getExponentialJourneyData() {
   
   try {
     const data = await client.fetch(query)
-    console.log('Fetched exponential journey data:', data)
     return data
   } catch (error) {
     console.error('Error fetching exponential journey data:', error)

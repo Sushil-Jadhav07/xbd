@@ -1,5 +1,7 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import Link from 'next/link';
+import JoinWaitlistForm from '../common/JoinWaitlistForm';
 
 const IntroductoryClass = ({ introductoryClassData }) => {
   // Fallback data
@@ -14,6 +16,7 @@ const IntroductoryClass = ({ introductoryClassData }) => {
   };
 
   const data = introductoryClassData || fallbackData;
+  const [showWaitlistForm, setShowWaitlistForm] = useState(false);
 
   // Get video data
   const videoSection = data.videoSection || {};
@@ -68,16 +71,18 @@ const IntroductoryClass = ({ introductoryClassData }) => {
 
             {/* Call-to-Action Button */}
             {data.ctaButton && (
-              <Link
-                href={data.ctaButton.link || '#'}
+              <button
+                type="button"
+                onClick={() => setShowWaitlistForm(true)}
                 className="bg-black text-white px-8 py-4 rounded-lg font-bold uppercase tracking-wide hover:bg-gray-800 transition-colors inline-block"
               >
                 {data.ctaButton.text}
-              </Link>
+              </button>
             )}
           </div>
         </div>
       </div>
+      <JoinWaitlistForm open={showWaitlistForm} onClose={() => setShowWaitlistForm(false)} />
     </div>
   );
 };

@@ -1,5 +1,7 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import Link from 'next/link';
+import JoinWaitlistForm from '../common/JoinWaitlistForm';
 
 const WhatLearn = ({ whatLearnData }) => {
   // Fallback data
@@ -91,6 +93,8 @@ const WhatLearn = ({ whatLearnData }) => {
     }
   } : fallbackData;
 
+  const [openWaitlist, setOpenWaitlist] = useState(false);
+
   return (
     <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] lg:py-16 py-8 lg:px-12 px-4">
       <div className="max-w-7xl mx-auto">
@@ -146,12 +150,13 @@ const WhatLearn = ({ whatLearnData }) => {
                 ))}
 
                 {data.requestInfoButton && (
-                  <Link
-                    href={data.requestInfoButton.link || '#'}
+                  <button
+                    type="button"
+                    onClick={() => setOpenWaitlist(true)}
                     className="text-lg md:text-xl font-semibold text-white text-center flex items-center justify-center px-6 py-4 rounded-2xl transition-all duration-300 whitespace-nowrap bg-gradient-to-r from-[#a27538] to-[#caa85d] hover:from-[#b88446] hover:to-[#d9ba69] shadow-[0_12px_35px_rgba(162,117,56,0.35)] hover:-translate-y-1 w-full md:flex-1 md:min-w-[240px] lg:min-w-[200px]"
                   >
                     {data.requestInfoButton.text}
-                  </Link>
+                  </button>
                 )}
               </div>
             </div>
@@ -179,13 +184,13 @@ const WhatLearn = ({ whatLearnData }) => {
 
             {/* What you'll gain Section */}
             {data.sidebarContent?.whatYouGain && (
-              <div className="mb-6 bg-gray-100 py-6 px-6 rounded-lg">
-                <h4 className="text-black md:text-xl text-base font-medium mb-3">{data.sidebarContent.whatYouGain.title}</h4>
-                <div className="space-y-2">
+              <div className="mb-12 bg-gray-100 py-7 px-7 rounded-lg">
+                <h4 className="text-black md:text-2xl text-xl font-semibold mb-4">{data.sidebarContent.whatYouGain.title}</h4>
+                <div className="space-y-3">
                   {data.sidebarContent.whatYouGain.benefits?.map((benefit, index) => (
-                    <div key={index} className="flex items-start space-x-2">
-                      <div className="w-2 h-2 bg-black rounded-full mt-1 flex-shrink-0"></div>
-                      <p className="text-black text-sm">{benefit}</p>
+                    <div key={index} className="flex items-start space-x-3">
+                      <div className="w-2.5 h-2.5 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-black text-base leading-relaxed">{benefit}</p>
                     </div>
                   ))}
                 </div>
@@ -195,12 +200,13 @@ const WhatLearn = ({ whatLearnData }) => {
             {/* Call-to-Action Button(s) */}
             <div className="text-center  my-8 space-y-3">
               {data.sidebarContent?.primaryButton ? (
-                <Link
-                  href={data.sidebarContent.primaryButton.link || '#'}
+                <button
+                  type="button"
+                  onClick={() => setOpenWaitlist(true)}
                   className="w-full py-3 px-6 rounded-lg font-medium transition-colors bg-gradient-to-br !from-[#9d7035] !to-[#c1a35e] text-white hover:from-yellow-500 hover:to-yellow-700"
                 >
                   {data.sidebarContent.primaryButton.text}
-                </Link>
+                </button>
               ) : (
                 data.sidebarContent?.secondaryButton && (
                   <Link
@@ -213,30 +219,7 @@ const WhatLearn = ({ whatLearnData }) => {
               )}
             </div>
 
-            {/* Trusted by teams Section */}
-            {data.sidebarContent?.trustedBy && (
-              <div className="mb-6 text-center">
-                <p className="text-black text-sm mb-1">{data.sidebarContent.trustedBy.label}</p>
-                <p className="text-black font-bold">{data.sidebarContent.trustedBy.companies}</p>
-              </div>
-            )}
-
-            {/* Client results Section */}
-            {data.sidebarContent?.clientResults && (
-              <div className="mb-6 text-center">
-                <p className="text-black text-sm mb-1">{data.sidebarContent.clientResults.results}</p>
-                <p className="text-black text-sm">{data.sidebarContent.clientResults.note}</p>
-              </div>
-            )}
-
-            {/* Pricing Section */}
-            {data.sidebarContent?.pricing && (
-              <div>
-                <p className="text-black text-center text-sm">
-                  {data.sidebarContent.pricing.price}
-                </p>
-              </div>
-            )}
+            <JoinWaitlistForm open={openWaitlist} onClose={() => setOpenWaitlist(false)} />
           </div>
         </div>
       </div>

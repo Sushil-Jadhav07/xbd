@@ -13,7 +13,7 @@ const MeetAuthor = ({ meetAuthorData }) => {
     quote: "I Wrote This Book Not To Add To The Noise, But To Solve For The Signal.",
     authorBio: "Over 2 decades of consulting corporations, An enterprise architect and a design thinker",
     previousBook: "Author of DISRUPTIVE DIGITAL: THE NEW NORMAL (published 2018).",
-    primaryButton: { text: "Contact ABC" },
+    primaryButton: { text: "Contact Us" },
     secondaryButton: { text: "See How It Works" },
     videoSection: {
       videoTitle: "Watch the Author",

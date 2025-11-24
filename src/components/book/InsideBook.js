@@ -236,7 +236,7 @@ const InsideBook = ({ insideBookData }) => {
   const titleSecondPart = titleParts.slice(1).join(':') || ""
 
   return (
-    <div className="bg-black md:mx-[15px] mx-[5px] py-12 md:py-16">
+    <div className="bg-black md:mx-[15px] mx-[5px] pt-12 md:pt-16 pb-6 md:pb-4 md:mb-12 mb-4">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         
         {/* Header Section */}
