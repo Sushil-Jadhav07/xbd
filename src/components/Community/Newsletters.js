@@ -94,7 +94,7 @@ const Newsletters = ({ newsletterData }) => {
   }
 
   return (
-    <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-16">
+    <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-12 lg:py-16">
       <div className="max-w-7xl mx-auto px-4 md:px-0">
         <div className="text-center max-w-3xl mx-auto">
           

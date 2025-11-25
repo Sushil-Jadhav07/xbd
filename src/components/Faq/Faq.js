@@ -68,7 +68,7 @@ export default function FAQs() {
 
   if (loading) {
     return (
-      <section className="relative min-h-screen bg-white py-24 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+      <section className="relative min-h-screen bg-white py-12 lg:py-24 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
         <div className="text-center">
           <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[#c1a35e] border-r-transparent"></div>
           <p className="mt-4 text-gray-600">Loading FAQs...</p>
@@ -78,7 +78,7 @@ export default function FAQs() {
   }
 
   return (
-    <section className="relative min-h-screen bg-white py-24 px-4 sm:px-6 lg:px-8">
+    <section className="relative min-h-screen bg-white py-12 lg:py-24 px-4 sm:px-6 lg:px-8">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
       

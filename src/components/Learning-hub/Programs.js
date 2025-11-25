@@ -117,7 +117,7 @@ const Programs = ({ programsData }) => {
   };
 
   return (
-    <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] lg:py-16 py-8 px-4">
+    <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-12 lg:py-16 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Main Title */}
         <h1 className="text-3xl md:text-5xl font-medium text-black lg:mb-4 mb-4">

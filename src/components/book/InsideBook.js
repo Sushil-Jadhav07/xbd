@@ -4,6 +4,18 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '@/lib/sanity'
 import PreviewChapterForm from '../common/PreviewChapterForm'
+import airNewZealandLogo from '@/asset/logos/air new zealand.png'
+import amazonLogo from '@/asset/logos/amazon.png'
+import appleLogo from '@/asset/logos/apple.png'
+import blinkitLogo from '@/asset/logos/blinkit.png'
+import credLogo from '@/asset/logos/cred.png'
+import googleLogo from '@/asset/logos/google.png'
+import miLogo from '@/asset/logos/mi.png'
+import nvidiaLogo from '@/asset/logos/nvidia.png'
+import openAiLogo from '@/asset/logos/open-ai.png'
+import samsungLogo from '@/asset/logos/samsung.png'
+import spotifyLogo from '@/asset/logos/spotify.png'
+import starbucksLogo from '@/asset/logos/starbucks-logo.png'
 
 const InsideBook = ({ insideBookData }) => {
   const [previewFormOpen, setPreviewFormOpen] = useState(false)
@@ -33,9 +45,9 @@ const InsideBook = ({ insideBookData }) => {
           "Impact of exponential technologies on industries and the broader business ecosystem."
         ],
         caseStudies: [
-          { name: "NVIDIA", logo: null },
-          { name: "OpenAI", logo: null },
-          { name: "Google", logo: null }
+          { name: "NVIDIA", logo: nvidiaLogo },
+          { name: "OpenAI", logo: openAiLogo },
+          { name: "Google", logo: googleLogo }
         ]
       },
       {
@@ -49,8 +61,8 @@ const InsideBook = ({ insideBookData }) => {
           "See customers as partner in co-ceation value ecosystem"
         ],
         caseStudies: [
-          { name: "SAMSUNG", logo: null },
-          { name: "OpenAI", logo: null }
+          { name: "SAMSUNG", logo: samsungLogo },
+          { name: "OpenAI", logo: openAiLogo }
         ]
       },
       {
@@ -64,9 +76,9 @@ const InsideBook = ({ insideBookData }) => {
           "See consumers, products and partners as part of one intelligent ecosystem"
         ],
         caseStudies: [
-          { name: "Google", logo: null },
-          { name: "amazon", logo: null },
-          { name: "AIR NEW ZEALAND", logo: null }
+          { name: "Google", logo: googleLogo },
+          { name: "amazon", logo: amazonLogo },
+          { name: "AIR NEW ZEALAND", logo: airNewZealandLogo }
         ]
       },
       {
@@ -81,9 +93,9 @@ const InsideBook = ({ insideBookData }) => {
           "Use the Association strategy to gain virality."
         ],
         caseStudies: [
-          { name: "Google", logo: null },
-          { name: "Starbucks", logo: null },
-          { name: "Blinkit", logo: null }
+          { name: "Google", logo: googleLogo },
+          { name: "Starbucks", logo: starbucksLogo },
+          { name: "Blinkit", logo: blinkitLogo }
         ]
       },
       {
@@ -98,9 +110,9 @@ const InsideBook = ({ insideBookData }) => {
           "Use the Association strategy to gain virality."
         ],
         caseStudies: [
-          { name: "CRED", logo: null },
-          { name: "Starbucks", logo: null },
-          { name: "Apple", logo: null }
+          { name: "CRED", logo: credLogo },
+          { name: "Starbucks", logo: starbucksLogo },
+          { name: "Apple", logo: appleLogo }
         ]
       },
       {
@@ -115,9 +127,8 @@ const InsideBook = ({ insideBookData }) => {
           "Use the Association strategy to gain virality."
         ],
         caseStudies: [
-          { name: "amazon", logo: null },
-          { name: "mi", logo: null },
-          { name: "xiaoMI", logo: null }
+          { name: "amazon", logo: amazonLogo },
+          { name: "xiaoMI", logo: miLogo }
         ]
       },
       {
@@ -132,9 +143,8 @@ const InsideBook = ({ insideBookData }) => {
           "Move from transaction to participation economies."
         ],
         caseStudies: [
-          { name: "amazon", logo: null },
-          { name: "mi", logo: null },
-          { name: "xiaoMI", logo: null }
+          { name: "amazon", logo: amazonLogo },
+          { name: "xiaoMI", logo: miLogo }
         ]
       },
       {
@@ -149,9 +159,9 @@ const InsideBook = ({ insideBookData }) => {
           "Cognitive ecosystems —that dynamically optimize outcomes."
         ],
         caseStudies: [
-          { name: "SAMSUNG", logo: null },
-          { name: "blinkit", logo: null },
-          { name: "Spotify", logo: null }
+          { name: "SAMSUNG", logo: samsungLogo },
+          { name: "blinkit", logo: blinkitLogo },
+          { name: "Spotify", logo: spotifyLogo }
         ]
       },
       {
@@ -179,9 +189,9 @@ const InsideBook = ({ insideBookData }) => {
         "Impact of exponential technologies on industries and the broader business ecosystem."
       ],
       caseStudies: [
-        { name: "NVIDIA", logo: null },
-        { name: "OpenAI", logo: null },
-        { name: "Google", logo: null }
+        { name: "NVIDIA", logo: nvidiaLogo },
+        { name: "OpenAI", logo: openAiLogo },
+        { name: "Google", logo: googleLogo }
       ]
     },
     primaryButton: { 
@@ -238,7 +248,7 @@ const InsideBook = ({ insideBookData }) => {
   const titleSecondPart = titleParts.slice(1).join(':') || ""
 
   return (
-    <div className="bg-black md:mx-[15px] mx-[5px] pt-12 md:pt-16 pb-6 md:pb-4 md:mb-12 mb-4">
+    <div className="bg-black md:mx-[15px] mx-[5px] py-12 md:py-16 md:mb-12 mb-4">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         
         {/* Header Section */}
@@ -345,7 +355,7 @@ const InsideBook = ({ insideBookData }) => {
               
               {/* Video Title */}
               {currentVideoTitle && (
-                <h2 className="text-white text-lg md:text-xl font-semibold mb-4">
+                <h2 className="text-[#c1a35e] text-lg md:text-xl font-semibold mb-4">
                   {currentVideoTitle}
                 </h2>
               )}
@@ -360,7 +370,7 @@ const InsideBook = ({ insideBookData }) => {
               {/* Key Highlights */}
               {currentHighlights && currentHighlights.length > 0 && (
                 <div className="mb-6">
-                  <h3 className="text-white text-sm md:text-base font-semibold mb-3">
+                  <h3 className="text-[#c1a35e] text-sm md:text-base font-semibold mb-3">
                     Key Highlights:
                   </h3>
                   <ul className="space-y-3">
@@ -377,45 +387,42 @@ const InsideBook = ({ insideBookData }) => {
               {/* Case Studies */}
               {currentCaseStudies && currentCaseStudies.length > 0 && (
                 <div className="mb-4">
-                  <div className="flex flex-wrap items-center gap-4 md:gap-6">
-                    <h3 className="text-white text-sm md:text-base font-semibold flex-shrink-0">
-                      Case Studies
+                  <div className="flex items-center gap-4 overflow-x-auto no-scrollbar">
+                    <h3 className="text-[#c1a35e] text-sm md:text-base font-semibold flex-shrink-0 whitespace-nowrap">
+                      Case Studies:
                     </h3>
-                    <div className="flex flex-wrap gap-6 md:gap-8 items-center">
+                    <div className="flex items-center gap-4 whitespace-nowrap">
                       {currentCaseStudies.map((company, index) => {
-                        // Handle Sanity image object or direct URL
-                        let logoUrl = null
+                        let logoSource = null
                         if (company.logo) {
                           if (typeof company.logo === 'string') {
-                            logoUrl = company.logo
+                            logoSource = company.logo
+                          } else if (company.logo.src) {
+                            logoSource = company.logo
                           } else if (company.logo.asset?.url) {
-                            logoUrl = company.logo.asset.url
+                            logoSource = company.logo.asset.url
                           } else {
                             try {
-                              logoUrl = urlFor(company.logo).width(200).height(100).url()
+                              logoSource = urlFor(company.logo).width(200).height(100).url()
                             } catch (e) {
-                              logoUrl = null
+                              logoSource = null
                             }
                           }
                         }
-                        
-                        return (
-                          <div key={index} className="flex items-center">
-                            {logoUrl ? (
-                              <div className="relative w-28 h-14 md:w-36 md:h-20">
-                                <Image
-                                  src={logoUrl}
-                                  alt={company.name}
-                                  fill
-                                  className="object-contain"
-                                  unoptimized
-                                />
-                              </div>
-                            ) : (
-                              <div className="text-white text-xs md:text-sm font-medium opacity-70">
-                                {company.name}
-                              </div>
-                            )}
+
+                        return logoSource ? (
+                          <div key={index} className="relative w-16 h-8 md:w-20 md:h-10 flex-shrink-0">
+                            <Image
+                              src={logoSource}
+                              alt={company.name}
+                              fill
+                              className="object-contain"
+                              unoptimized
+                            />
+                          </div>
+                        ) : (
+                          <div key={index} className="text-white text-xs opacity-70 flex-shrink-0">
+                            {company.name}
                           </div>
                         )
                       })}

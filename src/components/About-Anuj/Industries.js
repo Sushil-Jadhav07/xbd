@@ -40,7 +40,7 @@ const Industries = ({ industriesData }) => {
   const data = industriesData || fallbackData
 
   return (
-    <div className="bg-white md:mx-[15px] mx-[5px] py-16 relative overflow-hidden">
+    <div className="bg-white md:mx-[15px] mx-[5px] py-12 lg:py-16 relative overflow-hidden">
       
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">

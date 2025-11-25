@@ -626,7 +626,7 @@ export default function ToolsFrameworksTimeline() {
   };
 
   return (
-    <div className="min-h-screen md:mx-[15px] mx-[5px] bg-[#f5f1eb] text-black py-8 md:py-12 px-4 sm:px-6 md:px-8 relative overflow-hidden">
+    <div className="min-h-screen md:mx-[15px] mx-[5px] bg-[#f5f1eb] text-black py-12 md:py-16 px-4 sm:px-6 md:px-8 relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}

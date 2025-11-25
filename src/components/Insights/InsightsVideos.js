@@ -127,7 +127,7 @@ const InsightsVideos = ({ insightsVideosData }) => {
   }
 
   return (
-    <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-8 md:py-16 relative overflow-hidden">
+    <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-12 md:py-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 lg:px-6 relative z-10">
         
         {/* Header Section */}

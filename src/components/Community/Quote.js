@@ -77,7 +77,7 @@ const Quote = () => {
   }, [])
 
   return (
-    <div className="bg-white py-8 lg:py-16">
+    <div className="bg-white py-12 lg:py-16">
       <div className="max-w-full mx-auto px-4 lg:px-8">
         <div className="bg-gray-100 rounded-lg min-h-[550px] h-full lg:h-[600px] relative overflow-hidden">
           

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Topbar = () => {
   return (
-    <div className="bg-white py-4 lg:py-12">
+    <div className="bg-white py-12 lg:py-16">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gray-100 rounded-lg px-4 py-3 gap-3 flex items-center justify-between">
           {/* Left side with "New" badge and text */}

@@ -30,7 +30,7 @@ const IntroductoryClass = ({ introductoryClassData }) => {
   const hasVideo = finalVideoUrl && finalVideoUrl.trim() !== '';
 
   return (
-    <div className="bg-white md:mx-[15px] mx-[5px] py-16 px-4">
+    <div className="bg-white md:mx-[15px] mx-[5px] py-12 lg:py-16 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           

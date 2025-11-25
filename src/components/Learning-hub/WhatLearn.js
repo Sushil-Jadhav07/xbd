@@ -96,7 +96,7 @@ const WhatLearn = ({ whatLearnData }) => {
   const [openWaitlist, setOpenWaitlist] = useState(false);
 
   return (
-    <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] lg:py-16 py-8 lg:px-12 px-4">
+    <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-12 lg:py-16 lg:px-12 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-7 lg:gap-12 gap-4">
           
@@ -189,7 +189,7 @@ const WhatLearn = ({ whatLearnData }) => {
                 <div className="space-y-3">
                   {data.sidebarContent.whatYouGain.benefits?.map((benefit, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <div className="w-2.5 h-2.5 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
                       <p className="text-black text-base leading-relaxed">{benefit}</p>
                     </div>
                   ))}

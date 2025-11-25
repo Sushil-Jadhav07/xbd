@@ -89,7 +89,7 @@ const GroupCoaching = ({ groupCoachingData }) => {
   };
 
   return (
-    <div className="bg-white pb-16 relative overflow-hidden">
+    <div className="bg-white py-12 lg:py-16 relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 opacity-100">
         <Image 

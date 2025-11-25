@@ -115,7 +115,7 @@ const YoutubeVideos = ({ youtubeVideosData }) => {
   };
 
   return (
-    <div className="bg-white md:mx-[15px] mx-[5px] py-16 px-4">
+    <div className="bg-white md:mx-[15px] mx-[5px] py-12 lg:py-16 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">

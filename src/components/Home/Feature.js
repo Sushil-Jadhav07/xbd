@@ -228,7 +228,7 @@ const Feature = ({ whatIsExponentialData }) => {
           border-radius: 5px;
         }
       `}} />
-      <section className="dark:bg-white bg-white md:mx-[15px] mx-[5px] py-16 md:py-24">
+      <section className="dark:bg-white bg-white md:mx-[15px] mx-[5px] py-12 md:py-24">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Header */}
         <div className="mb-12 lg:mb-16">

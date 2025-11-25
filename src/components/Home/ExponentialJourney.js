@@ -123,7 +123,7 @@ export default function ExponentialJourney({ journeyData }) {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white md:mx-[15px] mx-[5px] pb-12 md:pb-16">
+    <div className="min-h-screen bg-black text-white md:mx-[15px] mx-[5px] py-12 md:py-16">
       {/* Hero Section with Mountain Background */}
       <div className="relative md:h-[800px] h-[300px] bg-gradient-to-b from-gray-800 to-black overflow-visible">
         {/* Mountain Silhouette with Journey Points */}
@@ -308,7 +308,7 @@ export default function ExponentialJourney({ journeyData }) {
       </div>
 
       {/* Content Section */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 pt-8 pb-0">
         {/* Tabs */}
         <div className="flex flex-col md:flex-row mb-8 gap-2 md:gap-0">
           {tabs.map((tab) => (

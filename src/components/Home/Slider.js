@@ -106,7 +106,7 @@ const Slider = ({ resourcesSliderData }) => {
           border-radius: 5px;
         }
       `}} />
-      <section className=" bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
+      <section className=" bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-12 md:py-20 lg:py-24  relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 z-0">
         <Image

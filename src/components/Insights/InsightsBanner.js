@@ -9,7 +9,7 @@ const InsightsBanner = ({ insightsBannerData }) => {
   const altText = insightsBannerData?.bannerImage?.alt || "Insights Banner";
 
   return (
-    <section className=' md:mx-[15px] mx-[5px]'>
+    <section className=' md:mx-[15px] mx-[5px] py-12 lg:py-16'>
       <div className="relative w-full h-[400px] md:h-[900px] overflow-hidden">
         <Image
           src={bannerImage}

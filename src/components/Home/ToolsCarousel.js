@@ -133,7 +133,7 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
           border-radius: 5px;
         }
       `}} />
-      <section className="dark:bg-white bg-white md:mx-[15px] mx-[5px] pt-0 md:pt-12 relative overflow-hidden">
+      <section className="dark:bg-white bg-white md:mx-[15px] mx-[5px] py-12 md:py-16 relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 z-0">
         <Image
@@ -146,7 +146,7 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
       </div> */}
       
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 pt-12 md:pt-12 md:px-6  relative z-10">
+      <div className="max-w-7xl mx-auto px-4 pt-0 md:pt-4 md:px-6  relative z-10">
         {/* Header */}
         <div className="mb-4 lg:mb-8">
           {/* Label */}
@@ -167,7 +167,7 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative pb-16">
+        <div className="relative pb-10">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={30}

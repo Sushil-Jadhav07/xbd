@@ -149,7 +149,7 @@ const Testimonial = ({ testimonialData }) => {
         </div> */}
         
         {/* Testimonials Carousel */}
-        <div className="relative pb-16">
+        <div className="relative pb-0">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={24}

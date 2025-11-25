@@ -177,7 +177,7 @@ const BlogsPageTwo = ({ blogData }) => {
   }, [data.hero.authorHighlight, data.relatedPosts])
 
   return (
-    <div className="bg-[#fff] md:mx-[15px] mx-[5px]">
+    <div className="bg-[#fff] md:mx-[15px] mx-[5px] py-12 lg:py-16">
       <div className="mx-auto max-w-8xl px-4 pb-20 pt-16 sm:px-6 lg:px-8 lg:pt-20">
         <section className="rounded-[32px] bg-[#f5f1eb] p-6 shadow-[0_24px_60px_rgba(157,112,53,0.08)] sm:p-10 lg:p-14">
           <div className="space-y-8">

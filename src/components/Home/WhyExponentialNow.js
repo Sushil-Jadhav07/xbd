@@ -49,7 +49,7 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
 
   return (
     <>
-    <section className="dark:bg-black bg-white md:mx-[15px] mx-[5px] py-16 md:py-20 lg:py-24  relative overflow-hidden">
+    <section className="dark:bg-black bg-white md:mx-[15px] mx-[5px] py-12 md:py-20 lg:py-24  relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 opacity-100">
         <Image 

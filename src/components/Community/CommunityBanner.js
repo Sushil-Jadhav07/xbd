@@ -3,7 +3,7 @@ import { MdImage } from 'react-icons/md';
 
 const CommunityBanner = () => {
   return (
-    <div className="bg-white py-8 lg:py-16">
+    <div className="bg-white py-12 lg:py-16">
       <div className="max-w-ful mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 grid-flow-row gap-8 lg:gap-12">
           

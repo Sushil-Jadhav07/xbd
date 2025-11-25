@@ -2,7 +2,7 @@ import React from 'react'
 
 const WhatGain = () => {
   return (
-    <div className="bg-white py-16">
+    <div className="bg-white py-12 lg:py-16">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}

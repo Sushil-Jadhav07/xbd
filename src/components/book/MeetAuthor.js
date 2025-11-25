@@ -55,7 +55,7 @@ const MeetAuthor = ({ meetAuthorData }) => {
   }
 
   return (
-    <div className="bg-white md:mx-[15px] mx-[5px] pb-16 relative overflow-hidden">
+    <div className="bg-white md:mx-[15px] mx-[5px] py-12 lg:py-16 relative overflow-hidden">
       {/* Animated Floating Shapes - Unique Variations */}
      
 
