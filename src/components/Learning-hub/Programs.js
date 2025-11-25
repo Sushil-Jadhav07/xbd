@@ -1,7 +1,19 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import Link from 'next/link';
+import MasterClassForm from '../common/MasterClass';
+import ExponentialDesignMasteryForm from '../common/ExponentialDesignMastery';
+import CoachingMentorshipForm from '../common/CoachingMentorship';
+
+const formComponentMap = {
+  "self-paced": ExponentialDesignMasteryForm,
+  "cohorted": MasterClassForm,
+  "beginners": CoachingMentorshipForm,
+};
 
 const Programs = ({ programsData }) => {
+  const [activeForm, setActiveForm] = useState({ type: "", subject: "" });
   // Fallback data
   const fallbackData = {
     sectionTitle: "Programs & Offerings",
@@ -166,12 +178,18 @@ const Programs = ({ programsData }) => {
               {/* CTA Buttons */}
               <div className="flex items-center justify-center gap-3 mb-6">
                 {program.primaryButton && (
-                  <Link
-                    href={program.primaryButton.link || '#'}
-                    className="flex-1 flex items-center justify-center bg-black text-white py-2 px-4 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setActiveForm({
+                        type: program.programType || "",
+                        subject: program.title || "",
+                      })
+                    }
+                    className="flex-1 flex items-center justify-center bg-black text-white py-2 px-4 rounded-lg font-medium hover:bg-gray-800 transition-colors cursor-pointer"
                   >
                     {program.primaryButton.text}
-                  </Link>
+                  </button>
                 )}
                 {program.secondaryButton && (
                   <Link
@@ -223,6 +241,13 @@ const Programs = ({ programsData }) => {
           </div>
         )}
       </div>
+      {activeForm.type && formComponentMap[activeForm.type] ? (
+        React.createElement(formComponentMap[activeForm.type], {
+          open: true,
+          onClose: () => setActiveForm({ type: "", subject: "" }),
+          initialSubject: activeForm.subject || "",
+        })
+      ) : null}
     </div>
   );
 };

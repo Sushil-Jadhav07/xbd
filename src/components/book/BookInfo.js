@@ -35,7 +35,7 @@ const BookInfo = ({ bookInfoData }) => {
       }
     ],
     primaryButton: { text: "Explore Framework Playbook" },
-    secondaryButton: { text: "Download Free Chapter" },
+    secondaryButton: { text: "Preview Free Chapter" },
     trustIndicator: "Trusted by 1,200+ leaders • Limited launch edition",
     supportingTitle: "Understanding Framework",
     supportingDescription: "This hyperconverged setup needs a different mindset. It rewires organisational DNA for exponential thinking. Frameworks here are distilled from studying leaders at NVIDIA, Amazon, Google and OpenAI to give you practical tools and templates to implement.",
@@ -152,15 +152,15 @@ const BookInfo = ({ bookInfoData }) => {
                   {data.primaryButton.text}
                 </Link>
               )}
-              {data.secondaryButton && (
-                <button
-                  type="button"
-                  onClick={() => setPreviewFormOpen(true)}
-                  className="text-black cursor-pointer font-medium hover:text-gray-700 transition-colors duration-200 flex items-center text-base"
-                >
-                  {data.secondaryButton.text}
-                </button>
-              )}
+          {data.secondaryButton && (
+            <button
+              type="button"
+              onClick={() => setPreviewFormOpen(true)}
+              className="text-black cursor-pointer font-medium hover:text-gray-700 transition-colors duration-200 flex items-center text-base"
+            >
+              {data.secondaryButton.text}
+            </button>
+          )}
             </div>
             
             {/* Trust Indicator */}
@@ -170,7 +170,7 @@ const BookInfo = ({ bookInfoData }) => {
           </div>
         </div>
       </div>
-      <PreviewChapterForm open={previewFormOpen} onClose={() => setPreviewFormOpen(false)} />
+      <PreviewChapterForm open={previewFormOpen} onClose={() => setPreviewFormOpen(false)} initialSubject="Preview Free Chapter" />
     </div>
   )
 }

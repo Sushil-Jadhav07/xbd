@@ -24,37 +24,74 @@ const Newsletters = ({ newsletterData }) => {
     setMessage({ type: '', text: '' })
 
     try {
-      const response = await fetch('/api/newsletter/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
+      await submitToMailchimp(email)
+      setMessage({ 
+        type: 'success', 
+        text: 'Successfully subscribed!' 
       })
-
-      const result = await response.json()
-
-      if (response.ok) {
-        setMessage({ 
-          type: 'success', 
-          text: result.message || 'Successfully subscribed!' 
-        })
-        setEmail('') // Clear input on success
-      } else {
-        setMessage({ 
-          type: 'error', 
-          text: result.error || 'Something went wrong. Please try again.' 
-        })
-      }
+      setEmail('') // Clear input on success
     } catch (error) {
       console.error('Subscription error:', error)
       setMessage({ 
         type: 'error', 
-        text: 'Network error. Please check your connection and try again.' 
+        text: error.message || 'Network error. Please check your connection and try again.' 
       })
     } finally {
       setLoading(false)
     }
+  }
+
+  const submitToMailchimp = (emailAddress) => {
+    return new Promise((resolve, reject) => {
+      const MAILCHIMP_URL = 'https://xbd.us11.list-manage.com/subscribe/post-json'
+      const u = '279a02443a57a9821b4e42c23'
+      const id = 'c8c278b85a'
+
+      const params = new URLSearchParams({
+        u,
+        id,
+        f_id: '00642fe1f0',
+        EMAIL: emailAddress,
+        'b_279a02443a57a9821b4e42c23_c8c278b85a': ''
+      })
+
+      const callbackName = `newsletterCallback_${Date.now()}`
+      const script = document.createElement('script')
+      script.src = `${MAILCHIMP_URL}?${params.toString()}&c=${callbackName}`
+
+      window[callbackName] = (data) => {
+        delete window[callbackName]
+        if (script.parentNode) {
+          script.parentNode.removeChild(script)
+        }
+
+        if (data.result === 'success' || (data.msg && data.msg.includes('already subscribed'))) {
+          resolve(data)
+        } else {
+          reject(new Error(data.msg || 'Something went wrong. Please try again.'))
+        }
+      }
+
+      script.onerror = () => {
+        delete window[callbackName]
+        if (script.parentNode) {
+          script.parentNode.removeChild(script)
+        }
+        reject(new Error('Network error. Please try again.'))
+      }
+
+      document.body.appendChild(script)
+
+      setTimeout(() => {
+        if (window[callbackName]) {
+          delete window[callbackName]
+          if (script.parentNode) {
+            script.parentNode.removeChild(script)
+          }
+          reject(new Error('Request timeout. Please try again.'))
+        }
+      }, 10000)
+    })
   }
 
   return (
@@ -85,7 +122,7 @@ const Newsletters = ({ newsletterData }) => {
             placeholder={data.inputPlaceholder}
             required
             disabled={loading}
-            className="flex-1 px-4 py-3 border border-gray-600 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent disabled:bg-gray-200 disabled:cursor-not-allowed transition-all placeholder-gray-600"
+            className="flex-1 text-gray-700 px-4 py-3 border border-gray-600 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent disabled:bg-gray-200 disabled:cursor-not-allowed transition-all placeholder-gray-600"
           />
           <button 
             type="submit" 

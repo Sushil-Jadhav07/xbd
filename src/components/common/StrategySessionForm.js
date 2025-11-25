@@ -7,6 +7,7 @@ export default function StrategySessionForm({ open, onClose }) {
     name: "",
     email: "",
     phone: "",
+    subject: "",
     companyName: "",
     designation: "",
   });
@@ -45,6 +46,7 @@ export default function StrategySessionForm({ open, onClose }) {
         name: "",
         email: "",
         phone: "",
+        subject: "",
         companyName: "",
         designation: "",
       });
@@ -64,17 +66,18 @@ export default function StrategySessionForm({ open, onClose }) {
     return new Promise((resolve, reject) => {
       const MAILCHIMP_URL = "https://xbd.us11.list-manage.com/subscribe/post-json";
       const u = "279a02443a57a9821b4e42c23";
-      const id = "cd51ec057f";
+      const id = "b61cf150fe";
 
       const params = new URLSearchParams({
         u,
         id,
-        FNAME: values.name,
         EMAIL: values.email,
+        FNAME: values.name,
         PHONE: values.phone,
-        COMPANYNME: values.companyName,
+        SUBJECT: values.subject || "",
+        COMPANY: values.companyName,
         DESIGNATON: values.designation,
-        "b_279a02443a57a9821b4e42c23_cd51ec057f": "",
+        "b_279a02443a57a9821b4e42c23_b61cf150fe": "",
       });
 
       const callbackName = "mcStrategyCallback_" + Date.now();
@@ -176,6 +179,19 @@ export default function StrategySessionForm({ open, onClose }) {
               onChange={handleChange}
               className="mt-1 w-full rounded-lg border text-gray-800 border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-900"
               placeholder="+91 90000 00000"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Subject
+            </label>
+            <input
+              name="subject"
+              type="text"
+              value={formValues.subject}
+              onChange={handleChange}
+              className="mt-1 w-full rounded-lg border text-gray-800 border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-900"
+              placeholder="Subject (optional)"
             />
           </div>
           <div>

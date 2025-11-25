@@ -3,8 +3,10 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '@/lib/sanity'
+import PreviewChapterForm from '../common/PreviewChapterForm'
 
 const InsideBook = ({ insideBookData }) => {
+  const [previewFormOpen, setPreviewFormOpen] = useState(false)
   // Helper function to extract YouTube video ID from URL
   const getYouTubeVideoId = (url) => {
     if (!url) return null
@@ -184,11 +186,11 @@ const InsideBook = ({ insideBookData }) => {
     },
     primaryButton: { 
       text: "Download a free chapter",
-      link: "#"
+      link: "/"
     },
     secondaryButton: { 
       text: "Get the Book",
-      link: "#"
+      link: "/book"
     }
   }
 
@@ -286,17 +288,18 @@ const InsideBook = ({ insideBookData }) => {
             <div className="bg-gray-800 border border-black p-4 mt-6">
               <div className="flex flex-row gap-4">
                 {data.primaryButton && (
-                  <Link
-                    href={data.primaryButton.link || '#'}
-                    className="flex-1 bg-[#c1a35e] text-black py-3 px-4 rounded-lg font-semibold hover:opacity-90 transition-all duration-200 text-center text-sm md:text-base"
+                  <button
+                    type="button"
+                    onClick={() => setPreviewFormOpen(true)}
+                    className="flex-1 cursor-pointer bg-[#c1a35e] text-white py-3 px-4 rounded-lg font-semibold hover:opacity-90 transition-all duration-200 text-center text-sm md:text-base"
                   >
                     {data.primaryButton.text}
-                  </Link>
+                  </button>
                 )}
                 {data.secondaryButton && (
                   <Link
                     href={data.secondaryButton.link || '#'}
-                    className="flex-1 bg-[#c1a35e] text-black py-3 px-4 rounded-lg font-semibold hover:opacity-90 transition-all duration-200 text-center text-sm md:text-base"
+                    className="flex-1 bg-[#c1a35e] text-white hover:opacity-90 py-3 px-4 rounded-lg font-semibold  transition-all duration-200 text-center text-sm md:text-base"
                   >
                     {data.secondaryButton.text}
                   </Link>
@@ -442,6 +445,11 @@ const InsideBook = ({ insideBookData }) => {
         </div>
         
       </div>
+      <PreviewChapterForm
+        open={previewFormOpen}
+        onClose={() => setPreviewFormOpen(false)}
+        initialSubject={data.primaryButton?.text || 'Download a free chapter'}
+      />
     </div>
   )
 }

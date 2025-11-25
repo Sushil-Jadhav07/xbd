@@ -1,8 +1,12 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ApplyCohartForm from '../common/ApplyCohart';
 
 const IndustryFocus = ({ industryFocusData }) => {
+  const [formOpen, setFormOpen] = useState(false);
   // Fallback data
   const fallbackData = {
     focusLabel: "Instructor-Led Focus",
@@ -81,7 +85,7 @@ const IndustryFocus = ({ industryFocusData }) => {
             
             {/* Video Player */}
             <div className='bg-gray-200 rounded-lg p-4'>
-            <div className="bg-white rounded-lg h-80 relative overflow-hidden">
+              <div className="bg-white rounded-lg h-80 relative overflow-hidden">
               {hasVideo ? (
                 <video 
                   className="w-full h-full object-contain rounded-lg"
@@ -103,8 +107,8 @@ const IndustryFocus = ({ industryFocusData }) => {
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                     </svg>
                     <p className="text-sm">No video available</p>
-                  </div>
-                </div>
+              </div>
+            </div>
               )}
             </div>
 
@@ -137,25 +141,6 @@ const IndustryFocus = ({ industryFocusData }) => {
                 )}
               </div>
             )}
-            {/* Learning Options Section */}
-              {/* Key Metrics */}
-            {/* <div className='bg-gray-200 rounded-lg lg:p-6 p-3'>
-              <h1 className="text-xl font-bold text-black mb-4">{data.learningOptions?.title}</h1>
-              
-              <div className="grid grid-cols-3 gap-4 mb-4">
-                {data.learningOptions?.metrics?.map((metric, index) => (
-                  <div key={index} className="bg-gray-300 rounded-lg p-4 text-center">
-                    <div className="lg:text-2xl text-base font-bold text-black">{metric.value}</div>
-                    <div className="lg:text-sm text-xs text-gray-600">{metric.label}</div>
-                  </div>
-                ))}
-              </div>
-              <h6 className='text-black text-base font-semibold'>{data.learningOptions?.formatTitle}</h6>
-              <p className="text-gray-700">
-                {data.learningOptions?.formatDescription}
-              </p>
-            </div> */}
-            
           </div>
 
           {/* Right Column */}
@@ -211,12 +196,13 @@ const IndustryFocus = ({ industryFocusData }) => {
             <div className="space-y-4">
               <div className="flex flex-row lg:gap-4 gap-2 items-center">
                 {data.ctaSection?.primaryButton && (
-                  <Link
-                    href={data.ctaSection.primaryButton.link || '#'}
+                  <button
+                    type="button"
+                    onClick={() => setFormOpen(true)}
                     className="bg-black text-sm lg:text-base text-white lg:px-8 px-4 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
                   >
                     {data.ctaSection.primaryButton.text}
-                  </Link>
+                  </button>
                 )}
                 {data.ctaSection?.secondaryLink && (
                   <Link
@@ -237,6 +223,11 @@ const IndustryFocus = ({ industryFocusData }) => {
           </div>
         </div>
       </div>
+      <ApplyCohartForm
+        open={formOpen}
+        onClose={() => setFormOpen(false)}
+        initialSubject="Apply to Cohort"
+      />
     </div>
   );
 };

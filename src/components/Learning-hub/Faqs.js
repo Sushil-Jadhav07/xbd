@@ -35,7 +35,7 @@ const Faqs = ({ faqsData }) => {
 
   return (
     <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] lg:py-16 lg:px-16 py-8 px-4">
-      <div className="max-w-full mx-auto">
+      <div className="max-w-7xl mx-auto">
         
         {/* Header Section */}
         <div className="flex items-center space-x-3 lg:mb-8 mb-4">

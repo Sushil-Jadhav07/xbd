@@ -2,16 +2,20 @@
 
 import { useEffect, useState } from "react";
 
-export default function PreviewChapterForm({ open, onClose }) {
+const PDF_DOWNLOAD_PATH = "/pdf/free-chapter-exponential-by-design.pdf";
+
+export default function PreviewChapterForm({ open, onClose, initialSubject = "" }) {
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
     phone: "",
+    subject: initialSubject,
     companyName: "",
     designation: "",
   });
   const [submitting, setSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     function handleKey(event) {
@@ -21,6 +25,12 @@ export default function PreviewChapterForm({ open, onClose }) {
     return () => document.removeEventListener("keydown", handleKey);
   }, [open, onClose]);
 
+  useEffect(() => {
+    if (open && initialSubject) {
+      setFormValues((prev) => ({ ...prev, subject: initialSubject }));
+    }
+  }, [open, initialSubject]);
+
   function handleChange(event) {
     const { name, value } = event.target;
     setFormValues((prev) => ({ ...prev, [name]: value }));
@@ -28,15 +38,35 @@ export default function PreviewChapterForm({ open, onClose }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setErrorMessage("");
+    setSuccessMessage("");
+
+    if (
+      !formValues.name ||
+      !formValues.email ||
+      !formValues.phone ||
+      !formValues.companyName ||
+      !formValues.designation
+    ) {
+      setErrorMessage("Please fill in all required fields.");
+      return;
+    }
+
     setSubmitting(true);
     try {
-      // TODO hook to actual API.
-      await new Promise((resolve) => setTimeout(resolve, 800));
+      await submitToMailchimp(formValues);
       setSuccessMessage("Thanks! The preview chapter will arrive in your inbox.");
+      const link = document.createElement("a");
+      link.href = PDF_DOWNLOAD_PATH;
+      link.download = "Free Chapter Exponential by Design.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
       setFormValues({
         name: "",
         email: "",
         phone: "",
+        subject: initialSubject || "",
         companyName: "",
         designation: "",
       });
@@ -44,9 +74,65 @@ export default function PreviewChapterForm({ open, onClose }) {
         setSuccessMessage("");
         onClose?.();
       }, 1500);
+    } catch (error) {
+      console.error("Mailchimp submission error:", error);
+      setErrorMessage(error.message || "Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
     }
+  }
+
+  function submitToMailchimp(values) {
+    return new Promise((resolve, reject) => {
+      const MAILCHIMP_URL = "https://xbd.us11.list-manage.com/subscribe/post-json";
+      const u = "279a02443a57a9821b4e42c23";
+      const id = "5ffbdd59b0";
+
+      const params = new URLSearchParams({
+        u,
+        id,
+        FNAME: values.name,
+        EMAIL: values.email,
+        PHONE: values.phone,
+        COMPANY: values.companyName,
+        DESIGNATON: values.designation,
+        "b_279a02443a57a9821b4e42c23_5ffbdd59b0": "",
+      });
+
+      const callbackName = "mcPreviewChapterCallback_" + Date.now();
+      params.append("c", callbackName);
+
+      const script = document.createElement("script");
+      script.src = `${MAILCHIMP_URL}?${params.toString()}`;
+      script.async = true;
+
+      window[callbackName] = (data) => {
+        delete window[callbackName];
+        script.remove();
+
+        if (data.result === "success" || (data.msg && data.msg.includes("already subscribed"))) {
+          resolve(data);
+        } else {
+          reject(new Error(data.msg || "Subscription failed"));
+        }
+      };
+
+      script.onerror = () => {
+        delete window[callbackName];
+        script.remove();
+        reject(new Error("Network error. Please try again."));
+      };
+
+      document.body.appendChild(script);
+
+      setTimeout(() => {
+        if (window[callbackName]) {
+          delete window[callbackName];
+          script.remove();
+          reject(new Error("Request timed out. Please try again."));
+        }
+      }, 10000);
+    });
   }
 
   if (!open) return null;
@@ -116,6 +202,19 @@ export default function PreviewChapterForm({ open, onClose }) {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
+              Subject
+            </label>
+            <input
+              name="subject"
+              type="text"
+              value={formValues.subject}
+              onChange={handleChange}
+              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900"
+              placeholder="Subject (optional)"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
               Company name *
             </label>
             <input
@@ -152,7 +251,7 @@ export default function PreviewChapterForm({ open, onClose }) {
             disabled={submitting}
             className="w-full rounded-lg bg-black text-white py-3 font-semibold hover:bg-gray-800 disabled:opacity-70"
           >
-            {submitting ? "Submitting..." : "Send Me The Chapter"}
+            {submitting ? "Submitting..." : "Download The Chapter"}
           </button>
         </form>
       </div>
