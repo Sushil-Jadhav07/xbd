@@ -153,9 +153,9 @@ const Keynotes = ({ keynotesData }) => {
         
         {/* Header Section */}
         <div className="text-center mb-8 md:mb-12">
-          <h1 className="text-2xl md:text-4xl font-bold text-black px-2">
+          <h2 className="text-2xl md:text-4xl font-bold text-black px-2">
             {data.title}
-          </h1>
+          </h2>
         </div>
         
         {/* Carousel Container */}
@@ -223,33 +223,33 @@ const Keynotes = ({ keynotesData }) => {
                     </div>
                     
                     {/* Title */}
-                    <h1 className="text-base md:text-lg lg:text-xl font-bold text-black mb-2 text-center">
+                    <h2 className="text-base md:text-lg lg:text-xl font-bold text-black mb-2 text-center">
                       {keynote.title}
-                    </h1>
+                    </h2>
                     
                     {/* Subtitle */}
-                    <p className="text-xs md:text-sm lg:text-base text-gray-700 mb-3 md:mb-4 text-center">
+                    <h4 className="text-xs md:text-sm lg:text-base text-gray-700 mb-3 md:mb-4 text-center">
                       {keynote.subtitle}
-                    </p>
+                    </h4>
                     
                     {/* Tags/Buttons */}
                     <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-4 md:mb-6">
                       {keynote.duration && (
                         <div className="bg-gray-200 text-black text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full flex items-center gap-1.5 md:gap-2">
                           <MdAccessTime className="text-gray-600 text-sm md:text-base" />
-                          <span className="font-medium">{keynote.duration}</span>
+                          <h4 className="font-medium">{keynote.duration}</h4>
                         </div>
                       )}
                       {keynote.availability && (
                         <div className="bg-gray-200 text-black text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full flex items-center gap-1.5 md:gap-2">
                           <MdLanguage className="text-gray-600 text-sm md:text-base" />
-                          <span className="font-medium">{keynote.availability}</span>
+                          <h4 className="font-medium">{keynote.availability}</h4>
                         </div>
                       )}
                       {keynote.mode && (
                         <div className="bg-gray-200 text-black text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full flex items-center gap-1.5 md:gap-2">
                           <MdEvent className="text-gray-600 text-sm md:text-base" />
-                          <span className="font-medium">{keynote.mode}</span>
+                          <h4 className="font-medium">{keynote.mode}</h4>
                         </div>
                       )}
                     </div>

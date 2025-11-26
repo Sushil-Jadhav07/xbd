@@ -90,9 +90,9 @@ const BookInfo = ({ bookInfoData }) => {
             <div className="mt-8">
               <div className="space-y-6">
                 {/* Title */}
-                <h1 className="text-xl md:text-2xl font-bold text-black">
+                <h2 className="text-xl md:text-2xl font-bold text-black">
                   {data.supportingTitle}
-                </h1>
+                </h2>
                 
                 {/* Description */}
                 <p className="text-sm md:text-base text-gray-700 leading-relaxed max-w-2xl">
@@ -108,36 +108,36 @@ const BookInfo = ({ bookInfoData }) => {
 
             {/* Top Label */}
             <div className="flex items-center gap-2 mb-4">
-              <h2 className="text-sm md:text-base font-medium text-black leading-tight">
+              <h4 className="text-sm md:text-base font-medium text-black leading-tight">
                 {data.topLabel}
-              </h2>
+              </h4>
             </div>
             
             {/* Headline */}
-            <h1 className="text-xl md:text-3xl font-medium text-black uppercase ">
+            <h2 className="text-xl md:text-3xl font-medium text-black uppercase ">
               {data.headline} <strong className="bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent font-bold">{data.headlineBold}</strong>
-            </h1>
+            </h2>
 
             
             
             {/* Limited Launch Badge */}
-            <div className="inline-block bg-gray-100 text-gray-700 text-sm px-4 py-2 rounded-full font-medium">
+            <h4 className="inline-block bg-gray-100 text-gray-700 text-sm px-4 py-2 rounded-full font-medium">
               {data.limitedEditionBadge}
-            </div>
+            </h4>
             
             {/* Value Metrics Grid */}
             <div className="grid grid-cols-2 gap-4 pt-4">
               {data.metrics?.map((metric, index) => (
                 <div key={index} className="bg-gray-100 rounded-lg p-4">
-                  <div className="text-2xl lg:text-3xl font-bold text-black mb-1">
+                  <h4 className="text-2xl lg:text-3xl font-bold text-black mb-1">
                     {metric.value}
-                  </div>
-                  <h1 className="text-sm font-bold text-black mb-2">
+                  </h4>
+                  <h4 className="text-sm font-bold text-black mb-2">
                     {metric.title}
-                  </h1>
-                  <div className="text-xs text-gray-700 leading-relaxed">
+                  </h4>
+                  <p className="text-xs text-gray-700 leading-relaxed">
                     {metric.description}
-                  </div>
+                  </p>
                 </div>
               ))}
             </div>

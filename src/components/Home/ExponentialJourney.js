@@ -138,12 +138,12 @@ export default function ExponentialJourney({ journeyData }) {
 
           {/* Header Text Overlay on Mountain */}
           <div className="absolute top-4 md:top-8 left-0 right-0 text-center px-4 z-10">
-            <h1 className="text-lg md:text-4xl font-light mb-0 md:mb-4">
+            <h2 className="text-lg md:text-4xl font-light mb-0 md:mb-4">
               {titleStart} <span className="text-[#c1a35e] font-semibold">{highlightText}</span> {titleEnd}
-            </h1>
-            <p className="text-gray-100 text-xs md:text-base max-w-3xl mx-auto">
+            </h2>
+            <h4 className="text-gray-100 text-xs md:text-base max-w-3xl mx-auto">
               {heroSubtitle}
-            </p>
+            </h4>
           </div>
 
           {/* Journey Points - Dynamically rendered based on actual stages */}
@@ -188,13 +188,13 @@ export default function ExponentialJourney({ journeyData }) {
                         <div className="space-y-3">
                           {/* Promise Section */}
                           <div>
-                            <h3 className="text-[#c1a35e] text-xs font-semibold mb-1.5 uppercase tracking-wide">Promise</h3>
+                            <h4 className="text-[#c1a35e] text-xs font-semibold mb-1.5 uppercase tracking-wide">Promise</h4>
                             <p className="text-white text-xs leading-relaxed">{stage.promise}</p>
                           </div>
                           
                           {/* What you get Section */}
                           <div>
-                            <h3 className="text-[#c1a35e] text-xs font-semibold mb-1.5 uppercase tracking-wide">What you get</h3>
+                            <h4 className="text-[#c1a35e] text-xs font-semibold mb-1.5 uppercase tracking-wide">What you get</h4>
                             <ul className="space-y-1">
                               {stage.features?.map((feature, index) => (
                                 <li key={index} className="text-gray-300 text-xs flex items-start">
@@ -265,13 +265,13 @@ export default function ExponentialJourney({ journeyData }) {
                       <div className="space-y-4">
                         {/* Promise Section */}
                         <div>
-                          <h3 className="text-[#c1a35e] text-sm font-semibold mb-2 uppercase tracking-wide">Promise</h3>
+                          <h4 className="text-[#c1a35e] text-sm font-semibold mb-2 uppercase tracking-wide">Promise</h4>
                           <p className="text-white text-sm leading-relaxed">{stage.promise}</p>
                         </div>
                         
                         {/* What you get Section */}
                         <div>
-                          <h3 className="text-[#c1a35e] text-sm font-semibold mb-2 uppercase tracking-wide">What you get</h3>
+                          <h4 className="text-[#c1a35e] text-sm font-semibold mb-2 uppercase tracking-wide">What you get</h4>
                           <ul className="space-y-1.5">
                             {stage.features?.map((feature, index) => (
                               <li key={index} className="text-gray-300 text-sm flex items-start">
@@ -336,7 +336,7 @@ export default function ExponentialJourney({ journeyData }) {
                   <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#c1a35e]"></div>
                 </div>
                 <p className="text-gray-400 text-xs md:text-sm mb-1 md:mb-2">STAGE {stageData[activeStage].stageNumber}</p>
-                <h1 className="text-[#c1a35e] text-xl md:text-2xl font-semibold">{stageData[activeStage].title}</h1>
+                <h2 className="text-[#c1a35e] text-xl md:text-2xl font-semibold">{stageData[activeStage].title}</h2>
               </>
             )}
           </div>
@@ -364,7 +364,7 @@ export default function ExponentialJourney({ journeyData }) {
           <div className="w-full lg:w-[50%] bg-transparent p-4 md:p-8">
             {stageData[activeStage] && (
               <>
-                <h1 className="text-white text-lg md:text-xl font-semibold mb-3 md:mb-4">Promise</h1>
+                <h4 className="text-white text-lg md:text-xl font-semibold mb-3 md:mb-4">Promise</h4>
                 <p className="text-gray-300 text-sm md:text-base mb-6 md:mb-8">
                   {stageData[activeStage].promise}
                 </p>

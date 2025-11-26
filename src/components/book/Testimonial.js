@@ -117,12 +117,12 @@ const Testimonial = ({ testimonialData }) => {
         
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h1 className="text-3xl lg:text-4xl font-bold text-black mb-4">
+          <h2  className="text-3xl lg:text-4xl font-bold text-black mb-4">
             {data.title}
-          </h1>
-          <p className="text-base lg:text-xl text-black max-w-3xl mx-auto">
+          </h2>
+          <h4 className="text-base lg:text-xl text-black max-w-3xl mx-auto">
             {data.subtitle}
-          </p>
+          </h4>
         </div>
         
         {/* Logos Section */}
@@ -199,9 +199,9 @@ const Testimonial = ({ testimonialData }) => {
                   </div>
                   
                   {/* Quote */}
-                  <blockquote className="text-black mb-6 leading-relaxed">
+                  <p className="text-black mb-6 leading-relaxed">
                     "{testimonial.quote}"
-                  </blockquote>
+                  </p>
                   
                   {/* Author Information */}
                   <div className="flex items-center gap-3">
@@ -216,14 +216,14 @@ const Testimonial = ({ testimonialData }) => {
                       </div>
                     ) : (
                       <div className="w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center">
-                        <span className="text-white text-sm font-bold">
+                        <h4 className="text-white text-sm font-bold">
                           {getInitials(testimonial.author)}
-                        </span>
+                        </h4>
                       </div>
                     )}
                     <div>
-                      <p className="text-black font-bold text-sm">{testimonial.author}</p>
-                      <h1 className="text-gray-600 text-xs">{testimonial.title}</h1>
+                      <h4 className="text-black font-bold text-sm">{testimonial.author}</h4>
+                      <h2 className="text-gray-600 text-xs">{testimonial.title}</h2>
                     </div>
                   </div>
                 </div>

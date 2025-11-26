@@ -243,9 +243,9 @@ const CalltoAction = ({ callToActionData }) => {
               
               {/* Header */}
               <div className="text-center mb-4">
-                <h1 className="text-3xl md:text-4xl font-bold text-black mb-3">
+                <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">
                   {data.formTitle}
-                </h1>
+                </h2>
                 <p className="text-sm text-gray-700">
                   {data.formSubtitle}
                 </p>

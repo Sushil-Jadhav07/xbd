@@ -113,14 +113,14 @@ const LearningBanner = ({ learningBannerData }) => {
           {/* Right Column - Content */}
           <div className="space-y-6">
             {/* Top Label */}
-            <div className="inline-block bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
+            <h4 className="inline-block bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
               {data.topLabel}
-            </div>
+            </h4>
 
             {/* Main Headline */}
-            <h1 className="text-3xl md:text-5xl font-bold text-black leading-tight">
+            <h2 className="text-3xl md:text-5xl font-bold text-black leading-tight">
               {data.mainHeading}
-            </h1>
+            </h2>
 
             {/* Descriptive Paragraph */}
             <p className="text-lg text-black font-bold leading-relaxed">

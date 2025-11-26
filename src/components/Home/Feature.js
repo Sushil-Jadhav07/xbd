@@ -232,12 +232,12 @@ const Feature = ({ whatIsExponentialData }) => {
         <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Header */}
         <div className="mb-12 lg:mb-16">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {title} <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent">{highlightText}</span>
-          </h1>
-          <p className="text-sm md:text-base text-gray-700 max-w-3xl">
+          </h2>
+          <h4 className="text-sm md:text-base text-gray-700 max-w-3xl">
             {subtitle}
-          </p>
+          </h4>
         </div>
 
         {/* Features Carousel */}
@@ -285,9 +285,9 @@ const Feature = ({ whatIsExponentialData }) => {
                   </div>
 
                   {/* Title */}
-                  <h1 className="text-lg md:text-xl font-bold text-gray-900 text-left">
+                  <h2 className="text-lg md:text-xl font-bold text-gray-900 text-left">
                     {feature.title}
-                  </h1>
+                  </h2>
 
                   {/* Description */}
                   <p className="text-gray-700 text-sm md:text-base leading-relaxed text-left flex-grow">

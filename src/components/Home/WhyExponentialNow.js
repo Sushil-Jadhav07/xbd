@@ -65,20 +65,20 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16">
           {/* Label */}
-          <div className="flex items-center justify-center gap-2 text-sm font-semibold text-white uppercase tracking-wide mb-4">
+          <h4 className="flex items-center justify-center gap-2 text-sm font-semibold text-white uppercase tracking-wide mb-4">
             <HiOutlineSparkles className="text-lg" />
             {data.label}
-          </div>
+          </h4>
 
           {/* Headline */}
-          <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-6">
             {data.title} <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent">{data.highlightText}</span>
-          </h1>
+          </h2>
 
           {/* Subtitle */}
-          <p className="text-sm md:text-base text-white max-w-4xl mx-auto leading-relaxed">
+          <h4 className="text-sm md:text-base text-white max-w-4xl mx-auto leading-relaxed">
             {data.subtitle}
-          </p>
+          </h4>
         </div>
 
         {/* Main Content */}
@@ -99,14 +99,14 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
                   className="w-[40%] md:w-1/3 lg:flex-1 text-center space-y-3"
                 >
                   {/* Number */}
-                  <div className="text-2xl md:text-4xl font-bold bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent ">
+                  <h4 className="text-2xl md:text-4xl font-bold bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent ">
                     {stat.number}
-                  </div>
+                  </h4>
                   
                   {/* Title */}
-                  <div className="text-sm md:text-base font-bold bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent">
+                  <h2 className="text-sm md:text-base font-bold bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent">
                     {stat.title}
-                  </div>
+                  </h2>
                   
                   {/* Description */}
                   <p className="text-xs md:text-base text-white leading-relaxed">

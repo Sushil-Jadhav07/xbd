@@ -6,7 +6,10 @@ const Faqs = ({ faqsData }) => {
 
   // Fallback data
   const fallbackData = {
-    sectionTitle: "Frequently Asked Questions",
+    sectionBadge: "Support",
+    mainTitle: "Frequently Asked",
+    highlightedTitle: "Questions",
+    subtitle: "Everything you need to know about our programs and services.",
     faqs: [
       {
         question: "Who is this course for?",
@@ -24,75 +27,113 @@ const Faqs = ({ faqsData }) => {
         question: "What is the refund policy?",
         answer: "30-day money-back guarantee with no questions asked."
       }
-    ]
+    ],
+    ctaSection: null
   };
 
   const data = faqsData || fallbackData;
+
+  const sectionBadge = data.sectionBadge || "FAQ";
+  const mainTitle =
+    data.mainTitle || data.sectionTitle || fallbackData.mainTitle;
+  const highlightedTitle =
+    data.highlightedTitle ||
+    (data.sectionTitle ? "" : fallbackData.highlightedTitle);
+  const subtitle = data.subtitle || fallbackData.subtitle;
+  const faqs = data.faqs || fallbackData.faqs;
 
   const toggleFaq = (index) => {
     setOpenIndex(openIndex === index ? -1 : index);
   };
 
   return (
-    <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-12 lg:py-16 lg:px-16 px-4">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative min-h-screen bg-white md:mx-[15px] mx-[5px] py-12 lg:py-16 px-4 lg:px-8 overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+      <div className="relative max-w-7xl mx-auto">
         
         {/* Header Section */}
-        <div className="flex items-center space-x-3 lg:mb-8 mb-4">
-          <div className="w-6 h-6 text-gray-600">
-            <svg fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM13 9a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z" clipRule="evenodd" />
-            </svg>
+        <div className="mb-12 lg:mb-16">
+          <div className="inline-block mb-4">
+            <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-br from-[#9d7035] to-[#c1a35e] tracking-wider uppercase">
+              {sectionBadge}
+            </span>
           </div>
-          <span className="text-sm font-semibold text-gray-600 tracking-wider uppercase">
-            FAQ
-          </span>
+          <div>
+            <h2 className="text-2xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+              {mainTitle}
+              {highlightedTitle && (
+                <>
+                  <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#9d7035] to-[#c1a35e]">
+                    {highlightedTitle}
+                  </span>
+                </>
+              )}
+            </h2>
+            {subtitle && (
+              <p className="text-base md:text-lg text-gray-600 max-w-2xl">
+                {subtitle}
+              </p>
+            )}
+          </div>
         </div>
-
-        {/* Main Heading */}
-        <h1 className="text-4xl md:text-5xl font-bold text-black mb-6 lg:mb-12">
-          {data.sectionTitle}
-        </h1>
 
         {/* FAQ Items */}
         <div className="space-y-4">
-          {data.faqs?.map((faq, index) => (
-            <div key={index} className="bg-gray-200 rounded-lg">
+          {faqs?.map((faq, index) => (
+            <div
+              key={index}
+              className="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-[#c1a35e] hover:shadow-xl transition-all duration-300"
+            >
               <button
-                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-300 hover:rounded-lg transition-colors"
+                className="w-full px-6 md:px-8 py-4 md:py-6 flex items-center justify-between gap-4 text-left"
                 onClick={() => toggleFaq(index)}
               >
-                <span className="text-black font-medium text-lg">
-                  {faq.question}
-                </span>
-                <div className="w-5 h-5 text-black">
-                  {openIndex === index ? (
-                    // Upward arrow for expanded
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
-                    </svg>
-                  ) : (
-                    // Downward arrow for collapsed
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  )}
+                <div className="flex items-start gap-4 flex-1">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#9d7035]/10 text-[#9d7035] flex items-center justify-center text-sm font-semibold group-hover:bg-[#9d7035] group-hover:text-white transition-colors duration-300">
+                    {index + 1}
+                  </span>
+                  <span className="text-base md:text-xl font-semibold text-gray-900 group-hover:text-[#9d7035] transition-colors duration-300">
+                    {faq.question}
+                  </span>
+                </div>
+                <div
+                  className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-gray-300 flex items-center justify-center transition-all duration-300 ${
+                    openIndex === index
+                      ? 'rotate-180 border-[#9d7035] bg-[#9d7035]'
+                      : 'group-hover:border-[#9d7035]'
+                  }`}
+                >
+                  <svg
+                    className={`w-4 h-4 transition-colors duration-300 ${
+                      openIndex === index ? 'text-white' : 'text-gray-600'
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
                 </div>
               </button>
-              
-              {/* Answer Section */}
-              {openIndex === index && (
-                <div className="px-6 pb-4 mt-2">
-                  <p className="text-gray-700 leading-relaxed">
+
+              <div
+                className={`transition-all duration-500 ease-in-out ${
+                  openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <div className="px-6 md:px-8 pb-6 pl-16 md:pl-24">
+                  <p className="text-gray-600 text-sm md:text-lg leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

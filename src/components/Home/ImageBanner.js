@@ -115,9 +115,9 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-left mb-6 lg:mb-8">
-          <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4">
+          <h2  className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4">
             {data.title}
-          </h1>
+          </h2>
         </div>
 
         {/* Carousel Container */}

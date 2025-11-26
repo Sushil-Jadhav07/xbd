@@ -29,7 +29,7 @@ const ContactPage = () => {
     <div className="bg-gray-50 py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="text-center max-w-3xl mx-auto mb-16">
-          <p className="md:text-[42px] text-lg font-semibold text-[#b69352] tracking-wide uppercase mb-3">Contact</p>
+          <h1 className="md:text-[42px] text-lg font-semibold text-[#b69352] tracking-wide uppercase mb-3">Contact</h1>
           <h1 className="text-3xl md:text-4xl  font-bold text-gray-900 mb-6">We would love to hear from you</h1>
           <p className="text-base text-gray-600">
             Whether you have a question about our programs, partnership opportunities, or anything else, the XBD team is ready to answer all your questions.
@@ -39,7 +39,7 @@ const ContactPage = () => {
         <div className="grid gap-8 md:grid-cols-3 mb-16">
           {infoItems.map((item) => (
             <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
-              <h1 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h1>
+              <h2 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h2>
               <p className="text-gray-600 leading-relaxed mb-4">{item.description}</p>
               <Link href={item.href} className="text-[#b69352] font-medium ">
                 {item.primary}
@@ -53,7 +53,7 @@ const ContactPage = () => {
 
           <div className="space-y-8">
             <div className="bg-white rounded-3xl border border-gray-200 shadow-sm p-10">
-              <h1 className="text-2xl font-semibold text-gray-900 mb-4">Why teams reach out</h1>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Why teams reach out</h2>
               <ul className="space-y-4 text-gray-600">
                 <li className="flex items-start gap-3">
                   <span className="mt-1 h-2 w-2 rounded-full bg-gradient-to-br from-[#9d7035] to-[#c1a35e]" />

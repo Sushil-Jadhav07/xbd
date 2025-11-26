@@ -150,15 +150,15 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
         {/* Header */}
         <div className="mb-4 lg:mb-8">
           {/* Label */}
-          <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
+          <h4 className="flex items-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
             <HiOutlineSparkles className="text-lg" />
             {data.label}
-          </div>
+          </h4>
 
           {/* Headline */}
-          <h1 className="text-3xl  lg:text-4xl font-bold text-gray-900 leading-tight mb-2">
+          <h2 className="text-3xl  lg:text-4xl font-bold text-gray-900 leading-tight mb-2">
             {data.title} <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent">{data.highlightText}</span>
-          </h1>
+          </h2>
 
           {/* Subtitle */}
           <p className="text-base md:text-lg text-gray-700 max-w-3xl">
@@ -214,9 +214,9 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
                   {/* Content */}
                   <div className="flex-1 flex flex-col space-y-4">
                     {/* Title */}
-                    <h1 className="text-2xl font-bold text-gray-900">
+                    <h2 className="text-2xl font-bold text-gray-900">
                       {tool.title}
-                    </h1>
+                    </h2>
 
                     {/* Description */}
                     <p className="text-gray-700 leading-relaxed flex-1">

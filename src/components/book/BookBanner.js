@@ -61,9 +61,9 @@ const BookBanner = ({ bookBannerData }) => {
           <div className="lg:col-span-1 space-y-6">
             
             {/* Category Tag */}
-            <div className="inline-block bg-gray-100 text-black text-xs px-4 py-2 rounded-full font-medium">
+            <h4 className="inline-block bg-gray-100 text-black text-xs px-4 py-2 rounded-full font-medium">
               {data.categoryTag}
-            </div>
+            </h4>
             
             {/* Main Title */}
             <div className="space-y-2">
@@ -99,9 +99,9 @@ const BookBanner = ({ bookBannerData }) => {
             {data.infoTags && (
               <div className="flex flex-wrap gap-3">
                 {data.infoTags.map((tag, index) => (
-                  <span key={index} className="bg-gray-100 text-black text-sm px-4 py-2 rounded-full">
+                  <h4 key={index} className="bg-gray-100 text-black text-sm px-4 py-2 rounded-full">
                     {tag}
-                  </span>
+                  </h4>
                 ))}
               </div>
             )}
@@ -131,9 +131,9 @@ const BookBanner = ({ bookBannerData }) => {
             {/* Trust Indicator */}
             <div className="flex items-center gap-2 pt-4">
               <span className="text-black text-lg">★</span>
-              <span className="text-black text-base">
+              <p   className="text-black text-base">
                 {data.trustIndicator}
-              </span>
+              </p>
             </div>
             
           </div>

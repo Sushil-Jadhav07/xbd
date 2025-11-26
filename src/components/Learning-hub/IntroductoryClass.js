@@ -7,7 +7,7 @@ const IntroductoryClass = ({ introductoryClassData }) => {
   // Fallback data
   const fallbackData = {
     mainHeading: "A Free Introductory Class",
-    description: "How to drive exponential growth — Discover the 4-step X Framework in a 12-minute preview.",
+    description: "How to drive Exponential Growth — Discover the 4-step X Framework in a 12-minute preview.",
     ctaButton: { text: "Register Now", link: "#" },
     videoSection: {
       mediaType: "url",
@@ -60,9 +60,9 @@ const IntroductoryClass = ({ introductoryClassData }) => {
           {/* Right Column - Content and CTA */}
           <div className="space-y-6">
             {/* Main Headline */}
-            <h1 className="text-4xl md:text-5xl font-medium text-black leading-tight">
+            <h2 className="text-4xl md:text-5xl font-medium text-black leading-tight">
               {data.mainHeading}
-            </h1>
+            </h2>
 
             {/* Description */}
             <p className="text-lg text-black leading-relaxed">

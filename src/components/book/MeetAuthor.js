@@ -63,9 +63,9 @@ const MeetAuthor = ({ meetAuthorData }) => {
         
         {/* Header Section */}
         <div className="text-center mb-6">
-          <h1 className="text-3xl md:text-4xl font-bold text-black">
+          <h2 className="text-3xl md:text-4xl font-bold text-black">
             {data.title}
-          </h1>
+          </h2>
         </div>
         
         {/* Main Content Container */}
@@ -79,9 +79,9 @@ const MeetAuthor = ({ meetAuthorData }) => {
               </div>
               {/* Quote */}
               <div className="flex items-start gap-2">
-                <blockquote className="text-xl md:text-2xl font-bold text-black leading-tight">
+                <h2 className="text-xl md:text-2xl font-bold text-black leading-tight">
                   {data.quote}
-                </blockquote>
+                </h2>
               </div>
               
               {/* Author Details */}
@@ -90,7 +90,7 @@ const MeetAuthor = ({ meetAuthorData }) => {
                   {data.authorBio}
                 </p>
                 {data.previousBook && (
-                  <p className="text-sm md:text-base text-black leading-relaxed">
+                  <h4 className="text-sm md:text-base text-black leading-relaxed">
                     {data.previousBook.includes('DISRUPTIVE DIGITAL') ? (
                       <>
                         Author of <span className="font-semibold">DISRUPTIVE DIGITAL: THE NEW NORMAL</span> (published 2018).
@@ -98,7 +98,7 @@ const MeetAuthor = ({ meetAuthorData }) => {
                     ) : (
                       data.previousBook
                     )}
-                  </p>
+                  </h4>
                 )}
               </div>
               

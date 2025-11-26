@@ -4,16 +4,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '@/lib/sanity'
 import PreviewChapterForm from '../common/PreviewChapterForm'
-import airNewZealandLogo from '@/asset/logos/air new zealand white.png'
-import amazonLogo from '@/asset/logos/amazon-white.png'
-import appleLogo from '@/asset/logos/apple-white.png'
+import airNewZealandLogo from '@/asset/logos/air new zealand.png'
+import amazonLogo from '@/asset/logos/amazon.png'
+import appleLogo from '@/asset/logos/apple.png'
 import blinkitLogo from '@/asset/logos/blinkit.png'
 import credLogo from '@/asset/logos/cred.png'
 import googleLogo from '@/asset/logos/google.png'
 import miLogo from '@/asset/logos/mi.png'
-import nvidiaLogo from '@/asset/logos/nvidia-white.png'
-import openAiLogo from '@/asset/logos/open-ai-white.png'
-import samsungLogo from '@/asset/logos/samsung-white.png'
+import nvidiaLogo from '@/asset/logos/nvidia.png'
+import openAiLogo from '@/asset/logos/open-ai.png'
+import samsungLogo from '@/asset/logos/samsung.png'
 import spotifyLogo from '@/asset/logos/spotify.png'
 import starbucksLogo from '@/asset/logos/starbucks-logo.png'
 
@@ -253,10 +253,10 @@ const InsideBook = ({ insideBookData }) => {
         
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
             <span className="text-[#c1a35e]">{titleFirstPart}</span>
             {titleSecondPart && <span className="text-white">: {titleSecondPart}</span>}
-          </h1>
+          </h2>
           <p className="text-base lg:text-lg text-gray-300 max-w-3xl mx-auto">
             {data.subtitle || fallbackData.subtitle}
           </p>
@@ -285,11 +285,11 @@ const InsideBook = ({ insideBookData }) => {
                     {index + 1}.
                   </div>
                   {/* Right Column: Chapter Title */}
-                  <div className={`flex-1 py-3 md:py-4 px-3 md:px-4 text-sm md:text-base font-medium flex items-center ${
+                  <h4 className={`flex-1 py-3 md:py-4 px-3 md:px-4 text-sm md:text-base font-medium flex items-center ${
                     activeChapterIndex === index ? 'text-black font-bold' : 'text-white'
                   }`}>
                     {chapter.chapter}
-                  </div>
+                  </h4>
                 </div>
               ))}
             </div>
@@ -331,9 +331,9 @@ const InsideBook = ({ insideBookData }) => {
                     </p>
                   )}
                   {currentPartTitle && (
-                    <p className="text-white text-lg md:text-2xl font-bold uppercase">
+                    <h2 className="text-white text-lg md:text-2xl font-bold uppercase">
                       {currentPartTitle}
-                    </p>
+                    </h2>
                   )}
                 </div>
               )}
@@ -370,9 +370,9 @@ const InsideBook = ({ insideBookData }) => {
               {/* Key Highlights */}
               {currentHighlights && currentHighlights.length > 0 && (
                 <div className="mb-6">
-                  <h3 className="text-[#c1a35e] text-sm md:text-base font-semibold mb-3">
+                  <h2 className="text-[#c1a35e] text-sm md:text-base font-semibold mb-3">
                     Key Highlights:
-                  </h3>
+                  </h2>
                   <ul className="space-y-3">
                     {currentHighlights.map((highlight, index) => (
                       <li key={index} className="text-white text-sm md:text-base flex items-start">
@@ -388,9 +388,9 @@ const InsideBook = ({ insideBookData }) => {
               {currentCaseStudies && currentCaseStudies.length > 0 && (
                 <div className="mb-4">
                   <div className="flex items-center gap-4 overflow-x-auto no-scrollbar">
-                    <h3 className="text-[#c1a35e] text-sm md:text-base font-semibold flex-shrink-0 whitespace-nowrap">
+                    <h2 className="text-[#c1a35e] text-sm md:text-base font-semibold flex-shrink-0 whitespace-nowrap">
                       Case Studies:
-                    </h3>
+                    </h2>
                     <div className="flex items-center gap-4 whitespace-nowrap">
                       {currentCaseStudies.map((company, index) => {
                         let logoSource = null
@@ -403,7 +403,7 @@ const InsideBook = ({ insideBookData }) => {
                             logoSource = company.logo.asset.url
                           } else {
                             try {
-                              logoSource = urlFor(company.logo).width(300).height(50).url()
+                              logoSource = urlFor(company.logo).width(200).height(100).url()
                             } catch (e) {
                               logoSource = null
                             }
@@ -411,7 +411,7 @@ const InsideBook = ({ insideBookData }) => {
                         }
 
                         return logoSource ? (
-                          <div key={index} className="relative w-16 h-8 md:w-30 md:h-20 flex-shrink-0">
+                          <div key={index} className="relative w-16 h-8 md:w-20 md:h-10 flex-shrink-0">
                             <Image
                               src={logoSource}
                               alt={company.name}

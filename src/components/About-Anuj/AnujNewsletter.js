@@ -105,15 +105,15 @@ const AnujNewsletter = ({ anujNewsletterData }) => {
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
             </svg>
           </div>
-            <span className="text-sm font-medium text-black uppercase tracking-wide">
+            <h4 className="text-sm font-medium text-black uppercase tracking-wide">
               {data.label}
-            </span>
+            </h4>
           </div>
           
           {/* Main Title */}
-          <h1 className="text-3xl md:text-4xl font-bold text-black mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
             {data.title}
-          </h1>
+          </h2>
           
           {/* Subtitle/Description */}
           <p className="text-sm lg:text-base text-black max-w-2xl mx-auto leading-relaxed">

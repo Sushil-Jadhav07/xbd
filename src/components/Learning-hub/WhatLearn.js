@@ -104,14 +104,14 @@ const WhatLearn = ({ whatLearnData }) => {
           <div className="space-y-4 lg:col-span-4">
             
             {/* Section Tag */}
-            <div className="inline-block bg-gray-200 text-black px-4 py-2 rounded-full text-sm font-medium">
+            <h4 className="inline-block bg-gray-200 text-black px-4 py-2 rounded-full text-sm font-medium">
               {data.sectionTag}
-            </div>
+            </h4>
 
             {/* Main Headline */}
-            <h1 className="text-2xl md:text-5xl font-medium text-black leading-tight">
+            <h2 className="text-2xl md:text-5xl font-medium text-black leading-tight">
               {data.mainHeading}
-            </h1>
+            </h2>
 
             {/* Description */}
             <p className="lg:text-lg text-sm text-black leading-relaxed">
@@ -122,7 +122,7 @@ const WhatLearn = ({ whatLearnData }) => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {data.featureHighlights?.map((feature, index) => (
                 <div key={index} className="bg-gray-200 rounded-xl lg:p-4 p-3">
-                  <h1 className="font-bold text-black mb-2">{feature.title}</h1>
+                  <h2 className="font-bold text-black mb-2">{feature.title}</h2>
                   <p className="text-black">{feature.description}</p>
                 </div>
               ))}
@@ -130,23 +130,23 @@ const WhatLearn = ({ whatLearnData }) => {
 
             {/* Modules Section */}
             <div>
-              <h1 className="text-2xl font-bold text-black mt-12">Modules</h1>
+              <h2 className="text-2xl font-bold text-black mt-12">Modules</h2>
               
               {/* Modules Grid */}
               <div className="flex flex-col gap-4 mt-4 md:flex-row md:flex-nowrap md:gap-4 md:overflow-x-auto md:pb-4 lg:overflow-visible lg:pb-0">
                 {data.modules?.map((module, index) => (
-                  <div
+                  <h4
                     key={index}
                     className="group bg-white/95 border border-[#dedbd6] rounded-2xl px-4 py-5 lg:px-6 lg:py-6 flex flex-col items-center text-center gap-4 shadow-[0_10px_30px_rgba(26,24,22,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(26,24,22,0.12)] w-full md:flex-1 md:min-w-[220px] lg:min-w-[190px]"
                   >
-                    <div className="w-12 h-12 bg-gray-200  rounded-full flex items-center justify-center">
+                    <h2 className="w-12 h-12 bg-gray-200  rounded-full flex items-center justify-center">
                       <span className="text-black font-semibold text-base">{module.number}</span>
-                    </div>
+                    </h2>
                     <div className="space-y-2">
-                      <h1 className="text-black font-semibold text-lg">{module.title}</h1>
+                      <h2 className="text-black font-semibold text-lg">{module.title}</h2>
                       <p className="text-black text-sm leading-relaxed">{module.description}</p>
                     </div>
-                  </div>
+                  </h4>
                 ))}
 
                 {data.requestInfoButton && (
@@ -185,7 +185,7 @@ const WhatLearn = ({ whatLearnData }) => {
             {/* What you'll gain Section */}
             {data.sidebarContent?.whatYouGain && (
               <div className="mb-12 bg-gray-100 py-7 px-7 rounded-lg">
-                <h4 className="text-black md:text-2xl text-xl font-semibold mb-4">{data.sidebarContent.whatYouGain.title}</h4>
+                <h2 className="text-black md:text-2xl text-xl font-semibold mb-4">{data.sidebarContent.whatYouGain.title}</h2>
                 <div className="space-y-3">
                   {data.sidebarContent.whatYouGain.benefits?.map((benefit, index) => (
                     <div key={index} className="flex items-start space-x-3">

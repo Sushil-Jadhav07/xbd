@@ -105,9 +105,9 @@ const GroupCoaching = ({ groupCoachingData }) => {
         
         {/* Header Section */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-black">
+          <h2 className="text-3xl md:text-4xl font-bold text-black">
             {data.sectionTitle}
-          </h1>
+          </h2>
         </div>
         
         {/* Content Cards */}
@@ -123,14 +123,14 @@ const GroupCoaching = ({ groupCoachingData }) => {
               )}
               
               {/* Title */}
-              <h1 className="text-lg md:text-xl font-bold text-black mb-3 text-center">
+              <h2 className="text-lg md:text-xl font-bold text-black mb-3 text-center">
                 {session.title}
-              </h1>
+              </h2>
               
-              {/* Description */}
-              <p className="text-sm md:text-base text-gray-700 mb-6 text-center leading-relaxed">
+              {/* subtitle */}
+              <h4 className="text-sm md:text-base text-gray-700 mb-6 text-center leading-relaxed">
                 {session.description}
-              </p>
+              </h4>
               
               {/* Options/Tags */}
               <div className="flex flex-wrap justify-center gap-3 mb-6">
@@ -139,7 +139,7 @@ const GroupCoaching = ({ groupCoachingData }) => {
                   return (
                     <div key={tagIndex} className="bg-gray-100 text-gray-700 text-sm px-4 py-2 rounded-full flex items-center gap-2">
                       <IconComponent className="text-gray-600 text-sm" />
-                      <span className="font-medium">{tag.text}</span>
+                      <h4 className="font-medium">{tag.text}</h4>
                     </div>
                   )
                 })}

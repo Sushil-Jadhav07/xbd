@@ -123,17 +123,17 @@ const Slider = ({ resourcesSliderData }) => {
         {/* Header */}
         <div className="mb-4 lg:mb-8">
           {/* Label */}
-          <div className="flex items-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
+          <h4 className="flex items-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
             <HiOutlineSparkles className="text-lg" />
             {data.label}
-          </div>
+          </h4>
 
           {/* Headline */}
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
+          <h2  className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
             {data.title} <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent">{data.highlightText}</span>
-          </h1>
+          </h2>
 
-          {/* Subtitle */}
+          {/* description */}
           <p className="text-base md:text-lg text-gray-700 max-w-3xl">
             {data.subtitle}
           </p>
@@ -193,9 +193,9 @@ const Slider = ({ resourcesSliderData }) => {
                       {/* Content */}
                       <div className="flex-1 flex flex-col space-y-4">
                         {/* Title */}
-                        <h1 className="text-base md:text-lg font-bold text-gray-900 leading-tight">
+                        <h2  className="text-base md:text-lg font-bold text-gray-900 leading-tight">
                           {resource.title}
-                        </h1>
+                        </h2>
 
                         {/* Description */}
                         <p className="text-sm md:text-base text-gray-700 leading-relaxed flex-1">
@@ -203,10 +203,10 @@ const Slider = ({ resourcesSliderData }) => {
                         </p>
 
                         {/* Meta */}
-                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                        <h4 className="flex items-center gap-2 text-sm text-gray-600">
                           <IconComponent className="w-4 h-4" />
                           {resource.meta}
-                        </div>
+                        </h4>
 
                         {/* Button */}
                         {formType ? (

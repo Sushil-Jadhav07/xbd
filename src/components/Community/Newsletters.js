@@ -111,9 +111,9 @@ const Newsletters = ({ newsletterData }) => {
           </div>
           
           {/* Main Title */}
-          <h1 className="text-3xl md:text-4xl font-bold text-black mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
             {data.title}
-          </h1>
+          </h2>
           
           {/* Subtitle/Description */}
           <p className="text-sm lg:text-base text-black max-w-2xl mx-auto leading-relaxed">

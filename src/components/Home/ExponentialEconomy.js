@@ -11,18 +11,18 @@ const ExponentialEconomy = ({ exponentialData }) => {
         {/* Header Section */}
         <div className="text-center mb-8">
           {/* Main Question */}
-          <p className=" text-white text-base md:text-lg mb-4 transition-colors duration-300">
+          <h4 className=" text-white text-base md:text-lg mb-4 transition-colors duration-300">
             {exponentialData.mainQuestion || 'Do you want to be part of this'}{" "}
             <span className="bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent font-bold">
               {exponentialData.highlightedWord || 'Exponential'}
             </span>{" "}
             economy?
-          </p>
+          </h4>
 
           {/* Framework Title */}
-          <h1 className="text-3xl md:text-4xl font-bold  text-white mb-8 leading-tight transition-colors duration-300">
+          <h2 className="text-3xl md:text-4xl font-bold  text-white mb-8 leading-tight transition-colors duration-300">
             {exponentialData.frameworkTitle || 'How to Transform: The \'X\' Framework'}
-          </h1>
+          </h2>
 
           {/* Description */}
           <p className=" text-white text-sm md:text-base max-w-5xl mx-auto leading-relaxed mb-8 transition-colors duration-300">

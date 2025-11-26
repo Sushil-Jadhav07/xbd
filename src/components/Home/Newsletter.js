@@ -100,13 +100,13 @@ const Newsletters = ({ newsletterData }) => {
         {/* Top Label with Icon */}
         <div className="inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700 mb-4">
           {/* <span className="text-lg">📧</span> */}
-          <span>{data.label}</span>
+          <h4>{data.label}</h4>
         </div>
 
         {/* Main Title */}
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           {data.title}
-        </h1>
+        </h2>
 
         {/* Subtitle/Description */}
         <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">

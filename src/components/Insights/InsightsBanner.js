@@ -9,7 +9,8 @@ const InsightsBanner = ({ insightsBannerData }) => {
   const altText = insightsBannerData?.bannerImage?.alt || "Insights Banner";
 
   return (
-    <section className=' md:mx-[15px] mx-[5px] py-12 lg:py-16'>
+    <section className=' md:mx-[15px] mx-[5px] pt-0 pb-6 lg:pt-0 lg:pb-16'>
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-0">
       <div className="relative w-full h-[400px] md:h-[900px] overflow-hidden">
         <Image
           src={bannerImage}
@@ -20,6 +21,7 @@ const InsightsBanner = ({ insightsBannerData }) => {
           quality={100}
         />
       </div>
+      </h2>
     </section>
   );
 };

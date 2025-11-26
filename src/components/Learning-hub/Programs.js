@@ -120,15 +120,15 @@ const Programs = ({ programsData }) => {
     <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-12 lg:py-16 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Main Title */}
-        <h1 className="text-3xl md:text-5xl font-medium text-black lg:mb-4 mb-4">
+        <h2  className="text-3xl md:text-5xl font-medium text-black lg:mb-4 mb-4">
           {data.sectionTitle}
-        </h1>
+        </h2>
 
         {/* Subtitle */}
         {data.subtitle && (
-          <p className="text-lg text-black lg:mb-4 mb-4">
+          <h4 className="text-lg text-black lg:mb-4 mb-4">
             <span className='font-bold'>Choose How You Learn:</span> {data.subtitle}
-          </p>
+          </h4>
         )}
 
         {/* Program Cards */}
@@ -138,15 +138,15 @@ const Programs = ({ programsData }) => {
               {/* Program Header */}
               <div className='grid grid-cols-3 grid-flow-row lg:gap-4 gap-2'>
                 <div className="lg:mb-4 mb-2 col-span-2">
-                  <div className="text-sm text-gray-600 mb-1 capitalize">{program.programType.replace('-', ' ')}</div>
-                  <h1 className="lg:text-xl text-lg font-bold text-black">{program.title}</h1>
+                  <h4 className="text-sm text-gray-600 mb-1 capitalize">{program.programType.replace('-', ' ')}</h4>
+                  <h2 className="lg:text-xl text-lg font-bold text-black">{program.title}</h2>
                 </div>
                 <div className="col-span-1 px-3 py-2 lg:h-[70px] h-[65px] rounded-lg bg-gray-200">
-                  <div className="text-gray-700 py-1 rounded text-xs font-medium">
+                  <h4 className="text-gray-700 py-1 rounded text-xs font-medium">
                     {program.programType === 'self-paced' ? 'Pre-Launch Offer Discount' : 
                      program.programType === 'cohorted' ? 'Cohorted' : 'Beginners'}
-                  </div>
-                  <div className="text-[0.9rem] font-bold text-black">{program.price}</div>
+                  </h4>
+                  <h4 className="text-[0.9rem] font-bold text-black">{program.price}</h4>
                 </div>
               </div>
 
@@ -170,7 +170,7 @@ const Programs = ({ programsData }) => {
                 {program.attributes?.map((attr, attrIndex) => (
                   <div key={attrIndex} className="flex items-center space-x-1 bg-gray-200 px-3 py-1 rounded-full">
                     {getIcon(attr.icon)}
-                    <span className="text-xs text-gray-700">{attr.text}</span>
+                    <h4 className="text-xs text-gray-700">{attr.text}</h4>
                   </div>
                 ))}
               </div>
@@ -224,9 +224,9 @@ const Programs = ({ programsData }) => {
         {data.earlyAccessSection && (
           <div className="mt-12 lg:mt-16">
             {data.earlyAccessSection.heading && (
-              <h1 className="text-2xl md:text-3xl font-medium text-black mb-4">
+              <h2 className="text-2xl md:text-3xl font-medium text-black mb-4">
                 {data.earlyAccessSection.heading}
-              </h1>
+              </h2>
             )}
             {data.earlyAccessSection.noteLabel && data.earlyAccessSection.noteText && (
               <div className="mt-4">

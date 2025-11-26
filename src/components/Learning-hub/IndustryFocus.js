@@ -115,7 +115,7 @@ const IndustryFocus = ({ industryFocusData }) => {
             {/* Meet the Instructor Section */}
             {data.instructorSection && (
               <div className='bg-gray-200 rounded-lg p-4 mt-4'>
-                <h1 className="text-xl font-bold text-black mb-3">{data.instructorSection.title}</h1>
+                <h2 className="text-xl font-bold text-black mb-3">{data.instructorSection.title}</h2>
                 <p className="text-gray-700 mb-2">
                   {data.instructorSection.description}
                 </p>
@@ -130,9 +130,9 @@ const IndustryFocus = ({ industryFocusData }) => {
             {data.quoteBlock && (
               <div className='bg-white rounded-lg p-4 mt-4'>
                 {data.quoteBlock.quoteText && (
-                  <h1 className="md:text-lg text-base font-medium text-black mt-3 mb-3">
+                  <h2 className="md:text-lg text-base font-medium text-black mt-3 mb-3">
                     {data.quoteBlock.quoteText}
-                  </h1>
+                  </h2>
                 )}
                 {data.quoteBlock.attribution && (
                   <p className="text-gray-700 italic text-sm mb-2">
@@ -158,9 +158,9 @@ const IndustryFocus = ({ industryFocusData }) => {
 
             {/* Main Course Title */}
             <div className="mb-4">
-              <h1 className="text-2xl md:text-5xl font-medium text-black leading-tight mb-2">
+              <h2 className="text-2xl md:text-5xl font-medium text-black leading-tight mb-2">
                 {data.mainTitle}
-              </h1>
+              </h2>
               <h2 className="text-2xl md:text-5xl font-medium text-black">
                 {data.subTitle}
               </h2>
@@ -176,13 +176,13 @@ const IndustryFocus = ({ industryFocusData }) => {
               {data.featureSections?.map((section, index) => (
                 <div key={index} className="bg-gray-200 rounded-lg lg:p-6 p-3">
                   <div className="flex items-start space-x-4">
-                    <div className="bg-gray-600 text-white px-3 py-1 rounded-full text-xs font-medium">
+                    <h4 className="bg-gray-600 text-white px-3 py-1 rounded-full text-xs font-medium">
                       {section.category}
-                    </div>
+                    </h4>
                     <div className="flex-1">
-                      <h1 className="lg:text-lg text-base font-semibold text-black mb-2">
+                      <h2 className="lg:text-lg text-base font-semibold text-black mb-2">
                         {section.title}
-                      </h1>
+                      </h2>
                       <p className="lg:text-sm text-xs text-gray-700">
                         {section.description}
                       </p>

@@ -62,9 +62,9 @@ const AboutTitle = ({ aboutTitleData }) => {
           <div className="space-y-6">
             
             {/* Role Tag */}
-            <div className="inline-block bg-gray-100 text-black text-sm px-4 py-2 rounded-full font-medium">
+            <h4 className="inline-block bg-gray-100 text-black text-sm px-4 py-2 rounded-full font-medium">
               {data.roleTag}
-            </div>
+            </h4>
             
             {/* Main Heading */}
             <div className="space-y-3">
@@ -85,9 +85,9 @@ const AboutTitle = ({ aboutTitleData }) => {
             {data.skills && (
               <div className="flex flex-wrap gap-3 pt-2">
                 {data.skills.map((skill, index) => (
-                  <span key={index} className="bg-gray-100 text-black text-sm px-4 py-2 rounded-full">
+                  <h4 key={index} className="bg-gray-100 text-black text-sm px-4 py-2 rounded-full">
                     {skill}
-                  </span>
+                  </h4>
                 ))}
               </div>
             )}

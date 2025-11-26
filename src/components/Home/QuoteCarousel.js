@@ -165,9 +165,9 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-4 lg:mb-6">
-          <h1 className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <h2  className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
             {data.subtitle}
-          </h1>
+          </h2>
         </div>
 
         {/* Main Content */}
@@ -182,9 +182,9 @@ const QuoteCarousel = ({ quoteCarouselData }) => {
             <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col items-center text-center justify-center relative z-20">
               <div className="space-y-8">
                 {/* Quote Text */}
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black dark:!text-black leading-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black dark:!text-black leading-tight">
                   {data.quoteText}
-                </h3>
+                </h2>
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row text-center justify-center items-center gap-4">
