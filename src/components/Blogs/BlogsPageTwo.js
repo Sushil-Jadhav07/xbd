@@ -2,6 +2,7 @@
 
 import React, { useMemo } from 'react'
 import Image from 'next/image'
+import industryFallbackAvatar from '@/asset/industry/7.webp'
 import Link from 'next/link'
 
 const fallbackData = {
@@ -24,8 +25,7 @@ const fallbackData = {
     }
   },
   author: {
-    avatar:
-      'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
+    avatar: industryFallbackAvatar,
     name: 'Anuj Sharma',
     role: 'Founder & Chief Operator, XBD',
     bio: 'Anuj installs compounding growth systems for scale-stage operators. Previously led revenue and GTM acceleration at high-growth SaaS companies across North America and APAC.',
@@ -82,8 +82,8 @@ const fallbackData = {
       heading: 'Toolkit download',
       type: 'callout',
       cta: {
-        label: 'Get the compounding intelligence toolkit',
-        href: '/toolkit/compounding-intelligence'
+        label: 'Get the toolkit',
+        href: '/contact'
       },
       supportingText:
         'The toolkit includes our telemetry blueprint, AI prompt library, and weekly operating cadence worksheet. Operators use it to immediately instrument their teams.'
@@ -177,12 +177,12 @@ const BlogsPageTwo = ({ blogData }) => {
   }, [data.hero.authorHighlight, data.relatedPosts])
 
   return (
-    <div className="bg-[#fff] md:mx-[15px] mx-[5px] py-12 lg:py-16">
-      <div className="mx-auto max-w-8xl px-4 pb-20 pt-16 sm:px-6 lg:px-8 lg:pt-20">
-        <section className="rounded-[32px] bg-[#f5f1eb] p-6 shadow-[0_24px_60px_rgba(157,112,53,0.08)] sm:p-10 lg:p-14">
+    <div className="bg-white md:mx-[15px] mx-[5px] ">
+      <div className="mx-auto max-w-7xl px-4 pb-0 pt-0 lg:px-0 lg:pt-0">
+        <section className=" p-6 sm:p-10 lg:p-14">
           <div className="space-y-8">
-            <div className="flex flex-wrap items-center gap-4 text-sm font-medium uppercase tracking-[0.2em] text-[#9d7035]">
-              <span className="inline-flex items-center rounded-full bg-[#f2e4d0] px-4 py-1">
+            <div className="flex flex-wrap items-center gap-4 text-base font-medium uppercase text-white">
+              <span className="inline-flex items-center rounded-lg bg-gradient-to-r from-[#9d7035] to-[#c1a35e] px-6 py-2">
                 {data.hero.tag}
               </span>
               <span className="text-xs font-semibold text-[#b58745]">
@@ -190,16 +190,16 @@ const BlogsPageTwo = ({ blogData }) => {
               </span>
             </div>
 
-            <div className="grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-start lg:gap-16">
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-start lg:gap-10">
               <div className="space-y-6">
-                <h1 className="text-3xl font-semibold leading-tight text-[#1a1816] sm:text-4xl lg:text-5xl">
+                <h1 className="text-3xl font-semibold leading-tight text-black sm:text-4xl lg:text-5xl">
                   {data.hero.title}
                 </h1>
-                <p className="max-w-2xl text-base leading-relaxed text-[#50463a] sm:text-lg">
+                <p className="max-w-2xl text-base leading-relaxed text-gray-700 sm:text-lg">
                   {data.hero.description}
                 </p>
               </div>
-              <div className="relative h-64 overflow-hidden rounded-3xl bg-gradient-to-br from-[#fff3e0] via-[#f6e2c5] to-[#e4c494] lg:h-80">
+              <div className="relative h-60 overflow-hidden rounded-lg lg:h-80">
                 {data.hero.authorHighlight?.banner?.image && (
                   <Image
                     src={data.hero.authorHighlight.banner.image}
@@ -213,10 +213,10 @@ const BlogsPageTwo = ({ blogData }) => {
             </div>
           </div>
 
-          <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,1.4fr)] lg:items-start lg:gap-20">
+          <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,1.4fr)] lg:items-start lg:gap-16">
             <article className="space-y-14">
-              <section className="rounded-[28px] border border-[#efe7db] bg-[#fffaf3] p-8">
-                <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8">
+              <section className="rounded-[28px] border border-[#efe7db]  p-8">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center md:gap-8">
                   <div className="relative h-24 w-24 overflow-hidden rounded-full bg-gradient-to-br from-[#9d7035] to-[#c1a35e]">
                     {data.author.avatar && (
                       <Image src={data.author.avatar} alt={data.author.name} fill className="object-cover" unoptimized />
@@ -224,12 +224,12 @@ const BlogsPageTwo = ({ blogData }) => {
                   </div>
                   <div className="space-y-3">
                     <div>
-                      <h2 className="text-xl font-semibold text-[#1a1816]">{data.author.name}</h2>
-                      <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#b58745]">
+                      <h2 className="text-xl font-semibold text-black">{data.author.name}</h2>
+                      <p className="text-sm font-medium uppercase text-[#b58745]">
                         {data.author.role}
                       </p>
                     </div>
-                    <p className="text-sm leading-relaxed text-[#5d5347]">{data.author.bio}</p>
+                    <p className="text-sm leading-relaxed text-gray-600">{data.author.bio}</p>
                     <div className="flex flex-wrap gap-3 text-sm font-medium text-[#9d7035]">
                       {data.author.socials.map((social) => (
                         <Link
@@ -239,7 +239,7 @@ const BlogsPageTwo = ({ blogData }) => {
                           target={social.href.startsWith('http') ? '_blank' : '_self'}
                           rel="noreferrer"
                         >
-                          <span className="text-xs uppercase tracking-[0.25em]">{social.label}</span>
+                          <span className="text-xs uppercase ">{social.label}</span>
                           <span className="text-[#705331]">{social.handle}</span>
                         </Link>
                       ))}
@@ -251,11 +251,11 @@ const BlogsPageTwo = ({ blogData }) => {
               {data.sections.map((section) => (
                 <section key={section.id} id={section.id} className="scroll-mt-32 space-y-6">
                   {section.heading && (
-                    <h2 className="text-2xl font-semibold text-[#1f1a17] sm:text-3xl">{section.heading}</h2>
+                    <h2 className="text-2xl font-semibold text-black sm:text-3xl">{section.heading}</h2>
                   )}
 
                   {section.type === 'richText' && (
-                    <div className="space-y-4 text-base leading-relaxed text-[#443a30] sm:text-lg">
+                    <div className="space-y-4 text-base leading-relaxed text-gray-700 sm:text-lg">
                       {section.content?.map((paragraph, index) => (
                         <p key={index}>{paragraph}</p>
                       ))}
@@ -274,10 +274,10 @@ const BlogsPageTwo = ({ blogData }) => {
                         />
                       </div>
                       {section.supportingText && (
-                        <p className="text-sm leading-relaxed text-[#5d5347]">{section.supportingText}</p>
+                        <p className="text-sm leading-relaxed text-gray-600">{section.supportingText}</p>
                       )}
                       {section.caption && (
-                        <p className="text-xs uppercase tracking-[0.2em] text-[#b0874a]">{section.caption}</p>
+                        <p className="text-xs uppercase  text-[#b0874a]">{section.caption}</p>
                       )}
                     </div>
                   )}
@@ -296,27 +296,27 @@ const BlogsPageTwo = ({ blogData }) => {
                         </div>
                       </div>
                       {section.supportingText && (
-                        <p className="text-sm leading-relaxed text-[#5d5347]">{section.supportingText}</p>
+                        <p className="text-sm leading-relaxed text-gray-600">{section.supportingText}</p>
                       )}
                     </div>
                   )}
 
                   {section.type === 'callout' && section.cta && (
-                    <div className="rounded-[28px] border border-[#e8d8bc] bg-gradient-to-r from-[#fff7ec] via-[#f8e8c8] to-[#f4d6a5] p-8">
+                    <div className="rounded-[28px] border border-[#e8d8bc] p-8">
                       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                         <div className="space-y-2">
                           {section.supportingText && (
-                            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#9d7035]">
+                            <p className="text-sm font-medium uppercase  text-[#9d7035]">
                               Toolkit
                             </p>
                           )}
-                          <p className="text-base leading-relaxed text-[#443a30] sm:text-lg">
+                          <p className="text-base leading-relaxed text-gray-700 sm:text-lg">
                             {section.supportingText}
                           </p>
                         </div>
                         <Link
                           href={section.cta.href}
-                          className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#9d7035] to-[#c1a35e] px-5 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white shadow-[0_14px_30px_rgba(157,112,53,0.3)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(157,112,53,0.35)]"
+                          className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-[#9d7035] to-[#c1a35e] px-5 py-3 text-sm font-semibold uppercase text-white transition-transform duration-200"
                         >
                           {section.cta.label}
                         </Link>
@@ -328,9 +328,9 @@ const BlogsPageTwo = ({ blogData }) => {
             </article>
 
             <aside className="space-y-12">
-              <div className="rounded-[28px] border border-[#efe4d1] bg-[#fffaf3] p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#b58745]">Table of contents</p>
-                <nav className="mt-4 space-y-3 text-sm text-[#524839]">
+              <div className="rounded-[28px] border border-[#efe4d1]  p-6">
+                <p className="text-sm md:text-lg font-semibold uppercase  text-[#b58745]">Table of contents</p>
+                <nav className="mt-4 space-y-3 text-sm text-gray-700">
                   {tocItems.map((item) => (
                     <a
                       key={item.id}
@@ -343,12 +343,12 @@ const BlogsPageTwo = ({ blogData }) => {
                 </nav>
               </div>
 
-              <div className="rounded-[28px] border border-[#efe4d1] bg-white p-6 shadow-[0_18px_40px_rgba(157,112,53,0.12)]">
+              <div className="rounded-[28px] border border-[#efe4d1] bg-white p-6 ">
                 <div className="flex items-center justify-between">
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#b58745]">
+                  <p className="text-xs font-semibold uppercase  text-[#b58745]">
                     Related operator plays
                   </p>
-                  <span className="text-xs font-medium text-[#8a7251]">
+                  <span className="text-xs font-medium text-gray-500">
                     Based on tags • {data.hero.authorHighlight?.tags?.join(', ')}
                   </span>
                 </div>
@@ -360,19 +360,19 @@ const BlogsPageTwo = ({ blogData }) => {
                       className="group block rounded-2xl border border-transparent bg-[#fff9f0] px-4 py-4 transition-all duration-200 hover:border-[#e0c28a] hover:bg-white"
                     >
                       <div className="flex flex-col gap-2">
-                        <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-[#b58745]">
+                        <div className="flex items-center gap-3 text-xs uppercase  text-[#b58745]">
                           <span>{post.category}</span>
                           <span className="h-[1px] w-6 bg-[#e2c99b]" />
                           <span className="text-[#a0783d]">{post.readTime}</span>
                         </div>
-                        <p className="text-base font-semibold text-[#1f1a17] transition-colors duration-200 group-hover:text-[#9d7035]">
+                        <p className="text-base font-semibold text-black transition-colors duration-200 group-hover:text-[#9d7035]">
                           {post.title}
                         </p>
                         <div className="flex flex-wrap gap-2">
                           {post.tags?.map((tag) => (
                             <span
                               key={tag}
-                              className="inline-flex items-center rounded-full bg-[#f5e6cc] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#7d6032]"
+                              className="inline-flex items-center rounded-full bg-[#f5e6cc] px-3 py-1 text-[11px] font-semibold uppercase  text-[#7d6032]"
                             >
                               {tag}
                             </span>

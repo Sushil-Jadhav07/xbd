@@ -45,7 +45,7 @@ const fallbackData = {
       date: 'Oct 11, 2025',
       readTime: '6 min read',
       author: 'Team XBD',
-      link: '#',
+      link: '/blogs-detail',
       image: null,
       tags: ['AI Ops', 'Decision Velocity']
     },
@@ -58,7 +58,7 @@ const fallbackData = {
       date: 'Oct 4, 2025',
       readTime: '5 min read',
       author: 'Anuj Sharma',
-      link: '#',
+      link: '/blogs-detail',
       image: null,
       tags: ['Revenue Architecture', 'Loops']
     },
@@ -71,7 +71,7 @@ const fallbackData = {
       date: 'Sep 27, 2025',
       readTime: '8 min read',
       author: 'Team XBD',
-      link: '#',
+      link: '/blogs-detail',
       image: null,
       tags: ['Leadership', 'Governance']
     },
@@ -84,7 +84,7 @@ const fallbackData = {
       date: 'Sep 16, 2025',
       readTime: '9 min read',
       author: 'Anuj Sharma',
-      link: '#',
+      link: '/blogs-detail',
       image: null,
       tags: ['Execution', 'Pilot Design']
     },
@@ -97,7 +97,7 @@ const fallbackData = {
       date: 'Sep 02, 2025',
       readTime: '7 min read',
       author: 'Team XBD',
-      link: '#',
+      link: '/blogs-detail',
       image: null,
       tags: ['Case Study', 'Time-to-Value']
     },
@@ -110,7 +110,7 @@ const fallbackData = {
       date: 'Aug 24, 2025',
       readTime: '6 min read',
       author: 'Anuj Sharma',
-      link: '#',
+      link: '/blogs-detail',
       image: null,
       tags: ['AI Strategy', 'Org Design']
     }
@@ -176,7 +176,7 @@ const BlogsPage = ({ blogsData }) => {
               {data.hero.primaryButton && (
                 <Link
                   href={data.hero.primaryButton.link || '#'}
-                  className="bg-black text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-gray-800  inline-flex justify-center items-center px-6 py-3 rounded-full text-white font-semibold bg-gradient-to-r from-[#9d7035] to-[#c1a35e] hover:from-[#b88446] hover:to-[#d9ba69] transition-all duration-200 shadow-[0_12px_30px_rgba(157,112,53,0.25)]"
+                  className="bg-black  text-center hover:bg-gray-800  inline-flex justify-center items-center px-6 py-3 rounded-lg text-white font-semibold bg-gradient-to-r from-[#9d7035] to-[#c1a35e] hover:from-[#b88446] hover:to-[#d9ba69] transition-all duration-200 shadow-[0_12px_30px_rgba(157,112,53,0.25)]"
                 >
                   {data.hero.primaryButton.text}
                 </Link>
@@ -184,7 +184,7 @@ const BlogsPage = ({ blogsData }) => {
               {data.hero.secondaryButton && (
                 <Link
                   href={data.hero.secondaryButton.link || '#'}
-                  className="inline-flex justify-center items-center px-6 py-3 rounded-full font-semibold border border-gray-400 text-black hover:border-gray-600 transition-all duration-200 bg-white"
+                  className="inline-flex justify-center items-center px-6 py-3 rounded-lg font-semibold border border-gray-400 text-black hover:border-gray-600 transition-all duration-200 bg-white"
                 >
                   {data.hero.secondaryButton.text}
                 </Link>
@@ -228,7 +228,7 @@ const BlogsPage = ({ blogsData }) => {
                     key={category}
                     type="button"
                     onClick={() => setSelectedCategory(category)}
-                    className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                       isActive
                         ? 'bg-gradient-to-r from-[#9d7035] to-[#c1a35e] text-white shadow-md'
                         : 'bg-white text-gray-600 hover:text-black hover:bg-[#f3e9db]'
@@ -314,7 +314,7 @@ const BlogsPage = ({ blogsData }) => {
                       </div>
                     </div>
                     <Link
-                      href={post.link || '#'}
+                      href={post.link || '/blogs-detail'}
                       className="inline-flex items-center gap-2 text-[#9d7035] font-semibold text-sm"
                     >
                       Read more <span aria-hidden>→</span>
