@@ -4,16 +4,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '@/lib/sanity'
 import PreviewChapterForm from '../common/PreviewChapterForm'
-import airNewZealandLogo from '@/asset/logos/air new zealand.png'
-import amazonLogo from '@/asset/logos/amazon.png'
-import appleLogo from '@/asset/logos/apple.png'
+import airNewZealandLogo from '@/asset/logos/air new zealand white.png'
+import amazonLogo from '@/asset/logos/amazon-white.png'
+import appleLogo from '@/asset/logos/apple-white.png'
 import blinkitLogo from '@/asset/logos/blinkit.png'
 import credLogo from '@/asset/logos/cred.png'
 import googleLogo from '@/asset/logos/google.png'
 import miLogo from '@/asset/logos/mi.png'
-import nvidiaLogo from '@/asset/logos/nvidia.png'
-import openAiLogo from '@/asset/logos/open-ai.png'
-import samsungLogo from '@/asset/logos/samsung.png'
+import nvidiaLogo from '@/asset/logos/nvidia-white.png'
+import openAiLogo from '@/asset/logos/open-ai-white.png'
+import samsungLogo from '@/asset/logos/samsung-white.png'
 import spotifyLogo from '@/asset/logos/spotify.png'
 import starbucksLogo from '@/asset/logos/starbucks-logo.png'
 
@@ -403,7 +403,7 @@ const InsideBook = ({ insideBookData }) => {
                             logoSource = company.logo.asset.url
                           } else {
                             try {
-                              logoSource = urlFor(company.logo).width(200).height(100).url()
+                              logoSource = urlFor(company.logo).width(300).height(50).url()
                             } catch (e) {
                               logoSource = null
                             }
@@ -411,7 +411,7 @@ const InsideBook = ({ insideBookData }) => {
                         }
 
                         return logoSource ? (
-                          <div key={index} className="relative w-16 h-8 md:w-20 md:h-10 flex-shrink-0">
+                          <div key={index} className="relative w-16 h-8 md:w-30 md:h-20 flex-shrink-0">
                             <Image
                               src={logoSource}
                               alt={company.name}
