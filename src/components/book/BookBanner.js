@@ -3,6 +3,7 @@ import React from 'react'
 import { useState } from 'react'
 import { MdImage } from 'react-icons/md'
 import Image from 'next/image'
+import { urlFor } from '@/lib/sanity'
 import LeadFormModal from '../common/LeadFormModal'
 import PreviewChapterForm from '../common/PreviewChapterForm'
 
@@ -38,14 +39,40 @@ const BookBanner = ({ bookBannerData }) => {
           
           {/* Left Column - Book Cover */}
           <div className="lg:col-span-1">
-            <div className="bg-gray-200 rounded-lg h-80 lg:h-full flex items-center justify-center relative">
+            <div className="bg-gray-200 rounded-lg h-80 lg:h-full flex items-center justify-center relative overflow-hidden">
               {data.bookCoverImage ? (
-                <Image 
-                  src={data.bookCoverImage}
-                  alt="Book Cover"
-                  fill
-                  className="object-cover rounded-lg"
-                />
+                (() => {
+                  // Handle Sanity image structure
+                  let imageUrl = null
+                  if (typeof data.bookCoverImage === 'string') {
+                    imageUrl = data.bookCoverImage
+                  } else if (data.bookCoverImage.asset?.url) {
+                    imageUrl = data.bookCoverImage.asset.url
+                  } else if (data.bookCoverImage.asset) {
+                    try {
+                      imageUrl = urlFor(data.bookCoverImage).width(2000).height(2000).url()
+                    } catch (e) {
+                      console.error('Error processing image:', e)
+                    }
+                  }
+                  
+                  return imageUrl ? (
+                    <Image 
+                      src={imageUrl}
+                      alt={data.bookCoverImage.alt || "Book Cover"}
+                      fill
+                      className="object-cover rounded-lg"
+                      priority
+                    />
+                  ) : (
+                    <>
+                      <div className="bg-gray-400 rounded-lg p-6 w-24 h-20 flex items-center justify-center">
+                        <MdImage className="text-gray-500 text-3xl" />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20"></div>
+                    </>
+                  )
+                })()
               ) : (
                 <>
                   <div className="bg-gray-400 rounded-lg p-6 w-24 h-20 flex items-center justify-center">

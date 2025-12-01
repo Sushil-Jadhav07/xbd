@@ -372,7 +372,13 @@ export async function getBookBannerData() {
     primaryButton,
     secondaryButton,
     trustIndicator,
-    bookCoverImage
+    bookCoverImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    }
   }`
   
   try {
