@@ -167,7 +167,7 @@ const ToolsCarousel = ({ toolsCarouselData }) => {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative pb-10">
+        <div className="relative pb-00">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={30}
