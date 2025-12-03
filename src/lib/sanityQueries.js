@@ -194,7 +194,21 @@ export async function getResourcesSliderData() {
     title,
     highlightText,
     subtitle,
-    resources
+    resources[]{
+      title,
+      description,
+      meta,
+      buttonText,
+      buttonLink,
+      iconType,
+      image{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    }
   }`
   
   try {

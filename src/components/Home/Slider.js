@@ -11,6 +11,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import JoinWaitlistForm from '../common/JoinWaitlistForm';
 import StrategySessionForm from '../common/StrategySessionForm';
 import KeynoteRequestForm from '../common/KeynoteRequestForm';
+import { urlFor } from '../../lib/sanity';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -182,13 +183,25 @@ const Slider = ({ resourcesSliderData }) => {
                 <SwiperSlide key={index}>
                   <div className="px-2 h-full">
                     <div className="bg-white border border-gray-200 rounded-2xl p-6 h-full flex flex-col">
-                      {/* Image Placeholder */}
-                      <div className="bg-[#dbdbdbcd] rounded-xl aspect-[4/3] flex items-center justify-center mb-6 relative overflow-hidden">
-                        <div className="bg-gray-400 rounded-lg p-3 w-16 h-12 flex items-center justify-center">
-                          <MdImage className="text-gray-500 text-xl" />
+                      {/* Image */}
+                      {resource.image?.asset?.url ? (
+                        <div className="rounded-xl aspect-[4/3] mb-6 relative overflow-hidden">
+                          <Image
+                            src={urlFor(resource.image).width(800).height(600).url()}
+                            alt={resource.image.alt || resource.title || 'Resource image'}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                          />
                         </div>
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20"></div>
-                      </div>
+                      ) : (
+                        <div className="bg-[#dbdbdbcd] rounded-xl aspect-[4/3] flex items-center justify-center mb-6 relative overflow-hidden">
+                          <div className="bg-gray-400 rounded-lg p-3 w-16 h-12 flex items-center justify-center">
+                            <MdImage className="text-gray-500 text-xl" />
+                          </div>
+                          <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20"></div>
+                        </div>
+                      )}
 
                       {/* Content */}
                       <div className="flex-1 flex flex-col space-y-4">
