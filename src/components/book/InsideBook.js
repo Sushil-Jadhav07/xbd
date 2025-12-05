@@ -34,7 +34,7 @@ const InsideBook = ({ insideBookData }) => {
     chapters: [
       {
         chapter: "The Rise of Exponentials",
-        videoUrl: "https://youtu.be/9qaSJzYnvqA?si=wqwd8gjYtcFIS7Uq",
+        videoUrl: "https://youtu.be/fYczwzJDw4g?si=wmNePuTx8uLqq_gO",
         videoTitle: "From Linear to Exponential Landscape",
         partLabel: "PART I",
         partTitle: "SCOPING",
@@ -52,7 +52,7 @@ const InsideBook = ({ insideBookData }) => {
       },
       {
         chapter: "Converged Horizon",
-        videoUrl: "https://youtu.be/R7GPK8q4YR4?si=Q8r96tbEUZHlOWTh",
+        videoUrl: "https://youtu.be/u6BCpX6D-z4?si=A2rzOjM3OOrblOVN",
         videoTitle: "Hyper-converged economy is a new competitive reality",
         partLabel: "PART II",
         partTitle: "BUILDING THE FOUNDATION",
@@ -67,7 +67,7 @@ const InsideBook = ({ insideBookData }) => {
       },
       {
         chapter: "The Construct of Hyper-converged Ecosystem",
-        videoUrl: "https://youtu.be/9qaSJzYnvqA?si=wqwd8gjYtcFIS7Uq",
+        videoUrl: "https://youtu.be/RgfVHx6D3Os?si=plFnNZIoKiXhtZio",
         videoTitle: "Orchestrating an ecosystem — one that learns, adapts, and delivers value",
         partLabel: "PART II",
         partTitle: "BUILDING THE FOUNDATION",
@@ -100,7 +100,7 @@ const InsideBook = ({ insideBookData }) => {
       },
       {
         chapter: "Design Products for X-treme REACH",
-        videoUrl: "https://youtu.be/9qaSJzYnvqA?si=wqwd8gjYtcFIS7Uq",
+        videoUrl: "https://youtu.be/e786Hv2nM9A?si=C3aJeu1tj3IPaxFc",
         videoTitle: "Extracting Emotions in the Moment of Truth",
         partLabel: "PART II",
         partTitle: "BUILDING THE FOUNDATION",
@@ -117,7 +117,7 @@ const InsideBook = ({ insideBookData }) => {
       },
       {
         chapter: "Design Experiences by X-tracting Emotional Influence",
-        videoUrl: "https://youtu.be/R7GPK8q4YR4?si=Q8r96tbEUZHlOWTh",
+        videoUrl: "https://youtu.be/yWinGTRoLgk?si=OlTMcKyKKYrwZMtg",
         videoTitle: "Extracting Emotions in the Moment of Truth",
         partLabel: "PART II",
         partTitle: "BUILDING THE FOUNDATION",
@@ -133,7 +133,7 @@ const InsideBook = ({ insideBookData }) => {
       },
       {
         chapter: "X-tending Value",
-        videoUrl: "https://youtu.be/9qaSJzYnvqA?si=wqwd8gjYtcFIS7Uq",
+        videoUrl: "https://youtu.be/EzP3TuRUfFM?si=aaMWQ9RUBswuYH9X",
         videoTitle: "Leverage ecosystems to drive multiplier effects at scale",
         partLabel: "PART II",
         partTitle: "BUILDING THE FOUNDATION",
@@ -149,7 +149,7 @@ const InsideBook = ({ insideBookData }) => {
       },
       {
         chapter: "X-pand Intelligence",
-        videoUrl: "https://youtu.be/R7GPK8q4YR4?si=Q8r96tbEUZHlOWTh",
+        videoUrl: "https://youtu.be/TnAK7LPYcbs?si=-aYTdZDfChT5xVNR",
         videoTitle: "Intelligence that compounds, predicts and reinforces itself",
         partLabel: "PART III",
         partTitle: "SCALING",
@@ -166,7 +166,7 @@ const InsideBook = ({ insideBookData }) => {
       },
       {
         chapter: "Exponential by Design",
-        videoUrl: "https://youtu.be/9qaSJzYnvqA?si=wqwd8gjYtcFIS7Uq",
+        videoUrl: "https://youtu.be/TnAK7LPYcbs?si=-aYTdZDfChT5xVNR",
         videoTitle: "The future doesn't belong to the fastest or the biggest. It belongs to those who are Exponential by Design.",
         partLabel: "PART III",
         partTitle: "SCALING",
@@ -177,6 +177,13 @@ const InsideBook = ({ insideBookData }) => {
           "That growth can be intentional."
         ],
         narrativeCta: "ACT NOW BEFORE ITS TOO LATE"
+      },
+      {
+        chapter: "Concluding Thoughts",
+        videoUrl: "https://youtu.be/TTwB3HCItJI?si=CKVzErzmw1bfxi-u",
+        videoTitle: "Concluding Thoughts",
+        partLabel: "PART III",
+        partTitle: "SCALING"
       }
     ],
     videoSection: {
