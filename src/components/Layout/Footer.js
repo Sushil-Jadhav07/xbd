@@ -3,7 +3,9 @@
 import Image from 'next/image';
 import LogoMain from "../../asset/logomain.png";
 import { HiOutlineMail, HiOutlinePhone } from 'react-icons/hi';
-import { FaTwitter, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { FaTwitter, FaLinkedin, FaInstagram, FaYoutube, FaFacebook } from 'react-icons/fa';
+import { FaSquareXTwitter } from "react-icons/fa6";
+
 
 const Footer = () => {
   const navItems = [
@@ -16,10 +18,11 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: FaTwitter, href: '#', label: 'Twitter' },
-    { icon: FaLinkedin, href: '#', label: 'LinkedIn' },
-    { icon: FaInstagram, href: '#', label: 'Instagram' },
-    { icon: FaYoutube, href: '#', label: 'YouTube' }
+    { icon: FaSquareXTwitter, href: 'https://x.com/AnujByDesign', label: 'Twitter' },
+    { icon: FaLinkedin, href: 'https://www.linkedin.com/company/xponentialbydesign/', label: 'LinkedIn' },
+    { icon: FaInstagram, href: 'https://www.instagram.com/exponential_by_design/', label: 'Instagram' },
+    { icon: FaFacebook, href: 'https://www.facebook.com/exponentialbydesign/', label: 'Facebook' },
+    { icon: FaYoutube, href: 'https://www.youtube.com/@AnujXBD', label: 'YouTube' }
   ];
 
   return (

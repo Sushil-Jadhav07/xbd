@@ -5,10 +5,8 @@ import WhychooseImage from "../../asset/whyxbd.png"
 import Image from 'next/image';
 import Link from 'next/link';
 import { urlFor } from '@/lib/sanity';
-import { useState } from 'react';
 
 const Whychoose = ({ whyChooseData }) => {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
 
   // Fallback data
@@ -22,7 +20,7 @@ const Whychoose = ({ whyChooseData }) => {
     authorName: "Anuj Pandey",
     authorTitle: "Author, Strategist & Founder of XBD",
     primaryButton: { text: "Discover X Now" },
-    secondaryButton: { text: "Get the Growth Playbook" },
+    secondaryButton: { text: "Get a Assessment now" },
     mediaType: "image"
   };
 
@@ -30,13 +28,56 @@ const Whychoose = ({ whyChooseData }) => {
 
   // Check if video is an uploaded file or external URL
   const isUploadedVideo = data.uploadedVideo && data.uploadedVideo.asset && data.uploadedVideo.asset._id;
-  const isExternalVideo = data.videoUrl && !isUploadedVideo;
+  const isExternalVideo = (data.mediaType === 'video' || data.videoUrl) && data.videoUrl && !isUploadedVideo;
 
   // Function to get YouTube embed URL
-  const getYouTubeEmbedUrl = (url) => {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
-    return match && match[2].length === 11 ? `https://www.youtube.com/embed/${match[2]}` : url;
+  const getYouTubeEmbedUrl = (url, autoplay = false) => {
+    if (!url) return null;
+    
+    // Handle various YouTube URL formats
+    let videoId = null;
+    
+    // Pattern 1: youtube.com/watch?v=VIDEO_ID
+    const watchMatch = url.match(/[?&]v=([^&#]*)/);
+    if (watchMatch) {
+      videoId = watchMatch[1];
+    }
+    
+    // Pattern 2: youtu.be/VIDEO_ID
+    if (!videoId) {
+      const shortMatch = url.match(/youtu\.be\/([^?#&]*)/);
+      if (shortMatch) {
+        videoId = shortMatch[1];
+      }
+    }
+    
+    // Pattern 3: youtube.com/embed/VIDEO_ID
+    if (!videoId) {
+      const embedMatch = url.match(/youtube\.com\/embed\/([^?#&]*)/);
+      if (embedMatch) {
+        videoId = embedMatch[1];
+      }
+    }
+    
+    // Pattern 4: youtube.com/v/VIDEO_ID
+    if (!videoId) {
+      const vMatch = url.match(/youtube\.com\/v\/([^?#&]*)/);
+      if (vMatch) {
+        videoId = vMatch[1];
+      }
+    }
+    
+    if (videoId && videoId.length === 11) {
+      const params = new URLSearchParams();
+      params.append('rel', '0');
+      params.append('modestbranding', '1');
+      if (autoplay) {
+        params.append('autoplay', '1');
+      }
+      return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
+    }
+    
+    return url;
   };
 
   // Function to get Vimeo embed URL
@@ -47,11 +88,13 @@ const Whychoose = ({ whyChooseData }) => {
   };
 
   // Function to get embed URL based on video source
-  const getEmbedUrl = (url) => {
+  const getEmbedUrl = (url, autoplay = false) => {
+    if (!url) return null;
     if (url.includes('youtube.com') || url.includes('youtu.be')) {
-      return getYouTubeEmbedUrl(url);
+      return getYouTubeEmbedUrl(url, autoplay);
     } else if (url.includes('vimeo.com')) {
-      return getVimeoEmbedUrl(url);
+      const embedUrl = getVimeoEmbedUrl(url);
+      return autoplay ? `${embedUrl}?autoplay=1` : embedUrl;
     }
     return url; // For direct video URLs
   };
@@ -80,16 +123,23 @@ const Whychoose = ({ whyChooseData }) => {
         console.error('Error generating video URL:', error);
         // Fallback to external video or image
         if (data.videoUrl) {
+          const embedUrl = getEmbedUrl(data.videoUrl, false);
           return (
-            <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden">
-              <iframe
-                src={getEmbedUrl(data.videoUrl)}
-                title="Video Player"
-                className="w-full h-full"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+            <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden bg-black">
+              {embedUrl ? (
+                <iframe
+                  src={embedUrl}
+                  title="Video Player"
+                  className="w-full h-full absolute inset-0"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-white">
+                  Invalid video URL
+                </div>
+              )}
             </div>
           );
         } else {
@@ -103,45 +153,25 @@ const Whychoose = ({ whyChooseData }) => {
       }
     }
     // Handle external video URLs (YouTube/Vimeo)
-    else if (data.mediaType === 'video' && isExternalVideo) {
+    // Show video if mediaType is 'video' OR if videoUrl exists and mediaType is not explicitly 'image'
+    else if ((data.mediaType === 'video' || (data.videoUrl && data.mediaType !== 'image')) && isExternalVideo && data.videoUrl) {
+      const embedUrl = getEmbedUrl(data.videoUrl, false);
+      
       return (
-        <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden">
-          {isVideoPlaying ? (
+        <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden bg-black">
+          {embedUrl ? (
             <iframe
-              src={getEmbedUrl(data.videoUrl)}
+              key={embedUrl} // Force re-render when URL changes
+              src={embedUrl}
               title="Video Player"
-              className="w-full h-full"
+              className="w-full h-full absolute inset-0"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
           ) : (
-            <div className="relative w-full h-full">
-              {/* Video Thumbnail */}
-              {data.videoThumbnail && data.videoThumbnail.asset ? (
-                <Image
-                  src={urlFor(data.videoThumbnail).width(800).height(600).url()}
-                  alt={data.videoThumbnail.alt || "Video Thumbnail"}
-                  fill
-                  className="object-cover"
-                />
-              ) : (
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                  <div className="text-gray-500 text-lg">Video Thumbnail</div>
-                </div>
-              )}
-              
-              {/* Play Button Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
-                <button
-                  onClick={() => setIsVideoPlaying(true)}
-                  className="bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-6 transition-all duration-200 transform hover:scale-110"
-                >
-                  <svg className="w-12 h-12 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </button>
-              </div>
+            <div className="w-full h-full flex items-center justify-center text-white">
+              Invalid video URL
             </div>
           )}
         </div>

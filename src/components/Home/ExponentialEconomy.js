@@ -6,7 +6,7 @@ const ExponentialEconomy = ({ exponentialData }) => {
   if (!exponentialData) return null;
 
   return (
-    <section className="bg-black md:mx-[15px] mx-[5px] py-12 md:py-20 lg:py-24 transition-colors duration-300">
+    <section className="bg-black md:mx-[15px] mx-[5px] py-10 md:py-16 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-2 md:px-8">
         {/* Header Section */}
         <div className="text-center mb-8">
@@ -36,12 +36,12 @@ const ExponentialEconomy = ({ exponentialData }) => {
           {/* Center - Banner Image */}
           <div className="relative w-full flex items-center justify-center">
             {exponentialData.bannerImage?.asset?.url && (
-              <div className="relative w-full max-w-7xl aspect-video">
+              <div className="relative w-full max-w-8xl aspect-video">
                 <Image
                   src={exponentialData.bannerImage.asset.url}
                   alt={exponentialData.bannerImage.alt || 'X Framework Banner'}
                   fill
-                  className="object-cover rounded-lg"
+                  className="object-contain rounded-lg"
                   priority
                 />
               </div>
