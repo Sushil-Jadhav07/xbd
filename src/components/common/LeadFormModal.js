@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-export default function LeadFormModal({ open, onClose, title = 'Book a 30-min Growth Strategy Call', onSubmit }) {
+export default function LeadFormModal({ open, onClose, title = 'Book a 30-min Discovery Call', onSubmit }) {
   const [formValues, setFormValues] = useState({ 
     name: '', 
     email: '', 

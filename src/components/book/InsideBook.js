@@ -275,16 +275,19 @@ const InsideBook = ({ insideBookData }) => {
           {/* Left Section: Table of Contents */}
           <div className="order-2 lg:order-1 flex flex-col">
             <div className="bg-gray-800  overflow-hidden">
-              {chapters.map((chapter, index) => (
-                <div
-                  key={index}
-                  onClick={() => handleChapterClick(chapter, index)}
-                  className={`flex cursor-pointer transition-all duration-200 border-b-6 border-gray-900 last:border-b-0 ${
-                    activeChapterIndex === index
-                      ? 'bg-[#c1a35e] text-black'
-                      : 'bg-gray-800 text-white hover:bg-gray-700'
-                  }`}
-                >
+              {chapters.map((chapter, index) => {
+                const isClickable = index === 0 || index === 1 || index === chapters.length - 1
+                return (
+                  <div
+                    key={index}
+                    onClick={() => isClickable && handleChapterClick(chapter, index)}
+                    className={`flex transition-all duration-200 border-b-6 border-gray-900 last:border-b-0 ${
+                      activeChapterIndex === index
+                        ? 'bg-[#c1a35e] text-black'
+                        : 'bg-gray-800 text-white'
+                    } ${isClickable ? 'cursor-pointer hover:bg-gray-700' : 'cursor-not-allowed opacity-80'}`}
+                    aria-disabled={!isClickable}
+                  >
                   {/* Left Column: Number */}
                   <div className={`w-14 md:w-16 flex-shrink-0 py-3 md:py-4 text-sm md:text-base font-medium flex items-center justify-center border-r-8 border-gray-900 ${
                     activeChapterIndex === index ? 'text-black' : 'text-white'
@@ -297,8 +300,9 @@ const InsideBook = ({ insideBookData }) => {
                   }`}>
                     {chapter.chapter}
                   </h4>
-                </div>
-              ))}
+                  </div>
+                )
+              })}
             </div>
             
             {/* CTA Buttons at bottom of left column */}

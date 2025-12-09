@@ -98,7 +98,7 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
         .animate-bounce-medium { animation: bounce-medium 3s ease-in-out infinite; }
       `}</style>
       
-      <section className="dark:bg-white bg-white md:mx-[15px] mx-[5px] py-12 md:py-20 lg:py-24 relative overflow-hidden">
+      <section className="dark:bg-white bg-white md:mx-[15px] mx-[5px] py-4 md:py-6 relative overflow-hidden">
       {/* Background Image */}
       {/* <div className="absolute inset-0 opacity-70">
         <Image 
@@ -112,19 +112,19 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
 
   
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-full mx-auto relative z-10">
         {/* Header */}
-        <div className="text-left mb-6 lg:mb-8">
+        {/* <div className="text-left mb-6 lg:mb-8">
           <h2  className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4">
             {data.title}
           </h2>
-        </div>
+        </div> */}
 
         {/* Carousel Container */}
         <div className="relative">
           {/* Main Carousel */}
           <div 
-            className="relative overflow-hidden rounded-lg aspect-[16/9]  shadow-2xl transform transition-transform duration-500"
+            className="relative overflow-hidden rounded-lg h-[240px] md:h-[700px] bg-white shadow-none transform transition-transform duration-500"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
           >
@@ -143,7 +143,7 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
                   }`}
                 >
                   {/* Slide Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/10 z-10"></div>
+                  {/* <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/10 z-10"></div> */}
                   
                   {slide.image && (
                     typeof slide.image === 'string' ? (

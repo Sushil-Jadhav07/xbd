@@ -51,10 +51,14 @@ export default async function Home() {
     <div className='relative'>
       <Navbar />
 
-      {/* Banner Section - Only one, with data */}
       <section className="relative pt-[0px]">
-        <Banner bannerData={bannerData} />
+        <ImageBanner imageBannerData={imageBannerData}/>
       </section>
+
+      {/* Banner Section - Only one, with data */}
+      {/* <section className="relative pt-[0px]">
+        <Banner bannerData={bannerData} />
+      </section> */}
 
       <section className="relative pt-[0px]">
       <Feature whatIsExponentialData={whatIsExponentialData} />
@@ -72,9 +76,7 @@ export default async function Home() {
       <Slider resourcesSliderData={resourcesSliderData} />
       </section>
 
-      <section className="relative pt-[0px]">
-        <ImageBanner imageBannerData={imageBannerData}/>
-      </section>
+      
 
       {/* ExponentialEconomy Section - with data */}
       <section className="relative pt-[0px]">
@@ -83,22 +85,22 @@ export default async function Home() {
 
       
 
-      <section className="relative pt-[0px]">
+      {/* <section className="relative pt-[0px]">
       <ToolsCarousel toolsCarouselData={toolsCarouselData} />
-      </section>
+      </section> */}
 
-      <section className="relative pt-[0px]">
+      {/* <section className="relative pt-[0px]">
         <QuoteCarousel quoteCarouselData={quoteCarouselData} />
-      </section>
+      </section> */}
 
       <section className="relative pt-[0px]">
         <Testimonial testimonialData={testimonialData} />
       </section>
 
       {/* ExponentialJourney Section - with data */}
-      <section className="relative pt-[0px]">
+      {/* <section className="relative pt-[0px]">
         <ExponentialJourney journeyData={exponentialJourneyData} />
-      </section>
+      </section> */}
 
       {/* <section className="relative pt-[0px]">
         <PricingPlan pricingPlanData={pricingPlanData}/>
