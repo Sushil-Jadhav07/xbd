@@ -5500,7 +5500,7 @@ next-sanity@^11.1.1:
     groq "^4.9.0"
     history "^5.3.0"
 
-next@^15.1, "next@>= 13 || >=14.3.0-canary.0 <14.3.0 || >=15.0.0-rc", next@15.4.6:
+next@^15.1, next@^15.4.6, "next@>= 13 || >=14.3.0-canary.0 <14.3.0 || >=15.0.0-rc":
   version "15.4.6"
   resolved "https://registry.npmjs.org/next/-/next-15.4.6.tgz"
   integrity sha512-us++E/Q80/8+UekzB3SAGs71AlLDsadpFMXVNM/uQ0BMwsh9m3mr0UNQIfjKed8vpWXsASe+Qifrnu1oLIcKEQ==
