@@ -30,6 +30,7 @@ export default async function InsightsPage() {
         <FeaturedArticles featuredArticlesData={featuredArticlesData} />
         {/* <YoutubeVideos youtubeVideosData={youtubeVideosData} /> */}
         <InsightsVideos insightsVideosData={insightsVideosData} />
+        
         {/* <FAQs /> */}
         <Newsletter />
         <Footer />

@@ -4,16 +4,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '@/lib/sanity'
 import PreviewChapterForm from '../common/PreviewChapterForm'
-import airNewZealandLogo from '@/asset/logos/air new zealand.png'
-import amazonLogo from '@/asset/logos/amazon.png'
-import appleLogo from '@/asset/logos/apple.png'
+import airNewZealandLogo from '@/asset/logos/air new zealand white.png'
+import amazonLogo from '@/asset/logos/amazon-white.png'
+import appleLogo from '@/asset/logos/apple-white.png'
 import blinkitLogo from '@/asset/logos/blinkit.png'
 import credLogo from '@/asset/logos/cred.png'
 import googleLogo from '@/asset/logos/google.png'
 import miLogo from '@/asset/logos/mi.png'
-import nvidiaLogo from '@/asset/logos/nvidia.png'
-import openAiLogo from '@/asset/logos/open-ai.png'
-import samsungLogo from '@/asset/logos/samsung.png'
+import nvidiaLogo from '@/asset/logos/nvidia-white.png'
+import openAiLogo from '@/asset/logos/open-ai-white.png'
+import samsungLogo from '@/asset/logos/samsung-white.png'
 import spotifyLogo from '@/asset/logos/spotify.png'
 import starbucksLogo from '@/asset/logos/starbucks-logo.png'
 
@@ -232,6 +232,7 @@ const InsideBook = ({ insideBookData }) => {
 
   // Get current active chapter data
   const activeChapter = chapters[activeChapterIndex] || chapters[0] || {}
+  const isLockedChapter = activeChapterIndex >= 2 && activeChapterIndex <= 8
   
   // Get current content from active chapter, fallback to videoSection if not available
   const currentVideoUrl = activeChapter.videoUrl || data.videoSection?.videoUrl || fallbackData.videoSection.videoUrl
@@ -276,31 +277,30 @@ const InsideBook = ({ insideBookData }) => {
           <div className="order-2 lg:order-1 flex flex-col">
             <div className="bg-gray-800  overflow-hidden">
               {chapters.map((chapter, index) => {
-                const isClickable = index === 0 || index === 1 || index === chapters.length - 1
                 return (
-                  <div
+                  <button
                     key={index}
-                    onClick={() => isClickable && handleChapterClick(chapter, index)}
-                    className={`flex transition-all duration-200 border-b-6 border-gray-900 last:border-b-0 ${
+                    type="button"
+                    onClick={() => handleChapterClick(chapter, index)}
+                    className={`w-full text-left flex transition-all duration-200 border-b-6 border-gray-900 last:border-b-0 ${
                       activeChapterIndex === index
                         ? 'bg-[#c1a35e] text-black'
                         : 'bg-gray-800 text-white'
-                    } ${isClickable ? 'cursor-pointer hover:bg-gray-700' : 'cursor-not-allowed opacity-80'}`}
-                    aria-disabled={!isClickable}
+                    } cursor-pointer hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#c1a35e] focus:ring-offset-0`}
                   >
-                  {/* Left Column: Number */}
-                  <div className={`w-14 md:w-16 flex-shrink-0 py-3 md:py-4 text-sm md:text-base font-medium flex items-center justify-center border-r-8 border-gray-900 ${
-                    activeChapterIndex === index ? 'text-black' : 'text-white'
-                  }`}>
-                    {index + 1}.
-                  </div>
-                  {/* Right Column: Chapter Title */}
-                  <h4 className={`flex-1 py-3 md:py-4 px-3 md:px-4 text-sm md:text-base font-medium flex items-center ${
-                    activeChapterIndex === index ? 'text-black font-bold' : 'text-white'
-                  }`}>
-                    {chapter.chapter}
-                  </h4>
-                  </div>
+                    {/* Left Column: Number */}
+                    <span className={`w-14 md:w-16 flex-shrink-0 py-3 md:py-4 text-sm md:text-base font-medium flex items-center justify-center border-r-8 border-gray-900 ${
+                      activeChapterIndex === index ? 'text-black' : 'text-white'
+                    }`}>
+                      {index + 1}.
+                    </span>
+                    {/* Right Column: Chapter Title */}
+                    <span className={`flex-1 py-3 md:py-4 px-3 md:px-4 text-sm md:text-base font-medium flex items-center ${
+                      activeChapterIndex === index ? 'text-black font-bold' : 'text-white'
+                    }`}>
+                      {chapter.chapter}
+                    </span>
+                  </button>
                 )
               })}
             </div>
@@ -356,11 +356,18 @@ const InsideBook = ({ insideBookData }) => {
                     key={currentVideoUrl}
                     src={`https://www.youtube.com/embed/${getYouTubeVideoId(currentVideoUrl)}?rel=0&modestbranding=1`}
                     title={currentVideoTitle}
-                    className="absolute inset-0 w-full h-full"
+                    className={`absolute inset-0 w-full h-full ${isLockedChapter ? 'pointer-events-none' : ''}`}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
+                  {isLockedChapter && (
+                    <div className="absolute inset-0 bg-black/90 flex items-center justify-center text-center px-6">
+                      <div className="text-white text-sm md:text-base font-semibold">
+                        Buy book to learn further
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
               
@@ -414,7 +421,7 @@ const InsideBook = ({ insideBookData }) => {
                             logoSource = company.logo.asset.url
                           } else {
                             try {
-                              logoSource = urlFor(company.logo).width(200).height(100).url()
+                              logoSource = urlFor(company.logo).width(400).height(200).url()
                             } catch (e) {
                               logoSource = null
                             }
