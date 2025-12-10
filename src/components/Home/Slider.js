@@ -11,6 +11,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import JoinWaitlistForm from '../common/JoinWaitlistForm';
 import StrategySessionForm from '../common/StrategySessionForm';
 import KeynoteRequestForm from '../common/KeynoteRequestForm';
+import ExponentialDesignMastery from '../common/ExponentialDesignMastery';
 import { urlFor } from '../../lib/sanity';
 
 // Import Swiper styles
@@ -37,9 +38,9 @@ const Slider = ({ resourcesSliderData }) => {
         title: "Master the Framework That's Redefining Market Leaders",
         description: "Step-by-step X Framework training with real-world case studies",
         meta: "6 Weeks Live + On-Demand",
-        buttonText: "Join the Waitlist",
+        buttonText: "Know More",
         iconType: "play",
-        formType: "waitlist"
+        formType: "mastery"
       },
       {
         title: "Get the Strategy That's Driving Boardroom-Level Breakthroughs",
@@ -67,6 +68,7 @@ const Slider = ({ resourcesSliderData }) => {
     'join the waitlist': 'waitlist',
     'book your session': 'strategy',
     'book the keynote': 'keynote',
+    'know more': 'mastery',
   }), []);
 
   const handleOpenForm = (formType) => {
@@ -108,6 +110,14 @@ const Slider = ({ resourcesSliderData }) => {
           width: 24px;
           border-radius: 5px;
         }
+        .swiper-slide {
+          height: auto;
+          display: flex;
+        }
+        .swiper-wrapper {
+          display: flex;
+          align-items: stretch;
+        }
       `}} />
       <section className=" bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-12 md:py-20 lg:py-24  relative overflow-hidden">
       {/* Background Image */}
@@ -143,7 +153,7 @@ const Slider = ({ resourcesSliderData }) => {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative pb-16">
+        <div className="relative pb-0">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={20}
@@ -182,9 +192,9 @@ const Slider = ({ resourcesSliderData }) => {
               const IconComponent = getIcon(resource.iconType);
               const formType = resource.formType || buttonTextFormMap[resource.buttonText?.toLowerCase?.()];
               return (
-                <SwiperSlide key={index}>
-                  <div className="px-2 h-full">
-                    <div className="bg-white border border-gray-200 rounded-2xl p-6 h-full flex flex-col">
+                <SwiperSlide key={index} className="!h-auto">
+                  <div className="px-2 h-full flex">
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 w-full flex flex-col">
                       {/* Image */}
                       {resource.image?.asset?.url ? (
                         <div className="rounded-xl aspect-[4/3] mb-6 relative overflow-hidden">
@@ -206,14 +216,14 @@ const Slider = ({ resourcesSliderData }) => {
                       )}
 
                       {/* Content */}
-                      <div className="flex-1 flex flex-col space-y-4">
+                      <div className="flex-1 flex flex-col space-y-4 min-h-0">
                         {/* Title */}
                         <h2  className="text-base md:text-lg font-bold text-gray-900 leading-tight">
                           {resource.title}
                         </h2>
 
                         {/* Description */}
-                        <p className="text-sm md:text-base text-gray-700 leading-relaxed flex-1">
+                        <p className="text-sm md:text-base text-gray-700 leading-relaxed">
                           {resource.description}
                         </p>
 
@@ -224,22 +234,24 @@ const Slider = ({ resourcesSliderData }) => {
                         </h4>
 
                         {/* Button */}
-                        {formType ? (
-                          <button
-                            type="button"
-                            onClick={() => handleOpenForm(formType)}
-                            className="bg-black text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-gray-800 transition-colors duration-200 w-full mt-4"
-                          >
-                            {resource.buttonText}
-                          </button>
-                        ) : (
-                          <Link 
-                            href={resource.buttonLink || '#'}
-                            className="bg-black text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-gray-800 transition-colors duration-200 w-full mt-4"
-                          >
-                            {resource.buttonText}
-                          </Link>
-                        )}
+                        <div className="mt-auto pt-4">
+                          {formType ? (
+                            <button
+                              type="button"
+                              onClick={() => handleOpenForm(formType)}
+                              className="bg-black text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-gray-800 transition-colors duration-200 w-full"
+                            >
+                              {resource.buttonText}
+                            </button>
+                          ) : (
+                            <Link 
+                              href={resource.buttonLink || '#'}
+                              className="bg-black text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-gray-800 transition-colors duration-200 w-full block"
+                            >
+                              {resource.buttonText}
+                            </Link>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -275,6 +287,7 @@ const Slider = ({ resourcesSliderData }) => {
       <JoinWaitlistForm open={activeForm === 'waitlist'} onClose={handleCloseForm} />
       <StrategySessionForm open={activeForm === 'strategy'} onClose={handleCloseForm} />
       <KeynoteRequestForm open={activeForm === 'keynote'} onClose={handleCloseForm} />
+      <ExponentialDesignMastery open={activeForm === 'mastery'} onClose={handleCloseForm} initialSubject="Master the Framework That's Redefining Market Leaders" />
     </section>
     </>
   );
