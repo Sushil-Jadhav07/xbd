@@ -86,6 +86,8 @@ const Slider = ({ resourcesSliderData }) => {
         return HiOutlinePhone;
       case 'microphone':
         return HiOutlineMicrophone;
+      case 'none':
+        return null;
       default:
         return HiOutlineDocument;
     }
@@ -217,7 +219,7 @@ const Slider = ({ resourcesSliderData }) => {
 
                         {/* Meta */}
                         <h4 className="flex items-center gap-2 text-sm text-gray-600">
-                          <IconComponent className="w-4 h-4" />
+                          {IconComponent && <IconComponent className="w-4 h-4" />}
                           {resource.meta}
                         </h4>
 
