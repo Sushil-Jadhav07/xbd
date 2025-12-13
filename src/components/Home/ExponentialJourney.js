@@ -206,11 +206,11 @@ export default function ExponentialJourney({ journeyData }) {
                           </div>
                           
                           {/* Price Section */}
-                          {shouldShowPrice && (
+                          {/* {shouldShowPrice && (
                             <div className="pt-1.5 border-t border-gray-700">
                               <div className="text-xl font-bold text-white">{stage.price}</div>
                             </div>
-                          )}
+                          )} */}
                         </div>
                       </div>
                     )}
@@ -283,11 +283,11 @@ export default function ExponentialJourney({ journeyData }) {
                         </div>
                         
                         {/* Price Section */}
-                        {shouldShowPrice && (
+                        {/* {shouldShowPrice && (
                           <div className="pt-2 border-t border-gray-700">
                             <div className="text-2xl font-bold text-white">{stage.price}</div>
                           </div>
-                        )}
+                        )} */}
                       </div>
                     </div>
                   )}
@@ -379,11 +379,11 @@ export default function ExponentialJourney({ journeyData }) {
                   ))}
                 </ul>
 
-                {shouldShowPrice && (
+                {/* {shouldShowPrice && (
                   <div className="text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6">
                     {stageData[activeStage].price}
                   </div>
-                )}
+                )} */}
                 
                 <button
                   type="button"
