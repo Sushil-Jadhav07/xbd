@@ -298,13 +298,13 @@ export default function ExponentialJourney({ journeyData }) {
         </div>
 
         {/* Book Button */}
-        <div className="absolute md:left-[13%] left-[0%] md:bottom-[0%] bottom-[-3%]">
+        {/* <div className="absolute md:left-[13%] left-[0%] md:bottom-[0%] bottom-[-3%]">
           <input
             type="text"
             placeholder="Book"
             className="bg-gray-800 border-gray-600 text-gray-400 md:px-4 px-2 md:py-2 py-1 rounded md:w-64 w-32 focus:outline-none focus:border-gray-500"
           />
-        </div>
+        </div> */}
       </div>
 
       {/* Content Section */}

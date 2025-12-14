@@ -43,7 +43,7 @@ export default async function Page() {
         <Programs programsData={programsData} />
         <IndustryFocus industryFocusData={industryFocusData} />
         <WhatLearn whatLearnData={whatLearnData} />
-        <IntroductoryClass introductoryClassData={introductoryClassData} />
+        {/* <IntroductoryClass introductoryClassData={introductoryClassData} /> */}
 
         
         <Faqs faqsData={faqsData} />
