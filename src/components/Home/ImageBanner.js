@@ -124,7 +124,7 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
         <div className="relative">
           {/* Main Carousel */}
           <div 
-            className="relative overflow-hidden rounded-lg h-[240px] md:h-[700px] bg-white shadow-none transform transition-transform duration-500"
+            className="relative overflow-hidden rounded-lg bg-white shadow-none transform transition-transform duration-500 aspect-[16/9] md:aspect-[1920/930]"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
           >
@@ -148,30 +148,27 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
                   {slide.image && (
                     typeof slide.image === 'string' ? (
                       <Image 
-                        className={`w-full h-full object-cover transition-all duration-700 ${
-                          index === currentSlide ? 'scale-105' : 'scale-100'
-                        }`}
+                        className="w-full h-full object-contain transition-all duration-700"
                         src={slide.image} 
                         alt={slide.alt || `Banner ${index + 1}`}
                         fill
+                        sizes="100vw"
                       />
                     ) : slide.image?.asset?.url ? (
                       <Image 
-                        className={`w-full h-full object-cover transition-all duration-700 ${
-                          index === currentSlide ? 'scale-105' : 'scale-100'
-                        }`}
+                        className="w-full h-full object-contain transition-all duration-700"
                         src={slide.image.asset.url} 
                         alt={slide.image.alt || slide.alt || `Banner ${index + 1}`}
                         fill
+                        sizes="100vw"
                       />
                     ) : (
                       <Image 
-                        className={`w-full h-full object-cover transition-all duration-700 ${
-                          index === currentSlide ? 'scale-105' : 'scale-100'
-                        }`}
+                        className="w-full h-full object-contain transition-all duration-700"
                         src={slide.image} 
                         alt={slide.alt || `Banner ${index + 1}`}
                         fill
+                        sizes="100vw"
                       />
                     )
                   )}
@@ -186,7 +183,7 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
           </div>
 
           {/* Pagination Dots - Bottom Left */}
-          <div className="absolute bottom-6 left-6 flex gap-2 z-30">
+          {/* <div className="absolute bottom-6 left-6 flex gap-2 z-30">
             {slides.map((_, index) => (
               <button
                 key={index}
@@ -199,7 +196,7 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
-          </div>
+          </div> */}
 
           {/* Navigation Arrows */}
           <button
@@ -224,11 +221,11 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
         </div>
 
         {/* Mobile Touch Navigation Instructions */}
-        <div className="md:hidden text-center mt-4">
+        {/* <div className="md:hidden text-center mt-4">
           <p className="text-sm text-gray-500 animate-pulse">
             Swipe left or right to navigate
           </p>
-        </div>
+        </div> */}
       </div>
     </section>
     </>
