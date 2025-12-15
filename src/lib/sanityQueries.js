@@ -359,7 +359,8 @@ export async function getImageBannerData() {
         },
         alt
       },
-      alt
+      alt,
+      link
     }
   }`
   

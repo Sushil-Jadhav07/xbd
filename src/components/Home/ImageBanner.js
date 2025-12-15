@@ -1,6 +1,7 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import FeatureImageOne from "../../asset/feature1.png"
 import FeatureImageTwo from "../../asset/feature2.png"
@@ -16,8 +17,8 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
   const fallbackData = {
     title: "Featured Banner",
     slides: [
-      { id: 1, image: FeatureImageOne, alt: "Banner Image 1" },
-      { id: 2, image: FeatureImageTwo, alt: "Banner Image 2" },
+      { id: 1, image: FeatureImageOne, alt: "Banner Image 1", link: "/" },
+      { id: 2, image: FeatureImageTwo, alt: "Banner Image 2", link: "/" },
     ]
   };
 
@@ -146,31 +147,39 @@ const ImageBannerCarousel = ({ imageBannerData }) => {
                   {/* <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/10 z-10"></div> */}
                   
                   {slide.image && (
-                    typeof slide.image === 'string' ? (
-                      <Image 
-                        className="w-full h-full object-contain transition-all duration-700"
-                        src={slide.image} 
-                        alt={slide.alt || `Banner ${index + 1}`}
-                        fill
-                        sizes="100vw"
-                      />
-                    ) : slide.image?.asset?.url ? (
-                      <Image 
-                        className="w-full h-full object-contain transition-all duration-700"
-                        src={slide.image.asset.url} 
-                        alt={slide.image.alt || slide.alt || `Banner ${index + 1}`}
-                        fill
-                        sizes="100vw"
-                      />
-                    ) : (
-                      <Image 
-                        className="w-full h-full object-contain transition-all duration-700"
-                        src={slide.image} 
-                        alt={slide.alt || `Banner ${index + 1}`}
-                        fill
-                        sizes="100vw"
-                      />
-                    )
+                    (() => {
+                      const imageProps = typeof slide.image === 'string'
+                        ? { src: slide.image, alt: slide.alt || `Banner ${index + 1}` }
+                        : slide.image?.asset?.url
+                          ? { src: slide.image.asset.url, alt: slide.image.alt || slide.alt || `Banner ${index + 1}` }
+                          : { src: slide.image, alt: slide.alt || `Banner ${index + 1}` };
+
+                      const imageEl = (
+                        <Image 
+                          className="w-full h-full object-contain transition-all duration-700"
+                          {...imageProps}
+                          fill
+                          sizes="100vw"
+                        />
+                      );
+
+                      if (slide.link) {
+                        const isExternal = slide.link.startsWith('http');
+                        return (
+                          <Link
+                            href={slide.link}
+                            className="block w-full h-full"
+                            target={isExternal ? '_blank' : undefined}
+                            rel={isExternal ? 'noopener noreferrer' : undefined}
+                            aria-label={slide.alt || `Banner ${index + 1}`}
+                          >
+                            {imageEl}
+                          </Link>
+                        );
+                      }
+
+                      return imageEl;
+                    })()
                   )}
                   
                   {/* Slide Number Indicator */}
