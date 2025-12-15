@@ -50,7 +50,6 @@ export default async function Home() {
   return (
     <div className='relative'>
       <Navbar />
-
       <section className="relative pt-[0px]">
         <ImageBanner imageBannerData={imageBannerData}/>
       </section>
