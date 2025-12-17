@@ -75,6 +75,66 @@ const IndustryFocus = ({ industryFocusData }) => {
   const finalVideoUrl = mediaType === 'upload' ? uploadedVideo : videoUrl;
   const hasVideo = finalVideoUrl && finalVideoUrl.trim() !== '';
 
+  // Function to check if URL is YouTube or Vimeo
+  const isExternalVideo = (url) => {
+    if (!url) return false;
+    return url.includes('youtube.com') || url.includes('youtu.be') || url.includes('vimeo.com');
+  };
+
+  // Function to get YouTube embed URL
+  const getYouTubeEmbedUrl = (url) => {
+    if (!url) return null;
+    
+    let videoId = null;
+    
+    // Pattern 1: youtube.com/watch?v=VIDEO_ID
+    const watchMatch = url.match(/[?&]v=([^&#]*)/);
+    if (watchMatch) {
+      videoId = watchMatch[1];
+    }
+    
+    // Pattern 2: youtu.be/VIDEO_ID
+    if (!videoId) {
+      const shortMatch = url.match(/youtu\.be\/([^?#&]*)/);
+      if (shortMatch) {
+        videoId = shortMatch[1];
+      }
+    }
+    
+    // Pattern 3: youtube.com/embed/VIDEO_ID
+    if (!videoId) {
+      const embedMatch = url.match(/youtube\.com\/embed\/([^?#&]*)/);
+      if (embedMatch) {
+        videoId = embedMatch[1];
+      }
+    }
+    
+    if (videoId && videoId.length === 11) {
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&rel=0&modestbranding=1`;
+    }
+    
+    return url;
+  };
+
+  // Function to get Vimeo embed URL
+  const getVimeoEmbedUrl = (url) => {
+    if (!url) return null;
+    const regExp = /vimeo\.com\/(\d+)/;
+    const match = url.match(regExp);
+    return match ? `https://player.vimeo.com/video/${match[1]}?autoplay=1&muted=1` : url;
+  };
+
+  // Function to get embed URL based on video source
+  const getEmbedUrl = (url) => {
+    if (!url) return null;
+    if (url.includes('youtube.com') || url.includes('youtu.be')) {
+      return getYouTubeEmbedUrl(url);
+    } else if (url.includes('vimeo.com')) {
+      return getVimeoEmbedUrl(url);
+    }
+    return url; // For direct video URLs
+  };
+
   return (
     <div className="bg-white md:mx-[15px] mx-[5px] py-12 lg:py-16 lg:px-12 px-4">
       <div className="max-w-7xl mx-auto">
@@ -87,19 +147,31 @@ const IndustryFocus = ({ industryFocusData }) => {
             <div className='bg-gray-200 rounded-lg p-4'>
               <div className="bg-white rounded-lg h-80 relative overflow-hidden">
               {hasVideo ? (
-                <video 
-                  className="w-full h-full object-contain rounded-lg"
-                  controls
-                  autoPlay
-                  muted
-                  loop
-                  preload="metadata"
-                  poster={videoThumbnail}
-                >
-                  <source src={finalVideoUrl} type="video/mp4" />
-                  <source src={finalVideoUrl} type="video/webm" />
-                  Your browser does not support the video tag.
-                </video>
+                isExternalVideo(finalVideoUrl) ? (
+                  /* YouTube/Vimeo Embed */
+                  <iframe
+                    src={getEmbedUrl(finalVideoUrl)}
+                    className="w-full h-full rounded-lg"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    frameBorder="0"
+                  />
+                ) : (
+                  /* Direct Video File */
+                  <video 
+                    className="w-full h-full object-contain rounded-lg"
+                    controls
+                    autoPlay
+                    muted
+                    loop
+                    preload="metadata"
+                    poster={videoThumbnail}
+                  >
+                    <source src={finalVideoUrl} type="video/mp4" />
+                    <source src={finalVideoUrl} type="video/webm" />
+                    Your browser does not support the video tag.
+                  </video>
+                )
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-gray-100">
                   <div className="text-center text-gray-500">
@@ -107,8 +179,8 @@ const IndustryFocus = ({ industryFocusData }) => {
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                     </svg>
                     <p className="text-sm">No video available</p>
-              </div>
-            </div>
+                  </div>
+                </div>
               )}
             </div>
 
