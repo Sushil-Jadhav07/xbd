@@ -152,7 +152,7 @@ const Keynotes = ({ keynotesData }) => {
       <div className="max-w-7xl mx-auto px-4 lg:px-6 relative z-10">
         
         {/* Header Section */}
-        <div className="text-center mb-8 md:mb-12">
+        <div className="md:text-center text-left mb-8 md:mb-12">
           <h2 className="text-2xl md:text-4xl font-bold text-black px-2">
             {data.title}
           </h2>
@@ -170,7 +170,7 @@ const Keynotes = ({ keynotesData }) => {
               {data.keynotesList?.map((keynote, index) => (
                 <div 
                   key={index} 
-                  className={`flex-shrink-0 px-2 md:px-4 ${itemsPerView === 2 ? 'w-1/2' : 'w-full'}`}
+                  className={`flex-shrink-0 px-0 md:px-4 ${itemsPerView === 2 ? 'w-1/2' : 'w-full'}`}
                 >
                   <div className="bg-gray-100 rounded-lg p-4 md:p-6 lg:p-8 h-full">
                     

@@ -260,7 +260,7 @@ const InsideBook = ({ insideBookData }) => {
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         
         {/* Header Section */}
-        <div className="text-center mb-12">
+        <div className="md:text-center text-left mb-12">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
             <span className="text-[#c1a35e]">{titleFirstPart}</span>
             {titleSecondPart && <span className="text-white">: {titleSecondPart}</span>}

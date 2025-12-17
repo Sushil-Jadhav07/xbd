@@ -62,7 +62,7 @@ const MeetAuthor = ({ meetAuthorData }) => {
       <div className="max-w-7xl mx-auto px-2 md:px-0 relative z-10">
         
         {/* Header Section */}
-        <div className="text-center mb-6">
+        <div className="md:text-center text-left mb-6">
           <h2 className="text-3xl md:text-4xl font-bold text-black">
             {data.title}
           </h2>
@@ -107,7 +107,7 @@ const MeetAuthor = ({ meetAuthorData }) => {
                 {data.primaryButton && (
                   <Link
                     href={data.primaryButton.link || '#'}
-                    className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-base"
+                    className="bg-black text-white text-center px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-base"
                   >
                     {data.primaryButton.text}
                   </Link>
@@ -115,7 +115,7 @@ const MeetAuthor = ({ meetAuthorData }) => {
                 {data.secondaryButton && (
                   <Link
                     href={data.secondaryButton.link || '#'}
-                    className="text-black font-medium hover:text-gray-700 transition-colors duration-200 flex items-center text-base"
+                    className="text-black font-medium text-center hover:text-gray-700 transition-colors duration-200 flex items-center text-base"
                   >
                     {data.secondaryButton.text}
                   </Link>

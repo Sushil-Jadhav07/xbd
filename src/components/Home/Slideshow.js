@@ -192,8 +192,8 @@ const Slideshow = ({ slideshowData }) => {
           animation: fadeInUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.5s both;
         }
       `}</style>
-      <section className="!bg-black md:mx-[15px] mx-[5px] py-8 md:py-12 relative md:h-[40rem] h-[50rem] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <section className="!bg-black md:mx-[15px] mx-[5px] py-8 md:py-12 relative md:h-[45rem] h-[50rem] overflow-hidden">
+        <div className="max-w-8xl mx-auto py-6 md:py-12 px-6 lg:px-8 relative">
           {/* Slideshow Container */}
           <div className="relative">
             {/* Slide Content */}
@@ -269,7 +269,7 @@ const Slideshow = ({ slideshowData }) => {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-1 md:left-[-60px] top-[30%] md:top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#c1a35e]"
+              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-black/70 hover:bg-black/90 text-white p-3 sm:p-4 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#c1a35e] shadow-lg"
               aria-label="Previous slide"
             >
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -278,7 +278,7 @@ const Slideshow = ({ slideshowData }) => {
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-1 md:right-[-60px] top-[30%] md:top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#c1a35e]"
+              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-black/70 hover:bg-black/90 text-white p-3 sm:p-4 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#c1a35e] shadow-lg"
               aria-label="Next slide"
             >
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

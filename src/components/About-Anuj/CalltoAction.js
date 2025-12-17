@@ -242,8 +242,8 @@ const CalltoAction = ({ callToActionData }) => {
             <div className="bg-gray-100 rounded-lg p-6 lg:p-8">
               
               {/* Header */}
-              <div className="text-center mb-4">
-                <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">
+              <div className="md:text-center text-left mb-4">
+                <h2 className="text-3xl md:text-center text-left md:text-4xl font-bold text-black mb-3">
                   {data.formTitle}
                 </h2>
                 <p className="text-sm text-gray-700">
@@ -429,7 +429,7 @@ const CalltoAction = ({ callToActionData }) => {
                 </div>
                 
                 {/* Submit Button */}
-                <div className="text-center mb-6">
+                <div className="md:text-center text-left mb-6">
                   <button 
                     type="submit"
                     disabled={submitting}
@@ -440,7 +440,7 @@ const CalltoAction = ({ callToActionData }) => {
                 </div>
                 
                 {/* Privacy Statement */}
-                <div className="text-center">
+                <div className="md:text-center text-left">
                   <p className="text-sm text-gray-600">
                     {data.privacyText}{' '}
                     {data.privacyLinkText && (

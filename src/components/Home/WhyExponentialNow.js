@@ -63,9 +63,9 @@ const WhyExponentialNow = ({ whyExponentialNowData }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
+        <div className="text-left md:text-center mb-12 lg:mb-16">
           {/* Label */}
-          <h4 className="flex items-center justify-center gap-2 text-sm font-semibold text-white uppercase tracking-wide mb-4">
+          <h4 className="flex items-center md:justify-center justify-start gap-2 text-sm font-semibold text-white uppercase tracking-wide mb-4">
             <HiOutlineSparkles className="text-lg" />
             {data.label}
           </h4>

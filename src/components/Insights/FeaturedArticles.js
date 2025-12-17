@@ -74,10 +74,10 @@ const FeaturedArticles = ({ featuredArticlesData }) => {
   const data = featuredArticlesData || fallbackData;
 
   return (
-    <section className="bg-white md:mx-[15px] mx-[5px] py-12 lg:py-16 px-4">
+    <section className="bg-white md:mx-[15px] mx-[5px] pt-2 pb-12 lg:py-16 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="md:text-center text-left mb-12">
           <h2  className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {data.sectionTitle}
           </h2>

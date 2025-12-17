@@ -98,7 +98,7 @@ const AboutTitle = ({ aboutTitleData }) => {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(true)}
-                  className="bg-black text-white px-6 py-3 rounded-lg cursor-pointer font-medium hover:bg-gray-800 transition-colors duration-200 text-base"
+                  className="bg-black text-white text-center px-6 py-3 rounded-lg cursor-pointer font-medium hover:bg-gray-800 transition-colors duration-200 text-base"
                 >
                   {data.primaryButton.text}
                 </button>
@@ -106,7 +106,7 @@ const AboutTitle = ({ aboutTitleData }) => {
               {data.secondaryButton && (
                 <Link
                   href={data.secondaryButton.link || '#'}
-                  className="bg-gray-100 text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition-colors duration-200 text-base"
+                  className="bg-gray-100 text-black text-center px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition-colors duration-200 text-base"
                 >
                   {data.secondaryButton.text}
                 </Link>

@@ -131,8 +131,8 @@ const InsightsVideos = ({ insightsVideosData }) => {
       <div className="max-w-7xl mx-auto px-4 lg:px-6 relative z-10">
         
         {/* Header Section */}
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-4xl font-bold text-black px-2 mb-3">
+        <div className="md:text-center text-left mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-4xl font-bold text-black  mb-3">
             {data.title}
           </h2>
           {data.subtitle && (

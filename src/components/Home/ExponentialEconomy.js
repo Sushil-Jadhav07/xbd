@@ -7,9 +7,9 @@ const ExponentialEconomy = ({ exponentialData }) => {
 
   return (
     <section className="bg-black md:mx-[15px] mx-[5px] py-10 md:py-16 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-2 md:px-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
         {/* Header Section */}
-        <div className="text-center mb-8">
+        <div className="md:text-center text-left mb-8">
           {/* Main Question */}
           <h4 className=" text-white text-base md:text-lg mb-4 transition-colors duration-300">
             {exponentialData.mainQuestion || 'Do you want to be part of this'}{" "}

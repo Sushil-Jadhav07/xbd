@@ -116,7 +116,7 @@ const Testimonial = ({ testimonialData }) => {
       <div className="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
         
         {/* Header Section */}
-        <div className="text-center mb-12">
+        <div className="md:text-center text-left mb-12">
           <h2  className="text-3xl lg:text-4xl font-bold text-black mb-4">
             {data.title}
           </h2>

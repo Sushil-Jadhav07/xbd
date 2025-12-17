@@ -107,7 +107,7 @@ const Whychoose = ({ whyChooseData }) => {
         // For file assets, use the direct URL instead of urlFor
         const videoUrl = data.uploadedVideo.asset.url;
         return (
-          <div className="relative w-full h-full min-h-[250px] md:min-h-[400px] rounded-3xl overflow-hidden">
+          <div className="relative w-full aspect-video min-h-[250px] md:min-h-[400px] rounded-3xl overflow-hidden bg-black">
             <video
               controls
               autoPlay={false}
@@ -125,7 +125,7 @@ const Whychoose = ({ whyChooseData }) => {
         if (data.videoUrl) {
           const embedUrl = getEmbedUrl(data.videoUrl, false);
           return (
-            <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden bg-black">
+            <div className="relative w-full aspect-video min-h-[250px] md:min-h-[400px] rounded-3xl overflow-hidden bg-black">
               {embedUrl ? (
                 <iframe
                   src={embedUrl}
@@ -145,7 +145,7 @@ const Whychoose = ({ whyChooseData }) => {
         } else {
           // Fallback to image
           return (
-            <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden">
+            <div className="relative w-full aspect-video min-h-[250px] md:min-h-[400px] rounded-3xl overflow-hidden">
               <Image src={WhychooseImage} alt="Why Choose" fill className="object-cover" />
             </div>
           );
@@ -158,7 +158,7 @@ const Whychoose = ({ whyChooseData }) => {
       const embedUrl = getEmbedUrl(data.videoUrl, false);
       
       return (
-        <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden bg-black">
+        <div className="relative w-full aspect-video min-h-[250px] md:min-h-[400px] rounded-3xl overflow-hidden bg-black">
           {embedUrl ? (
             <iframe
               key={embedUrl} // Force re-render when URL changes
@@ -178,7 +178,7 @@ const Whychoose = ({ whyChooseData }) => {
       );
     } else if (data.mediaType === 'image' && data.image) {
       return (
-        <div className="relative w-full h-full min-h-[400px]  overflow-hidden">
+        <div className="relative w-full aspect-video min-h-[250px] md:min-h-[400px] overflow-hidden rounded-3xl">
           <Image
             src={urlFor(data.image).width(800).height(600).url()}
             alt={data.image.alt || "Why Choose"}
@@ -190,7 +190,7 @@ const Whychoose = ({ whyChooseData }) => {
     } else {
       // Fallback to static image
       return (
-        <div className="relative w-full h-full min-h-[400px] rounded-3xl overflow-hidden">
+        <div className="relative w-full aspect-video min-h-[250px] md:min-h-[400px] rounded-3xl overflow-hidden">
           <Image src={WhychooseImage} alt="Why Choose" fill className="object-cover" />
         </div>
       );
@@ -202,17 +202,17 @@ const Whychoose = ({ whyChooseData }) => {
       
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12 lg:gap-16">
           {/* Left Content */}
-          <div className="flex-1 space-y-6">
+          <div className="flex-1 w-full lg:w-auto space-y-4 md:space-y-6">
             {/* Label */}
-            <h4 className="flex items-center gap-2 text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">
-              <HiOutlineSparkles className="text-lg" />
+            <h4 className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">
+              <HiOutlineSparkles className="text-base sm:text-lg" />
               {data.label}
             </h4>
 
             {/* Headline */}
-            <h2 className="text-3xl md:text-4xl font-bold dark:text-gray-900 text-white leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold dark:text-gray-900 text-white leading-tight">
               {data.titleStart}{" "}
               <span className="font-black bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent inline">
                 {data.highlightText}
@@ -230,20 +230,20 @@ const Whychoose = ({ whyChooseData }) => {
 
             {/* Author Info */}
             <div className="space-y-1">
-              <h2 className="font-bold text-gray-900 dark:text-gray-900 text-lg">
+              <h2 className="font-bold text-gray-900 dark:text-gray-900 text-base md:text-lg">
                 {data.authorName}
               </h2>
-              <h4 className="text-gray-600 dark:text-gray-900">
+              <h4 className="text-sm md:text-base text-gray-600 dark:text-gray-900">
                 {data.authorTitle}
               </h4>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 pt-2 md:pt-4">
               {data.primaryButton && (
                 <Link
                   href={data.primaryButton.link || '#'}
-                  className="bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200"
+                  className="bg-black dark:bg-white text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200 w-full sm:w-auto text-center"
                 >
                   {data.primaryButton.text}
                 </Link>
@@ -252,7 +252,7 @@ const Whychoose = ({ whyChooseData }) => {
               {data.secondaryButton && (
                 <Link
                   href={data.secondaryButton.link || '#'}
-                  className="text-gray-900 dark:text-gray-900 font-semibold hover:text-black dark:hover:text-gray-300 transition-colors duration-200 underline decoration-2 underline-offset-4"
+                  className="text-gray-900 dark:text-gray-900 font-semibold text-sm sm:text-base hover:text-black dark:hover:text-gray-300 transition-colors duration-200 underline decoration-2 underline-offset-4 text-center sm:text-left w-full sm:w-auto"
                 >
                   {data.secondaryButton.text}
                 </Link>
@@ -261,7 +261,7 @@ const Whychoose = ({ whyChooseData }) => {
           </div>
 
           {/* Right Media (Image or Video) */}
-          <div className="flex-1 max-w-lg lg:max-w-none">
+          <div className="flex-1 w-full lg:w-auto max-w-full lg:max-w-none">
             {renderMedia()}
           </div>
         </div>

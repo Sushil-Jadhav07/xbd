@@ -202,7 +202,7 @@ const IndustryFocus = ({ industryFocusData }) => {
             {data.quoteBlock && (
               <div className='bg-white rounded-lg p-4 mt-4'>
                 {data.quoteBlock.quoteText && (
-                  <h2 className="md:text-lg text-base font-medium text-black mt-3 mb-3">
+                  <h2 className="md:text-lg text-base md:text-center text-left font-medium text-black mt-3 mb-3">
                     {data.quoteBlock.quoteText}
                   </h2>
                 )}

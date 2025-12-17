@@ -104,7 +104,7 @@ const GroupCoaching = ({ groupCoachingData }) => {
       <div className="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
         
         {/* Header Section */}
-        <div className="text-center mb-8">
+        <div className="md:text-center text-left mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-black">
             {data.sectionTitle}
           </h2>

@@ -10,8 +10,8 @@ const InsightsBanner = ({ insightsBannerData }) => {
 
   return (
     <section className=' md:mx-[15px] mx-[5px] pt-0 pb-6 lg:pt-0 lg:pb-16'>
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-0">
-      <div className="relative w-full h-[400px] md:h-[900px] overflow-hidden">
+      <h2 className="text-3xl md:text-center text-left md:text-4xl font-bold text-gray-900 mb-0">
+      <div className="relative w-full h-[250px] md:h-[900px] overflow-hidden">
         <Image
           src={bannerImage}
           alt={altText}

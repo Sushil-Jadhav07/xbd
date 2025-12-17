@@ -95,11 +95,11 @@ const AnujNewsletter = ({ anujNewsletterData }) => {
   return (
     <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-12 lg:py-16">
       <div className="max-w-7xl mx-auto px-4 md:px-0">
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="md:text-center text-left max-w-3xl mx-auto">
           
           {/* Top Label with Icon */}
           
-          <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="flex items-center md:justify-center justify-start gap-2 mb-6">
           <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center mr-3">
             <svg className="w-5 h-5 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>

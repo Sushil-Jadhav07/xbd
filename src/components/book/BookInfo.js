@@ -173,7 +173,7 @@ const BookInfo = ({ bookInfoData }) => {
               {data.primaryButton && (
                 <Link
                   href={data.primaryButton.link || '#'}
-                  className="bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-base"
+                  className="bg-black text-white text-center px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-base"
                 >
                   {data.primaryButton.text}
                 </Link>

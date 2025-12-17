@@ -193,7 +193,7 @@ const Slider = ({ resourcesSliderData }) => {
               const formType = resource.formType || buttonTextFormMap[resource.buttonText?.toLowerCase?.()];
               return (
                 <SwiperSlide key={index} className="!h-auto">
-                  <div className="px-2 h-full flex">
+                  <div className="px-0 h-full flex">
                     <div className="bg-white border border-gray-200 rounded-2xl p-6 w-full flex flex-col">
                       {/* Image */}
                       {resource.image?.asset?.url ? (
