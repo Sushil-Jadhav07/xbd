@@ -145,12 +145,12 @@ export default function FAQs() {
               <div
                 className={`transition-all duration-500 ease-in-out ${
                   openIndex === idx
-                    ? 'max-h-96 opacity-100'
+                    ? 'max-h-[800px] opacity-100'
                     : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="px-8 pb-6 pl-20">
-                  <p className="text-gray-600 text-lg leading-relaxed">
+                <div className="px-8 pb-4 pl-20">
+                  <p className="text-gray-600 text-lg leading-relaxed whitespace-pre-line">
                     {item.answer}
                   </p>
                 </div>

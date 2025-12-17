@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { MdImage } from 'react-icons/md'
 import Image from 'next/image'
 import Link from 'next/link'
+import { urlFor } from '@/lib/sanity'
 import PreviewChapterForm from '../common/PreviewChapterForm'
 
 const BookInfo = ({ bookInfoData }) => {
@@ -71,12 +72,37 @@ const BookInfo = ({ bookInfoData }) => {
           <div className="lg:col-span-1">
             <div className="bg-gray-200 rounded-lg h-96 lg:h-[600px] flex items-center justify-center relative overflow-hidden">
               {data.mainImage ? (
-                <Image 
-                  src={data.mainImage}
-                  alt="Book Info"
-                  fill
-                  className="object-cover"
-                />
+                (() => {
+                  // Handle Sanity image structure
+                  let imageUrl = null
+                  if (typeof data.mainImage === 'string') {
+                    imageUrl = data.mainImage
+                  } else if (data.mainImage.asset?.url) {
+                    imageUrl = data.mainImage.asset.url
+                  } else if (data.mainImage.asset) {
+                    try {
+                      imageUrl = urlFor(data.mainImage).width(1200).height(800).url()
+                    } catch (e) {
+                      console.error('Error processing image:', e)
+                    }
+                  }
+                  
+                  return imageUrl ? (
+                    <Image 
+                      src={imageUrl}
+                      alt={data.mainImage.alt || "Book Info"}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <>
+                      <div className="bg-gray-400 rounded-lg p-6 w-24 h-20 flex items-center justify-center">
+                        <MdImage className="text-gray-500 text-3xl" />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 opacity-20"></div>
+                    </>
+                  )
+                })()
               ) : (
                 <>
                   <div className="bg-gray-400 rounded-lg p-6 w-24 h-20 flex items-center justify-center">
@@ -90,7 +116,7 @@ const BookInfo = ({ bookInfoData }) => {
             <div className="mt-8">
               <div className="space-y-6">
                 {/* Title */}
-                <h2 className="text-xl md:text-2xl font-bold text-black">
+                <h2 className="text-xl md:text-2xl font-bold text-black mb-2">
                   {data.supportingTitle}
                 </h2>
                 
@@ -128,7 +154,7 @@ const BookInfo = ({ bookInfoData }) => {
             {/* Value Metrics Grid */}
             <div className="grid grid-cols-2 gap-4 pt-4">
               {data.metrics?.map((metric, index) => (
-                <div key={index} className="bg-gray-100 rounded-lg p-4">
+                <div key={index} className="bg-gray-100 rounded-lg p-4 text-center">
                   <h4 className="text-2xl lg:text-3xl font-bold text-black mb-1">
                     {metric.value}
                   </h4>

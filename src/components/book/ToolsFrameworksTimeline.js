@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { urlFor } from '@/lib/sanity';
 import IVRDiagram from '@/asset/tools/design products/Figure 11_Spheres of a hyperconnected product_1_11zon.webp';
 import ReachInterconnect from '@/asset/tools/design products/Figure 29_The strategic imperative of Reach Interconnects_3_11zon.webp';
 import ScienceOfAssociation from '@/asset/tools/design experience/Figure 32_The Science of Association_1_11zon.webp';
@@ -12,11 +13,191 @@ import PositioningOfferService from '@/asset/tools/multiplier effect/Figure 83_P
 import CognitiveEnterprise from '@/asset/tools/design exponential/Figure 68_Cognitive Inference the new frontier of a Cognitive Enterprise_2_11zon.webp';
 import CognitiveNetwork from '@/asset/tools/design exponential/Figure 76_Cognitive Network across Connect, Emotional and Value Network_3_11zon.webp';
 
-export default function ToolsFrameworksTimeline() {
+export default function ToolsFrameworksTimeline({ timelineData }) {
   const [activeTimeline, setActiveTimeline] = useState(1);
   const [activeSubTab, setActiveSubTab] = useState(1);
   const [isScrolled, setIsScrolled] = useState(false);
   const contentRef = useRef(null);
+
+  // Fallback data
+  const fallbackData = {
+    mainTitle: "Understand the Tools and Frameworks for",
+    mainSubtitle: "",
+    sections: [
+      {
+        stepNumber: 1,
+        stepTitle: "DESIGN PRODUCT",
+        frameworkTitle: "Design Intelligent Products",
+        descriptionParagraph1: "Future-built enterprises don't build features. They design intelligent products that sense, learn, and evolve — before customers even ask.",
+        descriptionParagraph2: "",
+        descriptionParagraph3: "",
+        highlightedText: "",
+        bulletPoints: [
+          "Point-of-Origin needs",
+          "Self-learning systems"
+        ],
+        examplesTitle: "Examples:",
+        examples: [
+          "Tesla OTA evolution",
+          "Samsung Ballie"
+        ],
+        images: [
+          { image: IVRDiagram, alt: "Spheres of a hyperconnected product - IVR Diagram", label: "IVR" },
+          { image: ReachInterconnect, alt: "The strategic imperative of Reach Interconnects", label: "REACH Interconnect" }
+        ],
+        frameworkOverviewTitle: "Framework Overview",
+        frameworkOverview: "Products today are not just built — they're designed to sense, learn, and evolve. This framework helps leaders architect products that merge physical, digital, and cognitive dimensions. It begins where the customer journey starts — at the point of origin of need. By embedding intelligence into every layer, organizations can anticipate behavior, enable self-upgrades, and deliver contextual value before demand is even expressed.",
+        keyPillars: [
+          { title: "Convergence:", description: "Integrate data, design, and device intelligence." },
+          { title: "Context:", description: "Anticipate needs in real time." },
+          { title: "Continuity:", description: "Enable self-evolving products through AI feedback loops." }
+        ]
+      },
+      {
+        stepNumber: 2,
+        stepTitle: "DESIGN EXPERIENCE",
+        frameworkTitle: "Design Adaptive Experiences",
+        descriptionParagraph1: "Future-built enterprises don't build touchpoints. They design adaptive experiences that extract emotions in the Moment of Truth — when customers make critical decisions.",
+        descriptionParagraph2: "",
+        descriptionParagraph3: "",
+        highlightedText: "Moment of Truth",
+        bulletPoints: [
+          "Intent-driven journeys",
+          "Emotional network effects"
+        ],
+        examplesTitle: "Examples:",
+        examples: [
+          "Blinkit instant delivery",
+          "Netflix personalized moments"
+        ],
+        images: [
+          { image: ScienceOfAssociation, alt: "The Science of Association - Emotional triggers and associations", label: "SCIENCE OF ASSOCIATIONS" },
+          { image: EngagementFlywheel, alt: "Engagement Flywheel - Brand equity building process", label: "ENGAGEMENT FLYWHEEL" }
+        ],
+        frameworkOverviewTitle: "Framework Overview",
+        frameworkOverview: "Experience is no longer built — it's continuously designed through intelligence. This framework redefines experience from a collection of touchpoints to a stream of adaptive interactions. It enables brands to orchestrate micro-moments that respond to user intent, emotion, and context. By converging physical, digital, and emotional data, organizations can deliver frictionless journeys that feel personal, predictive, and persistent.",
+        keyPillars: [
+          { title: "Intent Recognition:", description: "Understand what drives each interaction." },
+          { title: "Adaptive Orchestration:", description: "Use AI to tailor journeys in real time." },
+          { title: "Emotional Network:", description: "Build lasting connections through experience loops." }
+        ]
+      },
+      {
+        stepNumber: 3,
+        stepTitle: "DESIGN VALUE",
+        frameworkTitle: "Design Co-Created Value",
+        descriptionParagraph1: "Future-built enterprises don't deliver value. They design co-created value networks that extend value at the Tipping Point — where every participant multiplies collective returns.",
+        descriptionParagraph2: "",
+        descriptionParagraph3: "",
+        highlightedText: "Tipping Point",
+        bulletPoints: [
+          "Participatory ecosystems",
+          "Zero marginal cost networks"
+        ],
+        examplesTitle: "Examples:",
+        examples: [
+          "Amazon flywheel",
+          "AirAsia travel ecosystem"
+        ],
+        images: [
+          { image: ValueExchangeNetwork, alt: "Value Exchange Network", label: "VALUE EXCHANGE NETWORK" },
+          { image: ValueLineage, alt: "Value Lineage across extended value chains", label: "VALUE LINEAGE" }
+        ],
+        frameworkOverviewTitle: "Framework Overview",
+        frameworkOverview: "Value isn't delivered. It's co-created through convergence. This framework enables organizations to move from transactional relationships to participatory ecosystems — where every actor contributes data, insights, or capabilities that multiply collective value. It helps design value networks that operate at zero marginal cost and compound with every interaction.",
+        keyPillars: [
+          { title: "Network Effects:", description: "Build compounding value across ecosystem nodes." },
+          { title: "Data Exchange:", description: "Treat data as the currency of collaboration." },
+          { title: "Trust Infrastructure:", description: "Enable frictionless participation at scale." }
+        ]
+      },
+      {
+        stepNumber: 4,
+        stepTitle: "DESIGN SCALE",
+        frameworkTitle: "Design Multiplier Effects",
+        descriptionParagraph1: "Future-built enterprises don't scale linearly. They design multiplier effects that amplify network velocity — where each success compounds into exponential growth.",
+        descriptionParagraph2: "",
+        descriptionParagraph3: "",
+        highlightedText: "network velocity",
+        bulletPoints: [
+          "Self-reinforcing loops",
+          "Geometric amplification"
+        ],
+        examplesTitle: "Examples:",
+        examples: [
+          "NVIDIA platform scaling",
+          "Ecosystem leverage models"
+        ],
+        images: [
+          { image: VenNetworkEffects, alt: "Network effects of Value Exchange Network", label: "VEN NETWORK EFFECTS" },
+          { image: PositioningOfferService, alt: "Positioning, Offer and Service value driving Value lifecycle", label: "POSITIONING & SERVICE" }
+        ],
+        frameworkOverviewTitle: "Framework Overview",
+        frameworkOverview: "Scale isn't about size — it's about velocity and amplification. This framework reveals how organizations can design multiplier effects that accelerate growth geometrically, not linearly. By connecting product, platform, and ecosystem levers, leaders can create self-reinforcing loops where each success feeds the next. It's a guide to turning every input into a catalyst for compounding returns.",
+        keyPillars: [
+          { title: "Feedback Loops:", description: "Use data to continuously enhance performance." },
+          { title: "Platform Leverage:", description: "Amplify reach and efficiency." },
+          { title: "Network Density:", description: "Increase value with every new participant." }
+        ]
+      },
+      {
+        stepNumber: 5,
+        stepTitle: "DESIGN EXPONENTIALITY",
+        frameworkTitle: "Design Exponential Organizations",
+        descriptionParagraph1: "Future-built enterprises don't evolve by chance. They design exponential organizations that self-scale and self-evolve — where AI, data, and networks form the operating DNA.",
+        descriptionParagraph2: "",
+        descriptionParagraph3: "",
+        highlightedText: "self-scale and self-evolve",
+        bulletPoints: [
+          "Self-learning systems",
+          "Frictionless scaling"
+        ],
+        examplesTitle: "Examples:",
+        examples: [
+          "OpenAI cognitive architecture",
+          "Tesla digital DNA"
+        ],
+        images: [
+          { image: CognitiveEnterprise, alt: "Cognitive Enterprise", label: "COGNITIVE ENTERPRISE" },
+          { image: CognitiveNetwork, alt: "Cognitive Network across Connect, Emotional and Value Network", label: "COGNITIVE NETWORK" }
+        ],
+        frameworkOverviewTitle: "Framework Overview",
+        frameworkOverview: "Exponential organizations are designed to evolve. This final framework integrates all previous principles into the operating DNA of an organization. It helps leaders design organizations that scale without friction — where AI, data, and networks form self-learning systems. From structure to culture, it enables enterprises to move from efficiency to exponentiality.",
+        keyPillars: [
+          { title: "Autonomous Systems:", description: "Build AI-augmented operations." },
+          { title: "Network-Driven Growth:", description: "Scale through external ecosystems." },
+          { title: "Purpose Alignment:", description: "Anchor exponential growth to a unifying mission." }
+        ]
+      }
+    ]
+  };
+
+  // Merge Sanity data with fallback
+  const data = timelineData || fallbackData;
+  const mainTitle = data.mainTitle || fallbackData.mainTitle;
+  const mainSubtitle = data.mainSubtitle || fallbackData.mainSubtitle;
+  const sections = data.sections || fallbackData.sections;
+
+  // Helper function to get section by step number
+  const getSectionByStep = (stepNumber) => {
+    return sections.find(section => section.stepNumber === stepNumber) || fallbackData.sections[stepNumber - 1];
+  };
+
+  // Helper function to get image URL from Sanity or fallback
+  const getImageUrl = (imageData) => {
+    if (!imageData) return null;
+    if (typeof imageData === 'string') return imageData;
+    if (imageData.asset?.url) return imageData.asset.url;
+    if (imageData.asset) {
+      try {
+        return urlFor(imageData).width(1200).height(1200).url();
+      } catch (e) {
+        console.error('Error processing image:', e);
+        return null;
+      }
+    }
+    return imageData;
+  };
 
   // Scroll detection effect
   useEffect(() => {
@@ -34,595 +215,182 @@ export default function ToolsFrameworksTimeline() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const timelineSteps = [
-    { id: 1, title: "DESIGN PRODUCT" },
-    { id: 2, title: "DESIGN EXPERIENCE" },
-    { id: 3, title: "DESIGN VALUE" },
-    { id: 4, title: "DESIGN SCALE" },
-    { id: 5, title: "DESIGN EXPONENTIALITY" }
-  ];
+  // Build timeline steps and subTabs from data
+  const timelineSteps = sections.map(section => ({
+    id: section.stepNumber,
+    title: section.stepTitle
+  }));
 
-  // const subTabs = [
-  //   { id: 1, label: "Hyper-converged Product Design Framework" },
-  //   { id: 2, label: "Hyper-Converged Experience Design Framework" },
-  //   { id: 3, label: "Hyper-converged Value Design Framework" },
-  //   { id: 4, label: "Multiplier effects to design Scale" },
-  //   { id: 5, label: "Formation of Exponential Organizations" }
-  // ];
+  const subTabs = sections.map(section => ({
+    id: section.stepNumber,
+    label: section.stepTitle
+  }));
 
-  const subTabs = [
-    { id: 1, label: "DESIGN PRODUCT" },
-    { id: 2, label: "DESIGN EXPERIENCE" },
-    { id: 3, label: "DESIGN VALUE" },
-    { id: 4, label: "DESIGN SCALE" },
-    { id: 5, label: "DESIGN EXPONENTIALITY" }
-  ];
 
   const getContent = () => {
+    // Get section data for active tab
+    const section = getSectionByStep(activeSubTab);
+    if (!section) return null;
+
     // Show content based on activeSubTab (the actual tab selected)
-    switch (activeSubTab) {
-      case 1:
-        return (
-          <div className="min-h-[500px] lg:h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
-            <div className="flex flex-col lg:flex-row h-full items-stretch">
-              {/* Left Side - Content (30%) */}
-              <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
-                <div>
-                  <h2  className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
-                    Hyper-converged Product Design Framework
-                  </h2>
-                  <div className="mb-0">
-                    <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
-                      Design products that reach needs at the{' '}
-                      <span className="text-[#c1a35e] font-semibold">Point of Origin</span> — before your customers even articulate them.
-                    </p>
-                    <p className="text-xs md:text-sm text-gray-400 leading-relaxed mb-4">
-                      Learn how intelligent, self-learning, and context-aware products converge physical, digital, and cognitive dimensions.
-                    </p>
-                    <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-                      Think Tesla's over-the-air upgrades or Samsung's Ballie — products that evolve with users.
-                    </p>
+    return (
+      <div className="min-h-[500px] lg:h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
+        <div className="flex flex-col lg:flex-row h-full items-stretch">
+          {/* Left Side - Content (30%) */}
+          <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
+            <div>
+              {section.frameworkTitle && section.frameworkTitle.trim() !== '' && (
+                <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
+                  {section.frameworkTitle}
+                </h2>
+              )}
+              <div className="mb-0">
+                {section.descriptionParagraph1 && section.descriptionParagraph1.trim() !== '' && (
+                  <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
+                    {section.highlightedText && section.descriptionParagraph1.includes(section.highlightedText) ? (
+                      section.descriptionParagraph1.split(section.highlightedText).map((part, i, arr) => 
+                        i < arr.length - 1 ? (
+                          <span key={i}>
+                            {part}
+                            <span className="text-[#c1a35e] font-semibold">{section.highlightedText}</span>
+                          </span>
+                        ) : part
+                      )
+                    ) : (
+                      section.descriptionParagraph1
+                    )}
+                  </p>
+                )}
+                {section.descriptionParagraph2 && section.descriptionParagraph2.trim() !== '' && (
+                  <p className="text-xs md:text-sm text-gray-400 leading-relaxed mb-4">
+                    {section.descriptionParagraph2}
+                  </p>
+                )}
+                {section.descriptionParagraph3 && section.descriptionParagraph3.trim() !== '' && (
+                  <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-4">
+                    {section.descriptionParagraph3}
+                  </p>
+                )}
+                
+                {/* Bullet Points */}
+                {section.bulletPoints && section.bulletPoints.length > 0 && section.bulletPoints.some(point => point && point.trim() !== '') && (
+                  <ul className="list-none space-y-2 mb-4">
+                    {section.bulletPoints.filter(point => point && point.trim() !== '').map((point, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="text-[#c1a35e] mr-2">•</span>
+                        <span className="text-sm md:text-base text-gray-300">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                
+                {/* Examples Section */}
+                {section.examples && section.examples.length > 0 && section.examples.some(example => example && example.trim() !== '') && (
+                  <div className="mt-4">
+                    {section.examplesTitle && section.examplesTitle.trim() !== '' && (
+                      <h3 className="text-base md:text-lg font-bold text-[#c1a35e] mb-2">
+                        {section.examplesTitle}
+                      </h3>
+                    )}
+                    <ul className="list-none space-y-1">
+                      {section.examples.filter(example => example && example.trim() !== '').map((example, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="text-sm md:text-base text-gray-300">{example}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </div>
+                )}
               </div>
-              
-              {/* Right Side - Scrollable Content (70%) */}
-              <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
-                {/* Two Images Section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2">
-                  {/* First Image - IVR Diagram */}
-                  <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
-                    isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}>
-                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
-                      <Image
-                        src={IVRDiagram}
-                        alt="Spheres of a hyperconnected product - IVR Diagram"
-                        className="max-w-full max-h-full object-contain rounded-lg"
-                        width={800}
-                        height={800}
-                        priority
-                      />
-                    </div>
-                    {/* IVR Button below image */}
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
-                      IVR
-                    </div>
-                  </div>
+            </div>
+          </div>
+          
+          {/* Right Side - Scrollable Content (70%) */}
+          <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
+            {/* Two Images Section */}
+            {section.images && section.images.length > 0 && section.images.some(img => getImageUrl(img.image)) && (
+              <div className="grid grid-cols-1 sm:grid-cols-2">
+                {section.images.map((imgData, imgIndex) => {
+                  const imageUrl = getImageUrl(imgData.image);
+                  if (!imageUrl) return null;
                   
-                  {/* Second Image - REACH Interconnect */}
-                  <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
-                    isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}>
-                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
-                      <Image
-                        src={ReachInterconnect}
-                        alt="The strategic imperative of Reach Interconnects"
-                        className="max-w-full max-h-full object-contain rounded-lg"
-                        width={800}
-                        height={800}
-                        priority
-                      />
+                  return (
+                    <div 
+                      key={imgIndex}
+                      className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
+                        imgIndex === 0 ? '' : 'delay-300'
+                      } ${
+                        isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                      }`}
+                    >
+                      <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
+                        <Image
+                          src={imageUrl}
+                          alt={imgData.alt || imgData.label || 'Framework diagram'}
+                          className="max-w-full max-h-full object-contain rounded-lg"
+                          width={800}
+                          height={800}
+                          priority={imgIndex === 0}
+                        />
+                      </div>
+                      {/* Label Button below image */}
+                      {imgData.label && imgData.label.trim() !== '' && (
+                        <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
+                          {imgData.label}
+                        </div>
+                      )}
                     </div>
-                    {/* REACH Interconnect Button below image */}
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
-                      REACH Interconnect
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
+              </div>
+            )}
 
-                {/* Framework Description and Key Pillars - Scrollable Content */}
-                <div className={`bg-white p-4 sm:p-6 transition-all duration-1000 ease-out delay-500 ${
-                  isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}>
-                  <div className="max-w-4xl mx-auto">
-                    <h2  className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
-                      Framework Overview
+            {/* Framework Description and Key Pillars - Scrollable Content */}
+            {((section.frameworkOverview && section.frameworkOverview.trim() !== '') || (section.keyPillars && section.keyPillars.length > 0 && section.keyPillars.some(p => p.title || p.description))) && (
+              <div className={`bg-white p-4 sm:p-6 transition-all duration-1000 ease-out delay-500 ${
+                isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
+                <div className="max-w-4xl mx-auto">
+                  {section.frameworkOverviewTitle && section.frameworkOverviewTitle.trim() !== '' && (
+                    <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
+                      {section.frameworkOverviewTitle}
                     </h2>
+                  )}
+                  {section.frameworkOverview && section.frameworkOverview.trim() !== '' && (
                     <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
-                      Products today are not just built — they're designed to sense, learn, and evolve. This framework helps leaders architect products that merge physical, digital, and cognitive dimensions. It begins where the customer journey starts — at the point of origin of need. By embedding intelligence into every layer, organizations can anticipate behavior, enable self-upgrades, and deliver contextual value before demand is even expressed.
+                      {section.frameworkOverview}
                     </p>
-                    
-                    <h2  className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
-                      Key Pillars
-                    </h2>
-                    <div className="space-y-2 sm:space-y-3">
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Convergence:</span> Integrate data, design, and device intelligence.
-                        </p>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Context:</span> Anticipate needs in real time.
-                        </p>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Continuity:</span> Enable self-evolving products through AI feedback loops.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      
-      case 2:
-        return (
-          <div className="min-h-[500px] lg:h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
-            <div className="flex flex-col lg:flex-row h-full items-stretch">
-              {/* Left Side - Content (30%) */}
-              <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
-                <div>
-                  <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
-                    Hyper-Converged Experience Design Framework
-                  </h2>
-                  <div className="mb-0">
-                    <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
-                      Design experiences that extract emotions in the{' '}
-                      <span className="text-[#c1a35e] font-semibold">Moment of Truth</span> — when customers make critical decisions.
-                    </p>
-                    <p className="text-xs md:text-sm text-gray-400 leading-relaxed mb-4">
-                      Discover how adaptive experiences bridge real-time context, emotional network effects, and intent-driven journeys.
-                    </p>
-                    <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-                      Think Blinkit or Netflix's personalized micro-moments — experiences that adapt to user emotions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Right Side - Scrollable Content (70%) */}
-              <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
-                {/* Two Images Section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2">
-                  {/* First Image - Science of Associations */}
-                  <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
-                    isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}>
-                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
-                      <Image
-                        src={ScienceOfAssociation}
-                        alt="The Science of Association - Emotional triggers and associations"
-                        className="max-w-full max-h-full object-contain rounded-lg"
-                        width={800}
-                        height={800}
-                        priority
-                      />
-                    </div>
-                    {/* Science of Associations Button below image */}
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
-                      SCIENCE OF ASSOCIATIONS
-                    </div>
-                  </div>
+                  )}
                   
-                  {/* Second Image - Engagement Flywheel */}
-                  <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
-                    isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}>
-                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
-                      <Image
-                        src={EngagementFlywheel}
-                        alt="Engagement Flywheel - Brand equity building process"
-                        className="max-w-full max-h-full object-contain rounded-lg"
-                        width={800}
-                        height={800}
-                        priority
-                      />
-                    </div>
-                    {/* Engagement Flywheel Button below image */}
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
-                      ENGAGEMENT FLYWHEEL
-                    </div>
-                  </div>
-                </div>
-
-                {/* Framework Description and Key Pillars - Scrollable Content */}
-                <div className={`bg-white p-4 sm:p-6 transition-all duration-1000 ease-out delay-500 ${
-                  isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}>
-                  <div className="max-w-4xl mx-auto">
-                    <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
-                      Experience is no longer built — it's <em>continuously designed through intelligence</em>.
-                    </h2>
-                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
-                      This framework redefines experience from a collection of touchpoints to a stream of adaptive interactions. It enables brands to orchestrate micro-moments that respond to user intent, emotion, and context. By converging physical, digital, and emotional data, organizations can deliver frictionless journeys that feel personal, predictive, and persistent.
-                    </p>
-                    
-                    <h2 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
-                      Key Pillars
-                    </h2>
-                    <div className="space-y-2 sm:space-y-3">
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Intent Recognition:</span> Understand what drives each interaction.
-                        </p>
+                  {section.keyPillars && section.keyPillars.length > 0 && section.keyPillars.some(p => (p.title && p.title.trim() !== '') || (p.description && p.description.trim() !== '')) && (
+                    <>
+                      <h2 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
+                        Key Pillars
+                      </h2>
+                      <div className="space-y-2 sm:space-y-3">
+                        {section.keyPillars.filter(p => (p.title && p.title.trim() !== '') || (p.description && p.description.trim() !== '')).map((pillar, index) => (
+                          <div key={index} className="flex items-start">
+                            <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <p className="text-xs sm:text-sm text-gray-700">
+                              {pillar.title && pillar.title.trim() !== '' && (
+                                <span className="font-semibold text-gray-800">{pillar.title}</span>
+                              )}
+                              {pillar.description && pillar.description.trim() !== '' && (
+                                <span> {pillar.description}</span>
+                              )}
+                            </p>
+                          </div>
+                        ))}
                       </div>
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Adaptive Orchestration:</span> Use AI to tailor journeys in real time.
-                        </p>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Emotional Network:</span> Build lasting connections through experience loops.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                    </>
+                  )}
                 </div>
               </div>
-            </div>
+            )}
           </div>
-        );
-
-      case 3:
-        return (
-          <div className="min-h-[500px] lg:h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
-            <div className="flex flex-col lg:flex-row h-full items-stretch">
-              {/* Left Side - Content (30%) */}
-              <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
-                <div>
-                  <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
-                    Hyper-converged Value Design Frameworks
-                  </h2>
-                  <div className="mb-0">
-                    <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
-                      Design co-creation to extend value at the <span className="text-[#c1a35e] font-semibold">Tipping Point</span>.
-                    </p>
-                    <p className="text-xs md:text-sm text-gray-400 leading-relaxed mb-4">
-                      Build value networks that align product, platform, and ecosystem to multiply returns exponentially.
-                    </p>
-                    <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-                      Think Amazon's flywheel or AirAsia's travel lifestyle ecosystem.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Side - Scrollable Content (70%) */}
-              <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
-                {/* Two Images Section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2">
-                  {/* First Image - Value Exchange Network */}
-                  <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
-                    isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}>
-                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
-                      <Image
-                        src={ValueExchangeNetwork}
-                        alt="Value Exchange Network"
-                        className="max-w-full max-h-full object-contain rounded-lg"
-                        width={800}
-                        height={800}
-                        priority
-                      />
-                    </div>
-                    {/* Button below image */}
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
-                      VALUE EXCHANGE NETWORK
-                    </div>
-                  </div>
-
-                  {/* Second Image - Value Lineage */}
-                  <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
-                    isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}>
-                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
-                      <Image
-                        src={ValueLineage}
-                        alt="Value Lineage across extended value chains"
-                        className="max-w-full max-h-full object-contain rounded-lg"
-                        width={800}
-                        height={800}
-                        priority
-                      />
-                    </div>
-                    {/* Button below image */}
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
-                      VALUE LINEAGE
-                    </div>
-                  </div>
-                </div>
-
-                {/* Framework Description and Key Pillars - Scrollable Content */}
-                <div className={`bg-white p-4 sm:p-6 transition-all duration-1000 ease-out delay-500 ${
-                  isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}>
-                  <div className="max-w-4xl mx-auto">
-                    <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
-                      Value isn't delivered. It's <em>co-created through convergence</em>.
-                    </h2>
-                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
-                      This framework enables organizations to move from transactional relationships to participatory ecosystems — where every actor contributes data, insights, or capabilities that multiply collective value. It helps design value networks that operate at zero marginal cost and compound with every interaction.
-                    </p>
-                    
-                    <h2 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
-                      Key Pillars
-                    </h2>
-                    <div className="space-y-2 sm:space-y-3">
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Network Effects:</span> Build compounding value across ecosystem nodes.
-                        </p>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Data Exchange:</span> Treat data as the currency of collaboration.
-                        </p>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Trust Infrastructure:</span> Enable frictionless participation at scale.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-
-      case 4:
-        return (
-          <div className="min-h-[500px] lg:h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
-            <div className="flex flex-col lg:flex-row h-full items-stretch">
-              {/* Left Side - Content (30%) */}
-              <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
-                <div>
-                  <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
-                    Multiplier effects to design Scale
-                  </h2>
-                  <div className="mb-0">
-                    <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
-                      Scale is not about size — it's about <span className="text-[#c1a35e] font-semibold">network velocity</span> enabled by multiplier effects.
-                    </p>
-                    <p className="text-xs md:text-sm text-gray-400 leading-relaxed mb-4">
-                      Learn how to design multiplier effects that amplify value exchange and accelerate ecosystem compounding.
-                    </p>
-                    <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-                      Example: NVIDIA's platform scaling through ecosystem leverage.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Side - Scrollable Content (70%) */}
-              <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
-                {/* Two Images Section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2">
-                  {/* First Image - VEN Network Effects */}
-                  <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
-                    isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}>
-                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
-                      <Image
-                        src={VenNetworkEffects}
-                        alt="Network effects of Value Exchange Network"
-                        className="max-w-full max-h-full object-contain rounded-lg"
-                        width={800}
-                        height={800}
-                        priority
-                      />
-                    </div>
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
-                      VEN NETWORK EFFECTS
-                    </div>
-                  </div>
-
-                  {/* Second Image - Positioning/Offer/Service */}
-                  <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
-                    isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}>
-                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
-                      <Image
-                        src={PositioningOfferService}
-                        alt="Positioning, Offer and Service value driving Value lifecycle"
-                        className="max-w-full max-h-full object-contain rounded-lg"
-                        width={800}
-                        height={800}
-                        priority
-                      />
-                    </div>
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
-                      POSITIONING & SERVICE
-                    </div>
-                  </div>
-                </div>
-
-                {/* Framework Description and Key Pillars - Scrollable Content */}
-                <div className={`bg-white p-4 sm:p-6 transition-all duration-1000 ease-out delay-500 ${
-                  isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}>
-                  <div className="max-w-4xl mx-auto">
-                    <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
-                      Scale isn't about size — it's about <em>velocity and amplification</em>.
-                    </h2>
-                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
-                      This framework reveals how organizations can design multiplier effects that accelerate growth geometrically, not linearly. By connecting product, platform, and ecosystem levers, leaders can create self-reinforcing loops where each success feeds the next. It's a guide to turning every input into a catalyst for compounding returns.
-                    </p>
-                    
-                    <h2 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
-                      Key Pillars
-                    </h2>
-                    <div className="space-y-2 sm:space-y-3">
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Feedback Loops:</span> Use data to continuously enhance performance.
-                        </p>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Platform Leverage:</span> Amplify reach and efficiency.
-                        </p>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Network Density:</span> Increase value with every new participant.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-
-      case 5:
-        return (
-          <div className="min-h-[500px] lg:h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
-            <div className="flex flex-col lg:flex-row h-full items-stretch">
-              {/* Left Side - Content (30%) */}
-              <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
-                <div>
-                  <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
-                    Formation of Exponential Organizations
-                  </h2>
-                  <div className="mb-0">
-                    <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
-                      Exponential organizations are <span className="text-[#c1a35e] font-semibold">born from design</span>, not chance.
-                    </p>
-                    <p className="text-xs md:text-sm text-gray-400 leading-relaxed mb-4">
-                      Understand how AI, data, and network effects enable self-scaling and self-evolving enterprises.
-                    </p>
-                    <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-                      Example: OpenAI, CRED, SpaceX, and Tesla's digital DNA.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Side - Scrollable Content (70%) */}
-              <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
-                {/* Two Images Section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2">
-                  {/* First Image - Cognitive Enterprise */}
-                  <div className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
-                    isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}>
-                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
-                      <Image
-                        src={CognitiveEnterprise}
-                        alt="Cognitive Enterprise"
-                        className="max-w-full max-h-full object-contain rounded-lg"
-                        width={800}
-                        height={800}
-                        priority
-                      />
-                    </div>
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
-                      COGNITIVE ENTERPRISE
-                    </div>
-                  </div>
-
-                  {/* Second Image - Cognitive Network */}
-                  <div className={`bg-white flex flex-col transition-all duration-1000 ease-out delay-300 ${
-                    isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}>
-                    <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
-                      <Image
-                        src={CognitiveNetwork}
-                        alt="Cognitive Network across Connect, Emotional and Value Network"
-                        className="max-w-full max-h-full object-contain rounded-lg"
-                        width={800}
-                        height={800}
-                        priority
-                      />
-                    </div>
-                    <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
-                      COGNITIVE NETWORK
-                    </div>
-                  </div>
-                </div>
-
-                {/* Framework Description and Key Pillars - Scrollable Content */}
-                <div className={`bg-white p-4 sm:p-6 transition-all duration-1000 ease-out delay-500 ${
-                  isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}>
-                  <div className="max-w-4xl mx-auto">
-                    <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
-                    Exponential organizations are  <em>designed to evolve</em>
-                    </h2>
-                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
-                    This final framework integrates all previous principles into the operating DNA of an organization. It helps leaders design organizations that scale without friction — where AI, data, and networks form self-learning systems. From structure to culture, it enables enterprises to move from efficiency to exponentiality.
-                    </p>
-                    
-                    <h2 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
-                      Key Pillars
-                    </h2>
-                    <div className="space-y-2 sm:space-y-3">
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Autonomous Systems:</span> Build AI-augmented operations.
-                        </p>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Network-Driven Growth:</span> Scale through external ecosystems.
-                        </p>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <p className="text-xs sm:text-sm text-gray-700">
-                          <span className="font-semibold text-gray-800">Purpose Alignment:</span> Anchor exponential growth to a unifying mission.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-
-      default:
-        return (
-          <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 sm:p-12 lg:p-16 flex items-center justify-center min-h-[400px]">
-            <div className="text-gray-500 text-lg">
-              Content for Tab {activeSubTab}
-            </div>
-          </div>
-        );
-    }
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -630,9 +398,16 @@ export default function ToolsFrameworksTimeline() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12">
-          Understand the Tools and Frameworks for
-        </h2>
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            {mainTitle}
+          </h2>
+          {mainSubtitle && (
+            <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">
+              {mainSubtitle}
+            </p>
+          )}
+        </div>
 
         {/* Timeline Navigation */}
         <div className="mb-8 sm:mb-12">

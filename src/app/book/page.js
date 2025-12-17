@@ -5,11 +5,12 @@ import InsideBook from '@/components/book/InsideBook'
 import MeetAuthor from '@/components/book/MeetAuthor'
 import Testimonial from '@/components/book/Testimonial'
 import ToolsFrameworksTimeline from '@/components/book/ToolsFrameworksTimeline'
+import BookFaqs from '@/components/book/BookFaqs'
 import Newsletters from '@/components/Community/Newsletters'
 import Newsletter from '@/components/Community/Newsletters'
 import Footer from '@/components/Layout/Footer'
 import Navbar from '@/components/Layout/Navbar'
-import { getBookBannerData, getBookInfoData, getBookTestimonialData, getInsideBookData, getMeetAuthorData, getNewsletterSignupData } from '@/lib/sanityQueries'
+import { getBookBannerData, getBookInfoData, getBookTestimonialData, getInsideBookData, getMeetAuthorData, getBookFaqsData, getToolsFrameworksTimelineData, getNewsletterSignupData } from '@/lib/sanityQueries'
 import React from 'react'
 
 export default async function Page() {
@@ -17,15 +18,19 @@ export default async function Page() {
     bookBannerData,
     testimonialData,
     bookInfoData,
+    timelineData,
     insideBookData,
     meetAuthorData,
+    bookFaqsData,
     newsletterSignupData
   ] = await Promise.all([
     getBookBannerData(),
     getBookTestimonialData(),
     getBookInfoData(),
+    getToolsFrameworksTimelineData(),
     getInsideBookData(),
     getMeetAuthorData(),
+    getBookFaqsData(),
     getNewsletterSignupData()
   ])
   return (
@@ -35,9 +40,10 @@ export default async function Page() {
         <BookBanner bookBannerData={bookBannerData} />
         <Testimonial testimonialData={testimonialData}/>
         <BookInfo bookInfoData={bookInfoData} />
-        <ToolsFrameworksTimeline/>
+        <ToolsFrameworksTimeline timelineData={timelineData} />
         <InsideBook insideBookData={insideBookData}/>
         <MeetAuthor meetAuthorData={meetAuthorData}/>
+        <BookFaqs bookFaqsData={bookFaqsData} />
         <Newsletters newsletterSignupData={newsletterSignupData}/>
         <Footer />
       </main>

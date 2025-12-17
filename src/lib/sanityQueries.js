@@ -20,6 +20,39 @@ export async function getBannerData() {
   }
 }
 
+export async function getSlideshowData() {
+  const query = `*[_type == "slideshow"][0]{
+    slides[]{
+      image{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      alt,
+      title,
+      highlightText,
+      titleafter,
+      subtitle,
+      primaryButton{
+        text
+      },
+      secondaryButton{
+        text,
+        link
+      }
+    }
+  }`
+  
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching slideshow data:', error)
+    return null
+  }
+}
+
 export async function getExponentialEconomyData() {
   const query = `*[_type == "exponentialEconomy"][0]{
     mainQuestion,
@@ -434,7 +467,13 @@ export async function getBookInfoData() {
     supportingTitle,
     supportingDescription,
     companyLogos,
-    mainImage
+    mainImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    }
   }`
   
   try {
@@ -560,6 +599,70 @@ export async function getNewsletterSignupData() {
     return await client.fetch(query)
   } catch (error) {
     console.error('Error fetching newsletter signup data:', error)
+    return null
+  }
+}
+
+export async function getBookFaqsData() {
+  const query = `*[_type == "bookFaqs"][0]{
+    sectionBadge,
+    mainTitle,
+    highlightedTitle,
+    subtitle,
+    sectionTitle,
+    faqs[]{
+      question,
+      answer
+    }
+  }`
+  
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching book faqs data:', error)
+    return null
+  }
+}
+
+export async function getToolsFrameworksTimelineData() {
+  const query = `*[_type == "toolsFrameworksTimeline"][0]{
+    mainTitle,
+    mainSubtitle,
+    sections[]{
+      stepNumber,
+      stepTitle,
+      frameworkTitle,
+      descriptionParagraph1,
+      descriptionParagraph2,
+      descriptionParagraph3,
+      highlightedText,
+      bulletPoints,
+      examplesTitle,
+      examples,
+      images[]{
+        image{
+          asset->{
+            _id,
+            url
+          },
+          alt
+        },
+        alt,
+        label
+      },
+      frameworkOverviewTitle,
+      frameworkOverview,
+      keyPillars[]{
+        title,
+        description
+      }
+    }
+  }`
+  
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching tools frameworks timeline data:', error)
     return null
   }
 }

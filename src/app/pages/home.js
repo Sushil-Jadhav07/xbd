@@ -11,14 +11,16 @@ import Footer from '@/components/Layout/Footer'
 import Navbar from '@/components/Layout/Navbar'
 import React from 'react'
 import Banner from '../../components/Home/Banner'
+import Slideshow from '../../components/Home/Slideshow'
 import ExponentialEconomy from '../../components/Home/ExponentialEconomy'
 import ExponentialJourney from '../../components/Home/ExponentialJourney'
-import { getBannerData, getExponentialEconomyData, getExponentialJourneyData, getWhatIsExponentialData, getWhyChooseData, getWhyExponentialNowData, getResourcesSliderData, getToolsCarouselData, getQuoteCarouselData, getPricingPlanData, getNewsletterData, getImageBannerData, getBookTestimonialData } from '../../lib/sanityQueries'
+import { getBannerData, getSlideshowData, getExponentialEconomyData, getExponentialJourneyData, getWhatIsExponentialData, getWhyChooseData, getWhyExponentialNowData, getResourcesSliderData, getToolsCarouselData, getQuoteCarouselData, getPricingPlanData, getNewsletterData, getImageBannerData, getBookTestimonialData } from '../../lib/sanityQueries'
 import LinkedInFeed from '@/components/LinkedInFeed'
 import Testimonial from '@/components/book/Testimonial'
 export default async function Home() {
   const [
     bannerData,
+    slideshowData,
     exponentialData,
     exponentialJourneyData,
     whatIsExponentialData,
@@ -33,6 +35,7 @@ export default async function Home() {
     testimonialData
   ] = await Promise.all([
     getBannerData(),
+    getSlideshowData(),
     getExponentialEconomyData(),
     getExponentialJourneyData(),
     getWhatIsExponentialData(),
@@ -50,14 +53,19 @@ export default async function Home() {
   return (
     <div className='relative'>
       <Navbar />
-      <section className="relative pt-[0px]">
+      {/* <section className="relative pt-[0px]">
         <ImageBanner imageBannerData={imageBannerData}/>
-      </section>
+      </section> */}
 
       {/* Banner Section - Only one, with data */}
       {/* <section className="relative pt-[0px]">
         <Banner bannerData={bannerData} />
       </section> */}
+
+      {/* Slideshow Section */}
+      <section className="relative pt-[0px]">
+        <Slideshow slideshowData={slideshowData} />
+      </section>
 
       <section className="relative pt-[0px]">
       <Feature whatIsExponentialData={whatIsExponentialData} />

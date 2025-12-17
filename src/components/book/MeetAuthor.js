@@ -70,7 +70,7 @@ const MeetAuthor = ({ meetAuthorData }) => {
         
         {/* Main Content Container */}
         <div className="bg-gray-100 rounded-lg p-0 lg:p-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-stretch min-h-[500px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-stretch min-h-[450px]">
             
             {/* Left Side - Quote and Author Info */}
             <div className="space-y-2 p-6 lg:p-16">
