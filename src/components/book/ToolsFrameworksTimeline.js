@@ -213,20 +213,20 @@ export default function ToolsFrameworksTimeline({ timelineData }) {
     if (!section) return null;
 
     // Show content based on activeSubTab (the actual tab selected)
-    return (
-      <div className="min-h-[500px] lg:h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
-        <div className="flex flex-col lg:flex-row h-full items-stretch">
-          {/* Left Side - Content (30%) */}
-          <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
-            <div>
+      return (
+        <div className="min-h-[500px] lg:h-[500px] bg-gradient-to-br from-gray-800 to-gray-900">
+          <div className="flex flex-col lg:flex-row h-full items-stretch">
+            {/* Left Side - Content (30%) */}
+            <div className="w-full lg:w-[30%] h-auto lg:h-full p-4 lg:p-6 xl:p-8 flex flex-col justify-center border-r-0 lg:border-r border-gray-600">
+              <div>
               {section.frameworkTitle && section.frameworkTitle.trim() !== '' && (
                 <h2 className="text-lg md:text-xl font-bold text-[#c1a35e] mb-6">
                   {section.frameworkTitle}
                 </h2>
               )}
-              <div className="mb-0">
+                <div className="mb-0">
                 {section.descriptionParagraph1 && section.descriptionParagraph1.trim() !== '' && (
-                  <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
+                    <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
                     {section.highlightedText && section.descriptionParagraph1.includes(section.highlightedText) ? (
                       section.descriptionParagraph1.split(section.highlightedText).map((part, i, arr) => 
                         i < arr.length - 1 ? (
@@ -236,21 +236,21 @@ export default function ToolsFrameworksTimeline({ timelineData }) {
                           </span>
                         ) : part
                       )
-                    ) : (
+                      ) : (
                       section.descriptionParagraph1
-                    )}
-                  </p>
-                )}
+                      )}
+                    </p>
+                  )}
                 {section.descriptionParagraph2 && section.descriptionParagraph2.trim() !== '' && (
-                  <p className="text-xs md:text-sm text-gray-400 leading-relaxed mb-4">
+                    <p className="text-xs md:text-sm text-gray-400 leading-relaxed mb-4">
                     {section.descriptionParagraph2}
-                  </p>
-                )}
+                    </p>
+                  )}
                 {section.descriptionParagraph3 && section.descriptionParagraph3.trim() !== '' && (
                   <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-4">
                     {section.descriptionParagraph3}
-                  </p>
-                )}
+                    </p>
+                  )}
                 
                 {/* Bullet Points */}
                 {section.bulletPoints && section.bulletPoints.length > 0 && section.bulletPoints.some(point => point && point.trim() !== '') && (
@@ -281,84 +281,84 @@ export default function ToolsFrameworksTimeline({ timelineData }) {
                     </ul>
                   </div>
                 )}
+                </div>
               </div>
             </div>
-          </div>
-          
-          {/* Right Side - Scrollable Content (70%) */}
-          <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
+            
+            {/* Right Side - Scrollable Content (70%) */}
+            <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
             {/* Single Image Section */}
             {section.image && getImageUrl(section.image.image) && (
               <div 
                 className={`bg-white flex flex-col border-b border-gray-600 transition-all duration-1000 ease-out ${
-                  isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
               >
                 <div className="!bg-white flex-1 p-3 sm:p-4 md:p-6 flex items-center justify-center min-h-[300px] sm:min-h-[400px] md:min-h-[500px]">
-                  <Image
+                      <Image
                     src={getImageUrl(section.image.image)}
                     alt={section.image.alt || section.image.label || 'Framework diagram'}
-                    className="max-w-full max-h-full object-contain rounded-lg"
+                        className="max-w-full max-h-full object-contain rounded-lg"
                     width={1920}
                     height={1118}
-                    priority
-                  />
-                </div>
+                        priority
+                      />
+                    </div>
                 {/* Label Button below image */}
                 {section.image.label && section.image.label.trim() !== '' && (
-                  <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
+                      <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
                     {section.image.label}
                   </div>
                 )}
               </div>
             )}
 
-            {/* Framework Description and Key Pillars - Scrollable Content */}
+              {/* Framework Description and Key Pillars - Scrollable Content */}
             {((section.frameworkOverview && section.frameworkOverview.trim() !== '') || (section.keyPillars && section.keyPillars.length > 0 && section.keyPillars.some(p => p.title || p.description))) && (
-              <div className={`bg-white p-4 sm:p-6 transition-all duration-1000 ease-out delay-500 ${
-                isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}>
-                <div className="max-w-4xl mx-auto">
+                <div className={`bg-white p-4 sm:p-6 transition-all duration-1000 ease-out delay-500 ${
+                  isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}>
+                  <div className="max-w-4xl mx-auto">
                   {section.frameworkOverviewTitle && section.frameworkOverviewTitle.trim() !== '' && (
-                    <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
+                      <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                       {section.frameworkOverviewTitle}
-                    </h2>
-                  )}
-                  {section.frameworkOverview && section.frameworkOverview.trim() !== '' && (
-                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
-                      {section.frameworkOverview}
-                    </p>
-                  )}
-                  
-                  {section.keyPillars && section.keyPillars.length > 0 && section.keyPillars.some(p => (p.title && p.title.trim() !== '') || (p.description && p.description.trim() !== '')) && (
-                    <>
-                      <h2 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
-                        Key Pillars
                       </h2>
-                      <div className="space-y-2 sm:space-y-3">
+                    )}
+                  {section.frameworkOverview && section.frameworkOverview.trim() !== '' && (
+                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
+                      {section.frameworkOverview}
+                      </p>
+                    )}
+                    
+                  {section.keyPillars && section.keyPillars.length > 0 && section.keyPillars.some(p => (p.title && p.title.trim() !== '') || (p.description && p.description.trim() !== '')) && (
+                      <>
+                        <h2 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
+                          Key Pillars
+                        </h2>
+                        <div className="space-y-2 sm:space-y-3">
                         {section.keyPillars.filter(p => (p.title && p.title.trim() !== '') || (p.description && p.description.trim() !== '')).map((pillar, index) => (
-                          <div key={index} className="flex items-start">
-                            <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                            <p className="text-xs sm:text-sm text-gray-700">
+                            <div key={index} className="flex items-start">
+                              <div className="w-2 h-2 bg-[#c1a35e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                              <p className="text-xs sm:text-sm text-gray-700">
                               {pillar.title && pillar.title.trim() !== '' && (
                                 <span className="font-semibold text-gray-800">{pillar.title}</span>
                               )}
                               {pillar.description && pillar.description.trim() !== '' && (
                                 <span> {pillar.description}</span>
                               )}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    </>
-                  )}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
   };
 
   return (
@@ -369,7 +369,7 @@ export default function ToolsFrameworksTimeline({ timelineData }) {
         <div className="md:text-center text-left mb-8 md:mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             {mainTitle}
-          </h2>
+        </h2>
           {mainSubtitle && (
             <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">
               {mainSubtitle}

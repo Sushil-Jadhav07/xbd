@@ -1,13 +1,15 @@
 'use client'
 import React, { useState } from 'react'
-import { MdPlayArrow, MdAccessTime, MdLanguage, MdEvent, MdChevronLeft, MdChevronRight, MdClose } from 'react-icons/md'
+import { MdPlayArrow, MdAccessTime, MdLanguage, MdEvent, MdChevronLeft, MdChevronRight, MdClose, MdCalendarToday } from 'react-icons/md'
 import Image from 'next/image'
+import { urlFor } from '@/lib/sanity'
 // import BgImage from "../../asset/pattern-10.png"
 
 const Keynotes = ({ keynotesData }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showVideoModal, setShowVideoModal] = useState(false)
   const [currentVideoUrl, setCurrentVideoUrl] = useState('')
+  const [imageErrors, setImageErrors] = useState({})
 
   // Fallback data
   const fallbackData = {
@@ -17,7 +19,8 @@ const Keynotes = ({ keynotesData }) => {
         title: "Digital by Design Travel Ecosystem",
         subtitle: "CAPA Aviation Summit, 2024",
         description: "Applied a pilot canvas and sequencing plan across customer lifecycle.",
-        duration: "60 hours",
+        date: "2025-07-19",
+        duration: "45:30",
         availability: "On Request",
         mode: "Hybrid Mode",
         trustText: "Trusted by leaders",
@@ -27,7 +30,8 @@ const Keynotes = ({ keynotesData }) => {
         title: "Importance of Design for Airports",
         subtitle: "Airport Modernization Summit, 2024",
         description: "Applied a pilot canvas and sequencing plan across customer lifecycle.",
-        duration: "60 hours",
+        date: "2025-07-20",
+        duration: "1:15:20",
         availability: "On Request",
         mode: "Onsite Mode",
         trustText: "Trusted by leaders",
@@ -37,7 +41,8 @@ const Keynotes = ({ keynotesData }) => {
         title: "Future of Aviation Design",
         subtitle: "Global Aviation Summit, 2024",
         description: "Applied a pilot canvas and sequencing plan across customer lifecycle.",
-        duration: "60 hours",
+        date: "2025-07-19",
+        duration: "38:45",
         availability: "On Request",
         mode: "Onsite Mode",
         trustText: "Trusted by leaders",
@@ -47,7 +52,8 @@ const Keynotes = ({ keynotesData }) => {
         title: "Sustainable Aviation Practices",
         subtitle: "Green Aviation Forum, 2024",
         description: "Applied a pilot canvas and sequencing plan across customer lifecycle.",
-        duration: "60 hours",
+        date: "2025-07-19",
+        duration: "52:10",
         availability: "On Request",
         mode: "Hybrid Mode",
         trustText: "Trusted by leaders",
@@ -99,17 +105,27 @@ const Keynotes = ({ keynotesData }) => {
     setCurrentIndex(index)
   }
 
-  const openVideoModal = (videoUrl) => {
-    // Convert YouTube URL to embed format
-    let embedUrl = videoUrl
-    
-    if (videoUrl.includes('youtube.com/watch?v=')) {
-      const videoId = videoUrl.split('v=')[1].split('&')[0]
-      embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`
-    } else if (videoUrl.includes('youtu.be/')) {
-      const videoId = videoUrl.split('youtu.be/')[1].split('?')[0]
-      embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`
+  const getVideoId = (url) => {
+    try {
+      if (url.includes('youtu.be/')) {
+        return url.split('youtu.be/')[1].split('?')[0]
+      }
+      if (url.includes('youtube.com/watch?v=')) {
+        const urlParams = new URLSearchParams(new URL(url).search)
+        return urlParams.get('v')
+      }
+      if (url.includes('youtube.com/embed/')) {
+        return url.split('embed/')[1].split('?')[0]
+      }
+      return null
+    } catch (error) {
+      return null
     }
+  }
+
+  const openVideoModal = (videoUrl) => {
+    const videoId = getVideoId(videoUrl)
+    const embedUrl = videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1` : videoUrl
     
     setCurrentVideoUrl(embedUrl)
     setShowVideoModal(true)
@@ -134,6 +150,16 @@ const Keynotes = ({ keynotesData }) => {
   const closeVideoModal = () => {
     setShowVideoModal(false)
     setCurrentVideoUrl('')
+  }
+
+  const formatDate = (dateString) => {
+    if (!dateString) return ''
+    const date = new Date(dateString)
+    return date.toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    })
   }
 
   return (
@@ -181,28 +207,47 @@ const Keynotes = ({ keynotesData }) => {
                           className="relative w-full rounded-lg overflow-hidden cursor-pointer group"
                           onClick={() => openVideoModal(keynote.videoUrl)}
                         >
-                          {/* YouTube Thumbnail */}
-                          <div className="w-full aspect-video bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center relative">
-                            {/* YouTube Thumbnail Image */}
+                          {/* Thumbnail */}
+                          <div className="w-full aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center relative">
+                            {/* Custom Thumbnail or YouTube Thumbnail */}
                             {(() => {
-                              let thumbnailUrl = ''
-                              if (keynote.videoUrl.includes('youtube.com/watch?v=')) {
-                                const videoId = keynote.videoUrl.split('v=')[1].split('&')[0]
-                                thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
-                              } else if (keynote.videoUrl.includes('youtu.be/')) {
-                                const videoId = keynote.videoUrl.split('youtu.be/')[1].split('?')[0]
-                                thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+                              // Check if custom thumbnail exists
+                              if (keynote.thumbnail && keynote.thumbnail.asset) {
+                                return (
+                                  <Image
+                                    src={urlFor(keynote.thumbnail).width(1920).height(1080).url()}
+                                    alt={keynote.thumbnail.alt || keynote.title}
+                                    fill
+                                    className="object-cover"
+                                  />
+                                )
                               }
-                              return thumbnailUrl ? (
-                                <img
+                              
+                              // Fallback to YouTube thumbnail
+                              const videoId = getVideoId(keynote.videoUrl)
+                              if (!videoId) return null
+                              
+                              // Use fallback if maxresdefault failed
+                              const useFallback = imageErrors[`${index}-maxres`]
+                              const thumbnailUrl = useFallback 
+                                ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+                                : `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+                              
+                              return (
+                                <Image
+                                  key={`${index}-${useFallback ? 'fallback' : 'primary'}`}
                                   src={thumbnailUrl}
                                   alt={keynote.title}
-                                  className="w-full h-full object-cover"
-                                  onError={(e) => {
-                                    e.target.style.display = 'none'
+                                  fill
+                                  className="object-cover"
+                                  unoptimized
+                                  onError={() => {
+                                    if (!useFallback) {
+                                      setImageErrors(prev => ({ ...prev, [`${index}-maxres`]: true }))
+                                    }
                                   }}
                                 />
-                              ) : null
+                              )
                             })()}
                             
                             {/* Play Button Overlay */}
@@ -232,14 +277,54 @@ const Keynotes = ({ keynotesData }) => {
                       {keynote.subtitle}
                     </h4>
                     
+                    {/* Date and Duration */}
+                    {(keynote.date || keynote.duration) && (
+                      <div className="flex flex-wrap justify-center gap-3 md:gap-4 pt-3 border-t border-gray-200 mb-4 md:mb-6">
+                        {/* Date */}
+                        {keynote.date && (
+                          <div className="flex items-center gap-2 text-gray-600">
+                            <div className="bg-gradient-to-br from-[#9d7035] to-[#c1a35e] p-2 rounded-lg">
+                              <MdCalendarToday className="text-white text-base md:text-lg" />
+                            </div>
+                            <div className="text-left">
+                              <p className="text-xs text-gray-500 font-medium">Date</p>
+                              <p className="text-sm md:text-base font-semibold text-gray-900">
+                                {formatDate(keynote.date)}
+                              </p>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Duration */}
+                        {keynote.duration && (
+                          <div className="flex items-center gap-2 text-gray-600">
+                            <div className="bg-gradient-to-br from-[#9d7035] to-[#c1a35e] p-2 rounded-lg">
+                              <MdAccessTime className="text-white text-base md:text-lg" />
+                            </div>
+                            <div className="text-left">
+                              <p className="text-xs text-gray-500 font-medium">Duration</p>
+                              <p className="text-sm md:text-base font-semibold text-gray-900">
+                                {keynote.duration}
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Watch Button */}
+                    {keynote.videoUrl && (
+                      <button
+                        onClick={() => openVideoModal(keynote.videoUrl)}
+                        className="w-full bg-gradient-to-br from-[#9d7035] to-[#c1a35e] text-white py-3 md:py-4 rounded-lg font-semibold hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 mt-4"
+                      >
+                        <MdPlayArrow className="text-xl md:text-2xl" />
+                        <span className="text-sm md:text-base">Watch Now</span>
+                      </button>
+                    )}
+                    
                     {/* Tags/Buttons */}
                     <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-4 md:mb-6">
-                      {keynote.duration && (
-                        <div className="bg-gray-200 text-black text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full flex items-center gap-1.5 md:gap-2">
-                          <MdAccessTime className="text-gray-600 text-sm md:text-base" />
-                          <h4 className="font-medium">{keynote.duration}</h4>
-                        </div>
-                      )}
                       {keynote.availability && (
                         <div className="bg-gray-200 text-black text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full flex items-center gap-1.5 md:gap-2">
                           <MdLanguage className="text-gray-600 text-sm md:text-base" />
@@ -260,9 +345,9 @@ const Keynotes = ({ keynotesData }) => {
                     </p>
                     
                     {/* Footer */}
-                    <p className="text-xs md:text-sm text-gray-700 text-center">
+                    {/* <p className="text-xs md:text-sm text-gray-700 text-center">
                       {keynote.trustText || "Trusted by leaders"}
-                    </p>
+                    </p> */}
                     
                   </div>
                 </div>

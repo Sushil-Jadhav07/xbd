@@ -717,7 +717,24 @@ export async function getAboutTitleData() {
 export async function getKeynotesData() {
   const query = `*[_type == "keynotes"][0]{
     title,
-    keynotesList
+    keynotesList[]{
+      title,
+      subtitle,
+      description,
+      date,
+      duration,
+      availability,
+      mode,
+      videoUrl,
+      thumbnail{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      trustText
+    }
   }`
   
   try {
