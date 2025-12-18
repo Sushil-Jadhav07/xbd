@@ -3,15 +3,10 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { urlFor } from '@/lib/sanity';
 import IVRDiagram from '@/asset/tools/design products/Figure 11_Spheres of a hyperconnected product_1_11zon.webp';
-import ReachInterconnect from '@/asset/tools/design products/Figure 29_The strategic imperative of Reach Interconnects_3_11zon.webp';
 import ScienceOfAssociation from '@/asset/tools/design experience/Figure 32_The Science of Association_1_11zon.webp';
-import EngagementFlywheel from '@/asset/tools/design experience/Figure 39_Engagement flywheel (1)_3_11zon.webp';
 import ValueExchangeNetwork from '@/asset/tools/design value/Figure 55_Value Exchange Network_1_11zon.webp';
-import ValueLineage from '@/asset/tools/design value/Figure 61_Value lineage across extended value chains_2_11zon.webp';
 import VenNetworkEffects from '@/asset/tools/multiplier effect/Figure 57_Network effects of VEN (Value Exchange Network)_2_11zon.webp';
-import PositioningOfferService from '@/asset/tools/multiplier effect/Figure 83_Positioning, Offer and Service value driving Value lifecycle_3_11zon.webp';
 import CognitiveEnterprise from '@/asset/tools/design exponential/Figure 68_Cognitive Inference the new frontier of a Cognitive Enterprise_2_11zon.webp';
-import CognitiveNetwork from '@/asset/tools/design exponential/Figure 76_Cognitive Network across Connect, Emotional and Value Network_3_11zon.webp';
 
 export default function ToolsFrameworksTimeline({ timelineData }) {
   const [activeTimeline, setActiveTimeline] = useState(1);
@@ -41,10 +36,7 @@ export default function ToolsFrameworksTimeline({ timelineData }) {
           "Tesla OTA evolution",
           "Samsung Ballie"
         ],
-        images: [
-          { image: IVRDiagram, alt: "Spheres of a hyperconnected product - IVR Diagram", label: "IVR" },
-          { image: ReachInterconnect, alt: "The strategic imperative of Reach Interconnects", label: "REACH Interconnect" }
-        ],
+        image: { image: IVRDiagram, alt: "Spheres of a hyperconnected product - IVR Diagram", label: "IVR" },
         frameworkOverviewTitle: "Framework Overview",
         frameworkOverview: "Products today are not just built — they're designed to sense, learn, and evolve. This framework helps leaders architect products that merge physical, digital, and cognitive dimensions. It begins where the customer journey starts — at the point of origin of need. By embedding intelligence into every layer, organizations can anticipate behavior, enable self-upgrades, and deliver contextual value before demand is even expressed.",
         keyPillars: [
@@ -70,10 +62,7 @@ export default function ToolsFrameworksTimeline({ timelineData }) {
           "Blinkit instant delivery",
           "Netflix personalized moments"
         ],
-        images: [
-          { image: ScienceOfAssociation, alt: "The Science of Association - Emotional triggers and associations", label: "SCIENCE OF ASSOCIATIONS" },
-          { image: EngagementFlywheel, alt: "Engagement Flywheel - Brand equity building process", label: "ENGAGEMENT FLYWHEEL" }
-        ],
+        image: { image: ScienceOfAssociation, alt: "The Science of Association - Emotional triggers and associations", label: "SCIENCE OF ASSOCIATIONS" },
         frameworkOverviewTitle: "Framework Overview",
         frameworkOverview: "Experience is no longer built — it's continuously designed through intelligence. This framework redefines experience from a collection of touchpoints to a stream of adaptive interactions. It enables brands to orchestrate micro-moments that respond to user intent, emotion, and context. By converging physical, digital, and emotional data, organizations can deliver frictionless journeys that feel personal, predictive, and persistent.",
         keyPillars: [
@@ -99,10 +88,7 @@ export default function ToolsFrameworksTimeline({ timelineData }) {
           "Amazon flywheel",
           "AirAsia travel ecosystem"
         ],
-        images: [
-          { image: ValueExchangeNetwork, alt: "Value Exchange Network", label: "VALUE EXCHANGE NETWORK" },
-          { image: ValueLineage, alt: "Value Lineage across extended value chains", label: "VALUE LINEAGE" }
-        ],
+        image: { image: ValueExchangeNetwork, alt: "Value Exchange Network", label: "VALUE EXCHANGE NETWORK" },
         frameworkOverviewTitle: "Framework Overview",
         frameworkOverview: "Value isn't delivered. It's co-created through convergence. This framework enables organizations to move from transactional relationships to participatory ecosystems — where every actor contributes data, insights, or capabilities that multiply collective value. It helps design value networks that operate at zero marginal cost and compound with every interaction.",
         keyPillars: [
@@ -128,10 +114,7 @@ export default function ToolsFrameworksTimeline({ timelineData }) {
           "NVIDIA platform scaling",
           "Ecosystem leverage models"
         ],
-        images: [
-          { image: VenNetworkEffects, alt: "Network effects of Value Exchange Network", label: "VEN NETWORK EFFECTS" },
-          { image: PositioningOfferService, alt: "Positioning, Offer and Service value driving Value lifecycle", label: "POSITIONING & SERVICE" }
-        ],
+        image: { image: VenNetworkEffects, alt: "Network effects of Value Exchange Network", label: "VEN NETWORK EFFECTS" },
         frameworkOverviewTitle: "Framework Overview",
         frameworkOverview: "Scale isn't about size — it's about velocity and amplification. This framework reveals how organizations can design multiplier effects that accelerate growth geometrically, not linearly. By connecting product, platform, and ecosystem levers, leaders can create self-reinforcing loops where each success feeds the next. It's a guide to turning every input into a catalyst for compounding returns.",
         keyPillars: [
@@ -157,10 +140,7 @@ export default function ToolsFrameworksTimeline({ timelineData }) {
           "OpenAI cognitive architecture",
           "Tesla digital DNA"
         ],
-        images: [
-          { image: CognitiveEnterprise, alt: "Cognitive Enterprise", label: "COGNITIVE ENTERPRISE" },
-          { image: CognitiveNetwork, alt: "Cognitive Network across Connect, Emotional and Value Network", label: "COGNITIVE NETWORK" }
-        ],
+        image: { image: CognitiveEnterprise, alt: "Cognitive Enterprise", label: "COGNITIVE ENTERPRISE" },
         frameworkOverviewTitle: "Framework Overview",
         frameworkOverview: "Exponential organizations are designed to evolve. This final framework integrates all previous principles into the operating DNA of an organization. It helps leaders design organizations that scale without friction — where AI, data, and networks form self-learning systems. From structure to culture, it enables enterprises to move from efficiency to exponentiality.",
         keyPillars: [
@@ -307,41 +287,29 @@ export default function ToolsFrameworksTimeline({ timelineData }) {
           
           {/* Right Side - Scrollable Content (70%) */}
           <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
-            {/* Two Images Section */}
-            {section.images && section.images.length > 0 && section.images.some(img => getImageUrl(img.image)) && (
-              <div className="grid grid-cols-1 sm:grid-cols-2">
-                {section.images.map((imgData, imgIndex) => {
-                  const imageUrl = getImageUrl(imgData.image);
-                  if (!imageUrl) return null;
-                  
-                  return (
-                    <div 
-                      key={imgIndex}
-                      className={`bg-white flex flex-col border-r sm:border-r border-b sm:border-b-0 border-gray-600 transition-all duration-1000 ease-out ${
-                        imgIndex === 0 ? '' : 'delay-300'
-                      } ${
-                        isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                      }`}
-                    >
-                      <div className="!bg-white flex-1 p-3 sm:p-4 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
-                        <Image
-                          src={imageUrl}
-                          alt={imgData.alt || imgData.label || 'Framework diagram'}
-                          className="max-w-full max-h-full object-contain rounded-lg"
-                          width={800}
-                          height={800}
-                          priority={imgIndex === 0}
-                        />
-                      </div>
-                      {/* Label Button below image */}
-                      {imgData.label && imgData.label.trim() !== '' && (
-                        <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
-                          {imgData.label}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+            {/* Single Image Section */}
+            {section.image && getImageUrl(section.image.image) && (
+              <div 
+                className={`bg-white flex flex-col border-b border-gray-600 transition-all duration-1000 ease-out ${
+                  isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+              >
+                <div className="!bg-white flex-1 p-3 sm:p-4 md:p-6 flex items-center justify-center min-h-[300px] sm:min-h-[400px] md:min-h-[500px]">
+                  <Image
+                    src={getImageUrl(section.image.image)}
+                    alt={section.image.alt || section.image.label || 'Framework diagram'}
+                    className="max-w-full max-h-full object-contain rounded-lg"
+                    width={1920}
+                    height={1118}
+                    priority
+                  />
+                </div>
+                {/* Label Button below image */}
+                {section.image.label && section.image.label.trim() !== '' && (
+                  <div className="bg-[#c1a35e] text-black font-bold text-center py-2 sm:py-3 text-xs sm:text-sm">
+                    {section.image.label}
+                  </div>
+                )}
               </div>
             )}
 

@@ -3,6 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { urlFor } from '@/lib/sanity'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -98,6 +99,33 @@ const Testimonial = ({ testimonialData }) => {
           width: 24px;
           border-radius: 5px;
         }
+        .swiper-testimonial {
+          height: auto;
+        }
+        .swiper-testimonial .swiper-wrapper {
+          display: flex;
+          align-items: stretch;
+        }
+        .swiper-testimonial .swiper-slide {
+          height: auto;
+          display: flex;
+        }
+        .swiper-testimonial .swiper-slide > div {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          min-height: 350px;
+        }
+        @media (min-width: 768px) {
+          .swiper-testimonial .swiper-slide > div {
+            min-height: 380px;
+          }
+        }
+        @media (min-width: 1024px) {
+          .swiper-testimonial .swiper-slide > div {
+            min-height: 400px;
+          }
+        }
       `}} />
       <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-12 relative overflow-hidden">
       {/* Background Pattern */}
@@ -185,45 +213,45 @@ const Testimonial = ({ testimonialData }) => {
                 spaceBetween: 24,
               },
             }}
-            className="pb-4"
+            className="pb-4 swiper-testimonial"
           >
             {testimonials.map((testimonial, index) => (
               <SwiperSlide key={index}>
-                <div className="bg-gray-100 rounded-lg p-6 shadow-sm h-full">
+                <div className="bg-gray-100 rounded-lg p-6 shadow-sm h-full flex flex-col">
                   
                   {/* Star Rating */}
-                  <div className="flex gap-1 mb-4">
+                  <div className="flex gap-1 mb-4 flex-shrink-0">
                     {[...Array(testimonial.rating)].map((_, starIndex) => (
                       <span key={starIndex} className="text-black text-lg">★</span>
                     ))}
                   </div>
                   
-                  {/* Quote */}
-                  <p className="text-black mb-6 leading-relaxed">
+                  {/* Quote - Flexible section */}
+                  <p className="text-black mb-6 leading-relaxed flex-1 overflow-hidden">
                     "{testimonial.quote}"
                   </p>
                   
-                  {/* Author Information */}
-                  <div className="flex items-center gap-3">
-                    {testimonial.authorImage ? (
-                      <div className="w-10 h-10 relative rounded-full overflow-hidden">
+                  {/* Author Information - Fixed at bottom */}
+                  <div className="flex items-center gap-3 mt-auto flex-shrink-0">
+                    {testimonial.authorImage && testimonial.authorImage.asset ? (
+                      <div className="w-10 h-10 relative rounded-full overflow-hidden flex-shrink-0">
                         <Image 
-                          src={testimonial.authorImage}
-                          alt={testimonial.author}
+                          src={urlFor(testimonial.authorImage).width(100).height(100).url()}
+                          alt={testimonial.authorImage.alt || testimonial.author}
                           fill
                           className="object-cover"
                         />
                       </div>
                     ) : (
-                      <div className="w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center flex-shrink-0">
                         <h4 className="text-white text-sm font-bold">
                           {getInitials(testimonial.author)}
                         </h4>
                       </div>
                     )}
-                    <div>
-                      <h4 className="text-black font-bold text-sm">{testimonial.author}</h4>
-                      <h2 className="text-gray-600 text-xs">{testimonial.title}</h2>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-black font-bold text-sm break-words">{testimonial.author}</h4>
+                      <h2 className="text-gray-600 text-xs break-words leading-relaxed">{testimonial.title}</h2>
                     </div>
                   </div>
                 </div>

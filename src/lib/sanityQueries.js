@@ -442,7 +442,19 @@ export async function getBookTestimonialData() {
     title,
     subtitle,
     logos,
-    testimonials
+    testimonials[]{
+      quote,
+      author,
+      title,
+      rating,
+      authorImage{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    }
   }`
   
   try {
@@ -639,7 +651,7 @@ export async function getToolsFrameworksTimelineData() {
       bulletPoints,
       examplesTitle,
       examples,
-      images[]{
+      image{
         image{
           asset->{
             _id,

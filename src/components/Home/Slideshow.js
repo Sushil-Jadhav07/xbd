@@ -192,7 +192,7 @@ const Slideshow = ({ slideshowData }) => {
           animation: fadeInUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.5s both;
         }
       `}</style>
-      <section className="!bg-black md:mx-[15px] mx-[5px] py-8 md:py-12 relative md:h-[45rem] h-[50rem] overflow-hidden">
+      <section className="!bg-black md:mx-[15px] mx-[5px] py-8 md:py-12 relative md:h-[46rem] h-[50rem] overflow-hidden">
         <div className="max-w-8xl mx-auto py-6 md:py-12 px-6 lg:px-8 relative">
           {/* Slideshow Container */}
           <div className="relative">
