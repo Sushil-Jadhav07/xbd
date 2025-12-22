@@ -86,7 +86,7 @@ export default async function Home() {
       
 
       {/* ExponentialEconomy Section - with data */}
-      <section className="relative pt-[0px]">
+      <section id="exponential-economy" className="relative pt-[0px]">
         <ExponentialEconomy exponentialData={exponentialData} />
       </section>
 

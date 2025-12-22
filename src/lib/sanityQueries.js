@@ -36,7 +36,8 @@ export async function getSlideshowData() {
       titleafter,
       subtitle,
       primaryButton{
-        text
+        text,
+        link
       },
       secondaryButton{
         text,

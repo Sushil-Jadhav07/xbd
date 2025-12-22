@@ -26,8 +26,8 @@ const Slideshow = ({ slideshowData }) => {
       highlightText: "With Exponential Growth",
       titleafter: "Strategies",
       subtitle: "Discover how leading enterprises achieve 15X growth through intelligent design and strategic frameworks.",
-      primaryButton: { text: "Get Started" },
-      secondaryButton: { text: "Learn More", link: "/about" }
+      primaryButton: { text: "Assess your Readiness", link: "https://assessment-xbd.replit.app/" },
+      secondaryButton: { text: "Learn More", link: "/" }
     },
     {
       id: 2,
@@ -95,6 +95,7 @@ const Slideshow = ({ slideshowData }) => {
   const slides = slideshowData?.slides && slideshowData.slides.length > 0
     ? slideshowData.slides.map((slide, index) => ({
         id: index + 1,
+        index: index,
         image: getImageUrl(slide.image),
         alt: slide.alt || `Slide ${index + 1}`,
         title: slide.title || '',
@@ -104,7 +105,10 @@ const Slideshow = ({ slideshowData }) => {
         primaryButton: slide.primaryButton || { text: 'Get Started' },
         secondaryButton: slide.secondaryButton || { text: 'Learn More', link: '#' }
       }))
-    : fallbackSlides;
+    : fallbackSlides.map((slide, index) => ({
+        ...slide,
+        index: index
+      }));
 
   // Auto-play functionality
   useEffect(() => {
@@ -245,23 +249,70 @@ const Slideshow = ({ slideshowData }) => {
                   className="slide-buttons-enter flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 pt-2 md:pt-4"
                 >
                   {currentSlideData.primaryButton && (
-                    <button
-                      type="button"
-                      onClick={() => setIsModalOpen(true)}
-                      className="bg-black text-white px-4 sm:px-5 lg:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:cursor-pointer hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap w-full sm:w-auto"
-                    >
-                      {currentSlideData.primaryButton.text}
-                    </button>
+                    // Priority 1: If link exists (from Sanity or fallback), always use it
+                    currentSlideData.primaryButton.link ? (
+                      currentSlideData.primaryButton.link.startsWith('http://') || currentSlideData.primaryButton.link.startsWith('https://') ? (
+                        <a
+                          href={currentSlideData.primaryButton.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-black text-white px-4 sm:px-5 lg:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:cursor-pointer hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap w-full sm:w-auto inline-block text-center"
+                        >
+                          {currentSlideData.primaryButton.text}
+                        </a>
+                      ) : (
+                        <Link
+                          href={currentSlideData.primaryButton.link}
+                          className="bg-black text-white px-4 sm:px-5 lg:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:cursor-pointer hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap w-full sm:w-auto inline-block text-center"
+                        >
+                          {currentSlideData.primaryButton.text}
+                        </Link>
+                      )
+                    ) : (currentSlideData.id === 2 || currentSlideData.index === 1) ? (
+                      // Priority 2: Slide id:2 without link - Scroll to ExponentialEconomy section
+                      <button
+                        id="explore-framework-btn"
+                        type="button"
+                        onClick={() => {
+                          const element = document.getElementById('exponential-economy');
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
+                        className="bg-black text-white px-4 sm:px-5 lg:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:cursor-pointer hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap w-full sm:w-auto"
+                      >
+                        {currentSlideData.primaryButton.text}
+                      </button>
+                    ) : (currentSlideData.id === 1 || currentSlideData.index === 0) ? (
+                      // Priority 3: Slide id:1 without link - Use fallback link
+                      <a
+                        href="https://assessment-xbd.replit.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-black text-white px-4 sm:px-5 lg:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:cursor-pointer hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap w-full sm:w-auto inline-block text-center"
+                      >
+                        {currentSlideData.primaryButton.text}
+                      </a>
+                    ) : (
+                      // Priority 4: Other slides without link - Open modal
+                      <button
+                        type="button"
+                        onClick={() => setIsModalOpen(true)}
+                        className="bg-black text-white px-4 sm:px-5 lg:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:cursor-pointer hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap w-full sm:w-auto"
+                      >
+                        {currentSlideData.primaryButton.text}
+                      </button>
+                    )
                   )}
                   
-                  {currentSlideData.secondaryButton && (
+                  {/* {currentSlideData.secondaryButton && (
                     <Link
                       href={currentSlideData.secondaryButton.link || '#'}
                       className="text-white font-semibold text-sm sm:text-base hover:text-[#c1a35e] transition-colors duration-200 underline decoration-2 underline-offset-4 text-center sm:text-left w-full sm:w-auto"
                     >
                       {currentSlideData.secondaryButton.text}
                     </Link>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>

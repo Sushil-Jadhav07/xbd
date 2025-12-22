@@ -31,12 +31,12 @@ const Feature = ({ whatIsExponentialData }) => {
       hasButton: false,
       iconType: "eye",
     },
-    {
-      title: "Network Power",
-      description: "Unite converged systems so every move amplifies your reach and accelerates market dominance.",
-      hasButton: false,
-      iconType: "link",
-    },
+    // {
+    //   title: "Network Power",
+    //   description: "Unite converged systems so every move amplifies your reach and accelerates market dominance.",
+    //   hasButton: false,
+    //   iconType: "link",
+    // },
   ];
 
   const getIcon = (iconType) => {
@@ -52,11 +52,27 @@ const Feature = ({ whatIsExponentialData }) => {
     }
   };
 
-  // Function to get YouTube embed URL
-  const getYouTubeEmbedUrl = (url) => {
+  // Function to extract YouTube video ID
+  const getYouTubeVideoId = (url) => {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
-    return match && match[2].length === 11 ? `https://www.youtube.com/embed/${match[2]}?autoplay=1&mute=1&loop=1&playlist=${match[2]}` : url;
+    return match && match[2].length === 11 ? match[2] : null;
+  };
+
+  // Function to get YouTube thumbnail URL
+  const getYouTubeThumbnailUrl = (url) => {
+    const videoId = getYouTubeVideoId(url);
+    if (videoId) {
+      // Try maxresdefault first (highest quality), fallback to hqdefault
+      return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    }
+    return null;
+  };
+
+  // Function to get YouTube embed URL
+  const getYouTubeEmbedUrl = (url) => {
+    const videoId = getYouTubeVideoId(url);
+    return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}` : url;
   };
 
   // Function to get Vimeo embed URL
@@ -78,7 +94,13 @@ const Feature = ({ whatIsExponentialData }) => {
 
   // Check if video is an uploaded file or external URL
   const isUploadedVideo = (feature) => feature.uploadedVideo && feature.uploadedVideo.asset && feature.uploadedVideo.asset._id;
-  const isExternalVideo = (feature) => feature.videoUrl && !isUploadedVideo(feature);
+  const isExternalVideo = (feature) => {
+    // Check if it's a video media type and has videoUrl
+    if (feature.mediaType === 'video' && feature.videoUrl) {
+      return !isUploadedVideo(feature);
+    }
+    return false;
+  };
 
   const renderIconOrImage = (feature, index) => {
     // Handle video media type
@@ -116,6 +138,24 @@ const Feature = ({ whatIsExponentialData }) => {
       }
       // Handle external video URLs (YouTube/Vimeo)
       else if (isExternalVideo(feature)) {
+        // For YouTube/Vimeo videos, show the embedded player directly
+        if (feature.videoUrl && (feature.videoUrl.includes('youtube.com') || feature.videoUrl.includes('youtu.be') || feature.videoUrl.includes('vimeo.com'))) {
+          return (
+            <div className="relative w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-2xl overflow-hidden shadow-xl">
+              <iframe
+                src={getEmbedUrl(feature.videoUrl)}
+                title="Video Player"
+                className="w-full h-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#9d7035]/10 to-[#c1a35e]/10 pointer-events-none"></div>
+            </div>
+          );
+        }
+        
+        // For other video URLs or uploaded videos, use the thumbnail with play button
         const videoKey = `video-${index}`;
         const isPlaying = isVideoPlaying[videoKey];
         
@@ -266,11 +306,11 @@ const Feature = ({ whatIsExponentialData }) => {
                 spaceBetween: 20,
               },
               768: {
-                slidesPerView: 2.2,
+                slidesPerView: 2,
                 spaceBetween: 30,
               },
               1024: {
-                slidesPerView: 2.5,
+                slidesPerView: 2,
                 spaceBetween: 40,
               },
              }}
