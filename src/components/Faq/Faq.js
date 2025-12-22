@@ -47,7 +47,6 @@ const fallbackData = {
 export default function FAQs() {
   const [openIndex, setOpenIndex] = useState(null);
   const [faqData, setFaqData] = useState(fallbackData);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -59,23 +58,10 @@ export default function FAQs() {
         }
       } catch (error) {
         console.error('Error loading FAQ data from Sanity, using fallback data:', error);
-      } finally {
-        setLoading(false);
       }
     }
     fetchData();
   }, []);
-
-  if (loading) {
-    return (
-      <section className="relative min-h-screen bg-white py-12 lg:py-24 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
-        <div className="text-center">
-          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[#c1a35e] border-r-transparent"></div>
-          <p className="mt-4 text-gray-600">Loading FAQs...</p>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className="relative min-h-screen bg-white py-12 lg:py-24 px-4 sm:px-6 lg:px-8">
