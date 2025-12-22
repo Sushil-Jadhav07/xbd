@@ -113,15 +113,15 @@ const BookInfo = ({ bookInfoData }) => {
               )}
             </div>
 
-            <div className="mt-8">
+            <div className="mt-2">
               <div className="space-y-6">
                 {/* Title */}
-                <h2 className="text-xl md:text-2xl font-bold text-black mb-2">
+                {/* <h2 className="text-xl md:text-2xl font-bold text-black mb-2">
                   {data.supportingTitle}
-                </h2>
+                </h2> */}
                 
                 {/* Description */}
-                <p className="text-sm md:text-base text-gray-700 leading-relaxed max-w-2xl">
+                <p className="text-sm md:text-sm text-gray-700 leading-relaxed max-w-2xl">
                   {data.supportingDescription}
                 </p>
                 

@@ -286,7 +286,7 @@ export default function ToolsFrameworksTimeline({ timelineData }) {
             </div>
             
             {/* Right Side - Scrollable Content (70%) */}
-            <div className="w-full lg:w-[70%] h-full lg:overflow-y-auto overflow-y-visible">
+            <div className="w-full lg:w-[70%] h-full ">
             {/* Single Image Section */}
             {section.image && getImageUrl(section.image.image) && (
               <div 
@@ -314,7 +314,7 @@ export default function ToolsFrameworksTimeline({ timelineData }) {
             )}
 
               {/* Framework Description and Key Pillars - Scrollable Content */}
-            {((section.frameworkOverview && section.frameworkOverview.trim() !== '') || (section.keyPillars && section.keyPillars.length > 0 && section.keyPillars.some(p => p.title || p.description))) && (
+            {/* {((section.frameworkOverview && section.frameworkOverview.trim() !== '') || (section.keyPillars && section.keyPillars.length > 0 && section.keyPillars.some(p => p.title || p.description))) && (
                 <div className={`bg-white p-4 sm:p-6 transition-all duration-1000 ease-out delay-500 ${
                   isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
@@ -354,7 +354,7 @@ export default function ToolsFrameworksTimeline({ timelineData }) {
                     )}
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>
