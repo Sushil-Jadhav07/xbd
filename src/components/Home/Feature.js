@@ -72,14 +72,14 @@ const Feature = ({ whatIsExponentialData }) => {
   // Function to get YouTube embed URL
   const getYouTubeEmbedUrl = (url) => {
     const videoId = getYouTubeVideoId(url);
-    return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}` : url;
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
   };
 
   // Function to get Vimeo embed URL
   const getVimeoEmbedUrl = (url) => {
     const regExp = /vimeo\.com\/(\d+)/;
     const match = url.match(regExp);
-    return match ? `https://player.vimeo.com/video/${match[1]}?autoplay=1&muted=1&loop=1` : url;
+    return match ? `https://player.vimeo.com/video/${match[1]}` : url;
   };
 
   // Function to get embed URL based on video source
