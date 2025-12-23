@@ -147,9 +147,9 @@ const BookInfo = ({ bookInfoData }) => {
             
             
             {/* Limited Launch Badge */}
-            <h4 className="inline-block bg-gray-100 text-gray-700 text-sm px-4 py-2 rounded-full font-medium">
+            {/* <h4 className="inline-block bg-gray-100 text-gray-700 text-sm px-4 py-2 rounded-full font-medium">
               {data.limitedEditionBadge}
-            </h4>
+            </h4> */}
             
             {/* Value Metrics Grid */}
             <div className="grid grid-cols-2 gap-4 pt-4">

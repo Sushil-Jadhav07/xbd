@@ -1,12 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { getFaqPageData } from '@/lib/sanityQueries';
-
-export const metadata = {
-  title: "FAQ | XBD",
-  description: "Frequently asked questions about XBD programs and services.",
-};
+import { useState } from 'react';
 
 // Fallback data in case Sanity CMS is not available
 const fallbackData = {
@@ -44,38 +38,13 @@ const fallbackData = {
   }
 };
 
-export default function FAQs() {
+export default function FAQs({ faqData: propFaqData }) {
   const [openIndex, setOpenIndex] = useState(null);
-  const [faqData, setFaqData] = useState(fallbackData);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const data = await getFaqPageData();
-        // Only update if we got valid data from Sanity
-        if (data && data.faqItems && data.faqItems.length > 0) {
-          setFaqData(data);
-        }
-      } catch (error) {
-        console.error('Error loading FAQ data from Sanity, using fallback data:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return (
-      <section className="relative min-h-screen bg-white py-12 lg:py-24 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
-        <div className="text-center">
-          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[#c1a35e] border-r-transparent"></div>
-          <p className="mt-4 text-gray-600">Loading FAQs...</p>
-        </div>
-      </section>
-    );
-  }
+  
+  // Use prop data if available, otherwise fallback
+  const faqData = (propFaqData && propFaqData.faqItems && propFaqData.faqItems.length > 0) 
+    ? propFaqData 
+    : fallbackData;
 
   return (
     <section className="relative min-h-screen bg-white py-12 lg:py-24 px-4 sm:px-6 lg:px-8">

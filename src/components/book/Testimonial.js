@@ -148,9 +148,9 @@ const Testimonial = ({ testimonialData }) => {
           <h2  className="text-3xl lg:text-4xl font-bold text-black mb-4">
             {data.title}
           </h2>
-          <h4 className="text-base lg:text-xl text-black max-w-3xl mx-auto">
+          {/* <h4 className="text-base lg:text-xl text-black max-w-3xl mx-auto">
             {data.subtitle}
-          </h4>
+          </h4> */}
         </div>
         
         {/* Logos Section */}

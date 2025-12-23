@@ -40,18 +40,18 @@ const IndustryFocus = ({ industryFocusData }) => {
     },
     featureSections: [
       {
-        category: "Product",
-        title: "Design — Frameworks & Tools",
+        category: "Product Design",
+        title: "— Frameworks & Tools",
         description: "Blueprints to design products that meet needs at the point of origin and convert quickly."
       },
       {
-        category: "Experience",
-        title: "Design — Community & Sessions",
+        category: "Experience Design",
+        title: "— Community & Sessions",
         description: "Live cohort sessions for rapid feedback and peer learning to reduce time-to-insight."
       },
       {
-        category: "Value",
-        title: "Design — Activation & Live Labs",
+        category: "Value Design",
+        title: "— Activation & Live Labs",
         description: "Actionable activation labs that turn experiments into reusable assets and measurable revenue streams."
       }
     ],

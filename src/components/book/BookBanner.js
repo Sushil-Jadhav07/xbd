@@ -3,6 +3,7 @@ import React from 'react'
 import { useState } from 'react'
 import { MdImage } from 'react-icons/md'
 import Image from 'next/image'
+import Link from 'next/link'
 import { urlFor } from '@/lib/sanity'
 import LeadFormModal from '../common/LeadFormModal'
 import PreviewChapterForm from '../common/PreviewChapterForm'
@@ -30,6 +31,48 @@ const BookBanner = ({ bookBannerData }) => {
   };
 
   const data = bookBannerData || fallbackData;
+
+  // Prefer Sanity link for primary CTA; fallback to modal only if link is missing
+  const renderPrimaryButton = () => {
+    if (!data.primaryButton) return null;
+    const btn = data.primaryButton;
+    const href = btn.link;
+
+    if (href) {
+      const isExternal = href.startsWith('http://') || href.startsWith('https://');
+      if (isExternal) {
+        return (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-black text-white px-8 py-4 rounded-lg cursor-pointer font-medium hover:bg-gray-800 transition-colors duration-200 text-base"
+          >
+            {btn.text}
+          </a>
+        );
+      }
+      return (
+        <Link
+          href={href}
+          className="bg-black text-white px-8 py-4 rounded-lg cursor-pointer font-medium hover:bg-gray-800 transition-colors duration-200 text-base"
+        >
+          {btn.text}
+        </Link>
+      );
+    }
+
+    // Fallback: open modal only if no link is provided
+    return (
+      <button
+        type="button"
+        onClick={() => setIsModalOpen(true)}
+        className="bg-black text-white px-8 py-4 rounded-lg cursor-pointer font-medium hover:bg-gray-800 transition-colors duration-200 text-base"
+      >
+        {btn.text}
+      </button>
+    );
+  };
 
   return (
     <>
@@ -135,15 +178,7 @@ const BookBanner = ({ bookBannerData }) => {
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              {data.primaryButton && (
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(true)}
-                  className="bg-black text-white px-8 py-4 rounded-lg cursor-pointer font-medium hover:bg-gray-800 transition-colors duration-200 text-base"
-                >
-                  {data.primaryButton.text}
-                </button>
-              )}
+              {renderPrimaryButton()}
               {data.secondaryButton && (
                 <button
                   type="button"
