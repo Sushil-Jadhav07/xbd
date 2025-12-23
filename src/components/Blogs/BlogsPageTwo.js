@@ -2,125 +2,230 @@
 
 import React, { useMemo } from 'react'
 import Image from 'next/image'
-import industryFallbackAvatar from '@/asset/industry/7.webp'
 import Link from 'next/link'
 
 const fallbackData = {
   hero: {
-    tag: 'Operator Essays',
-    title: 'Designing a compounding intelligence layer for your GTM team',
+    tag: 'Enterprise AI Architecture',
+    title: 'The Exponential Operating System (X-OS): How Intelligent Enterprises Will Win the Next Decade',
     description:
-      'A deep-dive playbook on weaving AI copilots, human rituals, and actionable intelligence into your revenue engine without slowing teams down.',
+      'Enterprise architecture is entering a structural shift defined by the rise of Agentic AI. Discover how X-OS enables organizations to operate with continuous intelligence and respond to complex situations with precision.',
     authorHighlight: {
       name: 'Anuj Sharma',
       title: 'Founder & Chief Operator, XBD',
-      tags: ['AI Systems', 'Go-To-Market', 'Leadership'],
-      readingTime: '12 min read',
-      publishedOn: 'Oct 28, 2025',
+      tags: ['AI Systems', 'Enterprise Architecture', 'Agentic AI'],
+      readingTime: '18 min read',
+      publishedOn: 'Dec 23, 2024',
       banner: {
         image:
-          'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        alt: 'Operators collaborating in a modern workspace'
+          'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        alt: 'Futuristic enterprise technology architecture visualization'
       }
     }
   },
-  author: {
-    avatar: industryFallbackAvatar,
-    name: 'Anuj Sharma',
-    role: 'Founder & Chief Operator, XBD',
-    bio: 'Anuj installs compounding growth systems for scale-stage operators. Previously led revenue and GTM acceleration at high-growth SaaS companies across North America and APAC.',
-    socials: [
-      { label: 'LinkedIn', handle: '@anuj-xbd', href: 'https://www.linkedin.com/in/anujxbd' },
-      { label: 'X / Twitter', handle: '@anuj_xbd', href: 'https://twitter.com/anuj_xbd' },
-      { label: 'YouTube', handle: 'XBD Operators', href: 'https://youtube.com/@xbdoperators' },
-      { label: 'Newsletter', handle: 'Signal > Noise', href: '/newsletter' }
-    ]
-  },
   sections: [
     {
-      id: 'why-compounding-intelligence',
-      heading: 'Why compounding intelligence matters now',
+      id: 'intelligence-infrastructure',
+      heading: 'The Shift No One Saw Coming: Intelligence Became the New Infrastructure',
       type: 'richText',
       content: [
-        "The GTM leader's challenge is no longer about finding more data. It's about compressing the distance between signals and decisions without adding friction to the team.",
-        'Compounding intelligence systems blend automated telemetry, curated interpretation, and human judgment. When done well, they remove the guesswork from weekly operating cadences.'
+        'The previous decade revolutionized how companies stored data and distributed software. But these changes digitalized workflows. Currently, what is emerging is much more fundamental. Intelligence is the new enterprise infrastructure.',
+        'More organizations are leaning into systems that Agentic AI shapes. The models now understand context, reason about goals, and leverage structured cognition models instead of fixed logic.',
+        'AI has shifted from being a "tool" to an organizing layer that governs how value flows in the enterprise. Modern intelligent architectures involve decision engines and multimodal models, focusing on autonomous behaviors that are culturally responsive and on real-time signal events.'
       ]
     },
     {
-      id: 'architecture',
-      heading: 'The architecture we install inside XBD engagements',
+      id: 'complexity-challenge',
+      heading: 'Why Enterprises Experience Complexity Instead of Clarity',
+      type: 'richText',
+      content: [
+        'As enterprises rushed into AI adoption, they accumulated fragmented pilots. This has led to overlapping vendors and disconnected models. Many companies use AI across various functions, yet struggle to achieve measurable results.',
+        'The result is tool sprawl, unpredictable pipelines, and operational inefficiency. With more tools, they ended up creating more complexity, not value.',
+        'Leading companies demonstrate the same pattern: intelligence, not software, drives the system. Tesla improves its entire fleet through constant learning. Amazon uses anticipatory intelligence to cut decision dormancy across logistics. OpenAI exemplifies how intelligence combined with ecosystem design accelerates adoption.'
+      ]
+    },
+    {
+      id: 'transformation-failures',
+      heading: 'Why Most Transformations Fail: The Fog of Complexity',
+      type: 'richText',
+      content: [
+        'CXOs consistently express the same feeling: AI is essential, yet the options leave them confused. They have a flood of choices: platforms, models, copilots, AI agents, vendors, and shifting regulations.',
+        'Enterprises run too many pilots and scale too few. Hundreds of organizations launch GenAI experiments every day. Only a small fraction can convert them into revenue outcomes or cost advantages.',
+        'In many companies, 85-90% of AI initiatives fail as teams use tools without redesigning the workflows around them. They have high activity, but the business impact barely moves.',
+        'Leaders who succeed assign clear ownership. They set challenging ROI targets and scale only use cases that transform entire value chains. They productize data, redesign workflows, and deploy agents that give value to the decisions, velocity, and customer experience.'
+      ]
+    },
+    {
+      id: 'xos-introduction',
+      heading: 'Introducing the Exponential Operating System (X-OS)',
+      type: 'richText',
+      content: [
+        'The answer is not another tool or another model. It is a new operating system built for Agentic AI and enterprise-grade cognition.',
+        'X-OS is that intelligent system that brings revolution. It unifies Intelligence, Integration, and Experience into a single architecture. The aim is to aid the organization in making decisions, sensing, acting, and improving its operations in real time.',
+        'This innovative system offers enterprises a systematic way to operationalize artificial intelligence, focusing on autonomy, decision-making, and system-wide orchestration.'
+      ]
+    },
+    {
+      id: 'xos-architecture',
+      heading: 'The X-OS Architecture: Four Layers of Compounding Intelligence',
       type: 'image',
-      caption: 'Layered system architecture that ties telemetry, experiments, and decision rituals.',
+      caption: 'The complete X-OS stack showing how intelligence, integration, experience, and value networks compound',
       image: {
-        src: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        alt: 'Team standing around a table reviewing architecture diagrams'
+        src: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        alt: 'Enterprise system architecture layers visualization'
       },
       supportingText:
-        'We anchor on a four-layer stack: telemetry foundation, AI-enabled pattern detection, playbook library, and leadership rituals that enforce momentum.'
+        'X-OS turns intelligence into a system that continuously accelerates value creation through four interconnected layers that compound performance at every interaction.'
     },
     {
-      id: 'playbook-video',
-      heading: 'Watch the operating cadence in action',
-      type: 'video',
-      youtubeId: 'dQw4w9WgXcQ',
-      supportingText:
-        "See how we run a 45-minute operating cadence that blends dashboards, AI copilots, and exec decision rules. This is the format we deploy during week two of an engagement."
-    },
-    {
-      id: 'rollout',
-      heading: 'Rollout roadmap for the first 30 days',
+      id: 'layer1-intelligence',
+      heading: 'Layer 1 — The Intelligence Layer',
       type: 'richText',
       content: [
-        'Week 1: Install telemetry baseline and define decision surface area. Align leadership on signal thresholds and escalation paths.',
-        'Week 2: Layer in AI pattern detection and pair it with human review cadences. Launch the first co-pilot workflows inside RevOps.',
-        'Week 3: Expand to GTM pods with scenario-based enablement. Measure decision velocity and experiment cycle time improvements.',
-        'Week 4: Institutionalize rituals, publish the playbook, and hand off governance with a scorecard operators can own.'
+        'The Intelligence Layer acts as the brain of the enterprise. It drives decisions and identifies patterns. These layers also guide the actions of every system, team, and agent that follows.',
+        'The Intelligence Layer leverages pattern-based decision models and digital twin simulations to test decisions and workflows in virtual environments before agents execute them in the real world.',
+        'As systems mature, enterprises unlock three stages of intelligence maturity: Predictive (forecasting demand, risk, or behavior), Prescriptive (recommending the best possible action), and Autonomous (executing multistep tasks with minimal oversight).',
+        'Real-world examples: Tesla uses continuous fleet learning that updates decisions based on millions of miles of driving data. CRED applies behavioral intelligence to shape user actions. Amazon uses anticipatory intelligence to forecast demand and cut delivery times.'
       ]
     },
     {
-      id: 'toolkit',
-      heading: 'Toolkit download',
-      type: 'callout',
-      cta: {
-        label: 'Get the toolkit',
-        href: '/contact'
-      },
-      supportingText:
-        'The toolkit includes our telemetry blueprint, AI prompt library, and weekly operating cadence worksheet. Operators use it to immediately instrument their teams.'
-    }
+      id: 'layer2-integration',
+      heading: 'Layer 2 — The Integration Layer',
+      type: 'richText',
+      content: [
+        'If the intelligence layer is the brain, the integration layer is the nervous system. It reliably sends signals in real time across every product or service.',
+        'The Integration Layer establishes connectivity through an API-first architecture. APIs enable systems, agents, and services to connect and communicate quickly and reliably.',
+        'A strong integration layer depends on network depth (strengthening internal loops) and network breadth (creating connections with merchants, marketplaces, platforms, and third-party developers).',
+        'Examples in action: AirAsia Super App connects flights, payments, food delivery, loyalty, and travel within a single integrated ecosystem. Razorpay built an API-driven financial stack. Starbucks created a digital flywheel integrating payments, rewards, mobile ordering, and store operations.'
+      ]
+    },
+    {
+      id: 'layer3-experience',
+      heading: 'Layer 3 — The Experience Layer',
+      type: 'richText',
+      content: [
+        'When intelligence informs decisions and integration speeds flow, enterprises must create experiences that feel immediate, tailored, and emotionally meaningful.',
+        'Intelligent enterprises treat Moments of Truth as a strategic advantage. They use behavioral signals, context, past interactions, and operational goals to guide what the customer sees with creativity and intent.',
+        'Features include real-time recommendations that respond to intent, nudges from behavioral patterns and predicted needs, and adaptive interfaces that tailor layout, actions, and flows for each end-user.',
+        'Examples: Netflix serves just-in-time personalization driving engagement through learning patterns. Blinkit uses real-time demand signals for instant delivery. Apple\'s design brings emotional resonance with seamless usability.'
+      ]
+    },
+    {
+      id: 'layer4-value-network',
+      heading: 'Layer 4 — The Value Network Layer',
+      type: 'richText',
+      content: [
+        'The Value Network Layer facilitates the organization\'s transition from internal strength to external advantage. It builds partnerships, integrations, and external collaborations using core capabilities.',
+        'Value Exchange Networks function as cooperative exchange systems where the organization exposes specific capabilities. Partners use these capabilities to develop new products or enhance current ones.',
+        'This layer exhibits three maturity stages: Connected (linking strategic partners), Collaborative (sharing assets and workflows for shared value), and Ecosystem-Driven (joining a bigger network that keeps growing).',
+        'Real examples: Amazon powers millions of partners through marketplace, cloud, logistics, and identity systems. Tesla integrates partners, energy systems, vehicles, and charging networks into a single exchange loop.'
+      ]
+    },
+    {
+      id: 'convergence',
+      heading: 'When All Four Layers Converge: The Compounding Flywheel',
+      type: 'richText',
+      content: [
+        'Exponential growth occurs only when all four layers operate together as a single system. Smarter decisions, faster execution, richer experiences, and stronger partnerships transform into a compounding engine.',
+        'The traditional equation 1 + 1 + 1 + 1 = 4 is no longer valid. When these layers align, the effect becomes 10x, 100x, or even 1000x.',
+        'Each layer reinforces the others: The Intelligence Layer makes precise decisions. The Integration Layer distributes them instantly. The Experience Layer delivers personalized output. The Value Network Layer expands into larger ecosystems.',
+        'The flywheel forms when all four layers reinforce one another. With every cycle, the system becomes smarter, faster, and more effective. This is how X-OS scales and how exponential organizations grow.'
+      ]
+    },
+    {
+      id: 'maturity-journey',
+      heading: 'The Enterprise Maturity Journey',
+      type: 'richText',
+      content: [
+        'No organization goes from basic automation to autonomous operations in a single day. Intelligent enterprises follow five deliberate stages:',
+        'Stage 1 - Digitized: Organizations digitize processes with basic automation, fragmented data, and human-led decisions.',
+        'Stage 2 - Connected: API-first thinking emerges, systems integrate, and data becomes standardized and accessible.',
+        'Stage 3 - Intelligent: AI influences central decisions with predictive models, personalized experiences begin, and experimentation increases.',
+        'Stage 4 - Adaptive: Real-time engines execute instantly, systems adapt workflows dynamically, and hybrid human-agent teams form.',
+        'Stage 5 - Autonomous: Agentic systems coordinate and optimize most workflows with minimal oversight, achieving hyper-personalization and outcome-driven culture.'
+      ]
+    },
+    {
+      id: 'leadership-blueprint',
+      heading: 'The New Leadership Blueprint',
+      type: 'richText',
+      content: [
+        'Technology alone does not drive transformation. Leadership does. Moving from linear to exponential performance requires the entire CXO group to rethink how they operate.',
+        'Key mindset shifts: Move from project mindset to system mindset. Move from automation to intelligence-first design. Move from silos to horizontal flows of value. Shift from annual planning to real-time guidance.',
+        'Boards expect CXOs to demonstrate: A clearly articulated vision, complete business model overhaul, right governance structures, deployment of advanced systems, and outcome-driven leadership that quantifies growth and impact.',
+        'CXOs must ensure that intelligence, integration, and experience are not separate projects but a continuous feedback loop.'
+      ]
+    },
+    {
+      id: 'implementation-roadmap',
+      heading: 'Building Your Enterprise X-OS: 12-24 Month Roadmap',
+      type: 'richText',
+      content: [
+        'Where to Start: Begin with data (build data products with real-time access), experience (map sequences and turn on real-time engines), ecosystem (build API-first partner integrations), and AI agents (deploy in targeted workflows).',
+        'Where Not to Start: Avoid isolated pilots that cannot scale, model-first experimentation without workflow redesign, department-level initiatives, and tool shopping without system architecture.',
+        'Quick Wins vs. Compounding Wins: Quick wins include agent copilots and predictive triggers. Compounding wins include multi-agent workflows, real-time decision engines, and adaptive experience systems.',
+        'Implementation Sequence: Stabilize data foundation → Deploy core agents → Integrate systems via APIs → Activate adaptive experience flows → Scale into autonomous workflows.'
+      ]
+    },
+    {
+      id: 'industry-applications',
+      heading: 'Industry Deep-Dives: X-OS in Action',
+      type: 'richText',
+      content: [
+        'BFSI: X-OS supports proactive risk management, automated compliance, and personalized offerings at scale with real-time fraud prediction.',
+        'Retail & Consumer: Dynamic personalization, demand forecasting, real-time inventory management, and adaptive pricing achieve higher conversion rates.',
+        'Airlines & Mobility: Fleet optimization, route allocation, real-time customer service, and disruption management deliver 10x performance improvements.',
+        'Manufacturing: Predictive maintenance, real-time production adjustments, and supply chain optimization reduce downtime and increase throughput.',
+        'Healthcare: Real-time clinical decision support, automated patient care workflows, and predictive diagnostics improve outcomes and delivery speed.',
+        'Telecom: Network control, customer needs anticipation, and personalized services reduce interruptions and increase loyalty.',
+        'Real Estate & Smart Cities: Energy monitoring, traffic management, utility distribution, and predictive maintenance drive efficiency and sustainability.'
+      ]
+    },
+    {
+      id: 'future-vision',
+      heading: 'The Future of Enterprise Design',
+      type: 'richText',
+      content: [
+        'The upcoming decade will reward companies that think, act, and scale like intelligent systems. We are approaching a time of agentic enterprises where AI agents make real-time decisions and continually learn.',
+        'These enterprises will run on low-cost, high-scale intelligence, where additional workflows run at almost zero marginal cost. The unit of business will become intelligent nodes in a value network.',
+        'Enterprises that master X-OS will grow 10× to 50× faster than their legacy rivals—not because of incremental benefits, but because their system compounds value exponentially.',
+        'XBD Consulting has a clear mandate: take leaders on a journey to build this system, not merely chase technology. We assist in designing the architecture to deploy intelligence for real, repeatable advantage.',
+        'Here\'s the truth that will define the decade ahead: Exponential growth is not a strategy. It\'s a system.'
+      ]
+    },
   ],
   relatedPosts: [
     {
-      id: 'ai-command-center',
-      title: 'Stand up an AI command center without slowing teams down',
+      id: 'agentic-ai-enterprise',
+      title: 'From Generative AI to Agentic AI: The Enterprise Evolution',
       category: 'AI Systems',
-      tags: ['AI Systems', 'Decision Velocity'],
-      href: '/blogs/ai-command-center',
-      readTime: '7 min read'
+      tags: ['AI Systems', 'Agentic AI', 'Enterprise Architecture'],
+      href: '/blogs/agentic-ai-enterprise',
+      readTime: '10 min read'
     },
     {
-      id: 'gtm-loops',
-      title: 'From funnels to loops: redesigning GTM for compounding results',
-      category: 'Go-To-Market',
-      tags: ['Go-To-Market', 'Loops'],
-      href: '/blogs/gtm-loops',
-      readTime: '6 min read'
+      id: 'intelligence-layer-design',
+      title: 'Designing Intelligence Layers That Compound Business Value',
+      category: 'Architecture',
+      tags: ['Architecture', 'AI Systems', 'Decision Intelligence'],
+      href: '/blogs/intelligence-layer-design',
+      readTime: '12 min read'
     },
     {
-      id: 'leadership-rituals',
-      title: 'Leadership rituals that keep operators ahead of exponential change',
-      category: 'Leadership',
-      tags: ['Leadership', 'Operating Rhythm'],
-      href: '/blogs/leadership-rituals',
+      id: 'api-first-integration',
+      title: 'Building API-First Integration for Exponential Scale',
+      category: 'Integration',
+      tags: ['Integration', 'APIs', 'Ecosystem'],
+      href: '/blogs/api-first-integration',
       readTime: '8 min read'
     },
     {
-      id: 'pilot-to-rollout',
-      title: 'Pilot-to-rollout pipelines that survive the messy middle',
-      category: 'Playbooks',
-      tags: ['Playbooks', 'Execution'],
-      href: '/blogs/pilot-to-rollout',
-      readTime: '9 min read'
+      id: 'value-networks',
+      title: 'From Products to Platforms: Building Value Networks That Scale',
+      category: 'Ecosystem',
+      tags: ['Ecosystem', 'Platforms', 'Network Effects'],
+      href: '/blogs/value-networks',
+      readTime: '11 min read'
     }
   ]
 }
@@ -139,11 +244,6 @@ const BlogsPageTwo = ({ blogData }) => {
           ...fallbackData.hero.authorHighlight,
           ...blogData.hero?.authorHighlight
         }
-      },
-      author: {
-        ...fallbackData.author,
-        ...blogData.author,
-        socials: blogData.author?.socials?.length ? blogData.author.socials : fallbackData.author.socials
       },
       sections: blogData.sections?.length ? blogData.sections : fallbackData.sections,
       relatedPosts: blogData.relatedPosts?.length ? blogData.relatedPosts : fallbackData.relatedPosts
@@ -215,39 +315,6 @@ const BlogsPageTwo = ({ blogData }) => {
 
           <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,1.4fr)] lg:items-start lg:gap-16">
             <article className="space-y-14">
-              <section className="rounded-[28px] border border-[#efe7db]  p-8">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center md:gap-8">
-                  <div className="relative h-24 w-24 overflow-hidden rounded-full bg-gradient-to-br from-[#9d7035] to-[#c1a35e]">
-                    {data.author.avatar && (
-                      <Image src={data.author.avatar} alt={data.author.name} fill className="object-cover" unoptimized />
-                    )}
-                  </div>
-                  <div className="space-y-3">
-                    <div>
-                      <h2 className="text-xl font-semibold text-black">{data.author.name}</h2>
-                      <p className="text-sm font-medium uppercase text-[#b58745]">
-                        {data.author.role}
-                      </p>
-                    </div>
-                    <p className="text-sm leading-relaxed text-gray-600">{data.author.bio}</p>
-                    <div className="flex flex-wrap gap-3 text-sm font-medium text-[#9d7035]">
-                      {data.author.socials.map((social) => (
-                        <Link
-                          key={social.label}
-                          href={social.href}
-                          className="inline-flex items-center gap-2 rounded-full border border-[#e6d6bd] px-4 py-2 transition-colors duration-200 hover:border-[#c8a56d] hover:text-[#b07731]"
-                          target={social.href.startsWith('http') ? '_blank' : '_self'}
-                          rel="noreferrer"
-                        >
-                          <span className="text-xs uppercase ">{social.label}</span>
-                          <span className="text-[#705331]">{social.handle}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </section>
-
               {data.sections.map((section) => (
                 <section key={section.id} id={section.id} className="scroll-mt-32 space-y-6">
                   {section.heading && (

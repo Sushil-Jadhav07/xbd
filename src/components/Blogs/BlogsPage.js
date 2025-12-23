@@ -38,10 +38,9 @@ const fallbackData = {
   posts: [
     {
       id: 1,
-      category: 'AI Systems',
-      title: 'Designing an AI command center that actually ships decisions',
+      title: 'The Exponential Operating System (X-OS): How Intelligent Enterprises Will Win the Next Decade?',
       excerpt:
-        'Inside the 4-layer stack we deploy to convert AI pilots into durable advantage—from data contracts to human escalation paths.',
+        'Enterprise architecture is entering a structural shift defined by the rise of Agentic AI.',
       date: 'Oct 11, 2025',
       readTime: '6 min read',
       author: 'Team XBD',
@@ -49,81 +48,73 @@ const fallbackData = {
       image: null,
       tags: ['AI Ops', 'Decision Velocity']
     },
-    {
-      id: 2,
-      category: 'Go-To-Market',
-      title: 'From funnels to flywheels: building compounding GTM motions',
-      excerpt:
-        'Frameworks for stitching demand, activation, and expansion into a single loop that compounds without heroic launches.',
-      date: 'Oct 4, 2025',
-      readTime: '5 min read',
-      author: 'Anuj Sharma',
-      link: '/blogs-detail',
-      image: null,
-      tags: ['Revenue Architecture', 'Loops']
-    },
-    {
-      id: 3,
-      category: 'Leadership',
-      title: 'Decision rules every exponential leadership team installs first',
-      excerpt:
-        'How to codify governance so scale does not create drag. Includes the 7 prompts we use to align exec tables in week one.',
-      date: 'Sep 27, 2025',
-      readTime: '8 min read',
-      author: 'Team XBD',
-      link: '/blogs-detail',
-      image: null,
-      tags: ['Leadership', 'Governance']
-    },
-    {
-      id: 4,
-      category: 'Playbooks',
-      title: 'Field guide: standing up a pilot-to-rollout pipeline in 30 days',
-      excerpt:
-        'Step-by-step blueprint for leaders who need to compress experiment velocity while protecting customer experience.',
-      date: 'Sep 16, 2025',
-      readTime: '9 min read',
-      author: 'Anuj Sharma',
-      link: '/blogs-detail',
-      image: null,
-      tags: ['Execution', 'Pilot Design']
-    },
-    {
-      id: 5,
-      category: 'Case Studies',
-      title: 'How a financial services brand cut launch time by 62%',
-      excerpt:
-        'A behind-the-scenes look at the plays, cadences, and tooling that turned fragmented teams into a compounding growth engine.',
-      date: 'Sep 02, 2025',
-      readTime: '7 min read',
-      author: 'Team XBD',
-      link: '/blogs-detail',
-      image: null,
-      tags: ['Case Study', 'Time-to-Value']
-    },
-    {
-      id: 6,
-      category: 'AI Systems',
-      title: 'The intelligence stack: integrating human judgment with machine speed',
-      excerpt:
-        'Why the most resilient operating models treat AI as a teammate, not a tool—and the rituals that make it real.',
-      date: 'Aug 24, 2025',
-      readTime: '6 min read',
-      author: 'Anuj Sharma',
-      link: '/blogs-detail',
-      image: null,
-      tags: ['AI Strategy', 'Org Design']
-    }
+    // {
+    //   id: 2,
+    //   category: 'Go-To-Market',
+    //   title: 'From funnels to flywheels: building compounding GTM motions',
+    //   excerpt:
+    //     'Frameworks for stitching demand, activation, and expansion into a single loop that compounds without heroic launches.',
+    //   date: 'Oct 4, 2025',
+    //   readTime: '5 min read',
+    //   author: 'Anuj Sharma',
+    //   link: '/blogs-detail',
+    //   image: null,
+    //   tags: ['Revenue Architecture', 'Loops']
+    // },
+    // {
+    //   id: 3,
+    //   category: 'Leadership',
+    //   title: 'Decision rules every exponential leadership team installs first',
+    //   excerpt:
+    //     'How to codify governance so scale does not create drag. Includes the 7 prompts we use to align exec tables in week one.',
+    //   date: 'Sep 27, 2025',
+    //   readTime: '8 min read',
+    //   author: 'Team XBD',
+    //   link: '/blogs-detail',
+    //   image: null,
+    //   tags: ['Leadership', 'Governance']
+    // },
+    // {
+    //   id: 4,
+    //   category: 'Playbooks',
+    //   title: 'Field guide: standing up a pilot-to-rollout pipeline in 30 days',
+    //   excerpt:
+    //     'Step-by-step blueprint for leaders who need to compress experiment velocity while protecting customer experience.',
+    //   date: 'Sep 16, 2025',
+    //   readTime: '9 min read',
+    //   author: 'Anuj Sharma',
+    //   link: '/blogs-detail',
+    //   image: null,
+    //   tags: ['Execution', 'Pilot Design']
+    // },
+    // {
+    //   id: 5,
+    //   category: 'Case Studies',
+    //   title: 'How a financial services brand cut launch time by 62%',
+    //   excerpt:
+    //     'A behind-the-scenes look at the plays, cadences, and tooling that turned fragmented teams into a compounding growth engine.',
+    //   date: 'Sep 02, 2025',
+    //   readTime: '7 min read',
+    //   author: 'Team XBD',
+    //   link: '/blogs-detail',
+    //   image: null,
+    //   tags: ['Case Study', 'Time-to-Value']
+    // },
+    // {
+    //   id: 6,
+    //   category: 'AI Systems',
+    //   title: 'The intelligence stack: integrating human judgment with machine speed',
+    //   excerpt:
+    //     'Why the most resilient operating models treat AI as a teammate, not a tool—and the rituals that make it real.',
+    //   date: 'Aug 24, 2025',
+    //   readTime: '6 min read',
+    //   author: 'Anuj Sharma',
+    //   link: '/blogs-detail',
+    //   image: null,
+    //   tags: ['AI Strategy', 'Org Design']
+    // }
   ],
-  newsletter: {
-    title: 'Stay ahead of exponential shifts',
-    description:
-      "One weekly briefing with experiments, templates, and decision rules we're deploying right now. No noise, just leverage you can use.",
-    cta: {
-      text: 'Join the newsletter',
-      link: '/newsletter'
-    }
-  }
+  
 }
 
 const BlogsPage = ({ blogsData }) => {
@@ -219,27 +210,7 @@ const BlogsPage = ({ blogsData }) => {
               {data.posts.length} {data.posts.length === 1 ? 'article' : 'articles'}
             </span>
           </div>
-          <div className="mt-6 flex flex-row flex-nowrap gap-3 justify-center -mx-2 overflow-x-auto pb-3">
-            <div className="flex gap-3 px-2 min-w-max">
-              {data.categories.map((category) => {
-                const isActive = selectedCategory === category
-                return (
-                  <button
-                    key={category}
-                    type="button"
-                    onClick={() => setSelectedCategory(category)}
-                    className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                      isActive
-                        ? 'bg-gradient-to-r from-[#9d7035] to-[#c1a35e] text-white shadow-md'
-                        : 'bg-white text-gray-600 hover:text-black hover:bg-[#f3e9db]'
-                    }`}
-                  >
-                    {category}
-                  </button>
-                )
-              })}
-            </div>
-          </div>
+        
         </section>
 
         {/* Featured (mobile) */}
@@ -281,11 +252,7 @@ const BlogsPage = ({ blogsData }) => {
                   ) : (
                     <div className="h-full w-full bg-gradient-to-br from-[#f7efe1] via-[#ecd8b7] to-[#d5bb90]" />
                   )}
-                  <div className="absolute top-4 left-4 flex items-center gap-2">
-                    <span className="px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] rounded-full bg-black/80 text-white backdrop-blur">
-                      {post.category}
-                    </span>
-                  </div>
+                  
                 </div>
                 <div className="flex flex-col gap-4 p-6 flex-1">
                   <div className="space-y-3">
@@ -295,16 +262,7 @@ const BlogsPage = ({ blogsData }) => {
                     <p className="text-gray-600 text-sm leading-relaxed">{post.excerpt}</p>
                   </div>
                   <div className="mt-auto space-y-3">
-                    <div className="flex flex-wrap gap-2">
-                      {post.tags?.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-3 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                    
                     <div className="flex items-center justify-between text-xs text-gray-500 uppercase tracking-wide">
                       <span>{post.author}</span>
                       <div className="flex items-center gap-2">
