@@ -22,6 +22,32 @@ import ValueProposition from '@/components/Community/ValueProposition'
 import CommunityStructure from '@/components/Community/CommunityStructure'
 import ComingSoon from '@/components/common/ComingSoon'
 
+export const metadata = {
+  title: 'X-Ponential Community | Join Exponential Growth Network',
+  description:
+    'Join the X-Ponential Community to connect with leaders, access exclusive resources, and accelerate your exponential growth journey with like-minded professionals.',
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://xbd.vercel.app/community',
+  },
+  openGraph: {
+    title: 'X-Ponential Community | Join Exponential Growth Network',
+    description:
+      'Join the X-Ponential Community to connect with leaders, access exclusive resources, and accelerate your exponential growth journey.',
+    url: 'https://xbd.vercel.app/community',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'X-Ponential Community | Join Exponential Growth Network',
+    description:
+      'Join the X-Ponential Community to connect with leaders and access exclusive resources for exponential growth.',
+  },
+};
+
 const Community = () => {
   return (
     <div className='relative'>

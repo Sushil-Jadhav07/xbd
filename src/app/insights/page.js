@@ -10,8 +10,29 @@ import { getInsightsBannerData, getFeaturedArticlesData, getYoutubeVideosData, g
 import React from 'react'
 
 export const metadata = {
-  title: "Insights | XBD",
-  description: "Explore cutting-edge research, case studies, and expert insights on exponential growth strategies.",
+  title: "Business Insights & AI Strategy Fact | Exponential by Design",
+  description:
+    "Get business insights, AI strategy facts, and deep perspectives on exponential growth from XBD. Explore featured articles, videos, and expert analysis on enterprise transformation.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://xbd.vercel.app/insights',
+  },
+  openGraph: {
+    title: "Business Insights & AI Strategy Fact | Exponential by Design",
+    description:
+      "Get business insights, AI strategy facts, and deep perspectives on exponential growth from XBD. Explore featured articles and expert analysis.",
+    url: 'https://xbd.vercel.app/insights',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Business Insights & AI Strategy Fact | Exponential by Design",
+    description:
+      "Get business insights, AI strategy facts, and deep perspectives on exponential growth from XBD.",
+  },
 };
 
 export default async function InsightsPage() {

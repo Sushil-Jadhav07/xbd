@@ -3,9 +3,29 @@ import Navbar from '@/components/Layout/Navbar'
 import BlogsPage from '@/components/Blogs/BlogsPage'
 
 export const metadata = {
-  title: 'Blogs | XBD',
+  title: 'XBD Blog: X-OS, Agentic AI, Strategy & Business Growth Ideas',
   description:
-    'Explore playbooks, case studies, and operator notes from XBD to build exponential growth systems in your organization.'
+    'Read expert articles on X-OS, Agentic AI, X Framework, strategy, and business growth ideas from XBD. Explore playbooks, case studies, and insights for exponential growth.',
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://xbd.vercel.app/blogs',
+  },
+  openGraph: {
+    title: 'XBD Blog: X-OS, Agentic AI, Strategy & Business Growth Ideas',
+    description:
+      'Read expert articles on X-OS, Agentic AI, X Framework, strategy, and business growth ideas from XBD. Explore playbooks and case studies.',
+    url: 'https://xbd.vercel.app/blogs',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'XBD Blog: X-OS, Agentic AI, Strategy & Business Growth Ideas',
+    description:
+      'Read expert articles on X-OS, Agentic AI, X Framework, strategy, and business growth ideas from XBD.',
+  },
 }
 
 const Blogs = () => {

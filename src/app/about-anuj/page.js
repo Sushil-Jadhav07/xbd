@@ -9,6 +9,31 @@ import Navbar from '@/components/Layout/Navbar'
 import { getAboutTitleData,  getCallToActionData, getGroupCoachingData, getIndustriesData, getKeynotesData, } from '@/lib/sanityQueries'
 import React from 'react'
 
+export const metadata = {
+  title: 'About Anuj Pandey - Writer of Exponential By Design Book',
+  description:
+    'Learn about Anuj Pandey, author of Exponential By Design and Founder of XBD. Discover his expertise in exponential growth systems, X Framework, and enterprise transformation.',
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://xbd.vercel.app/about-anuj',
+  },
+  openGraph: {
+    title: 'About Anuj Pandey - Writer of Exponential By Design Book',
+    description:
+      'Learn about Anuj Pandey, author of Exponential By Design and Founder of XBD. Discover his expertise in exponential growth systems and X Framework.',
+    url: 'https://xbd.vercel.app/about-anuj',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Anuj Pandey - Writer of Exponential By Design Book',
+    description:
+      'Learn about Anuj Pandey, author of Exponential By Design and Founder of XBD. Discover his expertise in exponential growth systems.',
+  },
+};
 
 export default async function Page() {
   const [aboutTitleData, keynotesData, industriesData, callToActionData, groupCoachingData] = await Promise.all([

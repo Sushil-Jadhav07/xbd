@@ -13,6 +13,26 @@ import Navbar from '@/components/Layout/Navbar'
 import { getBookBannerData, getBookInfoData, getBookTestimonialData, getInsideBookData, getMeetAuthorData, getBookFaqsData, getToolsFrameworksTimelineData, getNewsletterSignupData } from '@/lib/sanityQueries'
 import React from 'react'
 
+export const metadata = {
+  title: 'Buy Exponential By Design from Anuj Pandey | Official Book',
+  description:
+    'Get Exponential By Design written by Anuj Pandey from the official store. Learn about the X Framework and transform how your business operates in the AI era.',
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://xbd.vercel.app/book',
+  },
+  openGraph: {
+    title: 'Buy Exponential By Design from Anuj Pandey | Official Book',
+    description:
+      'Get Exponential By Design written by Anuj Pandey from the official store. Learn about the X Framework and transform how your business operates in the AI era.',
+    url: 'https://xbd.vercel.app/book',
+    type: 'website',
+  },
+}
+
 export default async function Page() {
   const [
     bookBannerData,
