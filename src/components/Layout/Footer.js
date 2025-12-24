@@ -152,7 +152,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
             <p className="text-gray-400 text-sm">
-              © 2024 Anuj Pandey. All rights reserved.
+              © 2025 Anuj Pandey. All rights reserved.
             </p>
 
             {/* Legal Links */}

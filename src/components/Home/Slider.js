@@ -137,7 +137,7 @@ const Slider = ({ resourcesSliderData }) => {
         <div className="mb-4 lg:mb-8">
           {/* Label */}
           <h4 className="flex items-center gap-2 text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
-            <HiOutlineSparkles className="text-lg" />
+            {/* <HiOutlineSparkles className="text-lg" /> */}
             {data.label}
           </h4>
 

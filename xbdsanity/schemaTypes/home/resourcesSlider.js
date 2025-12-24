@@ -8,28 +8,24 @@ export default {
         title: 'Section Label',
         type: 'string',
         description: 'Small text above the title',
-        validation: Rule => Rule.required()
       },
       {
         name: 'title',
         title: 'Main Title',
         type: 'string',
         description: 'Main title text',
-        validation: Rule => Rule.required()
       },
       {
         name: 'highlightText',
         title: 'Highlighted Text',
         type: 'string',
         description: 'The bold part of the title',
-        validation: Rule => Rule.required()
       },
       {
         name: 'subtitle',
         title: 'Subtitle',
         type: 'text',
         description: 'Description below the title',
-        validation: Rule => Rule.required()
       },
       {
         name: 'resources',
@@ -43,26 +39,24 @@ export default {
                 name: 'title',
                 title: 'Resource Title',
                 type: 'string',
-                validation: Rule => Rule.required()
               },
               {
                 name: 'description',
                 title: 'Resource Description',
                 type: 'text',
-                validation: Rule => Rule.required()
               },
               {
                 name: 'meta',
                 title: 'Meta Information',
                 type: 'string',
                 description: 'e.g., "212 Pages", "60-Min Strategy Call"',
-                validation: Rule => Rule.required()
+                
               },
               {
                 name: 'buttonText',
                 title: 'Button Text',
                 type: 'string',
-                validation: Rule => Rule.required()
+                
               },
               {
                 name: 'buttonLink',
@@ -82,7 +76,7 @@ export default {
                     { title: 'None', value: 'none' }
                   ]
                 },
-                validation: Rule => Rule.required()
+                
               },
               {
                 name: 'image',
