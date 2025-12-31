@@ -3,6 +3,7 @@
 import React, { useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import BlogBannerImage from '../../asset/blog-banner/Blog_banner.jpg'
 
 const fallbackData = {
   hero: {
@@ -45,7 +46,10 @@ const fallbackData = {
       readTime: '6 min read',
       author: 'Team XBD',
       link: '/blogs-detail',
-      image: null,
+      image: {
+        url: BlogBannerImage,
+        alt: 'The Exponential Operating System (X-OS)'
+      },
       tags: ['AI Ops', 'Decision Velocity']
     },
     // {
@@ -247,6 +251,7 @@ const BlogsPage = ({ blogsData }) => {
                       src={post.image.url}
                       alt={post.image.alt || post.title}
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   ) : (

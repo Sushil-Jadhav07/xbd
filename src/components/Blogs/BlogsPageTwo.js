@@ -3,6 +3,7 @@
 import React, { useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import BlogBannerImage from '../../asset/blog-banner/Blog_banner.jpg'
 
 const fallbackData = {
   hero: {
@@ -17,9 +18,8 @@ const fallbackData = {
       readingTime: '18 min read',
       publishedOn: 'Dec 23, 2024',
       banner: {
-        image:
-          'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        alt: 'Futuristic enterprise technology architecture visualization'
+        image: BlogBannerImage,
+        alt: 'The Exponential Operating System (X-OS)'
       }
     }
   },
