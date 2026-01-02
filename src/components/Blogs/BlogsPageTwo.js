@@ -4,6 +4,8 @@ import React, { useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import BlogBannerImage from '../../asset/blog-banner/Blog_banner.jpg'
+import XOSArchitectureImage from '../../asset/blog-banner/Infor.webp'
+import UnnamedImage from '../../asset/blog-banner/unnamed.webp'
 
 const fallbackData = {
   hero: {
@@ -71,7 +73,7 @@ const fallbackData = {
       type: 'image',
       caption: 'The complete X-OS stack showing how intelligence, integration, experience, and value networks compound',
       image: {
-        src: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        src: XOSArchitectureImage,
         alt: 'Enterprise system architecture layers visualization'
       },
       supportingText:
@@ -133,18 +135,27 @@ const fallbackData = {
       ]
     },
     {
-      id: 'maturity-journey',
+      id: 'unnamed-image',
       heading: 'The Enterprise Maturity Journey',
-      type: 'richText',
-      content: [
-        'No organization goes from basic automation to autonomous operations in a single day. Intelligent enterprises follow five deliberate stages:',
-        'Stage 1 - Digitized: Organizations digitize processes with basic automation, fragmented data, and human-led decisions.',
-        'Stage 2 - Connected: API-first thinking emerges, systems integrate, and data becomes standardized and accessible.',
-        'Stage 3 - Intelligent: AI influences central decisions with predictive models, personalized experiences begin, and experimentation increases.',
-        'Stage 4 - Adaptive: Real-time engines execute instantly, systems adapt workflows dynamically, and hybrid human-agent teams form.',
-        'Stage 5 - Autonomous: Agentic systems coordinate and optimize most workflows with minimal oversight, achieving hyper-personalization and outcome-driven culture.'
-      ]
+      type: 'image',
+      image: {
+        src: UnnamedImage,
+        alt: 'Enterprise system architecture layers visualization'
+      },
     },
+    // {
+    //   id: 'maturity-journey',
+    //   heading: 'The Enterprise Maturity Journey',
+    //   type: 'richText',
+    //   content: [
+    //     'No organization goes from basic automation to autonomous operations in a single day. Intelligent enterprises follow five deliberate stages:',
+    //     'Stage 1 - Digitized: Organizations digitize processes with basic automation, fragmented data, and human-led decisions.',
+    //     'Stage 2 - Connected: API-first thinking emerges, systems integrate, and data becomes standardized and accessible.',
+    //     'Stage 3 - Intelligent: AI influences central decisions with predictive models, personalized experiences begin, and experimentation increases.',
+    //     'Stage 4 - Adaptive: Real-time engines execute instantly, systems adapt workflows dynamically, and hybrid human-agent teams form.',
+    //     'Stage 5 - Autonomous: Agentic systems coordinate and optimize most workflows with minimal oversight, achieving hyper-personalization and outcome-driven culture.'
+    //   ]
+    // },
     {
       id: 'leadership-blueprint',
       heading: 'The New Leadership Blueprint',
@@ -277,9 +288,9 @@ const BlogsPageTwo = ({ blogData }) => {
   }, [data.hero.authorHighlight, data.relatedPosts])
 
   return (
-    <div className="bg-white md:mx-[15px] mx-[5px] ">
+    <div className="bg-white md:mx-[15px] mx-[5px]">
       <div className="mx-auto max-w-7xl px-4 pb-0 pt-0 lg:px-0 lg:pt-0">
-        <section className=" p-6 sm:p-10 lg:p-14">
+        <section className="p-6 sm:p-10 lg:p-14">
           <div className="space-y-8">
             <div className="flex flex-wrap items-center gap-4 text-base font-medium uppercase text-white">
               <span className="inline-flex items-center rounded-lg bg-gradient-to-r from-[#9d7035] to-[#c1a35e] px-6 py-2">
@@ -292,10 +303,10 @@ const BlogsPageTwo = ({ blogData }) => {
 
             <div className="grid gap-6 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-start lg:gap-10">
               <div className="space-y-6">
-                <h1 className="text-3xl font-semibold leading-tight text-black sm:text-4xl lg:text-5xl">
+                <h1 className="text-3xl font-semibold leading-tight text-black md:text-4xl">
                   {data.hero.title}
                 </h1>
-                <p className="max-w-2xl text-base leading-relaxed text-gray-700 sm:text-lg">
+                <p className="max-w-2xl text-base leading-relaxed text-gray-700 md:text-lg ">
                   {data.hero.description}
                 </p>
               </div>
@@ -318,11 +329,11 @@ const BlogsPageTwo = ({ blogData }) => {
               {data.sections.map((section) => (
                 <section key={section.id} id={section.id} className="scroll-mt-32 space-y-6">
                   {section.heading && (
-                    <h2 className="text-2xl font-semibold text-black sm:text-3xl">{section.heading}</h2>
+                    <h2 className="text-xl font-semibold text-black md:text-2xl">{section.heading}</h2>
                   )}
 
                   {section.type === 'richText' && (
-                    <div className="space-y-4 text-base leading-relaxed text-gray-700 sm:text-lg">
+                    <div className="space-y-4 text-base leading-relaxed text-gray-700 md:text-base">
                       {section.content?.map((paragraph, index) => (
                         <p key={index}>{paragraph}</p>
                       ))}
@@ -331,7 +342,7 @@ const BlogsPageTwo = ({ blogData }) => {
 
                   {section.type === 'image' && section.image && (
                     <div className="space-y-4">
-                      <div className="relative h-64 overflow-hidden rounded-3xl bg-[#f4e4ca] sm:h-80">
+                      <div className="relative h-[600px] md:h-[1300px] overflow-hidden rounded-3xl bg-[#f4e4ca]">
                         <Image
                           src={section.image.src}
                           alt={section.image.alt || section.heading || 'Blog illustration'}
@@ -410,7 +421,7 @@ const BlogsPageTwo = ({ blogData }) => {
                 </nav>
               </div>
 
-              <div className="rounded-[28px] border border-[#efe4d1] bg-white p-6 ">
+              {/* <div className="rounded-[28px] border border-[#efe4d1] bg-white p-6 ">
                 <div className="flex items-center justify-between">
                   <p className="text-xs font-semibold uppercase  text-[#b58745]">
                     Related operator plays
@@ -449,7 +460,7 @@ const BlogsPageTwo = ({ blogData }) => {
                     </Link>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </aside>
           </div>
         </section>
