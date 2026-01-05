@@ -289,43 +289,44 @@ const BlogsPageTwo = ({ blogData }) => {
 
   return (
     <div className="bg-white md:mx-[15px] mx-[5px]">
-      <div className="mx-auto max-w-7xl px-4 pb-0 pt-0 lg:px-0 lg:pt-0">
-        <section className="p-6 sm:p-10 lg:p-14">
-          <div className="space-y-8">
-            <div className="flex flex-wrap items-center gap-4 text-base font-medium uppercase text-white">
-              <span className="inline-flex items-center rounded-lg bg-gradient-to-r from-[#9d7035] to-[#c1a35e] px-6 py-2">
-                {data.hero.tag}
-              </span>
-              <span className="text-xs font-semibold text-[#b58745]">
-                {data.hero.authorHighlight?.publishedOn} • {data.hero.authorHighlight?.readingTime}
-              </span>
-            </div>
-
-            <div className="grid gap-6 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-start lg:gap-10">
-              <div className="space-y-6">
-                <h1 className="text-3xl font-semibold leading-tight text-black md:text-4xl">
-                  {data.hero.title}
-                </h1>
-                <p className="max-w-2xl text-base leading-relaxed text-gray-700 md:text-lg ">
-                  {data.hero.description}
-                </p>
-              </div>
-              <div className="relative h-60 overflow-hidden rounded-lg lg:h-80">
-                {data.hero.authorHighlight?.banner?.image && (
-                  <Image
-                    src={data.hero.authorHighlight.banner.image}
-                    alt={data.hero.authorHighlight.banner.alt || 'Blog banner'}
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                )}
-              </div>
-            </div>
+      <div className="mx-auto max-w-7xl px-4 pb-0 pt-0 lg:px-0 lg:pt-4">
+        {/* Banner Image Section */}
+        {data.hero.authorHighlight?.banner?.image && (
+          <div className="relative w-full h-[200px] md:h-[500px] overflow-hidden rounded-2xl">
+            <Image
+              src={data.hero.authorHighlight.banner.image}
+              alt={data.hero.authorHighlight.banner.alt || 'Blog banner'}
+              fill
+              className="object-contain"
+              unoptimized
+              priority
+            />
           </div>
+        )}
 
-          <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,1.4fr)] lg:items-start lg:gap-16">
+        <section className="p-6 sm:p-10 lg:p-14">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,1.4fr)] lg:items-start lg:gap-16">
             <article className="space-y-14">
+              {/* Hero Section */}
+              <div className="space-y-8">
+                <div className="flex flex-wrap items-center gap-4 text-base font-medium uppercase text-white">
+                  <span className="inline-flex items-center rounded-lg bg-gradient-to-r from-[#9d7035] to-[#c1a35e] px-6 py-2">
+                    {data.hero.tag}
+                  </span>
+                  <span className="text-xs font-semibold text-[#b58745]">
+                    {data.hero.authorHighlight?.publishedOn} • {data.hero.authorHighlight?.readingTime}
+                  </span>
+                </div>
+
+                <div className="space-y-6">
+                  <h1 className="text-3xl font-semibold leading-tight text-black md:text-4xl">
+                    {data.hero.title}
+                  </h1>
+                  <p className="max-w-2xl text-base leading-relaxed text-gray-700 md:text-lg ">
+                    {data.hero.description}
+                  </p>
+                </div>
+              </div>
               {data.sections.map((section) => (
                 <section key={section.id} id={section.id} className="scroll-mt-32 space-y-6">
                   {section.heading && (
