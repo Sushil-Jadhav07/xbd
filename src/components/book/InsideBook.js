@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '@/lib/sanity'
 import PreviewChapterForm from '../common/PreviewChapterForm'
+import ShopModal from '../common/ShopModal'
 import airNewZealandLogo from '@/asset/logos/air new zealand white.png'
 import amazonLogo from '@/asset/logos/amazon-white.png'
 import appleLogo from '@/asset/logos/apple-white.png'
@@ -19,6 +20,10 @@ import starbucksLogo from '@/asset/logos/starbucks-logo.png'
 
 const InsideBook = ({ insideBookData }) => {
   const [previewFormOpen, setPreviewFormOpen] = useState(false)
+  const [isShopModalOpen, setIsShopModalOpen] = useState(false)
+  const [isInIndia, setIsInIndia] = useState(false)
+  const [isCheckingLocation, setIsCheckingLocation] = useState(false)
+  const [locationError, setLocationError] = useState(null)
   // Helper function to extract YouTube video ID from URL
   const getYouTubeVideoId = (url) => {
     if (!url) return null
@@ -212,6 +217,98 @@ const InsideBook = ({ insideBookData }) => {
   }
 
   const data = insideBookData || fallbackData
+
+  // Fallback: Get country from IP address
+  const getCountryFromIP = async () => {
+    try {
+      const response = await fetch('https://ipapi.co/json/')
+      const data = await response.json()
+      return data.country_code || null
+    } catch (error) {
+      console.error('Error getting country from IP:', error)
+      return null
+    }
+  }
+
+  // Function to get country from coordinates using reverse geocoding
+  const getCountryFromCoordinates = async (latitude, longitude) => {
+    try {
+      // Using OpenStreetMap Nominatim API (free, no API key required)
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
+        {
+          headers: {
+            'User-Agent': 'XBD Book Store' // Required by Nominatim
+          }
+        }
+      )
+      const geoData = await response.json()
+      return geoData.address?.country_code?.toUpperCase() || null
+    } catch (error) {
+      console.error('Error getting country from coordinates:', error)
+      // Fallback to IP-based geolocation
+      return await getCountryFromIP()
+    }
+  }
+
+  // Check if location services are available and enabled
+  const checkLocationPermission = () => {
+    if (typeof window === 'undefined' || !navigator.geolocation) {
+      return Promise.reject(new Error('Geolocation is not supported by your browser'))
+    }
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        resolve,
+        reject,
+        {
+          enableHighAccuracy: false,
+          timeout: 10000,
+          maximumAge: 300000 // Cache for 5 minutes
+        }
+      )
+    })
+  }
+
+  // Main function to check location and determine if user is in India
+  const handleGetBookClick = async () => {
+    setIsCheckingLocation(true)
+    setLocationError(null)
+
+    try {
+      // First, try to get precise location
+      const position = await checkLocationPermission()
+      const { latitude, longitude } = position.coords
+      const countryCode = await getCountryFromCoordinates(latitude, longitude)
+      
+      if (countryCode === 'IN') {
+        setIsInIndia(true)
+      } else {
+        setIsInIndia(false)
+      }
+      setIsShopModalOpen(true)
+    } catch (error) {
+      console.error('Location error:', error)
+      
+      // If user denied location or error occurred, try IP-based detection
+      try {
+        const countryCode = await getCountryFromIP()
+        if (countryCode === 'IN') {
+          setIsInIndia(true)
+        } else {
+          setIsInIndia(false)
+        }
+        setIsShopModalOpen(true)
+      } catch (ipError) {
+        console.error('IP geolocation error:', ipError)
+        setLocationError('Unable to determine your location. Showing default options.')
+        // Default to showing both options if we can't determine location
+        setIsInIndia(true)
+        setIsShopModalOpen(true)
+      }
+    } finally {
+      setIsCheckingLocation(false)
+    }
+  }
   
   // Use chapters if available, otherwise fall back to modules
   const chapters = data.chapters || (data.modules?.map(m => ({ 
@@ -318,12 +415,14 @@ const InsideBook = ({ insideBookData }) => {
                   </button>
                 )}
                 {data.secondaryButton && (
-                  <Link
-                    href={data.secondaryButton.link || '#'}
-                    className="flex-1 bg-[#c1a35e] text-white hover:opacity-90 py-3 px-4 rounded-lg font-semibold  transition-all duration-200 text-center text-sm md:text-base"
+                  <button
+                    type="button"
+                    onClick={handleGetBookClick}
+                    disabled={isCheckingLocation}
+                    className="flex-1 bg-[#c1a35e] text-white hover:opacity-90 py-3 px-4 rounded-lg font-semibold transition-all duration-200 text-center text-sm md:text-base disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    {data.secondaryButton.text}
-                  </Link>
+                    {isCheckingLocation ? 'Checking location...' : data.secondaryButton.text}
+                  </button>
                 )}
               </div>
             </div>
@@ -475,6 +574,19 @@ const InsideBook = ({ insideBookData }) => {
         onClose={() => setPreviewFormOpen(false)}
         initialSubject={data.primaryButton?.text || 'Download a free chapter'}
       />
+      <ShopModal
+        open={isShopModalOpen}
+        onClose={() => {
+          setIsShopModalOpen(false)
+          setLocationError(null)
+        }}
+        isInIndia={isInIndia}
+      />
+      {locationError && (
+        <div className="fixed bottom-4 right-4 bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-3 rounded-lg shadow-lg z-50 max-w-sm">
+          <p className="text-sm">{locationError}</p>
+        </div>
+      )}
     </div>
   )
 }

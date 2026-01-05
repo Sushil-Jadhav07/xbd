@@ -5,12 +5,15 @@ import { MdImage } from 'react-icons/md'
 import Image from 'next/image'
 import Link from 'next/link'
 import { urlFor } from '@/lib/sanity'
-import LeadFormModal from '../common/LeadFormModal'
+import ShopModal from '../common/ShopModal'
 import PreviewChapterForm from '../common/PreviewChapterForm'
 
 const BookBanner = ({ bookBannerData }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isShopModalOpen, setIsShopModalOpen] = useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [isInIndia, setIsInIndia] = useState(false);
+  const [isCheckingLocation, setIsCheckingLocation] = useState(false);
+  const [locationError, setLocationError] = useState(null);
   
   // Fallback data
   const fallbackData = {
@@ -31,6 +34,98 @@ const BookBanner = ({ bookBannerData }) => {
   };
 
   const data = bookBannerData || fallbackData;
+
+  // Fallback: Get country from IP address
+  const getCountryFromIP = async () => {
+    try {
+      const response = await fetch('https://ipapi.co/json/');
+      const data = await response.json();
+      return data.country_code || null;
+    } catch (error) {
+      console.error('Error getting country from IP:', error);
+      return null;
+    }
+  };
+
+  // Function to get country from coordinates using reverse geocoding
+  const getCountryFromCoordinates = async (latitude, longitude) => {
+    try {
+      // Using OpenStreetMap Nominatim API (free, no API key required)
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
+        {
+          headers: {
+            'User-Agent': 'XBD Book Store' // Required by Nominatim
+          }
+        }
+      );
+      const data = await response.json();
+      return data.address?.country_code?.toUpperCase() || null;
+    } catch (error) {
+      console.error('Error getting country from coordinates:', error);
+      // Fallback to IP-based geolocation
+      return await getCountryFromIP();
+    }
+  };
+
+  // Check if location services are available and enabled
+  const checkLocationPermission = () => {
+    if (typeof window === 'undefined' || !navigator.geolocation) {
+      return Promise.reject(new Error('Geolocation is not supported by your browser'));
+    }
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        resolve,
+        reject,
+        {
+          enableHighAccuracy: false,
+          timeout: 10000,
+          maximumAge: 300000 // Cache for 5 minutes
+        }
+      );
+    });
+  };
+
+  // Main function to check location and determine if user is in India
+  const handleGetCopyClick = async () => {
+    setIsCheckingLocation(true);
+    setLocationError(null);
+
+    try {
+      // First, try to get precise location
+      const position = await checkLocationPermission();
+      const { latitude, longitude } = position.coords;
+      const countryCode = await getCountryFromCoordinates(latitude, longitude);
+      
+      if (countryCode === 'IN') {
+        setIsInIndia(true);
+      } else {
+        setIsInIndia(false);
+      }
+      setIsShopModalOpen(true);
+    } catch (error) {
+      console.error('Location error:', error);
+      
+      // If user denied location or error occurred, try IP-based detection
+      try {
+        const countryCode = await getCountryFromIP();
+        if (countryCode === 'IN') {
+          setIsInIndia(true);
+        } else {
+          setIsInIndia(false);
+        }
+        setIsShopModalOpen(true);
+      } catch (ipError) {
+        console.error('IP geolocation error:', ipError);
+        setLocationError('Unable to determine your location. Showing default options.');
+        // Default to showing both options if we can't determine location
+        setIsInIndia(true);
+        setIsShopModalOpen(true);
+      }
+    } finally {
+      setIsCheckingLocation(false);
+    }
+  };
 
   // Prefer Sanity link for primary CTA; fallback to modal only if link is missing
   const renderPrimaryButton = () => {
@@ -62,14 +157,15 @@ const BookBanner = ({ bookBannerData }) => {
       );
     }
 
-    // Fallback: open modal only if no link is provided
+    // Fallback: open shop modal with location check
     return (
       <button
         type="button"
-        onClick={() => setIsModalOpen(true)}
-        className="bg-black text-white px-8 py-4 rounded-lg cursor-pointer font-medium hover:bg-gray-800 transition-colors duration-200 text-base"
+        onClick={handleGetCopyClick}
+        disabled={isCheckingLocation}
+        className="bg-black text-white px-8 py-4 rounded-lg cursor-pointer font-medium hover:bg-gray-800 transition-colors duration-200 text-base disabled:opacity-70 disabled:cursor-not-allowed"
       >
-        {btn.text}
+        {isCheckingLocation ? 'Checking location...' : btn.text}
       </button>
     );
   };
@@ -202,11 +298,19 @@ const BookBanner = ({ bookBannerData }) => {
         </div>
       </div>
     </div>
-    <LeadFormModal
-      open={isModalOpen}
-      onClose={() => setIsModalOpen(false)}
-      title="Get Your Copy Now"
+    <ShopModal
+      open={isShopModalOpen}
+      onClose={() => {
+        setIsShopModalOpen(false);
+        setLocationError(null);
+      }}
+      isInIndia={isInIndia}
     />
+    {locationError && (
+      <div className="fixed bottom-4 right-4 bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-3 rounded-lg shadow-lg z-50 max-w-sm">
+        <p className="text-sm">{locationError}</p>
+      </div>
+    )}
     <PreviewChapterForm
       open={isPreviewOpen}
       onClose={() => setIsPreviewOpen(false)}
