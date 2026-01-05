@@ -13,8 +13,8 @@ export default function ShopModal({ open, onClose, isInIndia = false }) {
 
   if (!open) return null;
 
-  // Amazon links - you can update these with actual product links
-  const amazonIndiaLink = "https://www.amazon.in/dp/YOUR_PRODUCT_ID"; // Update with actual Amazon India link
+  // Amazon links
+  const amazonIndiaLink = "https://www.amazon.in/dp/B0GDJQPS52";
   const amazonInternationalLink = "https://www.amazon.com/dp/YOUR_PRODUCT_ID"; // Update with actual Amazon International link
   const websiteShopLink = "https://xbd-2.myshopify.com/";
 
