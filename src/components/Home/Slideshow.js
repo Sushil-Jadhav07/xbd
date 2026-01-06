@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import LeadFormModal from '../common/LeadFormModal';
+import ShopModal from '../common/ShopModal';
 import { urlFor } from '@/lib/sanity';
 import HomeMainBanner from "../../asset/homeBanner.png";
 import FeatureImageOne from "../../asset/feature1.png";
@@ -15,6 +16,10 @@ const Slideshow = ({ slideshowData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isShopModalOpen, setIsShopModalOpen] = useState(false);
+  const [isInIndia, setIsInIndia] = useState(false);
+  const [isCheckingLocation, setIsCheckingLocation] = useState(false);
+  const [locationError, setLocationError] = useState(null);
 
   // Fallback slides data - 5 slides with different images
   const fallbackSlides = [
@@ -43,13 +48,13 @@ const Slideshow = ({ slideshowData }) => {
     {
       id: 3,
       image: FeatureImageTwo,
-      alt: "Create Adaptive Experiences",
+      alt: "The Playbook",
       title: "Create Adaptive Experiences",
-      highlightText: "In The Moment",
-      titleafter: "Of Truth",
-      subtitle: "Design experiences that extract emotions and drive decisions when customers make critical choices.",
-      primaryButton: { text: "Start Building" },
-      secondaryButton: { text: "See Examples", link: "/examples" }
+      highlightText: "The Playbook",
+      titleafter: "for Leaders Designing the Next Decade",
+      subtitle: "Exponential by Design distills how today's most valuable enterprises engineer scale, influence, and adaptability - before competitors react.",
+      primaryButton: { text: "Pre - Order to start your journey" },
+      secondaryButton: { text: "Pre - Order to start your journey", link: "/book" }
     },
     {
       id: 4,
@@ -138,6 +143,98 @@ const Slideshow = ({ slideshowData }) => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 5000);
+  };
+
+  // Fallback: Get country from IP address
+  const getCountryFromIP = async () => {
+    try {
+      const response = await fetch('https://ipapi.co/json/');
+      const data = await response.json();
+      return data.country_code || null;
+    } catch (error) {
+      console.error('Error getting country from IP:', error);
+      return null;
+    }
+  };
+
+  // Function to get country from coordinates using reverse geocoding
+  const getCountryFromCoordinates = async (latitude, longitude) => {
+    try {
+      // Using OpenStreetMap Nominatim API (free, no API key required)
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
+        {
+          headers: {
+            'User-Agent': 'XBD Book Store' // Required by Nominatim
+          }
+        }
+      );
+      const geoData = await response.json();
+      return geoData.address?.country_code?.toUpperCase() || null;
+    } catch (error) {
+      console.error('Error getting country from coordinates:', error);
+      // Fallback to IP-based geolocation
+      return await getCountryFromIP();
+    }
+  };
+
+  // Check if location services are available and enabled
+  const checkLocationPermission = () => {
+    if (typeof window === 'undefined' || !navigator.geolocation) {
+      return Promise.reject(new Error('Geolocation is not supported by your browser'));
+    }
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        resolve,
+        reject,
+        {
+          enableHighAccuracy: false,
+          timeout: 10000,
+          maximumAge: 300000 // Cache for 5 minutes
+        }
+      );
+    });
+  };
+
+  // Main function to check location and determine if user is in India
+  const handlePreOrderClick = async () => {
+    setIsCheckingLocation(true);
+    setLocationError(null);
+
+    try {
+      // First, try to get precise location
+      const position = await checkLocationPermission();
+      const { latitude, longitude } = position.coords;
+      const countryCode = await getCountryFromCoordinates(latitude, longitude);
+      
+      if (countryCode === 'IN') {
+        setIsInIndia(true);
+      } else {
+        setIsInIndia(false);
+      }
+      setIsShopModalOpen(true);
+    } catch (error) {
+      console.error('Location error:', error);
+      
+      // If user denied location or error occurred, try IP-based detection
+      try {
+        const countryCode = await getCountryFromIP();
+        if (countryCode === 'IN') {
+          setIsInIndia(true);
+        } else {
+          setIsInIndia(false);
+        }
+        setIsShopModalOpen(true);
+      } catch (ipError) {
+        console.error('IP geolocation error:', ipError);
+        setLocationError('Unable to determine your location. Showing default options.');
+        // Default to showing both options if we can't determine location
+        setIsInIndia(true);
+        setIsShopModalOpen(true);
+      }
+    } finally {
+      setIsCheckingLocation(false);
+    }
   };
 
   const currentSlideData = slides[currentSlide];
@@ -293,8 +390,18 @@ const Slideshow = ({ slideshowData }) => {
                       >
                         {currentSlideData.primaryButton.text}
                       </a>
+                    ) : currentSlideData.primaryButton.text === 'Pre - Order to start your journey' ? (
+                      // Priority 4: Pre-Order button - Check location and open shop modal
+                      <button
+                        type="button"
+                        onClick={handlePreOrderClick}
+                        disabled={isCheckingLocation}
+                        className="bg-black text-white px-4 sm:px-5 lg:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:cursor-pointer hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap w-full sm:w-auto disabled:opacity-70 disabled:cursor-not-allowed"
+                      >
+                        {isCheckingLocation ? 'Checking location...' : currentSlideData.primaryButton.text}
+                      </button>
                     ) : (
-                      // Priority 4: Other slides without link - Open modal
+                      // Priority 5: Other slides without link - Open modal
                       <button
                         type="button"
                         onClick={() => setIsModalOpen(true)}
@@ -360,6 +467,19 @@ const Slideshow = ({ slideshowData }) => {
         onClose={() => setIsModalOpen(false)}
         title="Book a Strategy Call"
       />
+      <ShopModal
+        open={isShopModalOpen}
+        onClose={() => {
+          setIsShopModalOpen(false);
+          setLocationError(null);
+        }}
+        isInIndia={isInIndia}
+      />
+      {locationError && (
+        <div className="fixed bottom-4 right-4 bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-3 rounded-lg shadow-lg z-50 max-w-sm">
+          <p className="text-sm">{locationError}</p>
+        </div>
+      )}
     </>
   );
 };

@@ -12,6 +12,7 @@ import JoinWaitlistForm from '../common/JoinWaitlistForm';
 import StrategySessionForm from '../common/StrategySessionForm';
 import KeynoteRequestForm from '../common/KeynoteRequestForm';
 import ExponentialDesignMastery from '../common/ExponentialDesignMastery';
+import ShopModal from '../common/ShopModal';
 import { urlFor } from '../../lib/sanity';
 
 // Import Swiper styles
@@ -31,7 +32,7 @@ const Slider = ({ resourcesSliderData }) => {
         title: "Read the Playbook That's Fueling 15X Growth Stories",
         description: "Complete Return OS framework & implementation guide",
         meta: "212 Pages",
-        buttonText: "Get the Book",
+        buttonText: "Pre-Order Book Now",
         iconType: "document"
       },
       {
@@ -63,6 +64,10 @@ const Slider = ({ resourcesSliderData }) => {
 
   const data = resourcesSliderData || fallbackData;
   const [activeForm, setActiveForm] = useState(null);
+  const [isShopModalOpen, setIsShopModalOpen] = useState(false);
+  const [isInIndia, setIsInIndia] = useState(false);
+  const [isCheckingLocation, setIsCheckingLocation] = useState(false);
+  const [locationError, setLocationError] = useState(null);
 
   const buttonTextFormMap = useMemo(() => ({
     'join the waitlist': 'waitlist',
@@ -77,6 +82,98 @@ const Slider = ({ resourcesSliderData }) => {
   };
 
   const handleCloseForm = () => setActiveForm(null);
+
+  // Fallback: Get country from IP address
+  const getCountryFromIP = async () => {
+    try {
+      const response = await fetch('https://ipapi.co/json/');
+      const data = await response.json();
+      return data.country_code || null;
+    } catch (error) {
+      console.error('Error getting country from IP:', error);
+      return null;
+    }
+  };
+
+  // Function to get country from coordinates using reverse geocoding
+  const getCountryFromCoordinates = async (latitude, longitude) => {
+    try {
+      // Using OpenStreetMap Nominatim API (free, no API key required)
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
+        {
+          headers: {
+            'User-Agent': 'XBD Book Store' // Required by Nominatim
+          }
+        }
+      );
+      const geoData = await response.json();
+      return geoData.address?.country_code?.toUpperCase() || null;
+    } catch (error) {
+      console.error('Error getting country from coordinates:', error);
+      // Fallback to IP-based geolocation
+      return await getCountryFromIP();
+    }
+  };
+
+  // Check if location services are available and enabled
+  const checkLocationPermission = () => {
+    if (typeof window === 'undefined' || !navigator.geolocation) {
+      return Promise.reject(new Error('Geolocation is not supported by your browser'));
+    }
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        resolve,
+        reject,
+        {
+          enableHighAccuracy: false,
+          timeout: 10000,
+          maximumAge: 300000 // Cache for 5 minutes
+        }
+      );
+    });
+  };
+
+  // Main function to check location and determine if user is in India
+  const handlePreOrderClick = async () => {
+    setIsCheckingLocation(true);
+    setLocationError(null);
+
+    try {
+      // First, try to get precise location
+      const position = await checkLocationPermission();
+      const { latitude, longitude } = position.coords;
+      const countryCode = await getCountryFromCoordinates(latitude, longitude);
+      
+      if (countryCode === 'IN') {
+        setIsInIndia(true);
+      } else {
+        setIsInIndia(false);
+      }
+      setIsShopModalOpen(true);
+    } catch (error) {
+      console.error('Location error:', error);
+      
+      // If user denied location or error occurred, try IP-based detection
+      try {
+        const countryCode = await getCountryFromIP();
+        if (countryCode === 'IN') {
+          setIsInIndia(true);
+        } else {
+          setIsInIndia(false);
+        }
+        setIsShopModalOpen(true);
+      } catch (ipError) {
+        console.error('IP geolocation error:', ipError);
+        setLocationError('Unable to determine your location. Showing default options.');
+        // Default to showing both options if we can't determine location
+        setIsInIndia(true);
+        setIsShopModalOpen(true);
+      }
+    } finally {
+      setIsCheckingLocation(false);
+    }
+  };
 
   const getIcon = (iconType) => {
     switch(iconType) {
@@ -235,7 +332,16 @@ const Slider = ({ resourcesSliderData }) => {
 
                         {/* Button */}
                         <div className="mt-auto pt-4">
-                          {formType ? (
+                          {resource.buttonText === 'Pre-Order Book Now' ? (
+                            <button
+                              type="button"
+                              onClick={handlePreOrderClick}
+                              disabled={isCheckingLocation}
+                              className="bg-black text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-gray-800 transition-colors duration-200 w-full disabled:opacity-70 disabled:cursor-not-allowed"
+                            >
+                              {isCheckingLocation ? 'Checking location...' : resource.buttonText}
+                            </button>
+                          ) : formType ? (
                             <button
                               type="button"
                               onClick={() => handleOpenForm(formType)}
@@ -288,6 +394,19 @@ const Slider = ({ resourcesSliderData }) => {
       <StrategySessionForm open={activeForm === 'strategy'} onClose={handleCloseForm} />
       <KeynoteRequestForm open={activeForm === 'keynote'} onClose={handleCloseForm} />
       <ExponentialDesignMastery open={activeForm === 'mastery'} onClose={handleCloseForm} initialSubject="Master the Framework That's Redefining Market Leaders" />
+      <ShopModal
+        open={isShopModalOpen}
+        onClose={() => {
+          setIsShopModalOpen(false);
+          setLocationError(null);
+        }}
+        isInIndia={isInIndia}
+      />
+      {locationError && (
+        <div className="fixed bottom-4 right-4 bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-3 rounded-lg shadow-lg z-50 max-w-sm">
+          <p className="text-sm">{locationError}</p>
+        </div>
+      )}
     </section>
     </>
   );

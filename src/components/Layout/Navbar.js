@@ -17,7 +17,7 @@ const Navbar = () => {
   const navItems = [
     { name: 'Book', href: '/book' },
     { name: 'Learning Hub', href: '/learning-hub' },
-    { name: 'Insights', href: '/insights' },
+    // { name: 'Insights', href: '/insights' },
     { name: 'About Anuj', href: '/about-anuj' },
     { name: 'FAQ', href: '/faq' },
     // { name: 'Work with Anuj', href: '/community' },

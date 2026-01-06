@@ -101,11 +101,11 @@ const Footer = () => {
                     Assessment
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="/insights" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
                     Insight
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
 
