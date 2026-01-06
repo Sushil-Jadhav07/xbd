@@ -25,7 +25,7 @@ const Feature = () => {
       iconType: "design",
       mediaType: "video",
       videoUrl: "https://www.youtube.com/watch?v=j2s7t_bNa3Q",
-      videoThumbnail: WhyByDesignThumbnail,
+      videoThumbnail: NetworkThumbnail,
     },
     {
       title: "Network Power",
@@ -34,7 +34,7 @@ const Feature = () => {
       iconType: "link",
       mediaType: "video",
       videoUrl: "https://youtu.be/6UFKW6JwzGk",
-      videoThumbnail: NetworkThumbnail,
+      videoThumbnail: WhyByDesignThumbnail,
     },
   ];
 
