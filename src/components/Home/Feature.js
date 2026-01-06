@@ -6,37 +6,36 @@ import { SiMaterialdesignicons } from "react-icons/si";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
-import { urlFor } from '@/lib/sanity';
-import { useState } from 'react';
+import WhyByDesignThumbnail from '@/asset/whydesign.png';
+import NetworkThumbnail from '@/asset/network.png';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const Feature = ({ whatIsExponentialData }) => {
-  const [isVideoPlaying, setIsVideoPlaying] = useState({});
+const Feature = () => {
 
-  // Fallback to static data if no Sanity data
+  // Static data with video cards
   const staticFeatures = [
     {
       title: "Design at the Core",
       description: "Integrate design thinking into your company's core to ensure growth occurs naturally, rather than relying on luck.",
       hasButton: true,
       iconType: "design",
+      mediaType: "video",
+      videoUrl: "https://www.youtube.com/watch?v=j2s7t_bNa3Q",
+      videoThumbnail: WhyByDesignThumbnail,
     },
     {
-      title: "System-Level Vision",
-      description: "View your business as a cohesive system and leverage unseen opportunities for remarkable outcomes.",
+      title: "Network Power",
+      description: "Unite converged systems so every move amplifies your reach and accelerates market dominance.",
       hasButton: false,
-      iconType: "eye",
+      iconType: "link",
+      mediaType: "video",
+      videoUrl: "https://youtu.be/6UFKW6JwzGk",
+      videoThumbnail: NetworkThumbnail,
     },
-    // {
-    //   title: "Network Power",
-    //   description: "Unite converged systems so every move amplifies your reach and accelerates market dominance.",
-    //   hasButton: false,
-    //   iconType: "link",
-    // },
   ];
 
   const getIcon = (iconType) => {
@@ -92,125 +91,77 @@ const Feature = ({ whatIsExponentialData }) => {
     return url; // For direct video URLs
   };
 
-  // Check if video is an uploaded file or external URL
-  const isUploadedVideo = (feature) => feature.uploadedVideo && feature.uploadedVideo.asset && feature.uploadedVideo.asset._id;
+  // Check if video is an external URL
   const isExternalVideo = (feature) => {
     // Check if it's a video media type and has videoUrl
     if (feature.mediaType === 'video' && feature.videoUrl) {
-      return !isUploadedVideo(feature);
+      return true;
     }
     return false;
   };
 
   const renderIconOrImage = (feature, index) => {
-    // Handle video media type
-    if (feature.mediaType === 'video') {
-      // Handle uploaded video files
-      if (isUploadedVideo(feature)) {
-        try {
-          const videoUrl = feature.uploadedVideo.asset.url;
-          return (
-            <div className="relative w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-2xl overflow-hidden shadow-xl">
-              <video
-                controls
-                autoPlay={true}
-                muted
-                loop
-                className="w-full h-full object-cover"
-                poster={feature.videoThumbnail && feature.videoThumbnail.asset ? urlFor(feature.videoThumbnail).width(500).height(400).url() : undefined}
-              >
-                <source src={videoUrl} type={feature.uploadedVideo.asset.mimeType || "video/mp4"} />
-                Your browser does not support the video tag.
-              </video>
-              <div className="absolute inset-0 bg-gradient-to-br from-[#9d7035]/10 to-[#c1a35e]/10 pointer-events-none"></div>
-            </div>
-          );
-        } catch (error) {
-          console.error('Error rendering uploaded video:', error);
-          // Fallback to icon
-          const Icon = getIcon(feature.iconType);
-          return (
-            <div className="bg-gradient-to-br from-[#9d7035] to-[#c1a35e] rounded-xl p-4 w-16 h-16 flex items-center justify-center shadow-lg">
-              <Icon className="text-white text-2xl" />
-            </div>
-          );
-        }
-      }
-      // Handle external video URLs (YouTube/Vimeo)
-      else if (isExternalVideo(feature)) {
-        // For YouTube/Vimeo videos, show the embedded player directly
-        if (feature.videoUrl && (feature.videoUrl.includes('youtube.com') || feature.videoUrl.includes('youtu.be') || feature.videoUrl.includes('vimeo.com'))) {
-          return (
-            <div className="relative w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-2xl overflow-hidden shadow-xl">
-              <iframe
-                src={getEmbedUrl(feature.videoUrl)}
-                title="Video Player"
-                className="w-full h-full"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-[#9d7035]/10 to-[#c1a35e]/10 pointer-events-none"></div>
-            </div>
-          );
-        }
-        
-        // For other video URLs or uploaded videos, use the thumbnail with play button
-        const videoKey = `video-${index}`;
-        const isPlaying = isVideoPlaying[videoKey];
-        
-        return (
-          <div className="relative w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-2xl overflow-hidden shadow-xl">
-            {isPlaying ? (
-              <iframe
-                src={getEmbedUrl(feature.videoUrl)}
-                title="Video Player"
-                className="w-full h-full"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+    // Handle video media type - make it clickable to redirect to YouTube
+    if (feature.mediaType === 'video' && isExternalVideo(feature) && feature.videoUrl) {
+      return (
+        <a
+          href={feature.videoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative w-full h-[250px]  md:h-[400px] rounded-2xl overflow-hidden shadow-xl block cursor-pointer group"
+        >
+          <div className="relative w-full h-full bg-gray-100">
+            {/* Video Thumbnail */}
+            {feature.videoThumbnail ? (
+              <Image
+                src={feature.videoThumbnail}
+                alt={feature.videoThumbnailAlt || feature.title || "Video Thumbnail"}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                unoptimized
+                priority={index === 0}
               />
             ) : (
-              <div className="relative w-full h-full">
-                {/* Video Thumbnail */}
-                {feature.videoThumbnail && feature.videoThumbnail.asset ? (
-                  <Image
-                    src={urlFor(feature.videoThumbnail).width(500).height(400).url()}
-                    alt={feature.videoThumbnail.alt || "Video Thumbnail"}
-                    fill
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                    <div className="text-gray-500 text-lg">Video Thumbnail</div>
-                  </div>
-                )}
-                
-                {/* Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
-                  <button
-                    onClick={() => setIsVideoPlaying(prev => ({ ...prev, [videoKey]: true }))}
-                    className="bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-4 transition-all duration-200 transform hover:scale-110"
-                  >
-                    <svg className="w-8 h-8 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </button>
-                </div>
+              <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                <div className="text-gray-500 text-lg">Video Thumbnail</div>
               </div>
             )}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#9d7035]/10 to-[#c1a35e]/10 pointer-events-none"></div>
+            
+            {/* Play Button Overlay */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="bg-white bg-opacity-90 group-hover:bg-opacity-100 rounded-full p-4 transition-all duration-200 transform group-hover:scale-110 pointer-events-auto">
+                <svg className="w-8 h-8 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
           </div>
-        );
-      }
+          <div className="absolute inset-0 bg-gradient-to-br from-[#9d7035]/10 to-[#c1a35e]/10 pointer-events-none"></div>
+        </a>
+      );
     }
     // Handle image media type
     else if (feature.mediaType === 'image' && feature.image) {
       return (
         <div className="relative w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-2xl overflow-hidden shadow-xl">
           <Image
-            src={urlFor(feature.image).width(1000).height(1000).url()}
-            alt={feature.image.alt || feature.title}
+            src={typeof feature.image === 'string' ? feature.image : feature.image.src || feature.image}
+            alt={feature.imageAlt || feature.image.alt || feature.title}
+            fill
+            className="object-cover"
+            priority={false}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#9d7035]/10 to-[#c1a35e]/10 pointer-events-none"></div>
+        </div>
+      );
+    }
+    // Use thumbnail for first card if no media type is specified
+    else if (index === 0) {
+      return (
+        <div className="relative w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-2xl overflow-hidden shadow-xl">
+          <Image
+            src={WhyByDesignThumbnail}
+            alt="Why By Design Thumbnail"
             fill
             className="object-cover"
             priority={false}
@@ -224,8 +175,8 @@ const Feature = ({ whatIsExponentialData }) => {
       return (
         <div className="relative w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-2xl overflow-hidden shadow-xl">
           <Image
-            src={urlFor(feature.image).width(1000).height(1000).url()}
-            alt={feature.image.alt || feature.title}
+            src={typeof feature.image === 'string' ? feature.image : feature.image.src || feature.image}
+            alt={feature.imageAlt || feature.image.alt || feature.title}
             fill
             className="object-cover"
             priority={false}
@@ -245,11 +196,11 @@ const Feature = ({ whatIsExponentialData }) => {
     }
   };
 
-  // Use Sanity data if available, otherwise use static data
-  const features = whatIsExponentialData?.features || staticFeatures;
-  const title = whatIsExponentialData?.title || "What is";
-  const highlightText = whatIsExponentialData?.highlightText || "Exponential by Design";
-  const subtitle = whatIsExponentialData?.subtitle || "The 3 Shifts That Turn Ordinary Companies Into Market Leaders";
+  // Use static data only
+  const features = staticFeatures;
+  const title = "What is";
+  const highlightText = "Exponential by Design";
+  const subtitle = "The 3 Shifts That Turn Ordinary Companies Into Market Leaders";
 
 
   return (
@@ -334,17 +285,7 @@ const Feature = ({ whatIsExponentialData }) => {
                     {feature.description}
                   </p>
 
-                  {/* Button (conditional) */}
-                  {feature.hasButton && (
-                    <div className="pt-4 flex justify-left">
-                      <Link
-                        href={feature.buttonLink || '#'}
-                        className="inline-block bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200 text-center"
-                      >
-                        {feature.buttonText || "Take a quick look"}
-                      </Link>
-                    </div>
-                  )}
+                  
                 </div>
               </SwiperSlide>
             ))}
