@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import { HiOutlineSparkles, HiOutlineEye, HiOutlineLink } from 'react-icons/hi';
 import Link from 'next/link';
 import { SiMaterialdesignicons } from "react-icons/si";
@@ -15,6 +16,19 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const Feature = () => {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [selectedVideoUrl, setSelectedVideoUrl] = useState(null);
+
+  // Handle ESC key to close video modal
+  useEffect(() => {
+    function onKeyDown(e) {
+      if (e.key === 'Escape' && isVideoModalOpen) {
+        setIsVideoModalOpen(false);
+      }
+    }
+    if (isVideoModalOpen) document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isVideoModalOpen]);
 
   // Static data with video cards
   const staticFeatures = [
@@ -100,15 +114,19 @@ const Feature = () => {
     return false;
   };
 
+  const handleVideoClick = (videoUrl) => {
+    setSelectedVideoUrl(videoUrl);
+    setIsVideoModalOpen(true);
+  };
+
   const renderIconOrImage = (feature, index) => {
-    // Handle video media type - make it clickable to redirect to YouTube
+    // Handle video media type - make it clickable to open in popup
     if (feature.mediaType === 'video' && isExternalVideo(feature) && feature.videoUrl) {
       return (
-        <a
-          href={feature.videoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="relative w-full h-[250px]  md:h-[400px] rounded-2xl overflow-hidden shadow-xl block cursor-pointer group"
+        <button
+          type="button"
+          onClick={() => handleVideoClick(feature.videoUrl)}
+          className="relative w-full h-[250px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl block cursor-pointer group"
         >
           <div className="relative w-full h-full bg-gray-100">
             {/* Video Thumbnail */}
@@ -137,7 +155,7 @@ const Feature = () => {
             </div>
           </div>
           <div className="absolute inset-0 bg-gradient-to-br from-[#9d7035]/10 to-[#c1a35e]/10 pointer-events-none"></div>
-        </a>
+        </button>
       );
     }
     // Handle image media type
@@ -315,6 +333,43 @@ const Feature = () => {
           <div className="swiper-pagination-custom absolute bottom-0 left-0 right-0 flex justify-center items-center space-x-2"></div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {isVideoModalOpen && selectedVideoUrl && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center px-4"
+          aria-modal="true"
+          role="dialog"
+          onClick={() => setIsVideoModalOpen(false)}
+        >
+          <div className="absolute inset-0 bg-black/80" onClick={() => setIsVideoModalOpen(false)} />
+          <div
+            className="relative z-10 w-full max-w-4xl bg-black rounded-xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative aspect-video">
+              <iframe
+                src={getEmbedUrl(selectedVideoUrl)}
+                title="Video Player"
+                className="w-full h-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsVideoModalOpen(false)}
+              className="absolute top-4 right-4 bg-black/70 hover:bg-black/90 text-white rounded-full p-2 transition-colors duration-200"
+              aria-label="Close video"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
     </section>
     </>
   );
