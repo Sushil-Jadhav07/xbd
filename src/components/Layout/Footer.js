@@ -86,11 +86,11 @@ const Footer = () => {
                     Book summary
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="/blogs" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
                     Blogs
                   </a>
-                </li>
+                </li> */}
                 {/* <li>
                   <a href="/blogs-2" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
                     Blogs 2
@@ -123,7 +123,7 @@ const Footer = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-3">
+                {/* <div className="flex items-start gap-3">
                   <HiOutlinePhone className="w-5 h-5 text-gray-800 dark:text-gray-400 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-gray-800 dark:text-gray-400">Call us</p>
@@ -131,7 +131,7 @@ const Footer = () => {
                       +1 (234) 567-890
                     </a>
                   </div>
-                </div>
+                </div> */}
 
                 {/* CTA Button */}
                 <div className="pt-4">

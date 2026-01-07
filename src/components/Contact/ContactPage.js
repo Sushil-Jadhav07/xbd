@@ -4,12 +4,12 @@ import Link from 'next/link';
 import ContactForm from '../common/Contactus';
 
 const infoItems = [
-  {
-    title: 'Talk to our team',
-    description: 'Call us Monday to Friday, 9:00 AM – 6:00 PM IST for immediate assistance.',
-    primary: '+1 (234) 567-890',
-    href: 'tel:+1 (234) 567-890'
-  },
+  // {
+  //   title: 'Talk to our team',
+  //   description: 'Call us Monday to Friday, 9:00 AM – 6:00 PM IST for immediate assistance.',
+  //   primary: '+1 (234) 567-890',
+  //   href: 'tel:+1 (234) 567-890'
+  // },
   {
     title: 'General enquiries',
     description: 'Drop us an email and we will get back to you within one business day.',
@@ -36,7 +36,7 @@ const ContactPage = () => {
           </p>
         </header>
 
-        <div className="grid gap-8 md:grid-cols-3 mb-16">
+        <div className="grid gap-8 md:grid-cols-2 mb-16">
           {infoItems.map((item) => (
             <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
               <h2 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h2>
