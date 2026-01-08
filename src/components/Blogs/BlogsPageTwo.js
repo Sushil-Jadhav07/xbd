@@ -304,13 +304,13 @@ const BlogsPageTwo = ({ blogData }) => {
           </div>
         )}
 
-        <section className="p-6 sm:p-10 lg:p-14">
+        <section className="p-0 lg:p-14">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,1.4fr)] lg:items-start lg:gap-16">
             <article className="space-y-14">
               {/* Hero Section */}
               <div className="space-y-8 mb-6">
-                <div className="flex flex-wrap items-center gap-4 text-base font-medium uppercase text-white">
-                  <span className="inline-flex items-center rounded-lg bg-gradient-to-r from-[#9d7035] to-[#c1a35e] px-6 py-2">
+                <div className="flex flex-wrap items-center gap-3 md:gap-4 text-sm md:text-base font-medium uppercase text-white">
+                  <span className="inline-flex items-center rounded-lg bg-gradient-to-r from-[#9d7035] to-[#c1a35e] px-4 py-1.5 md:px-6 md:py-2 text-xs md:text-sm">
                     {data.hero.tag}
                   </span>
                   <span className="text-xs font-semibold text-[#b58745]">
@@ -318,11 +318,11 @@ const BlogsPageTwo = ({ blogData }) => {
                   </span>
                 </div>
 
-                <div className="space-y-6">
-                  <h1 className="text-3xl font-semibold leading-tight text-black md:text-4xl">
+                <div className="space-y-4 md:space-y-6">
+                  <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight text-black">
                     {data.hero.title}
                   </h1>
-                  <div className="text-base leading-relaxed text-gray-700 md:text-base space-y-4">
+                  <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4">
                     {data.hero.description?.split('\n\n').filter(p => p.trim()).map((paragraph, idx) => (
                       <p  key={idx}>{paragraph.trim()}</p>
                     ))}
@@ -330,13 +330,13 @@ const BlogsPageTwo = ({ blogData }) => {
                 </div>
               </div>
               {data.sections.map((section) => (
-                <section key={section.id} id={section.id} className="scroll-mt-32 space-y-6">
+                <section key={section.id} id={section.id} className="scroll-mt-32 space-y-4 md:space-y-6">
                   {section.heading && (
-                    <h2 className="text-xl font-semibold text-black md:text-2xl">{section.heading}</h2>
+                    <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-black leading-tight">{section.heading}</h2>
                   )}
 
                   {section.type === 'richText' && (
-                    <div className="space-y-4 text-base leading-relaxed text-gray-700 md:text-base">
+                    <div className="space-y-4 text-sm md:text-base leading-relaxed text-gray-700">
                       {section.content?.map((paragraph, index) => (
                         <p key={index}>{paragraph}</p>
                       ))}
@@ -344,8 +344,8 @@ const BlogsPageTwo = ({ blogData }) => {
                   )}
 
                   {section.type === 'image' && section.image && (
-                    <div className="space-y-4">
-                      <div className="relative h-[600px] md:h-[1400px] overflow-hidden rounded-3xl bg-[#f4e4ca]">
+                    <div className="space-y-3 md:space-y-4">
+                      <div className="relative h-[400px] sm:h-[500px] md:h-[800px] lg:h-[1400px] overflow-hidden rounded-2xl md:rounded-3xl bg-[#f4e4ca]">
                         <Image
                           src={section.image.src}
                           alt={section.image.alt || section.heading || 'Blog illustration'}
@@ -355,17 +355,17 @@ const BlogsPageTwo = ({ blogData }) => {
                         />
                       </div>
                       {section.supportingText && (
-                        <p className="text-sm leading-relaxed text-gray-600">{section.supportingText}</p>
+                        <p className="text-xs md:text-sm leading-relaxed text-gray-600">{section.supportingText}</p>
                       )}
                       {section.caption && (
-                        <p className="text-xs uppercase  text-[#b0874a]">{section.caption}</p>
+                        <p className="text-xs uppercase text-[#b0874a]">{section.caption}</p>
                       )}
                     </div>
                   )}
 
                   {section.type === 'video' && section.youtubeId && (
-                    <div className="space-y-4">
-                      <div className="relative overflow-hidden rounded-3xl bg-black shadow-[0_18px_50px_rgba(0,0,0,0.2)]">
+                    <div className="space-y-3 md:space-y-4">
+                      <div className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-black shadow-[0_18px_50px_rgba(0,0,0,0.2)]">
                         <div className="aspect-video">
                           <iframe
                             title={section.heading}
@@ -377,27 +377,27 @@ const BlogsPageTwo = ({ blogData }) => {
                         </div>
                       </div>
                       {section.supportingText && (
-                        <p className="text-sm leading-relaxed text-gray-600">{section.supportingText}</p>
+                        <p className="text-xs md:text-sm leading-relaxed text-gray-600">{section.supportingText}</p>
                       )}
                     </div>
                   )}
 
                   {section.type === 'callout' && section.cta && (
-                    <div className="rounded-[28px] border border-[#e8d8bc] p-8">
+                    <div className="rounded-2xl md:rounded-[28px] border border-[#e8d8bc] p-4 md:p-8">
                       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                         <div className="space-y-2">
                           {section.supportingText && (
-                            <p className="text-sm font-medium uppercase  text-[#9d7035]">
+                            <p className="text-xs md:text-sm font-medium uppercase text-[#9d7035]">
                               Toolkit
                             </p>
                           )}
-                          <p className="text-base leading-relaxed text-gray-700 sm:text-lg">
+                          <p className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-700">
                             {section.supportingText}
                           </p>
                         </div>
                         <Link
                           href={section.cta.href}
-                          className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-[#9d7035] to-[#c1a35e] px-5 py-3 text-sm font-semibold uppercase text-white transition-transform duration-200"
+                          className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-[#9d7035] to-[#c1a35e] px-4 py-2 md:px-5 md:py-3 text-xs md:text-sm font-semibold uppercase text-white transition-transform duration-200"
                         >
                           {section.cta.label}
                         </Link>
@@ -408,15 +408,15 @@ const BlogsPageTwo = ({ blogData }) => {
               ))}
             </article>
 
-            <aside className="space-y-12">
-              <div className="rounded-[28px] border border-[#efe4d1]  p-6">
-                <p className="text-sm md:text-lg font-semibold uppercase  text-[#b58745]">Table of contents</p>
-                <nav className="mt-4 space-y-3 text-sm text-gray-700">
+            <aside className="space-y-8 md:space-y-12">
+              <div className="rounded-2xl md:rounded-[28px] border border-[#efe4d1] p-4 md:p-6">
+                <p className="text-xs md:text-sm lg:text-lg font-semibold uppercase text-[#b58745]">Table of contents</p>
+                <nav className="mt-3 md:mt-4 space-y-2 md:space-y-3">
                   {tocItems.map((item) => (
                     <a
                       key={item.id}
                       href={`#${item.id}`}
-                      className="block rounded-lg px-4 py-3 transition-colors duration-200 hover:bg-[#f4e5cd] hover:text-[#9d7035]"
+                      className="block rounded-lg px-3 py-2 md:px-4 md:py-3 text-xs md:text-sm text-gray-700 transition-colors duration-200 hover:bg-[#f4e5cd] hover:text-[#9d7035]"
                     >
                       {item.label}
                     </a>

@@ -182,12 +182,13 @@ const BlogsPage = ({ blogsData }) => {
                 className="group block"
               >
                 <article className="overflow-hidden rounded-2xl bg-white border border-gray-200 hover:border-[#c1a35e] hover:shadow-xl transition-all duration-300 flex flex-col h-full">
-                  <div className="relative w-full h-[300px] md:h-[250px] overflow-hidden bg-gray-100">
+                  <div className="relative w-full h-[150px] md:h-[250px] overflow-hidden bg-gray-100">
                     {post.image?.url ? (
                       <Image
                         src={post.image.url}
                         alt={post.image.alt || post.title}
                         fill
+                        quality={100}
                         sizes="(max-width: 1024px) 100vw, 50vw"
                         className="object-cover"
                       />
