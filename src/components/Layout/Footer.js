@@ -86,11 +86,11 @@ const Footer = () => {
                     Book summary
                   </a>
                 </li>
-                {/* <li>
+                <li>
                   <a href="/blogs" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
                     Blogs
                   </a>
-                </li> */}
+                </li>
                 {/* <li>
                   <a href="/blogs-2" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200">
                     Blogs 2

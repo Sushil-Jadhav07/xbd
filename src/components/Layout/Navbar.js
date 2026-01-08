@@ -19,6 +19,7 @@ const Navbar = () => {
     { name: 'Learning Hub', href: '/learning-hub' },
     // { name: 'Insights', href: '/insights' },
     { name: 'About Anuj', href: '/about-anuj' },
+    { name: 'Blog', href: '/blogs' },
     { name: 'FAQ', href: '/faq' },
     // { name: 'Work with Anuj', href: '/community' },
   ];
