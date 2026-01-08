@@ -36,6 +36,10 @@ const fallbackData = {
       alt: 'Featured essay cover art'
     }
   },
+  // To add a new blog:
+  // 1. Add the full blog content in src/data/blogsData.js with a unique slug
+  // 2. Add a post entry here with the same slug in the link field
+  // 3. The BlogsPageTwo component will automatically use the same layout structure
   posts: [
     {
       id: 1,
@@ -45,26 +49,28 @@ const fallbackData = {
       date: 'Oct 11, 2025',
       readTime: '6 min read',
       author: 'Team XBD',
-      link: '/blogs-detail',
+      link: '/blogs-detail/exponential-operating-system', // Must match slug in blogsData.js
+      slug: 'exponential-operating-system',
       image: {
         url: BlogBannerImage,
         alt: 'The Exponential Operating System (X-OS)'
       },
       tags: ['AI Ops', 'Decision Velocity']
     },
-    // {
-    //   id: 2,
-    //   category: 'Go-To-Market',
-    //   title: 'From funnels to flywheels: building compounding GTM motions',
-    //   excerpt:
-    //     'Frameworks for stitching demand, activation, and expansion into a single loop that compounds without heroic launches.',
-    //   date: 'Oct 4, 2025',
-    //   readTime: '5 min read',
-    //   author: 'Anuj Sharma',
-    //   link: '/blogs-detail',
-    //   image: null,
-    //   tags: ['Revenue Architecture', 'Loops']
-    // },
+    {
+      id: 2,
+      category: 'Go-To-Market',
+      title: 'How Compounding Intelligence Will Create the Next Fortune 100 Companies',
+      excerpt:
+        'A compound AI system used for financial analysis achieved 92% accuracy and 90% reliability, an improvement from its initial 65% accuracy.',
+      date: 'Oct 4, 2025',
+      readTime: '5 min read',
+      author: 'Anuj Sharma',
+      link: '/blogs-detail/compounding-intelligence', // Add this slug's content in blogsData.js
+      slug: 'compounding-intelligence',
+      image: null,
+      tags: ['Revenue Architecture', 'Loops']
+    },
     // {
     //   id: 3,
     //   category: 'Leadership',
