@@ -237,7 +237,7 @@ export const blogsData = {
     tag: 'Go-To-Market',
     title: 'How Compounding Intelligence Will Create the Next Fortune 100 Companies',
     description:
-      'A compound AI system used for financial analysis achieved 92% accuracy and 90% reliability, an improvement from its initial 65% accuracy. A separate edge-cloud AI pilot for traffic object detection delivered a 27.5% accuracy improvement over leading commercial systems. These outcomes did not result from larger datasets or more engineers. They emerged because intelligence learned from its own actions and compounded over time.',
+      'A compound AI system used for financial analysis achieved 92% accuracy and 90% reliability, an improvement from its initial 65% accuracy. A separate edge-cloud AI pilot for traffic object detection delivered a 27.5% accuracy improvement over leading commercial systems.\n\nThese outcomes did not result from larger datasets or more engineers. They emerged because intelligence learned from its own actions and compounded over time.',
     authorHighlight: {
       name: 'Anuj Sharma',
       title: 'Founder & Chief Operator, XBD',
@@ -250,70 +250,68 @@ export const blogsData = {
       }
     }
   },
-    sections: [
-      {
-        id: 'why-this-matters',
-        heading: 'Why This Matters',
-        type: 'richText',
-        content: [
-          'Most enterprises fail to unlock this effect. They deploy AI to assist decisions, automate tasks, and reduce costs. Their performance improves once, then stabilizes.',
-          'Once those systems go live, performance stabilizes. The organization does not capture learning from execution, and improvements require new projects, new budgets, and new teams.',
-          'Compounding intelligence breaks that ceiling. When autonomous systems sense outcomes, coordinate across workflows, and continuously refine decisions, intelligence becomes a multiplying force.',
-          'This shift separates the next generation of market leaders from the rest. The last Fortune 100 companies scaled assets and efficiency. The next Fortune 100 will scale intelligence itself.',
-          'This blog examines how compounding intelligence works and why it is becoming the foundation of enduring corporate dominance.'
-        ]
+  sections: [
+    {
+      id: 'why-this-matters',
+      heading: null,
+      type: 'richText',
+      content: [
+        'Most enterprises fail to unlock this effect. They deploy AI to assist decisions, automate tasks, and reduce costs. Their performance improves once, then stabilizes. Once those systems go live, performance stabilizes.',
+        'The organization does not capture learning from execution, and improvements require new projects, new budgets, and new teams. That approach limits the rate at which intelligence can scale.',
+        'Compounding intelligence breaks that ceiling. When autonomous systems sense outcomes, coordinate across workflows, and continuously refine decisions, intelligence becomes a multiplying force. Each cycle strengthens the enterprise, and each decision increases future advantage.',
+        'This shift separates the next generation of market leaders from the rest. The last Fortune 100 companies scaled assets and efficiency. The next Fortune 100 will scale intelligence itself.',
+        'This blog examines how compounding intelligence works and why it is becoming the foundation of enduring corporate dominance.'
+      ]
+    },
+    {
+      id: 'historical-pivot',
+      heading: 'From Industrial Giants to Intelligent Nodes—The Historical Pivot',
+      type: 'richText',
+      content: [
+        'To understand the concept, you need to first examine how previous executives developed scale and efficiency. It will give a detailed picture of how compounding intelligence will influence the next Fortune 100 businesses.',
+        'IBM sold millions of PCs and mainframes, dominating the computing sector for decades. They controlled important technological assets and established hierarchical management structures. Human-driven procedures, standardized workflows, and cautious handling of both digital and physical resources were essential to growth.',
+        'Instead of the systems themselves, intelligence remained in executive teams and experts. Amazon displays the subsequent phase as it uses data to make better decisions. Their primary goal is to optimize customer service, inventory, and logistics on a large scale.',
+        'It is a fact that the majority of their improvements, even with analytics, needed human supervision and adjustments. Throughout the company, systems did not learn or adapt on their own.',
+        'The lesson is clear: past leaders succeeded by scaling resources and human decision-making. Today, enterprises must embed intelligence into operations. Only then can learning compound, and growth accelerate beyond linear constraints.'
+      ]
+    },
+    {
+      id: 'the-pivot-infographic',
+      heading: 'The Pivot: From Linear Scale to Exponential Intelligence',
+      type: 'image',
+      image: {
+        src: blog21, // TODO: Replace with the actual "THE PIVOT" infographic image
+        alt: 'The Pivot: From Linear Scale to Exponential Intelligence - showing evolution from IBM Era to Amazon Era to Compounding AI Era'
       },
-      {
-        id: 'historical-pivot',
-        heading: 'From Industrial Giants to Intelligent Nodes—The Historical Pivot',
-        type: 'richText',
+      supportingText: 'This perspective sets the stage for examining the lessons from past leaders and why compounding intelligence changes everything.',
+      // caption: 'Historical evolution showing the pivot from linear scale to exponential intelligence'
+    },
+    {
+      id: 'lessons-from-builders',
+      heading: "Lessons from the Last Century's Fortune 100 Builders",
+      type: 'richText',
         content: [
-          'To understand the concept, you need to first examine how previous executives developed scale and efficiency. It will give a detailed picture of how compounding intelligence will influence the next Fortune 100 businesses.',
-          'IBM sold millions of PCs and mainframes, dominating the computing sector for decades.',
-          'They controlled important technological assets and established hierarchical management structures. Human-driven procedures, standardized workflows, and cautious handling of both digital and physical resources were essential to growth.',
-          'Instead of the systems themselves, intelligence remained in executive teams and experts. Amazon displays the subsequent phase as it uses data to make better decisions.',
-          'Their primary goal is to optimize customer service, inventory, and logistics on a large scale.',
-          'It is a fact that the majority of their improvements, even with analytics, needed human supervision and adjustments. Throughout the company, systems did not learn or adapt on their own.',
-          'The lesson is clear: past leaders succeeded by scaling resources and human decision-making. Today, enterprises must embed intelligence into operations. Only then can learning compound, and growth accelerate beyond linear constraints.'
-        ]
-      },
-      {
-        id: 'the-pivot-infographic',
-        heading: 'The Pivot: From Linear Scale to Exponential Intelligence',
-        type: 'image',
-        image: {
-          src: blog21, // TODO: Replace with the actual "THE PIVOT" infographic image
-          alt: 'The Pivot: From Linear Scale to Exponential Intelligence - showing evolution from IBM Era to Amazon Era to Compounding AI Era'
-        },
-        supportingText: 'This perspective sets the stage for examining the lessons from past leaders and why compounding intelligence changes everything.',
-        // caption: 'Historical evolution showing the pivot from linear scale to exponential intelligence'
-      },
-      {
-        id: 'lessons-from-builders',
-        heading: "Lessons from the Last Century's Fortune 100 Builders",
-        type: 'richText',
-        content: [
-          'As was previously mentioned, large corporations like IBM and Amazon established their dominance through operational control, discipline, and scale.',
-          'IBM expanded by selling standardized systems and implementing centralized technology platforms.',
+          'As was previously mentioned, large corporations like IBM and Amazon established their dominance through operational control, discipline, and scale. IBM expanded by selling standardized systems and implementing centralized technology platforms.',
           'Supply chains, logistics, and customer experiences were all greatly optimized as Amazon grew.',
           'However, how precisely did they operate? IBM relied on centralized mainframe operations, where thousands of installations were managed by decisions made at headquarters.',
           'Amazon employed standardized fulfillment procedures and algorithmic inventory management. However, human supervision and manual modification were still necessary for every improvement.',
-          'Standardized workflows and strict process controls.',
-          'Centralized or human-driven decision-making.',
-          'Investment in technology and human capital.',
-          'These approaches delivered linear growth. They didn’t depend on intelligence that compounds across the organization.'
-        ]
+          'Success depended on the three factors:',
+          '◉  Standardized workflows and strict process controls.',
+          '◉  Centralized or human-driven decision-making.',
+          '◉  Investment in technology and human capital.',
+          'These approaches delivered linear growth: scaling operations produced proportional gain, and innovation progressed slowly. Even the improvements relied on expanding resources rather than multiplying intelligence.',
+          'Thus, past dominance came from managing scale efficiently. They didn’t depend on intelligence that compounds across the organization.'         ]
       },
       {
         id: 'why-compounding-changes',
         heading: 'Why Compounding Intelligence Changes Everything?',
         type: 'richText',
         content: [
-          'The Compounding intelligence flipped the historical model.',
-          'Modern enterprises now embed AI agents that learn from every decision, adapt, and improve other workflows automatically.',
-          'Each action strengthens the next, and every system contributes to the organization’s collective intelligence.',
-          'Through the compounding intelligence, the impact is immediate and exponential.',
-          'Enterprises evolve from industrial nodes to intelligent nodes.',
+          'The Compounding intelligence flipped the historical model. Modern enterprises now embed AI agents that learn from every decision, adapt, and improve other workflows automatically. Each action strengthens the next, and every system contributes to the organization’s collective intelligence.',
+          'For instance, a retail company using autonomous AI agents can optimize supply chains in real time. Decisions in one warehouse automatically update models across all locations. ',
+          'Customer demand patterns feed back into predictive logistics and improve efficiency, without human intervention. In finance, agentic systems can analyze transactions, detect anomalies, and adjust risk models across multiple portfolios.',
+          'Through the compounding intelligence, the impact is immediate and exponential. Systems improve faster than humans can. Intelligence spreads across products, operations, and services simultaneously. Now, each decision compounds the next, creating a deeper and long-term advantage. ',
+          'Enterprises evolve from industrial nodes to intelligent nodes. Here, leadership depends on designing systems that multiply intelligence rather than simply managing assets or people.',
           'This sets the stage for understanding how X-OS and compounding intelligence work together to create the next generation of unicorns and Fortune 100 companies.'
         ]
       },
@@ -322,13 +320,17 @@ export const blogsData = {
         heading: 'The Compounding Flywheel in Corporate Genesis—How X-OS Seeds Unicorns',
         type: 'richText',
         content: [
-          'The next generation of companies doesn’t grow by scaling people or assets alone. They grow by embedding intelligence into every part of the organization.',
-          'Think of X-OS as the business’s "smart operating system."',
-          'It links data, workflows, and AI agents so the company can continuously learn and get better.',
+          'The next generation of companies doesn\'t grow by scaling people or assets alone. They grow by embedding intelligence into every part of the organization. Think of X-OS as a flywheel for learning.',
+          'Consider X-OS as the business\'s "smart operating system." It links data, workflows, and AI agents so the company can continuously learn and get better. Every system, process, and choice influences the others, forming a loop that gets stronger over time.',
+          'A company where product development, supply chain, and customer experience all share intelligence can see small improvements ripple across the entire operation.',
+          'A design change in one product line can improve efficiency in production. While the customer feedback updates marketing and support automatically. Decisions build on each other, generating continuous gains without adding extra resources.',
           'The flywheel has three key layers:',
-          'Data and Sensing – Every interaction generates insights that can be acted on.',
-          'Autonomous Decision-Making – AI agents take those insights and optimize actions across workflows.',
-          'Feedback and Learning – Outcomes feed back into the system, making every future decision better.'
+          '◉ Data and Sensing – Every interaction generates insights that can be acted on.',
+          '◉ Autonomous Decision-Making – AI agents take those insights and optimize actions across workflows.',
+          '◉ Feedback and Learning – Outcomes feed back into the system, making every future decision better.',
+          'They aren\'t just a theory, but a fact. Companies that adopt X-OS principles improve speed, reduce errors, and scale innovation much faster than traditional enterprises.',
+          'Each loop of the flywheel strengthens the organization\'s ability to act intelligently. This explains why the next Fortune 100 companies will depend on compounding intelligence and why startups can become unicorns.',
+          'Let\'s dissect the flywheel layer by layer and examine how each component contributes to exponential advantage and faster growth.'
         ]
       },
       {
@@ -347,28 +349,21 @@ export const blogsData = {
           src: blog22, // TODO: Replace with the actual "Exponential Growth Flywheel" infographic image
           alt: 'The Exponential Growth Flywheel showing Data & Sensing, Autonomous Decision-Making, and Feedback & Learning phases'
         },
-        supportingText: 'The X-OS system transforms routine business operations into compounding intelligence. By integrating data, decisions, and learning into a self-reinforcing flywheel, it turns small, incremental improvements into an exponential competitive advantage over time. This self-reinforcing loop accelerates performance throughout the entire organization.',
-        caption: 'The three-phase flywheel: Data & Sensing → Autonomous Decision-Making → Feedback & Learning'
+        // supportingText: 'The X-OS system transforms routine business operations into compounding intelligence. By integrating data, decisions, and learning into a self-reinforcing flywheel, it turns small, incremental improvements into an exponential competitive advantage over time. This self-reinforcing loop accelerates performance throughout the entire organization.',
+        // caption: 'The three-phase flywheel: Data & Sensing → Autonomous Decision-Making → Feedback & Learning'
       },
-      {
-        id: 'exponential-flywheel-details',
-        heading: 'Understanding the Flywheel Phases',
-        type: 'richText',
-        content: [
-          'Phase 1: Data & Sensing - AI captures real-time data from every interaction and operational movement.',
-          'Phase 2: Autonomous Decision-Making - AI agents use data insights to automatically optimize business workflows.',
-          'Phase 3: Feedback & Learning - Outcomes feed back into the system, making every future decision better, creating a continuous improvement cycle.'
-        ]
-      },
+      
       {
         id: 'exponential-curve',
         heading: "The Flywheel's Exponential Curve",
         type: 'richText',
         content: [
-          'X-OS is powerful not only because of its layers but also because of the way those layers work together over time.',
-          'Each action strengthens the next, creating exponential rather than linear growth.',
-          'With X-OS, scaling comes from compounding intelligence.',
-          'This is how startups become unicorns and form the next Fortune 100.'
+          'X-OS is powerful not only because of its layers but also because of the way those layers work together over time. A self-reinforcing cycle results from each choice, advancement, and realisation feeding into the next. Because of this, the growth is exponential rather than linear.',
+          'To gain a better understanding, let\'s examine an example. Let\'s imagine that a minor enhancement in a business\'s workflow, such as quicker product delivery, causes changes in the supply chain. It would also influence the scheduling, customer support, and inventory management. Each of these adjustments generates new data. Based on the information, the system will optimize the next round of decisions.',
+          'Gradually, these loops multiply, creating results far beyond what any single improvement could achieve. The exponential curve becomes clear when you compare it to traditional growth.',
+          'In older enterprises, scaling required more resources, more employees, or more physical infrastructure. With X-OS, scaling comes from compounding intelligence.',
+          'Now, the organization learns faster, always adapting and doubling its benefits without a corresponding increase in expense and effort. Those companies that have mastered the exponential flywheel hold the key to a winning advantage.',
+          'They are innovating at a rapid pace, adapting to market changes in an incremental fashion, and are perpetually bettering themselves in every area of their businesses. It is how X-OS can help a start-up become a unicorn corporation, in turn laying the groundwork for the next generation of Fortune 100 companies.'
         ]
       },
       {
@@ -379,7 +374,10 @@ export const blogsData = {
           'The businesses that will lead the next decade will look quite different from the Fortune 100 of the past. Intelligence will no longer sit in a few boardrooms or specialist teams. It will be embedded across every part of the organization, guiding decisions, operations, and customer experiences in real time.',
           'Just think about it from a practical perspective: Instead of handling workflows manually, enterprises will use AI. Such agents can act independently but learn and improve further. The companies will develop platforms that will connect various systems, products, and services.',
           'The power of their innovativeness will make every action an opportunity to reinforce the organization. The outcome is continuous growth and innovation, compounding over time. Some early signals are already visible.',
-          'Organizations shifting to an intelligence-first platform, adaptive experience engine, and AI-driven ecosystem orchestration are gaining an edge. They scale quicker, react to market changes faster, and deliver better experiences without proportional resource growth. The next decade will favor organizations that embed intelligence into their business fabric, leading to faster growth and defining "Fortune 100" companies through "compounding intelligence." To understand this "new shape," we will explore five key innovations shaping the future.'
+          'Those organizations that have shifted to an intelligence-first platform, adaptive experience engine, and AI-driven ecosystem orchestration have already started to gain an edge over others.',
+          'They can scale up quicker, react faster to market changes, and deliver even better experiences without necessarily seeing corresponding growth in resource utilization.  ',
+          'The next decade will favor organizations that design intelligence into the very fabric of their business. Those that do will not only grow faster but will also define what it means to be a Fortune 100 company in a world driven by compounding intelligence.',
+          'To understand this new shape more clearly, let’s explore the five key innovations that are already shaping the future'
         ]
       },
       {
@@ -387,11 +385,12 @@ export const blogsData = {
         heading: 'The Intelligence-First Platform — A Company Built Entirely on Smart Agents',
         type: 'richText',
         content: [
-          'An intelligence-first platform places autonomous AI agents at the core of every business function. These agents are responsible for making decisions, optimizing workflows, and continuous learning. This approach reduces the need for human intervention, allowing enterprises to scale faster, improve accuracy, and adapt in real-time.',
-          'Real-world examples:',
-          'Amazon uses AI agents for managing logistics, inventory, and customer service.',
-          'IBM applies AI across enterprise solutions to automate complex workflows.',
-          'Microsoft integrates AI into cloud and business applications to optimize operations across departments.'
+          'An intelligence-first platform puts autonomous AI agents at the core of every business function. These agents make decisions, optimize workflows, and learn continuously.',
+          'It has reduced the need for human intervention. Enterprises that adopt this approach scale faster, improve accuracy, and adapt in real time.',
+          'The following are some of the real-world examples -',
+          '◉ Amazon uses AI agents to manage logistics, inventory, and customer service.',
+          '◉ IBM applies AI across enterprise solutions to automate complex workflows.',
+          '◉ Microsoft integrates AI in cloud and business applications to optimize operations across departments.'
         ]
       },
       {
@@ -401,10 +400,10 @@ export const blogsData = {
         content: [
           'Adaptive experience engines deliver personalized and evolving experiences by learning from every interaction. These platforms are designed to anticipate user needs, coordinate services, and continuously improve over time.',
           'Companies utilizing these engines benefit from enhanced customer experience and generate "compounding insights" that improve their business.',
-          'Examples that prove the point:',
-          'Apple personalizes software and services using AI to continuously improve user experiences.',
-          'Amazon optimizes product recommendations and delivery timing based on real-time customer behavior.',
-          'Microsoft uses adaptive AI in applications like Teams and Office 365 to enhance productivity and user experience.'
+          'Here are some examples that prove the point:',
+          '◉ Apple personalizes software and services using AI to continuously improve user experiences.',
+          '◉ Amazon optimizes product recommendations and delivery timing based on real-time customer behavior.',
+          '◉ Microsoft uses adaptive AI in applications like Teams and Office 365 to enhance productivity and user experience.'
         ]
       },
       {
@@ -415,9 +414,9 @@ export const blogsData = {
           'Ecosystem orchestrators enable intelligence to operate across multiple systems and organizations simultaneously.',
           'By coordinating actions and learning from outcomes in real time, these companies can manage complex operations at scale. Through the approach, they can maintain a competitive edge.',
           'Here\'s how it works:',
-          'Amazon coordinates its global supply chain and fulfillment networks automatically.',
-          'IBM integrates AI across enterprise solutions to manage multiple client systems efficiently.',
-          'Microsoft orchestrates cloud services and enterprise platforms to optimize global operations.'
+          '◉ Amazon coordinates its global supply chain and fulfillment networks automatically.',
+          '◉ IBM integrates AI across enterprise solutions to manage multiple client systems efficiently.',
+          '◉ Microsoft orchestrates cloud services and enterprise platforms to optimize global operations.'
         ]
       },
       {
@@ -427,10 +426,10 @@ export const blogsData = {
         content: [
           'Some of today\'s largest companies are already moving toward intelligence-first operations. They embed AI into core workflows to automate decisions. It helped them optimize processes and improve performance continuously.',
           'The following are examples of how the companies are becoming future-ready:',
-          'Amazon embeds AI across logistics, supply chain, and customer experience.',
-          'IBM applies AI to enterprise solutions, automating complex workflows and improving operational efficiency.',
-          'Microsoft integrates AI into cloud services and business applications to streamline enterprise decision-making.',
-          'Apple leverages AI in products and services to optimize user experiences and improve software continuously.'
+          '◉ Amazon embeds AI across logistics, supply chain, and customer experience.',
+          '◉ IBM applies AI to enterprise solutions, automating complex workflows and improving operational efficiency.',
+          '◉ Microsoft integrates AI into cloud services and business applications to streamline enterprise decision-making.',
+          '◉ Apple leverages AI in products and services to optimize user experiences and improve software continuously.'
         ]
       },
       {
@@ -440,9 +439,9 @@ export const blogsData = {
         content: [
           'Compounding intelligence is visible across multiple industries. Companies that embed AI in their operations can learn, adapt, and improve continuously. It is generating exponential growth rather than linear improvements.',
           'Here are some examples of the impact:',
-          'Retail - Amazon automatically optimizes inventory and delivery using real-time data.',
-          'Computing and IT - IBM and Microsoft enhance services, predict demand, and improve client operations.',
-          'Consumer Technology - Apple integrates AI into user experiences and services, enabling continuous adaptation and improvement.'
+          '◉ Retail - Amazon automatically optimizes inventory and delivery using real-time data.',
+          '◉ Computing and IT - IBM and Microsoft enhance services, predict demand, and improve client operations.',
+          '◉ Consumer Technology - Apple integrates AI into user experiences and services, enabling continuous adaptation and improvement.'
         ]
       },
       {
@@ -465,9 +464,9 @@ export const blogsData = {
           'Even with advanced AI agents, humans remain essential. Organizations need a workforce that understands, collaborates with, and amplifies AI.',
           'Culture is equally important as teams must embrace experimentation, continuous learning, and intelligence into daily operations. Companies that cultivate this mindset can turn AI into a force multiplier.',
           'Here\'s how companies use this approach:',
-          'Amazon trains cross-functional teams to work alongside AI in logistics, supply chain, and operations. Employees use real-time AI insights to make faster, more accurate decisions.',
-          'IBM invests in upskilling employees on AI, automation, and analytics. It enables humans to focus on high-value problem-solving while AI handles routine tasks.',
-          'Microsoft fosters a collaborative culture where human creativity and AI-driven optimization come together. They work to improve enterprise outcomes across software, cloud, and productivity platforms.',
+          '◉ Amazon trains cross-functional teams to work alongside AI in logistics, supply chain, and operations. Employees use real-time AI insights to make faster, more accurate decisions.',
+          '◉ IBM invests in upskilling employees on AI, automation, and analytics. It enables humans to focus on high-value problem-solving while AI handles routine tasks.',
+          '◉ Microsoft fosters a collaborative culture where human creativity and AI-driven optimization come together. They work to improve enterprise outcomes across software, cloud, and productivity platforms.',
           'This combination of talent and culture ensures that AI systems are effectively deployed, continuously improved, and aligned with strategic objectives.'
         ]
       },
@@ -476,13 +475,13 @@ export const blogsData = {
         heading: 'Capital & Ecosystems: Funding and Scaling AI-Native Companies',
         type: 'richText',
         content: [
-          'Talent and technology need capital and strong ecosystems to thrive. Organizations must invest strategically in infrastructure, AI platforms, and partnerships.',
-          'This approach supports scaling intelligence across operations, including cloud systems, AI development environments, and collaborative networks, allowing AI agents to learn from multiple sources.',
-          'Real-life examples of companies using funding and scaling:',
-          'Amazon invests heavily in AWS infrastructure to optimize logistics, inventory, and customer experiences globally. Its scale provides a compounding advantage as regional improvements benefit the entire network.',
-          'Microsoft channels capital into AI research and builds partner ecosystems through Azure, enabling clients to leverage intelligent workflows and analytics at scale.',
-          'IBM uses strategic alliances and capital investments to deploy AI solutions across industries, ensuring intelligence compounds across systems and client operations.',
-          'The right combination of capital and ecosystems accelerates AI adoption, reduces time-to-value, and enables enterprises to scale intelligence faster than competitors, which cannot be achieved by relying solely on internal resources.'
+          'Even the best talent and technology cannot thrive without sufficient capital and strong ecosystems. Organizations must invest strategically in infrastructure, AI platforms, and partnerships.',
+          'Their approach will support scaling intelligence across operations. It includes cloud systems, AI development environments, and collaborative networks. They allow AI agents to learn from multiple sources.',
+          'The following are real-life examples of companies using funding and scaling:',
+          '◉ Amazon invests heavily in AWS infrastructure. It allows AI to optimize logistics, inventory, and customer experiences globally. Their scale gives them a compounding advantage as improvements in one region benefit the entire network.',
+          '◉ Microsoft channels capital into AI research and builds partner ecosystems through Azure. Such an approach enables the clients to leverage intelligent workflows and analytics at scale.',
+          '◉ IBM uses strategic alliances and capital investments to deploy AI solutions across industries. They ensure that the intelligence compounds across systems and client operations.',
+          'The right combination of capital and ecosystems accelerates AI adoption. It reduces time-to-value and enables enterprises to scale intelligence faster than competitors. All these can be gained by solely relying on internal resources.'
         ]
       },
       {
@@ -490,12 +489,12 @@ export const blogsData = {
         heading: 'Technology Foundations: The Essential Tech Stack for AI-First Enterprises',
         type: 'richText',
         content: [
-          'A robust and integrated technology stack is at the core of compounding intelligence. This stack includes cloud platforms, real-time data pipelines, analytics tools, AI agents, and automation frameworks.',
-          'The stack must allow seamless interaction between systems, enabling continuous feedback and learning across the enterprise. Without these foundations, intelligence cannot propagate effectively.',
+          'At the core of compounding intelligence lies a robust and integrated technology stack. This includes cloud platforms, real-time data pipelines, analytics tools, AI agents, and automation frameworks.',
+          'The stack must allow seamless interaction between systems. It enables continuous feedback and learning across the enterprise. Without these foundations, intelligence cannot propagate effectively.',
           'Here\'s how it works:',
-          'Amazon Web Services (AWS) - Powers AI-driven logistics, inventory management, and customer experience systems, helping create a resilient and scalable infrastructure for intelligence to compound.',
-          'Microsoft Azure - It offers cloud-based AI tools, real-time analytics, and enterprise-grade integration. Microsoft allows organizations to embed intelligence across applications and services.',
-          'IBM Cloud and Watson AI - They offer integrated AI solutions that optimize workflows and predict outcomes. These companies automate decision-making in complex enterprise environments.',
+          '◉ Amazon Web Services (AWS) – They power AI-driven logistics, inventory management, and customer experience systems. It helps them create a resilient and scalable infrastructure for intelligence to compound.',
+          '◉ Microsoft Azure - It offers cloud-based AI tools, real-time analytics, and enterprise-grade integration. Microsoft allows organizations to embed intelligence across applications and services.',
+          '◉ IBM Cloud and Watson AI – They offer integrated AI solutions that optimize workflows and predict outcomes. These companies automate decision-making in complex enterprise environments.',
           'The technology stack is not just a toolset; it\'s the operating backbone. It allows intelligence to move, learn, and compound across the organization continuously.'
         ]
       },
@@ -517,9 +516,9 @@ export const blogsData = {
           'It is difficult to scale intelligence through an entire organization because the system has to work well even at high volumes and has to be integrated with human decisions.',
           'But on the other hand, companies must have moral guidelines to make sure their intelligence work is not biased and to preserve stakeholder trust. Without such measures, the consequences of implementing intelligence can slow down growth.',
           'Key considerations:',
-          'To make sure that there is a capability to process large data volumes.',
-          'The AI should be monitored thoroughly to ensure that critical decisions are made only by humans.',
-          'Establish governance structures that ensure observance of ethics.'
+          '◉ To make sure that there is a capability to process large data volumes.',
+          '◉ The AI should be monitored thoroughly to ensure that critical decisions are made only by humans.',
+          '◉ Establish governance structures that ensure observance of ethics.'
         ]
       },
       {
@@ -530,9 +529,9 @@ export const blogsData = {
           'AI systems can cause disruptions in workflow and the structure of power at the organizational or business level. Organizational employees can be resistant to change in workflow, and market rivals can respond shrewdly to an innovation.',
           'To be ahead of these changes, organizations have to proactively handle the shocks.',
           'Key considerations:',
-          'Effective communication about any change and the adoption of AI.',
-          'Formulate change management plans to ensure a seamless adoption of AI.',
-          'Keep track of market response and change tactics to ensure competitive deployment.'
+          '◉ Effective communication about any change and the adoption of AI.',
+          '◉ Formulate change management plans to ensure a seamless adoption of AI.',
+          '◉ Keep track of market response and change tactics to ensure competitive deployment.'
         ]
       },
       {
@@ -543,9 +542,9 @@ export const blogsData = {
           'Conventional methods of performance measurement overlook the compounding effect of intelligence. New approaches to measurement are required, taking into consideration the short-term output of activities, as well as the long-term impact of the systems in operation.',
           'Effective measures make it possible to monitor progress, improve processes, and allow intelligence to compound.',
           'Key considerations:',
-          'From linear Key Performance Indicators to ones based on compound growth in multiple systems.',
-          'Focus on adding feedback loops that allow continuous testing of the effectiveness of the AI.',
-          'Link frameworks of measurement with the strategic aims for intelligent growth.'
+          '◉ From linear Key Performance Indicators to ones based on compound growth in multiple systems.',
+          '◉ Focus on adding feedback loops that allow continuous testing of the effectiveness of the AI.',
+          '◉ Link frameworks of measurement with the strategic aims for intelligent growth.'
         ]
       },
       {
@@ -566,43 +565,39 @@ export const blogsData = {
           src: blog23, // TODO: Replace with the actual "Two Paths to Advantage" infographic image
           alt: 'Two Paths to Advantage: Incremental vs. Compounding Growth comparison infographic'
         },
-        supportingText: 'Most companies pursue incremental improvements—planned initiatives that deliver predictable but limited value. A more powerful model, compounding advantage, embeds intelligence into systems, creating a self-reinforcing cycle of learning where each action makes the next one better, building a structural edge that is difficult for competitors to match.',
-        caption: 'Comparison of Incremental Advantage (Linear Path) vs. Compounding Advantage (Exponential Curve)'
+        // supportingText: 'Most companies pursue incremental improvements—planned initiatives that deliver predictable but limited value. A more powerful model, compounding advantage, embeds intelligence into systems, creating a self-reinforcing cycle of learning where each action makes the next one better, building a structural edge that is difficult for competitors to match.',
+        // caption: 'Comparison of Incremental Advantage (Linear Path) vs. Compounding Advantage (Exponential Curve)'
       },
       {
         id: 'leadership-multiplier',
         heading: 'Why Strong Leadership Is The Multiplier For Compounding Intelligence',
         type: 'richText',
         content: [
-          'By now, one thing should be clear. Compounding advantage does not come from technology alone. Even the most intelligent systems fail to create momentum if the organization lacks direction. This is where leadership becomes the real multiplier.',
-          'Leaders decide whether intelligence remains fragmented or compounds across the enterprise. They influence how decisions flow, how much autonomy systems receive, and whether learning loops connect across teams.',
-          'More than any tool or platform, leadership determines if intelligence drives incremental improvement or sustained, exponential growth.',
-          'Strong leadership shapes how intelligence gets used across the organization. It determines whether AI supports isolated use cases or becomes a shared capability that improves every function.',
-          'When leaders align strategy, systems, and people around learning, intelligence starts to compound naturally. Here\'s how leadership turns compounding intelligence from an idea into something that actually works:',
-          'Vision and Strategic Intent - Leaders must set a clear direction for how intelligence supports long-term growth. When leadership focuses only on short-term efficiency, AI stays limited to cost reduction. When leaders define intelligence as a core growth engine, teams design systems that learn, adapt, and improve over time.',
-          'Decision Authority and Trust - Compounding intelligence requires leaders to trust systems with meaningful decisions. Leaders decide where automation ends, and human judgment begins. When they allow systems to act, learn, and adjust within clear boundaries, feedback loops stay intact. It also allows the learning to accelerate.',
-          'Organizational design - Leadership defines how teams and systems interact. Rigid hierarchies reduce the speed of learning as intelligence gets trapped inside functions. Leaders who design around flows of information and outcomes enable intelligence to move freely. Gradually, it improves performance across the enterprise.'
-        ]
-      },
-      {
-        id: 'cultural-reinforcement',
-        heading: 'Cultural Reinforcement',
-        type: 'richText',
-        content: [
-          'Culture reflects leadership behavior. When leaders reward experimentation and learning, people engage with intelligent systems rather than resisting them. When leaders discourage risk or over-control outcomes, intelligence stagnates, and compounding breaks down.',
+          'Compounding advantage does not come from technology alone. Even intelligent systems fail without organizational direction, making leadership the real multiplier.',
+          'Leaders determine if intelligence is fragmented or compounded across the enterprise. They influence decision flow, system autonomy, and the connection of learning loops across teams.',
+          'Leadership, more than any tool, dictates whether intelligence leads to incremental improvement or sustained, exponential growth.',
+          'Strong leadership shapes how AI is used. It decides if it supports isolated cases or becomes a shared, function-improving capability.',
+          'Intelligence compounds naturally when leaders align strategy, systems, and people around learning. Here\'s how leadership turns compounding intelligence into action:',
+          '◉ Vision and Strategic Intent - Leaders must provide a clear direction for intelligence to support long-term growth. It contrasts short-term efficiency focus (limiting AI to cost reduction) with defining intelligence as a "core growth engine" (leading to systems that learn, adapt, and improve).',
+          '◉ Decision Authority and Trust - Compounding intelligence requires leaders to trust systems with meaningful decisions. Leaders define the boundaries between automation and human judgment, allowing systems to act, learn, and adjust within clear limits, which keeps feedback loops intact and accelerates learning.',
+          '◉ Organizational design - Leadership shapes how teams and systems interact. Rigid hierarchies hinder learning by trapping intelligence within functions. Conversely, leaders who design around "flows of information and outcomes" enable intelligence to move freely, gradually improving enterprise-wide performance.',
+          '◉ Cultural reinforcement - Culture reflects leadership behavior. When leaders reward experimentation and learning, people engage with intelligent systems rather than resisting them. When leaders discourage risk or over-control outcomes, intelligence stagnates, and compounding breaks down.',
           'The above-mentioned points establish that strong leadership does not replace technology. Rather, it amplifies the purpose and application. By aligning vision, trust, structure, and culture, leaders turn compounding intelligence into a durable advantage. The best part is that you get high ROI over time.'
         ]
       },
+      
       {
         id: 'conclusion',
         heading: 'Conclusion: Seizing the Intelligence Imperative—Your Path to the Next 100',
         type: 'richText',
         content: [
           'The next Fortune 100 companies will not emerge by doing the same things faster or cheaper. They will grow by designing organizations where intelligence compounds every day.',
-          'Scaling alone no longer creates dominance; learning does.',
-          'Compounding intelligence changes the rules.',
-          'This shift requires more than AI adoption. It demands new operating models, strong leadership, and platforms built for learning at scale.',
-          'Through X-OS, XBD helps enterprises move beyond isolated AI initiatives and design intelligence as a core organizational capability.',
+          'Scaling alone no longer creates dominance; learning does. The past leaders taught the way to build empires through efficiency, assets, and human decision-making. However, this model has reached its limits in the current economy.',
+          'In the world defined by speed, complexity, and rapid change, companies using adaptability can learn and improve independently. Compounding intelligence changes the rules. When intelligence flows through platforms, workflows, and decisions, growth no longer depends on linear effort.',
+          'Each action strengthens the next, and each decision improves future outcomes. Over time, this creates momentum that competitors struggle to match. This shift requires more than AI adoption.',
+          'It demands new operating models, strong leadership, and platforms built for learning at scale. This is where XBD\'s vision becomes critical.',
+          'Through X-OS, XBD helps enterprises move beyond isolated AI initiatives and design intelligence as a core organizational capability. The goal is not automation; it is building an enterprise that evolves continuously.',
+          'For leaders, the question is no longer whether intelligence will shape the next generation of companies. That future is already forming and growing in speed. The real question is whether your organization is building for incremental improvement or compounding advantage.',
           'The next Fortune 100 will not be defined by who adopts AI first, but by who designs intelligence to learn faster than the world around them.',
           'Build intelligence to outpace the world around you!'
         ]

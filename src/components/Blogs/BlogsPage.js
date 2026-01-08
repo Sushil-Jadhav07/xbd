@@ -4,6 +4,7 @@ import React, { useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import BlogBannerImage from '../../asset/blog-banner/Blog_banner.jpg'
+import BlogBanner2 from '../../asset/blog-banner/Blog-banner2.jpg'
 
 const fallbackData = {
   hero: {
@@ -68,7 +69,10 @@ const fallbackData = {
       author: 'Anuj Sharma',
       link: '/blogs-detail/compounding-intelligence', // Add this slug's content in blogsData.js
       slug: 'compounding-intelligence',
-      image: null,
+      image: {
+        url: BlogBanner2,
+        alt: 'How Compounding Intelligence Will Create the Next Fortune 100 Companies'
+      },
       tags: ['Revenue Architecture', 'Loops']
     },
     // {

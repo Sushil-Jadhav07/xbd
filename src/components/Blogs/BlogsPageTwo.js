@@ -308,7 +308,7 @@ const BlogsPageTwo = ({ blogData }) => {
           <div className="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,1.4fr)] lg:items-start lg:gap-16">
             <article className="space-y-14">
               {/* Hero Section */}
-              <div className="space-y-8">
+              <div className="space-y-8 mb-6">
                 <div className="flex flex-wrap items-center gap-4 text-base font-medium uppercase text-white">
                   <span className="inline-flex items-center rounded-lg bg-gradient-to-r from-[#9d7035] to-[#c1a35e] px-6 py-2">
                     {data.hero.tag}
@@ -322,9 +322,11 @@ const BlogsPageTwo = ({ blogData }) => {
                   <h1 className="text-3xl font-semibold leading-tight text-black md:text-4xl">
                     {data.hero.title}
                   </h1>
-                  <p className="max-w-2xl text-base leading-relaxed text-gray-700 md:text-lg ">
-                    {data.hero.description}
-                  </p>
+                  <div className="text-base leading-relaxed text-gray-700 md:text-base space-y-4">
+                    {data.hero.description?.split('\n\n').filter(p => p.trim()).map((paragraph, idx) => (
+                      <p  key={idx}>{paragraph.trim()}</p>
+                    ))}
+                  </div>
                 </div>
               </div>
               {data.sections.map((section) => (
@@ -343,7 +345,7 @@ const BlogsPageTwo = ({ blogData }) => {
 
                   {section.type === 'image' && section.image && (
                     <div className="space-y-4">
-                      <div className="relative h-[600px] md:h-[1300px] overflow-hidden rounded-3xl bg-[#f4e4ca]">
+                      <div className="relative h-[600px] md:h-[1400px] overflow-hidden rounded-3xl bg-[#f4e4ca]">
                         <Image
                           src={section.image.src}
                           alt={section.image.alt || section.heading || 'Blog illustration'}
