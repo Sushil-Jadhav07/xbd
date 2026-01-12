@@ -5,6 +5,6 @@ export default function robots() {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://www.exponentialbydesign.com/sitemap.xml',
+    sitemap: 'https://xbd.co.in/sitemap.xml',
   }
 }

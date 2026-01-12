@@ -1,7 +1,7 @@
 import { blogsData } from '@/data/blogsData';
 
 export default function sitemap() {
-  const baseUrl = 'https://www.exponentialbydesign.com';
+  const baseUrl = 'https://xbd.co.in';
 
   // Static routes
   const routes = [
