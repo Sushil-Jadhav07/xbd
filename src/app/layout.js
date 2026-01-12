@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
       <head>
         <meta
           name="google-site-verification"
-          content="75FfeeHKSNQXEuZ6uPfpLFAR5Esv0x62RUfZ0NuneRw"
+          content="MxtEJ2CRYxmaQ4qEsgt8oCNDcRAxysQqsReajPpKDO4"
         />
         {/* Google Tag Manager - Must be in head as high as possible */}
         <script
