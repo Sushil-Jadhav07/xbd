@@ -18,7 +18,6 @@ export const metadata = {
   description:
     'Get Exponential By Design written by Anuj Pandey from the official store. Learn about the X Framework and transform how your business operates in the AI era.',
   robots: {
-    index: false,
     follow: true,
   },
   alternates: {

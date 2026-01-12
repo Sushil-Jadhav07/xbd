@@ -8,7 +8,6 @@ export const metadata = {
   description:
     'Connect with the Exponential By Design (XBD) team for questions, strategy sessions, or to learn more about our exponential growth frameworks and consulting services.',
   robots: {
-    index: false,
     follow: true,
   },
   alternates: {

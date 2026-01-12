@@ -8,7 +8,6 @@ export const metadata = {
   description:
     'Find answers to common questions about Exponential By Design (XBD), the X Framework, X-OS concepts, and how the book helps transform your organisation with AI.',
   robots: {
-    index: false,
     follow: true,
   },
   alternates: {

@@ -27,7 +27,6 @@ export const metadata = {
   description:
     'Join the X-Ponential Community to connect with leaders, access exclusive resources, and accelerate your exponential growth journey with like-minded professionals.',
   robots: {
-    index: false,
     follow: true,
   },
   alternates: {

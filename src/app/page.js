@@ -6,7 +6,6 @@ export const metadata = {
   description:
     'Discover the X Framework by Anuj for the Exponential Operating System (X-OS). Learn how intelligent enterprises achieve 15X growth through AI-driven scaling and strategic frameworks.',
   robots: {
-    index: false,
     follow: true,
   },
   alternates: {

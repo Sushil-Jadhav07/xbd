@@ -17,7 +17,6 @@ export const metadata = {
   description:
     'Explore XBD courses and online workshops by Anuj Pandey on the Exponential Operating System (X-OS). Master exponential growth strategies and transform your business with proven frameworks.',
   robots: {
-    index: false,
     follow: true,
   },
   alternates: {

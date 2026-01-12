@@ -14,7 +14,6 @@ export const metadata = {
   description:
     'Learn about Anuj Pandey, author of Exponential By Design and Founder of XBD. Discover his expertise in exponential growth systems, X Framework, and enterprise transformation.',
   robots: {
-    index: false,
     follow: true,
   },
   alternates: {

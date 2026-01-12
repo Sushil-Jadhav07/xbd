@@ -19,7 +19,6 @@ export async function generateMetadata({ params }) {
     title: blogData.hero?.title || 'Blog Post',
     description: blogData.hero?.description || '',
     robots: {
-      index: true,
       follow: true,
     },
     alternates: {

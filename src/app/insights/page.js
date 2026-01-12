@@ -14,7 +14,6 @@ export const metadata = {
   description:
     "Get business insights, AI strategy facts, and deep perspectives on exponential growth from XBD. Explore featured articles, videos, and expert analysis on enterprise transformation.",
   robots: {
-    index: false,
     follow: true,
   },
   alternates: {

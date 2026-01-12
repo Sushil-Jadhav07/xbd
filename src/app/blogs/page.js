@@ -7,7 +7,6 @@ export const metadata = {
   description:
     'Read expert articles on X-OS, Agentic AI, X Framework, strategy, and business growth ideas from XBD. Explore playbooks, case studies, and insights for exponential growth.',
   robots: {
-    index: false,
     follow: true,
   },
   alternates: {
