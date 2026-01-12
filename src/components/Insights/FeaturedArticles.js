@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,6 +14,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const FeaturedArticles = ({ featuredArticlesData }) => {
+  const [articleThumbnails, setArticleThumbnails] = useState({});
+
   const fallbackData = {
     sectionTitle: "Creative thoughts by Anuj Pandey",
     sectionSubtitle: "author of Exponential by Design, exploring how AI, design, and networks are redefining growth.",
@@ -21,57 +23,139 @@ const FeaturedArticles = ({ featuredArticlesData }) => {
       {
         authorName: "Anuj Pandey",
         isVerified: true,
-        postDate: "October 20",
-        postSnippet: "Some moments in your career don't announce themselves — they just arrive, quietly, but...",
+        postDate: "August 20, 2025",
+        postTitle: "Think in Networks: The Hidden Blueprint of Hyper-Convergence",
+        postSnippet: "For decades, business strategy has been shaped by the logic of industries and linear value chains. But something profound has shifted since November 2022—the month generative AI captured the world's imagination. Hyper-convergence goes beyond connections; it's about the fusion of consumers, products, and experiences into dynamic, living ecosystems.",
         postImage: null,
-        linkedinUrl: "https://www.linkedin.com/in/anujpandey1",
-        likes: 53,
-        comments: 38
+        thumbnailUrl: null, // Will be fetched via API or can be added manually
+        linkedinUrl: "https://www.linkedin.com/pulse/think-networks-hidden-blueprint-hyper-convergence-anuj-pandey-shwjc/?trackingId=d6kJ79BqTt%2BB%2FGPDulMiJA%3D%3D",
+        likes: 22,
+        comments: 13
       },
       {
         authorName: "Anuj Pandey",
         isVerified: true,
-        postDate: "October 20",
-        postSnippet: "Some moments in your career don't announce themselves — they just arrive, quietly, but...",
+        postDate: "August 12, 2025",
+        postTitle: "The Dawn of Hyper-Convergence",
+        postSnippet: "Why Companies Must Reimagine Their Strategy as the World Moves Toward Autonomous Converged Ecosystems. Soon, everything will be connected, intelligent, and adaptive. The firms that dominate the next decade will not be those that merely connect—but those that converge, orchestrate, and adapt in networks of continuous value creation.",
         postImage: null,
-        linkedinUrl: "https://www.linkedin.com/in/anujpandey1",
-        likes: 53,
-        comments: 38
+        thumbnailUrl: null, // Will be fetched via API or can be added manually
+        linkedinUrl: "https://www.linkedin.com/pulse/dawn-hyper-convergence-anuj-pandey-vzuuc/?trackingId=%2BX1XkhTnT1Kk%2Bw%2FOb5S9Cw%3D%3D",
+        likes: 25,
+        comments: 6
       },
       {
         authorName: "Anuj Pandey",
         isVerified: true,
-        postDate: "October 20",
-        postSnippet: "Some moments in your career don't announce themselves — they just arrive, quietly, but...",
+        postDate: "August 2, 2025",
+        postTitle: "The Genie Is Out of the Bottle",
+        postSnippet: "Close your eyes for a moment. Remember the thrill of watching Aladdin soar through star-studded skies on his magic carpet? That genie—once confined to a lamp—is now free, and it's reshaping everything we know about business, creativity, and human potential. The AI revolution isn't coming; it's here, and it's transforming how we work, think, and create.",
         postImage: null,
-        linkedinUrl: "https://www.linkedin.com/in/anujpandey1",
-        likes: 53,
-        comments: 38
+        thumbnailUrl: null, // Will be fetched via API or can be added manually
+        linkedinUrl: "https://www.linkedin.com/pulse/genie-out-bottle-anuj-pandey-d6dzc/?trackingId=jAXhTKcOT12CyfZZXIVBJA%3D%3D",
+        likes: 28,
+        comments: 14
       },
-      {
-        authorName: "Anuj Pandey",
-        isVerified: true,
-        postDate: "October 20",
-        postSnippet: "Some moments in your career don't announce themselves — they just arrive, quietly, but...",
-        postImage: null,
-        linkedinUrl: "https://www.linkedin.com/in/anujpandey1",
-        likes: 53,
-        comments: 38
-      },
-      {
-        authorName: "Anuj Pandey",
-        isVerified: true,
-        postDate: "October 20",
-        postSnippet: "Some moments in your career don't announce themselves — they just arrive, quietly, but...",
-        postImage: null,
-        linkedinUrl: "https://www.linkedin.com/in/anujpandey1",
-        likes: 53,
-        comments: 38
-      }
+      // {
+      //   authorName: "Anuj Pandey",
+      //   isVerified: true,
+      //   postDate: "October 20",
+      //   postSnippet: "Some moments in your career don't announce themselves — they just arrive, quietly, but...",
+      //   postImage: null,
+      //   linkedinUrl: "https://www.linkedin.com/in/anujpandey1",
+      //   likes: 53,
+      //   comments: 38
+      // },
+      // {
+      //   authorName: "Anuj Pandey",
+      //   isVerified: true,
+      //   postDate: "October 20",
+      //   postSnippet: "Some moments in your career don't announce themselves — they just arrive, quietly, but...",
+      //   postImage: null,
+      //   linkedinUrl: "https://www.linkedin.com/in/anujpandey1",
+      //   likes: 53,
+      //   comments: 38
+      // }
     ]
   };
 
   const data = featuredArticlesData || fallbackData;
+
+  // Fetch LinkedIn article thumbnails
+  useEffect(() => {
+    const fetchThumbnails = async () => {
+      const thumbnails = {};
+      
+      for (const article of data.articles || []) {
+        // Only fetch if no postImage and no existing thumbnail
+        if (article.linkedinUrl && !article.postImage?.asset?.url && !article.thumbnailUrl) {
+          try {
+            console.log('Fetching thumbnail for:', article.postTitle);
+            
+            // Try server-side API first
+            const response = await fetch(
+              `/api/linkedin-thumbnail?url=${encodeURIComponent(article.linkedinUrl)}`
+            );
+            
+            if (response.ok) {
+              const result = await response.json();
+              console.log('API response for', article.postTitle, ':', result);
+              if (result.imageUrl) {
+                thumbnails[article.linkedinUrl] = result.imageUrl;
+                console.log('Successfully fetched thumbnail for', article.postTitle);
+                continue; // Success, move to next article
+              }
+            } else {
+              console.log('API request failed for', article.postTitle, 'Status:', response.status);
+            }
+            
+            // Fallback: Try client-side with CORS proxy
+            try {
+              console.log('Trying CORS proxy for', article.postTitle);
+              const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(article.linkedinUrl)}`;
+              const proxyResponse = await fetch(proxyUrl);
+              
+              if (proxyResponse.ok) {
+                const proxyData = await proxyResponse.json();
+                const html = proxyData.contents;
+                
+                // Extract Open Graph image with multiple patterns
+                const patterns = [
+                  /<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i,
+                  /<meta\s+property=["']og:image:secure_url["']\s+content=["']([^"']+)["']/i,
+                  /property=["']og:image["']\s+content=["']([^"']+)["']/i,
+                ];
+                
+                for (const pattern of patterns) {
+                  const match = html.match(pattern);
+                  if (match && match[1]) {
+                    let imageUrl = match[1].replace(/&amp;/g, '&');
+                    thumbnails[article.linkedinUrl] = imageUrl;
+                    console.log('Found image via proxy for', article.postTitle, ':', imageUrl);
+                    break;
+                  }
+                }
+              }
+            } catch (proxyError) {
+              console.log('Proxy fetch failed for', article.postTitle, proxyError);
+            }
+            
+          } catch (error) {
+            console.error('Error fetching thumbnail for', article.linkedinUrl, error);
+          }
+        }
+      }
+      
+      if (Object.keys(thumbnails).length > 0) {
+        console.log('Setting thumbnails:', thumbnails);
+        setArticleThumbnails(thumbnails);
+      } else {
+        console.log('No thumbnails were fetched. You may need to add thumbnailUrl manually to the article data.');
+      }
+    };
+
+    fetchThumbnails();
+  }, [data]);
 
   return (
     <section className="bg-white md:mx-[15px] mx-[5px] pt-2 pb-12 lg:py-16 px-4">
@@ -156,32 +240,43 @@ const FeaturedArticles = ({ featuredArticlesData }) => {
                     <FaLinkedin className="text-[#0077B5] text-2xl" />
                   </div>
 
+                  {/* Post Title (if available) */}
+                  {article.postTitle && (
+                    <div className="px-4 pt-4 pb-2">
+                      <h3 className="text-base font-bold text-gray-900 line-clamp-2">
+                        {article.postTitle}
+                      </h3>
+                    </div>
+                  )}
+
                   {/* Post Snippet */}
-                  <div className="p-4">
+                  <div className="p-4 pt-2">
                     <p className="text-gray-700 text-sm line-clamp-3 mb-3">
                       {article.postSnippet}
                       <span className="text-gray-500 ml-1">... Read more</span>
                     </p>
                   </div>
 
-                  {/* Post Image */}
-                  {article.postImage?.asset?.url && (
-                    <div className="relative w-full h-64 bg-gray-100">
+                  {/* Post Image or Thumbnail */}
+                  {(article.postImage?.asset?.url || article.thumbnailUrl || articleThumbnails[article.linkedinUrl]) && (
+                    <div className="relative w-full h-50 bg-gray-100">
                       <Image
-                        src={article.postImage.asset.url}
+                        src={article.postImage?.asset?.url || article.thumbnailUrl || articleThumbnails[article.linkedinUrl]}
                         alt={article.postTitle || "Post image"}
                         fill
                         className="object-cover"
+                        unoptimized={!!(article.thumbnailUrl || articleThumbnails[article.linkedinUrl])}
+                        onError={(e) => {
+                          // Hide image on error
+                          e.target.style.display = 'none';
+                        }}
                       />
                     </div>
                   )}
 
-                  {/* Link Preview (if available) */}
-                  {article.postTitle && (
+                  {/* Link Preview (if no title shown above) */}
+                  {!article.postTitle && (
                     <div className="px-4 py-2 bg-gray-50 border-t border-gray-100">
-                      <p className="text-xs font-semibold text-gray-900 truncate">
-                        {article.postTitle}
-                      </p>
                       <p className="text-xs text-gray-500">www.linkedin.com</p>
                     </div>
                   )}

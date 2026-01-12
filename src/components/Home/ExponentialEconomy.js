@@ -1,8 +1,44 @@
 "use client";
 import Link from 'next/link'
 import Image from 'next/image'
+import { useState, useEffect } from 'react'
 
 const ExponentialEconomy = ({ exponentialData }) => {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const videoUrl = "https://youtu.be/TXpoo_112Oo";
+
+  // Handle ESC key to close video modal
+  useEffect(() => {
+    function onKeyDown(e) {
+      if (e.key === 'Escape' && isVideoModalOpen) {
+        setIsVideoModalOpen(false);
+      }
+    }
+    if (isVideoModalOpen) document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isVideoModalOpen]);
+
+  // Function to extract YouTube video ID
+  const getYouTubeVideoId = (url) => {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return match && match[2].length === 11 ? match[2] : null;
+  };
+
+  // Function to get YouTube embed URL
+  const getYouTubeEmbedUrl = (url) => {
+    const videoId = getYouTubeVideoId(url);
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+  };
+
+  // Function to get embed URL based on video source
+  const getEmbedUrl = (url) => {
+    if (url.includes('youtube.com') || url.includes('youtu.be')) {
+      return getYouTubeEmbedUrl(url);
+    }
+    return url;
+  };
+
   if (!exponentialData) return null;
 
   return (
@@ -36,15 +72,30 @@ const ExponentialEconomy = ({ exponentialData }) => {
           {/* Center - Banner Image */}
           <div className="relative w-full flex items-center justify-center">
             {exponentialData.bannerImage?.asset?.url && (
-              <div className="relative w-full max-w-8xl aspect-video">
-                <Image
-                  src={exponentialData.bannerImage.asset.url}
-                  alt={exponentialData.bannerImage.alt || 'X Framework Banner'}
-                  fill
-                  className="object-contain rounded-lg"
-                  priority
-                />
-              </div>
+              <button
+                onClick={() => setIsVideoModalOpen(true)}
+                className="relative w-full max-w-8xl aspect-video group cursor-pointer"
+                aria-label="Play video"
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src={exponentialData.bannerImage.asset.url}
+                    alt={exponentialData.bannerImage.alt || 'X Framework Banner'}
+                    fill
+                    className="object-contain rounded-lg group-hover:opacity-90 transition-opacity duration-300"
+                    priority
+                  />
+                  
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="bg-white bg-opacity-90 group-hover:bg-opacity-100 rounded-full p-2 md:p-3 transition-all duration-200 transform group-hover:scale-110 pointer-events-auto shadow-lg">
+                      <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </button>
             )}
           </div>
 
@@ -63,6 +114,43 @@ const ExponentialEconomy = ({ exponentialData }) => {
           )}
         </div> */}
       </div>
+
+      {/* Video Modal */}
+      {isVideoModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center px-4"
+          aria-modal="true"
+          role="dialog"
+          onClick={() => setIsVideoModalOpen(false)}
+        >
+          <div className="absolute inset-0 bg-black/80" onClick={() => setIsVideoModalOpen(false)} />
+          <div
+            className="relative z-10 w-full max-w-4xl bg-black rounded-xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative aspect-video">
+              <iframe
+                src={getEmbedUrl(videoUrl)}
+                title="Video Player"
+                className="w-full h-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsVideoModalOpen(false)}
+              className="absolute top-4 right-4 bg-black/70 hover:bg-black/90 text-white rounded-full p-2 transition-colors duration-200"
+              aria-label="Close video"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
