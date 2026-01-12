@@ -1,5 +1,4 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import BackToTop from "@/components/common/BackToTop";
@@ -25,34 +24,35 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white`}
-      >
-        {/* Google Tag Manager */}
-        <Script
-          id="gtm-script"
-          strategy="afterInteractive"
+      <head>
+        <meta
+          name="google-site-verification"
+          content="75FfeeHKSNQXEuZ6uPfpLFAR5Esv0x62RUfZ0NuneRw"
+        />
+        {/* Google Tag Manager - Must be in head as high as possible */}
+        <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-M87H39GH');`,
+})(window,document,'script','dataLayer','GTM-N8J7Z4KF');`,
           }}
         />
         {/* End Google Tag Manager */}
-
-        {/* Google Tag Manager (noscript) */}
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white`}
+      >
+        {/* Google Tag Manager (noscript) - Must be immediately after opening body tag */}
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-M87H39GH"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-N8J7Z4KF"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        {/* End Google Tag Manager (noscript) */}
-
         <ThemeProvider>
           {children}
           <BackToTop />
