@@ -5,6 +5,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import BlogBannerImage from '../../asset/blog-banner/Blog_banner.jpg'
 import BlogBanner2 from '../../asset/blog-banner/Blog-banner2.jpg'
+import BlogBanner3 from '../../asset/blog-banner/Blog-banner3.jpg'
+
+
 
 const fallbackData = {
   hero: {
@@ -27,7 +30,7 @@ const fallbackData = {
     title: '5 decisions that separate compounding growth loops from campaign spikes',
     description:
       'A teardown of how exponential teams wire decision rules, metrics, and automation to keep momentum without waiting on quarterly planning cycles.',
-    author: 'Anuj Sharma',
+    author: 'Anuj Pandey',
     readTime: '7 min read',
     date: 'Oct 19, 2025',
     tags: ['Growth Systems', 'Operating Model'],
@@ -49,7 +52,7 @@ const fallbackData = {
         'Enterprise architecture is entering a structural shift defined by the rise of Agentic AI.',
       date: 'Oct 11, 2025',
       readTime: '6 min read',
-      author: 'Team XBD',
+      author: 'Anuj Pandey',
       link: '/blogs-detail/exponential-operating-system', // Must match slug in blogsData.js
       slug: 'exponential-operating-system',
       image: {
@@ -66,7 +69,7 @@ const fallbackData = {
         'A compound AI system used for financial analysis achieved 92% accuracy and 90% reliability, an improvement from its initial 65% accuracy.',
       date: 'Oct 4, 2025',
       readTime: '5 min read',
-      author: 'Anuj Sharma',
+      author: 'Anuj Pandey',
       link: '/blogs-detail/compounding-intelligence', // Add this slug's content in blogsData.js
       slug: 'compounding-intelligence',
       image: {
@@ -74,6 +77,23 @@ const fallbackData = {
         alt: 'How Compounding Intelligence Will Create the Next Fortune 100 Companies'
       },
       tags: ['Revenue Architecture', 'Loops']
+    },
+    {
+      id: 3,
+      category: 'AI Systems',
+      title: 'The End of Traditional Digital Transformation: Enter the Intelligence-First Era',
+      excerpt:
+        'Enterprise AI adoption is rising, but value lags. Learn why digital transformation failed to scale intelligence and how intelligence-first design drives growth.',
+      date: 'Jan 5, 2025',
+      readTime: '7 min read',
+      author: 'Anuj Pandey',
+      link: '/blogs-detail/end-of-traditional-digital-transformation',
+      slug: 'end-of-traditional-digital-transformation',
+      image: {
+        url: BlogBanner3,
+        alt: 'The End of Traditional Digital Transformation: Enter the Intelligence-First Era'
+      },
+      tags: ['AI First Enterprise', 'Intelligence Systems']
     },
     // {
     //   id: 3,
@@ -96,7 +116,7 @@ const fallbackData = {
     //     'Step-by-step blueprint for leaders who need to compress experiment velocity while protecting customer experience.',
     //   date: 'Sep 16, 2025',
     //   readTime: '9 min read',
-    //   author: 'Anuj Sharma',
+    //   author: 'Anuj Pandey',
     //   link: '/blogs-detail',
     //   image: null,
     //   tags: ['Execution', 'Pilot Design']
@@ -122,7 +142,7 @@ const fallbackData = {
     //     'Why the most resilient operating models treat AI as a teammate, not a tool—and the rituals that make it real.',
     //   date: 'Aug 24, 2025',
     //   readTime: '6 min read',
-    //   author: 'Anuj Sharma',
+    //   author: 'Anuj Pandey',
     //   link: '/blogs-detail',
     //   image: null,
     //   tags: ['AI Strategy', 'Org Design']
@@ -164,7 +184,7 @@ const BlogsPage = ({ blogsData }) => {
 
   return (
     <div className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-12 lg:py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6">
         {/* Heading */}
         <section className="mb-12">
           <h1 className="bg-gradient-to-br from-[#9d7035] to-[#c1a35e] bg-clip-text text-transparent font-bold text-4xl md:text-6xl text-center mb-16">
@@ -174,7 +194,7 @@ const BlogsPage = ({ blogsData }) => {
 
         {/* Posts grid */}
         <section className="mt-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
             {filteredPosts.map((post, index) => (
               <Link
                 key={post.id || post.title}
@@ -182,7 +202,7 @@ const BlogsPage = ({ blogsData }) => {
                 className="group block"
               >
                 <article className="overflow-hidden rounded-2xl bg-white border border-gray-200 hover:border-[#c1a35e] hover:shadow-xl transition-all duration-300 flex flex-col h-full">
-                  <div className="relative w-full h-[150px] md:h-[250px] overflow-hidden bg-gray-100">
+                  <div className="relative w-full h-[150px] md:h-[150px] overflow-hidden bg-gray-100">
                     {post.image?.url ? (
                       <Image
                         src={post.image.url}
@@ -206,7 +226,7 @@ const BlogsPage = ({ blogsData }) => {
                         <span>•</span>
                         <span>{post.date}</span>
                       </div>
-                      <h3 className="text-2xl lg:text-3xl font-bold text-black leading-tight group-hover:text-[#9d7035] transition-colors duration-200">
+                      <h3 className="text-lg lg:text-xl font-bold text-black leading-tight group-hover:text-[#9d7035] transition-colors duration-200">
                         {post.title}
                       </h3>
                       <p className="text-gray-600 text-base leading-relaxed line-clamp-3">
@@ -244,4 +264,3 @@ const BlogsPage = ({ blogsData }) => {
 }
 
 export default BlogsPage
-

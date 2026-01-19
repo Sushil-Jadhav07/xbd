@@ -345,12 +345,12 @@ const BlogsPageTwo = ({ blogData }) => {
 
                   {section.type === 'image' && section.image && (
                     <div className="space-y-3 md:space-y-4">
-                      <div className="relative h-[400px] sm:h-[500px] md:h-[800px] lg:h-[1400px] overflow-hidden rounded-2xl md:rounded-3xl bg-[#f4e4ca]">
+                      <div className={`relative overflow-hidden rounded-2xl md:rounded-3xl bg-[#f4e4ca] ${section.image.className || 'h-[400px] sm:h-[500px] md:h-[800px] lg:h-[1400px]'}`}>
                         <Image
                           src={section.image.src}
                           alt={section.image.alt || section.heading || 'Blog illustration'}
                           fill
-                          className="object-cover"
+                          className={section.image.imageClassName || "object-cover"}
                           unoptimized
                         />
                       </div>

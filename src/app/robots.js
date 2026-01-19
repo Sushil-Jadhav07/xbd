@@ -2,8 +2,7 @@ export default function robots() {
   return {
     rules: {
       userAgent: '*',
-      allow: '/',
-      disallow: '/private/',
+      disallow: '/',
     },
     sitemap: 'https://xbd.co.in/sitemap.xml',
   }
