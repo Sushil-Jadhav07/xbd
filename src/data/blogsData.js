@@ -203,6 +203,14 @@ export const blogsData = {
     ],
     relatedPosts: [
       {
+        id: 'end-of-traditional-digital-transformation',
+        title: 'The End of Traditional Digital Transformation: Enter the Intelligence-First Era',
+        category: 'AI First Enterprise',
+        tags: ['AI First Enterprise', 'Digital Transformation', 'Intelligence Systems'],
+        href: '/blogs-detail/end-of-traditional-digital-transformation',
+        readTime: '7 min read'
+      },
+      {
         id: 'agentic-ai-enterprise',
         title: 'From Generative AI to Agentic AI: The Enterprise Evolution',
         category: 'AI Systems',
@@ -612,6 +620,14 @@ export const blogsData = {
 
     
     relatedPosts: [
+      {
+        id: 'end-of-traditional-digital-transformation',
+        title: 'The End of Traditional Digital Transformation: Enter the Intelligence-First Era',
+        category: 'AI First Enterprise',
+        tags: ['AI First Enterprise', 'Digital Transformation', 'Intelligence Systems'],
+        href: '/blogs-detail/end-of-traditional-digital-transformation',
+        readTime: '7 min read'
+      },
       {
         id: 'exponential-operating-system',
         title: 'The Exponential Operating System (X-OS): How Intelligent Enterprises Will Win the Next Decade',
@@ -1060,7 +1076,28 @@ export const blogsData = {
 
 // Helper function to get blog data by slug
 export const getBlogBySlug = (slug) => {
-  return blogsData[slug] || null
+  const blog = blogsData[slug]
+  if (!blog) return null
+
+  // Dynamically generate related posts from all other blogs
+  const relatedPosts = Object.keys(blogsData)
+    .filter((key) => key !== slug)
+    .map((key) => {
+      const otherBlog = blogsData[key]
+      return {
+        id: key,
+        title: otherBlog.hero.title,
+        category: otherBlog.hero.tag || 'Blog',
+        tags: otherBlog.hero.authorHighlight?.tags || [],
+        href: `/blogs-detail/${key}`,
+        readTime: otherBlog.hero.authorHighlight?.readingTime || '5 min read',
+      }
+    })
+
+  return {
+    ...blog,
+    relatedPosts,
+  }
 }
 
 // Helper function to get all blog slugs

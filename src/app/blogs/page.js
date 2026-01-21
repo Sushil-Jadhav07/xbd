@@ -1,6 +1,7 @@
 import Footer from '@/components/Layout/Footer'
 import Navbar from '@/components/Layout/Navbar'
 import BlogsPage from '@/components/Blogs/BlogsPage'
+import { blogsData } from '@/data/blogsData'
 
 export const metadata = {
   title: 'XBD Blog: X-OS, Agentic AI, Strategy & Business Growth Ideas',
@@ -28,11 +29,32 @@ export const metadata = {
 }
 
 const Blogs = () => {
+  // Convert blogsData object to array of posts for the BlogsPage component
+  const posts = Object.keys(blogsData).map((slug, index) => {
+    const blog = blogsData[slug]
+    return {
+      id: index + 1,
+      title: blog.hero.title,
+      excerpt: blog.hero.description,
+      date: blog.hero.authorHighlight?.publishedOn,
+      readTime: blog.hero.authorHighlight?.readingTime,
+      author: blog.hero.authorHighlight?.name,
+      link: `/blogs-detail/${slug}`,
+      slug: slug,
+      image: {
+        url: blog.hero.authorHighlight?.banner?.image,
+        alt: blog.hero.authorHighlight?.banner?.alt,
+      },
+      tags: blog.hero.authorHighlight?.tags || [],
+      category: blog.hero.tag,
+    }
+  })
+
   return (
     <div className="relative">
       <main className="relative">
         <Navbar />
-        <BlogsPage />
+        <BlogsPage blogsData={{ posts }} />
         <Footer />
       </main>
     </div>
