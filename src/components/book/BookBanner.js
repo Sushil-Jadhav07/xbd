@@ -28,7 +28,7 @@ const BookBanner = ({ bookBannerData }) => {
       "Make confident decisions with peer-tested playbooks"
     ],
     infoTags: ["Hardcover & eBook", "For CXOs and transformation leaders"],
-    primaryButton: { text: "Pre-Order Book Now" },
+    primaryButton: { text: "Order Book Now" },
     secondaryButton: { text: "Preview Free Chapter" },
     trustIndicator: "Trusted by 5,000+ leaders and endorsed by global experts."
   };

@@ -53,8 +53,8 @@ const Slideshow = ({ slideshowData }) => {
       highlightText: "The Playbook",
       titleafter: "for Leaders Designing the Next Decade",
       subtitle: "Exponential by Design distills how today's most valuable enterprises engineer scale, influence, and adaptability - before competitors react.",
-      primaryButton: { text: "Pre - Order to start your journey" },
-      secondaryButton: { text: "Pre - Order to start your journey", link: "/book" }
+      primaryButton: { text: "Order Now to start your journey" },
+      secondaryButton: { text: "Order Now to start your journey", link: "/book" }
     },
     {
       id: 4,
@@ -391,7 +391,7 @@ const Slideshow = ({ slideshowData }) => {
                         {currentSlideData.primaryButton.text}
                       </a>
                     ) : currentSlideData.primaryButton.text === 'Pre - Order to start your journey' ? (
-                      // Priority 4: Pre-Order button - Check location and open shop modal
+                      // Priority 4: Order button - Check location and open shop modal
                       <button
                         type="button"
                         onClick={handlePreOrderClick}

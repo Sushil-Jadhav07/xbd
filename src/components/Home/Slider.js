@@ -32,7 +32,7 @@ const Slider = ({ resourcesSliderData }) => {
         title: "Read the Playbook That's Fueling 15X Growth Stories",
         description: "Complete Return OS framework & implementation guide",
         meta: "212 Pages",
-        buttonText: "Pre-Order Book Now",
+        buttonText: "Order Book Now",
         iconType: "document"
       },
       {
@@ -332,7 +332,7 @@ const Slider = ({ resourcesSliderData }) => {
 
                         {/* Button */}
                         <div className="mt-auto pt-4">
-                          {resource.buttonText === 'Pre-Order Book Now' ? (
+                          {resource.buttonText === 'Order Book Now' ? (
                             <button
                               type="button"
                               onClick={handlePreOrderClick}

@@ -211,7 +211,7 @@ const InsideBook = ({ insideBookData }) => {
       link: "/"
     },
     secondaryButton: { 
-      text: "Pre-Order Book Now",
+      text: "Order Book Now",
       link: "https://xbd-2.myshopify.com/"
     }
   }
