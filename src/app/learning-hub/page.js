@@ -75,9 +75,9 @@ export default async function Page() {
 
         <ExponentialJourney journeyData={exponentialJourneyData} />
         
-        <Programs programsData={programsData} />
-        <IndustryFocus industryFocusData={industryFocusData} />
-        <WhatLearn whatLearnData={whatLearnData} />
+        {/* <Programs programsData={programsData} /> */}
+        {/* <IndustryFocus industryFocusData={industryFocusData} /> */}
+        {/* <WhatLearn whatLearnData={whatLearnData} /> */}
         {/* <IntroductoryClass introductoryClassData={introductoryClassData} /> */}
 
         

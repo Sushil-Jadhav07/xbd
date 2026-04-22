@@ -38,7 +38,7 @@ const MasterFrameworkChange = ({ masterFrameworkData }) => {
   const embedUrl = getYouTubeEmbedUrl(data.youtubeUrl);
 
   return (
-    <section className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-10 lg:py-12 border-b border-[#c9c9c9]">
+    <section className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-10 lg:py-12 pb-[60px] lg:pb-[100px] border-b border-[#c9c9c9]">
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
         <h2 className="text-lg md:text-4xl font-semibold text-black leading-tight">
           {data.heading}

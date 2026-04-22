@@ -37,7 +37,7 @@ const LearningModelShift = ({ learningModelShiftData }) => {
     : fallbackData;
 
   return (
-    <section className="bg-white  md:mx-[15px] mx-[5px] py-10 lg:py-12">
+    <section className="bg-white  md:mx-[15px] mx-[5px] py-12 lg:py-12">
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
         <div className="space-y-5 lg:space-y-6">
           <div>
@@ -68,7 +68,7 @@ const LearningModelShift = ({ learningModelShiftData }) => {
               {data.comparisonRows?.map((row, index) => (
                 <div
                   key={`${row.leftText}-${index}`}
-                  className="grid grid-cols-[1fr_44px_1fr] md:grid-cols-[1fr_56px_1fr] border-t border-white/70 dark:border-[#2a2a2a] text-sm md:text-xl leading-[1.2]"
+                  className="grid grid-cols-[1fr_44px_1fr] md:grid-cols-[1fr_56px_1fr] border-t border-white/70 dark:border-[#2a2a2a] text-xs md:text-lg leading-[1.2]"
                 >
                   <div className="px-4 py-4 text-white ">{row.leftText}</div>
                   <div className="text-center px-2 py-4 text-white ">&#8594;</div>

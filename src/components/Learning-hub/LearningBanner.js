@@ -41,7 +41,7 @@ const LearningBanner = ({ learningBannerData }) => {
     }) || fallbackData.keyFeatures;
 
   return (
-    <section className="bg-[#f5f1eb]  md:mx-[15px] mx-[5px] py-10 lg:py-14">
+    <section className="bg-[#f5f1eb]  md:mx-[15px] mx-[5px] py-12 lg:py-14">
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-10 items-center">
           <div>
@@ -63,7 +63,7 @@ const LearningBanner = ({ learningBannerData }) => {
           </div>
 
           <div className="space-y-4 lg:space-y-5">
-            <h1 className="text-2xl leading-[0.95] md:text-6xl font-black tracking-tight text-[#9c7a1c] uppercase">
+            <h1 className="text-3xl leading-[0.95] md:text-5xl font-black tracking-tight text-[#9c7a1c] uppercase">
               {data.topLabel}
             </h1>
 
@@ -71,20 +71,23 @@ const LearningBanner = ({ learningBannerData }) => {
               {data.secondaryHeading}
             </h2>
 
-            <h3 className="text-2xl md:text-5xl font-semibold uppercase text-black leading-[1.2] whitespace-pre-line">
+            <h3 className="text-lg md:text-xl font-semibold uppercase text-black leading-[1.2] whitespace-pre-line">
               {data.mainHeading}
             </h3>
 
-            <p className="text-base md:text-3xl font-bold uppercase text-[#4f5561] leading-[1.1] max-w-[720px]">
+            <p className="text-base md:text-xl font-semibold uppercase text-[#4f5561] leading-[1.1] max-w-[720px]">
               {data.description}
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 pt-1">
               {normalizedFeatures.slice(0, 3).map((feature, index) => (
-                <div key={`${feature.title}-${index}`} className="flex items-center gap-2">
-                  <span className="sm:hidden text-[#9c7a1c] text-xl leading-[1.15] mt-0.5">&#8226;</span>
+                <div
+                  key={`${feature.title}-${index}`}
+                  className="flex items-start gap-2 rounded-xl border border-[#e0d6c7] bg-white px-3 py-3 md:px-4 md:py-4 shadow-[0_1px_0_rgba(0,0,0,0.04)]"
+                >
+                  <span className="sm:hidden text-[#9c7a1c] text-base leading-[1.15] mt-0.5">&#8226;</span>
                   <div>
-                    <p className="font-semibold text-base md:text-xl text-black leading-[1.1]">{feature.title}</p>
+                    <p className="font-medium text-base md:text-lg text-black leading-[1.1]">{feature.title}</p>
                     {feature.description && (
                       <p className="text-sm md:text-lg text-[#9c7a1c] leading-[1.15] mt-1">{feature.description}</p>
                     )}
@@ -92,12 +95,12 @@ const LearningBanner = ({ learningBannerData }) => {
                 </div>
               ))}
             </div>
+
+            <p className="text-left text-xs md:text-[14px] mt-5 tracking-wide uppercase text-black">
+              {data.foundationJourneyText || data.disclaimerText}
+            </p>
           </div>
         </div>
-
-        <p className="text-center text-xs md:text-base mt-8 tracking-wide uppercase text-black ">
-          {data.foundationJourneyText || data.disclaimerText}
-        </p>
       </div>
     </section>
   );

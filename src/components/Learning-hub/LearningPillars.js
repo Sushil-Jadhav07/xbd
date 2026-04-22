@@ -54,16 +54,16 @@ const LearningPillars = ({ learningPillarsData }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {data.pillars.map((pillar, index) => (
-            <div key={`${pillar.titleHighlight}-${index}`} className="flex flex-col h-full">
+            <div key={`${pillar.titleHighlight}-${index}`} className="space-y-4">
               <h3 className="text-xl md:text-3xl font-semibold text-black ">
                 {pillar.titlePrefix} <span className="text-[#9d7035]">{pillar.titleHighlight}</span>
               </h3>
 
-              <p className="text-base md:text-xl font-medium text-black leading-[1.25] min-h-[60px] md:min-h-[120px] mt-4">
+              <p className="text-base md:text-xl font-medium text-black leading-[1.25]">
                 {pillar.topDescription}
               </p>
 
-              <div className="rounded-md border border-[#d6d6d6] dark:border-[#2a2a2a] bg-[#efefef] dark:bg-[#121212] overflow-hidden h-[240px] md:h-[280px] flex items-center justify-center mt-4">
+              <div className="rounded-md border border-[#d6d6d6] dark:border-[#2a2a2a] bg-[#efefef] dark:bg-[#121212] overflow-hidden h-[240px] md:h-[280px] flex items-center justify-center">
                 {pillar.diagramImage?.asset?.url ? (
                   <Image
                     src={pillar.diagramImage.asset.url}
@@ -82,19 +82,15 @@ const LearningPillars = ({ learningPillarsData }) => {
                   <p className="text-sm text-[#6b7280] dark:text-[#9ca3af]">Upload pillar diagram in Sanity</p>
                 )}
               </div>
-            </div>
-          ))}
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-8 lg:mt-10">
-          {data.pillars.map((pillar, index) => (
-            <div key={`${pillar.bottomTitle}-${index}`} className="bg-white p-6 border border-[#e4e4e4] dark:border-[#252525] h-full flex flex-col">
-              <h4 className="text-lg md:text-2xl font-semibold text-black leading-tight mb-3">
-                {pillar.bottomTitle}
-              </h4>
-              <p className="text-sm md:text-lg text-black leading-[1.5]">
-                {pillar.bottomDescription}
-              </p>
+              <div className="bg-white p-6 border border-[#e4e4e4] dark:border-[#252525] mt-6">
+                <h4 className="text-lg md:text-2xl font-semibold text-black leading-tight mb-3">
+                  {pillar.bottomTitle}
+                </h4>
+                <p className="text-sm md:text-lg text-black leading-[1.5]">
+                  {pillar.bottomDescription}
+                </p>
+              </div>
             </div>
           ))}
         </div>
