@@ -9,24 +9,21 @@ const Faqs = ({ faqsData }) => {
     sectionBadge: "Support",
     mainTitle: "Frequently Asked",
     highlightedTitle: "Questions",
-    subtitle: "Everything you need to know about our programs and services.",
+    subtitle: 'Create two FAQ tabs: "For Organisations" and "For Individual Leaders." Key new questions for corporate buyers:',
     faqs: [
       {
-        question: "Who is this course for?",
-        answer: "CXOs, business leaders, strategists and consultants who want to master exponential growth."
+        question: "Can this programme be customised for our industry?",
+        answer: "Yes. The REWIRE framework is sector-agnostic by design but has been delivered in financial services, retail, telecom, and industrial contexts. We adapt case studies, live activation labs, and implementation playbooks to your specific operating environment."
       },
       {
-        question: "What formats are available?",
-        answer: "Self-paced modules, live workshops, and cohort activation labs with flexible learning options."
+        question: "What does success look like after the programme?",
+        answer: " Participants leave with deployed artefacts — not just insights. For corporate cohorts: an AI Governance Charter, a CoE Blueprint, a 90-day pilot plan, and a Capability Architecture. These are live documents, not slide decks."
       },
       {
-        question: "How do I enroll a team?",
-        answer: "Contact us for team enrollment options and custom pricing for organizations."
-      },
-      {
-        question: "What is the refund policy?",
-        answer: "30-day money-back guarantee with no questions asked."
+        question: "How is this different from other AI leadership programmes?",
+        answer: "Most programmes train individuals to use AI tools. REWIRE trains leadership teams to redesign how their organisation operates with AI — from decision architecture to talent models to value networks. The focus is institutionalisation, not adoption."
       }
+
     ],
     ctaSection: null
   };

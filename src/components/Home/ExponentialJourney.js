@@ -107,10 +107,11 @@ export default function ExponentialJourney({ journeyData }) {
   };
 
   // Get hero section data
-  const titleStart = journeyData?.heroSection?.titleStart || 'Design your';
-  const highlightText = journeyData?.heroSection?.highlightText || 'Exponential journey';
-  const titleEnd = journeyData?.heroSection?.titleEnd || 'now';
-  const heroSubtitle = journeyData?.heroSection?.subtitle || "Whether you're leading a transformation, preparing for AI, or scaling innovation, we have a path for you.";
+  const titleStart = 'Growthh Transformation Leadership Program';
+  const highlightText = 'Exponential journey';
+  const titleEnd = 'now';
+  const heroSubtitle = 'From AI Adoption to AI Institutionalization';
+  const subtitleHighlightText = 'From AI Adoption to AI Institutionalization';
   const mountainImageUrl = journeyData?.heroSection?.mountainImage?.asset?.url;
   const journeyPoints = journeyData?.heroSection?.journeyPoints || [];
 
@@ -122,10 +123,54 @@ export default function ExponentialJourney({ journeyData }) {
     4: { left: '49%', top: '37%', leftMobile: '49%', topMobile: '37%', label: 'Practitioner' }
   };
 
+  // Text overlays on mountain image (you can adjust these positions freely)
+  const journeyTextPositions = {
+    foundation: { left: '1%', bottom: '0.8%', leftMobile: '2%', bottomMobile: '1.5%' },
+    stage2: { left: '1%', top: '80%', leftMobile: '2%', topMobile: '61%' },
+    stage3: { left: '1%', top: '57%', leftMobile: '2%', topMobile: '36%' },
+    stage4: { left: '1%', top: '37%', leftMobile: '2%', topMobile: '15%' },
+  };
+
+  // Optional manual override for guide lines.
+  // Set a value here to control the line directly; keep as null to auto-calculate.
+  const journeyGuideLinePositions = {
+    stage4: {
+      left: '10%',
+      top: '40%',
+      width: '40%',
+    },
+    stage3: {
+      left: '5%',
+      top: '60%',
+      width: '30%',
+    },
+    stage2: {
+      left: '10%',
+      top: '90%',
+      width: '10%',
+    },
+    foundation: {
+      left: '1%',
+      bottom: '0.8%',
+      width: '1%',
+    },
+  };
+
+  const escapedSubtitleHighlight = subtitleHighlightText
+    ? subtitleHighlightText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    : '';
+  const subtitleHighlightMatch = escapedSubtitleHighlight
+    ? heroSubtitle.match(new RegExp(escapedSubtitleHighlight, 'i'))
+    : null;
+  const effectiveSubtitleHighlight = subtitleHighlightMatch?.[0] || '';
+  const subtitleParts = effectiveSubtitleHighlight
+    ? heroSubtitle.split(effectiveSubtitleHighlight)
+    : null;
+
   return (
-    <div className="min-h-screen bg-black text-white md:mx-[15px] mx-[5px] pb-12 md:pb-16">
+    <div className="min-h-screen bg-[#f5f1eb] text-black dark:bg-black dark:text-white md:mx-[15px] mx-[5px] pb-12 md:pb-16">
       {/* Hero Section with Mountain Background */}
-      <div className="relative md:h-[800px] h-[300px] bg-gradient-to-b from-gray-800 to-black overflow-visible">
+      <div className="relative md:h-[800px] h-[300px] bg-gradient-to-b from-[#e7e0d5] to-[#f5f1eb] dark:from-gray-800 dark:to-black overflow-visible">
         {/* Mountain Silhouette with Journey Points */}
         <div className="absolute bottom-0 left-0 right-0 h-[100%] overflow-visible">
           <Image
@@ -138,12 +183,99 @@ export default function ExponentialJourney({ journeyData }) {
 
           {/* Header Text Overlay on Mountain */}
           <div className="absolute top-4 md:top-8 left-0 right-0 text-center px-4 z-10">
-            <h2 className="text-lg md:text-4xl font-light mb-0 md:mb-4">
-              {titleStart} <span className="text-[#c1a35e] font-semibold">{highlightText}</span> {titleEnd}
+            <h2 className="text-lg md:text-4xl font-light mb-0 md:mb-4"> Growthh Transformation Leadership Program
+              {/* {titleStart}   <span className="text-[#c1a35e] font-semibold">{highlightText}</span> {titleEnd} */}
             </h2>
-            <h4 className="text-gray-100 text-xs md:text-base max-w-3xl mx-auto">
-              {heroSubtitle}
+            <h4 className="text-gray-800 dark:text-gray-100 text-lg md:text-4xl max-w-3xl mx-auto"> 
+              {subtitleParts ? (
+                <>
+                  {subtitleParts[0]}
+                  <span className="text-[#c1a35e] font-semibold">{effectiveSubtitleHighlight}</span>
+                  {subtitleParts.slice(1).join(effectiveSubtitleHighlight)}
+                </>
+              ) : subtitleHighlightText ? (
+                <>
+                  {heroSubtitle}{' '}
+                  <span className="text-[#c1a35e] md:text-4xl text-lg font-semibold">{subtitleHighlightText}</span>
+                </>
+              ) : (
+                heroSubtitle
+              )}
             </h4>
+          </div>
+
+          {/* Journey Text Overlay */}
+          <div className="absolute inset-0 z-20 pointer-events-none text-black">
+            {/* Stage Guide Lines (parallel to stage text positions) */}
+            <div
+              className="absolute hidden md:block border-t border-dashed border-gray-500/70"
+              style={{
+                left: journeyGuideLinePositions.stage4.left || journeyTextPositions.stage4.left,
+                width: journeyGuideLinePositions.stage4.width || `calc(${visualPointPositions[4].left} - ${journeyTextPositions.stage4.left})`,
+                top: journeyGuideLinePositions.stage4.top || journeyTextPositions.stage4.top
+              }}
+            />
+            <div
+              className="absolute hidden md:block border-t border-dashed border-gray-500/70"
+              style={{
+                left: journeyGuideLinePositions.stage3.left || journeyTextPositions.stage3.left,
+                width: journeyGuideLinePositions.stage3.width || `calc(${visualPointPositions[3].left} - ${journeyTextPositions.stage3.left})`,
+                top: journeyGuideLinePositions.stage3.top || journeyTextPositions.stage3.top
+              }}
+            />
+            <div
+              className="absolute hidden md:block border-t border-dashed border-gray-500/70"
+              style={{
+                left: journeyGuideLinePositions.stage2.left || journeyTextPositions.stage2.left,
+                width: journeyGuideLinePositions.stage2.width || `calc(${visualPointPositions[2].left} - ${journeyTextPositions.stage2.left})`,
+                top: journeyGuideLinePositions.stage2.top || journeyTextPositions.stage2.top
+              }}
+            />
+            <div
+              className="absolute hidden md:block border-t border-gray-400/80"
+              style={{
+                left: journeyGuideLinePositions.foundation.left || journeyTextPositions.foundation.left,
+                width: journeyGuideLinePositions.foundation.width || `calc(${visualPointPositions[1].left} - ${journeyTextPositions.foundation.left})`,
+                bottom: journeyGuideLinePositions.foundation.bottom || journeyTextPositions.foundation.bottom
+              }}
+            />
+
+            <div
+              className="absolute hidden md:block"
+              style={{ left: journeyTextPositions.stage4.left, top: journeyTextPositions.stage4.top }}
+            >
+              <p className="text-[18px] font-semibold leading-none">STAGE 4</p>
+              <p className="text-[18px] font-semibold uppercase leading-[1.02] mt-1">Coaching and</p>
+              <p className="text-[18px] font-semibold uppercase leading-[1.02]">System Activation</p>
+              <p className="text-[18px] font-medium text-[#9d7035] leading-[1.05] mt-1">From Design to</p>
+              <p className="text-[18px] font-medium text-[#9d7035] leading-[1.05]">Transformation</p>
+              <p className="text-[18px] font-medium text-[#9d7035] leading-[1.05]">Journey</p>
+            </div>
+
+            <div
+              className="absolute hidden md:block"
+              style={{ left: journeyTextPositions.stage3.left, top: journeyTextPositions.stage3.top }}
+            >
+              <p className="text-[18px] font-semibold leading-none">STAGE 3</p>
+              <p className="text-[18px] font-semibold uppercase leading-[1.02] mt-1">Architecture &amp;</p>
+              <p className="text-[18px] font-semibold uppercase leading-[1.02]">Execution Design</p>
+              <p className="text-[18px] font-semibold uppercase leading-[1.02]">Lab</p>
+              <p className="text-[18px] font-medium text-[#9d7035] leading-[1.05] mt-1">From Vision to System</p>
+              <p className="text-[18px] font-medium text-[#9d7035] leading-[1.05]">Design</p>
+            </div>
+
+            <div
+              className="absolute hidden md:block"
+              style={{ left: journeyTextPositions.stage2.left, top: journeyTextPositions.stage2.top }}
+            >
+              <p className="text-[18px] font-semibold leading-none">STAGE 2</p>
+              <p className="text-[18px] font-semibold uppercase leading-[1.02] mt-1">Executive Vision Reset</p>
+              <p className="text-[18px] font-medium text-[#9d7035] leading-[1.05] mt-1">From AI Curiosity to AI</p>
+              <p className="text-[18px] font-medium text-[#9d7035] leading-[1.05]">Mandate</p>
+            </div>
+
+            
+
           </div>
 
           {/* Journey Points - Dynamically rendered based on actual stages */}
@@ -215,7 +347,7 @@ export default function ExponentialJourney({ journeyData }) {
                       </div>
                     )}
                   </div>
-                  <span className="text-white text-xs md:text-sm font-medium relative z-10">{stage.title}</span>
+                  <span className="text-black dark:text-white text-xs md:text-sm font-medium relative z-10">{stage.title}</span>
                 </div>
 
                 {/* Desktop version */}
@@ -247,7 +379,7 @@ export default function ExponentialJourney({ journeyData }) {
                       }`}></div>
                     </div>
                   </div>
-                  <span className="text-white text-xs md:text-sm font-medium relative z-10">{stage.title}</span>
+                  <span className="text-black dark:text-white text-xs md:text-sm font-medium relative z-10">{stage.title}</span>
                   
                   {/* Hover Tooltip - Positioned relative to the entire journey point container */}
                   {hoveredStage === stage.id && (
@@ -318,7 +450,7 @@ export default function ExponentialJourney({ journeyData }) {
               className={`w-full md:w-auto px-4 md:px-8 py-2 md:py-3 text-sm md:text-base font-medium transition-colors ${
                 activeTab === tab.id
                   ? 'bg-gradient-to-br !from-[#9d7035] !to-[#c1a35e] text-black'
-                  : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                  : 'bg-[#e7e0d5] text-[#4b5563] hover:bg-[#ddd3c4] dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700'
               }`}
             >
               {tab.label}
@@ -327,33 +459,33 @@ export default function ExponentialJourney({ journeyData }) {
         </div>
 
         {/* Content Grid */}
-        <div className="flex flex-col lg:flex-row gap-0 border border-gray-200 rounded-lg overflow-hidden">
+        <div className="flex flex-col lg:flex-row gap-0 border border-[#d7cdbf] dark:border-gray-200 rounded-lg overflow-hidden">
           {/* Left Column - Stage Info - 30% */}
-          <div className="w-full lg:w-[30%] bg-transparent p-4 md:p-8 flex flex-col items-center justify-center border-b lg:border-b-0 lg:border-r border-gray-700">
+          <div className="w-full lg:w-[30%] bg-transparent p-4 md:p-8 flex flex-col items-center justify-center border-b lg:border-b-0 lg:border-r border-[#d7cdbf] dark:border-gray-700">
             {stageData[activeStage] && (
               <>
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#9d7035] flex items-center justify-center mb-3 md:mb-4">
                   <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#c1a35e]"></div>
                 </div>
-                <p className="text-gray-400 text-xs md:text-sm mb-1 md:mb-2">STAGE {stageData[activeStage].stageNumber}</p>
+                <p className="text-[#6b7280] dark:text-gray-400 text-xs md:text-sm mb-1 md:mb-2">STAGE {stageData[activeStage].stageNumber}</p>
                 <h2 className="text-[#c1a35e] text-xl md:text-2xl font-semibold">{stageData[activeStage].title}</h2>
               </>
             )}
           </div>
 
           {/* Middle Column - Journey Stages - 20% */}
-          <div className="w-full lg:w-[20%] bg-transparent border-b lg:border-b-0 lg:border-r border-gray-700 flex items-center justify-center">
+          <div className="w-full lg:w-[20%] bg-transparent border-b lg:border-b-0 lg:border-r border-[#d7cdbf] dark:border-gray-700 flex items-center justify-center">
             <div className="w-full">
               {[...fixedStages].sort((a, b) => b.stageNumber - a.stageNumber).map((stage, index, arr) => (
                 <div 
                   key={stage.id}
-                  className={`p-3 md:p-6 ${index < arr.length - 1 ? 'border-b border-gray-700' : ''} cursor-pointer transition-all duration-200 hover:bg-gray-800 ${
-                    activeStage === stage.id ? 'bg-gray-800' : ''
+                  className={`p-3 md:p-6 ${index < arr.length - 1 ? 'border-b border-[#d7cdbf] dark:border-gray-700' : ''} cursor-pointer transition-all duration-200 hover:bg-[#ede3d5] dark:hover:bg-gray-800 ${
+                    activeStage === stage.id ? 'bg-[#ede3d5] dark:bg-gray-800' : ''
                   }`}
                   onClick={() => setActiveStage(stage.id)}
                 >
                   <h4 className={`text-base md:text-lg font-medium text-center transition-colors duration-200 ${
-                    activeStage === stage.id ? 'text-[#c1a35e]' : 'text-white'
+                    activeStage === stage.id ? 'text-[#c1a35e]' : 'text-black dark:text-white'
                   }`}>{stage.title}</h4>
                 </div>
               ))}
@@ -364,15 +496,15 @@ export default function ExponentialJourney({ journeyData }) {
           <div className="w-full lg:w-[50%] bg-transparent p-4 md:p-8">
             {stageData[activeStage] && (
               <>
-                <h4 className="text-white text-lg md:text-xl font-semibold mb-3 md:mb-4">Promise</h4>
-                <p className="text-gray-300 text-sm md:text-base mb-6 md:mb-8">
+                <h4 className="text-black dark:text-white text-lg md:text-xl font-semibold mb-3 md:mb-4">Promise</h4>
+                <p className="text-[#374151] dark:text-gray-300 text-sm md:text-base mb-6 md:mb-8">
                   {stageData[activeStage].promise}
                 </p>
 
-                <h4 className="text-white text-base md:text-lg font-semibold mb-3 md:mb-4">What you get</h4>
+                <h4 className="text-black dark:text-white text-base md:text-lg font-semibold mb-3 md:mb-4">What you get</h4>
                 <ul className="space-y-2 mb-8 md:mb-12">
                   {stageData[activeStage].features?.map((feature, index) => (
-                    <li key={index} className="text-gray-300 text-sm md:text-base flex items-start">
+                    <li key={index} className="text-[#374151] dark:text-gray-300 text-sm md:text-base flex items-start">
                       <span className="mr-2">•</span>
                       <span>{feature}</span>
                     </li>

@@ -246,6 +246,20 @@ export const structure = (S) =>
                     .documentId('learning-banner')
                 ),
               S.listItem()
+                .title('Learning Model Shift')
+                .child(
+                  S.document()
+                    .schemaType('learningModelShift')
+                    .documentId('learning-model-shift')
+                ),
+              S.listItem()
+                .title('Learning Pillars')
+                .child(
+                  S.document()
+                    .schemaType('learningPillars')
+                    .documentId('learning-pillars')
+                ),
+              S.listItem()
                 .title('Programs')
                 .child(
                   S.document()

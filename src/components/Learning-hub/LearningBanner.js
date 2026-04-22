@@ -1,257 +1,105 @@
-"use client";
-import React, { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import JoinWaitlistForm from '../common/JoinWaitlistForm';
+import React from "react";
+import Image from "next/image";
+
+const fallbackData = {
+  topLabel: "REWIRE",
+  secondaryHeading: "LEAD THE CHANGE",
+  mainHeading: "EXECUTIVE AI\nTRANSFORMATION\nLEADERSHIP\nPROGRAM",
+  description: "TURN YOUR GROWTH STRATEGY INTO MEASURABLE OUTCOMES",
+  keyFeatures: [
+    { title: "Structured,", description: "outcome-first learning" },
+    { title: "Ready-to-deploy", description: "frameworks & templates" },
+    { title: "Peer", description: "collaboration & live clinics" },
+  ],
+  foundationJourneyText: "FROM FOUNDATION \u2192 VISIONARY \u2192 IMPLEMENTOR \u2192 PRACTITIONER",
+  bannerImage: {
+    asset: {
+      url: "/Insights-Page-Banner.jpg",
+    },
+    alt: "Learning hub hero",
+  },
+};
 
 const LearningBanner = ({ learningBannerData }) => {
-  // Fallback data
-  const fallbackData = {
-    topLabel: "Empower your Growth",
-    mainHeading: "Master the Framework and Lead the Change",
-    description: "Unlock your potential with structured learning and hands-on pilots designed to drive exponential growth for your organization.",
-    keyFeatures: [
-      "Actionable playbooks and templates you can apply this week",
-      "Run a 6-week pilot with measurable KPIs",
-      "Peer collaboration and live coaching"
-    ],
-    primaryButton: { text: "Enroll Now", link: "#" },
-    secondaryButton: { text: "Preview Free Class", link: "#" },
-    tertiaryButton: { text: "Program Details", link: "#" },
-    disclaimerText: "Low-risk: Cancel within 14 days for a full refund. Teams discount available.",
-    videoSection: {
-      videoTitle: "Program Overview",
-      videoDescription: "Watch this short video to understand what you'll learn and achieve.",
-      mediaType: "url",
-      videoUrl: "/Video3_programme-summary-final.mp4"
-    }
-  }
+  const data = learningBannerData ? { ...fallbackData, ...learningBannerData } : fallbackData;
 
-  const data = learningBannerData || fallbackData;
-  const [showWaitlistForm, setShowWaitlistForm] = useState(false);
+  const featureSource =
+    data.keyFeatures?.length &&
+    data.keyFeatures.some((feature) => (typeof feature === "object" ? feature?.title || feature?.description : feature))
+      ? data.keyFeatures
+      : data.legacyKeyFeatures || fallbackData.keyFeatures;
 
-  // Get video data
-  const videoSection = data.videoSection || {};
-  const videoUrl = videoSection.videoUrl;
-  const uploadedVideo = videoSection.uploadedVideo?.asset?.url;
-  const videoThumbnail = videoSection.videoThumbnail?.asset?.url;
-  const mediaType = videoSection.mediaType || 'url';
-  
-  // Determine which video to use
-  const finalVideoUrl = mediaType === 'upload' ? uploadedVideo : videoUrl;
-  const hasVideo = finalVideoUrl && finalVideoUrl.trim() !== '';
-
-  // Function to check if URL is YouTube or Vimeo
-  const isExternalVideo = (url) => {
-    if (!url) return false;
-    return url.includes('youtube.com') || url.includes('youtu.be') || url.includes('vimeo.com');
-  };
-
-  // Function to get YouTube embed URL
-  const getYouTubeEmbedUrl = (url) => {
-    if (!url) return null;
-    
-    let videoId = null;
-    
-    // Pattern 1: youtube.com/watch?v=VIDEO_ID
-    const watchMatch = url.match(/[?&]v=([^&#]*)/);
-    if (watchMatch) {
-      videoId = watchMatch[1];
-    }
-    
-    // Pattern 2: youtu.be/VIDEO_ID
-    if (!videoId) {
-      const shortMatch = url.match(/youtu\.be\/([^?#&]*)/);
-      if (shortMatch) {
-        videoId = shortMatch[1];
+  const normalizedFeatures =
+    featureSource?.map((feature) => {
+      if (typeof feature === "string") {
+        return { title: feature, description: "" };
       }
-    }
-    
-    // Pattern 3: youtube.com/embed/VIDEO_ID
-    if (!videoId) {
-      const embedMatch = url.match(/youtube\.com\/embed\/([^?#&]*)/);
-      if (embedMatch) {
-        videoId = embedMatch[1];
-      }
-    }
-    
-    if (videoId && videoId.length === 11) {
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&rel=0&modestbranding=1`;
-    }
-    
-    return url;
-  };
-
-  // Function to get Vimeo embed URL
-  const getVimeoEmbedUrl = (url) => {
-    if (!url) return null;
-    const regExp = /vimeo\.com\/(\d+)/;
-    const match = url.match(regExp);
-    return match ? `https://player.vimeo.com/video/${match[1]}?autoplay=1&muted=1` : url;
-  };
-
-  // Function to get embed URL based on video source
-  const getEmbedUrl = (url) => {
-    if (!url) return null;
-    if (url.includes('youtube.com') || url.includes('youtu.be')) {
-      return getYouTubeEmbedUrl(url);
-    } else if (url.includes('vimeo.com')) {
-      return getVimeoEmbedUrl(url);
-    }
-    return url; // For direct video URLs
-  };
+      return {
+        title: feature?.title || "",
+        description: feature?.description || "",
+      };
+    }) || fallbackData.keyFeatures;
 
   return (
-    <div className="bg-white md:mx-[15px] mx-[5px] py-12 lg:py-16 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Left Column - Video or Image */}
-          <div className="bg-gray-200 rounded-lg h-96 lg:h-full flex items-center justify-center">
-            {hasVideo ? (
-              /* Video Player */
-              <div className="w-full h-full bg-white rounded-lg p-4 flex flex-col">
-                <div className="flex-1 bg-white rounded-lg relative overflow-hidden">
-                  {isExternalVideo(finalVideoUrl) ? (
-                    /* YouTube/Vimeo Embed */
-                    <iframe
-                      src={getEmbedUrl(finalVideoUrl)}
-                      className="w-full h-full rounded-lg"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      frameBorder="0"
-                    />
-                  ) : (
-                    /* Direct Video File */
-                    <video 
-                      className="w-full h-full object-contain rounded-lg"
-                      controls
-                      autoPlay
-                      muted
-                      loop
-                      preload="metadata"
-                      poster={videoThumbnail}
-                    >
-                      <source src={finalVideoUrl} type="video/mp4" />
-                      <source src={finalVideoUrl} type="video/webm" />
-                      Your browser does not support the video tag.
-                    </video>
-                  )}
-                </div>
-                
-                {/* Video Info */}
-                {videoSection.videoTitle && (
-                  <div className="mt-3">
-                    <h1 className="text-lg font-bold text-black mb-2">{videoSection.videoTitle}</h1>
-                    {videoSection.videoDescription && (
-                      <p className="text-gray-700 text-sm">{videoSection.videoDescription}</p>
-                    )}
-                  </div>
-                )}
-                
-                {/* Red-bordered Box with Bullet Points */}
-                <div className="mt-4 rounded-lg p-4">
-                  <ul className="space-y-1">
-                    <li className="flex items-center space-x-2">
-                      <span className="text-gray-600 text-4xl mr-2">•</span>
-                      <span className="text-black">Designed and Led by Anuj Pandey</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <span className="text-gray-600 text-4xl mr-2">•</span>
-                      <span className="text-black">Money-back guarantee</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            ) : data.bannerImage?.asset?.url ? (
-              /* Banner Image */
-              <Image
-                src={data.bannerImage.asset.url}
-                alt={data.bannerImage.alt || "Learning Hub Banner"}
-                width={400}
-                height={300}
-                className="w-full h-full object-cover rounded-lg"
-              />
-            ) : (
-              /* Fallback placeholder */
-              <div className="w-24 h-24 bg-gray-400 rounded-lg flex items-center justify-center">
-                <svg className="w-16 h-16 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-              </div>
-            )}
+    <section className="bg-[#f5f1eb]  md:mx-[15px] mx-[5px] py-10 lg:py-14">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-10 items-center">
+          <div>
+            <div className="relative rounded-[28px] border border-[#e8e8e8] dark:border-[#2a2a2a] bg-white dark:bg-[#101010] overflow-hidden">
+              {data.bannerImage?.asset?.url ? (
+                <Image
+                  src={data.bannerImage.asset.url}
+                  alt={data.bannerImage.alt || "Learning banner"}
+                  width={1200}
+                  height={780}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+              ) : (
+                <div className="h-[300px] md:h-[420px] w-full bg-gradient-to-br from-[#f9f9f9] to-[#d9d9d9]" />
+              )}
+            </div>
+            
           </div>
 
-          {/* Right Column - Content */}
-          <div className="space-y-6">
-            {/* Top Label */}
-            <h4 className="inline-block bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
+          <div className="space-y-4 lg:space-y-5">
+            <h1 className="text-2xl leading-[0.95] md:text-6xl font-black tracking-tight text-[#9c7a1c] uppercase">
               {data.topLabel}
-            </h4>
+            </h1>
 
-            {/* Main Headline */}
-            <h2 className="text-3xl md:text-5xl font-bold text-black leading-tight">
-              {data.mainHeading}
+            <h2 className="text-xl md:text-4xl font-bold uppercase text-[#9c7a1c] leading-[1.02]">
+              {data.secondaryHeading}
             </h2>
 
-            {/* Descriptive Paragraph */}
-            <p className="text-lg text-black font-bold leading-relaxed">
+            <h3 className="text-2xl md:text-5xl font-semibold uppercase text-black leading-[1.2] whitespace-pre-line">
+              {data.mainHeading}
+            </h3>
+
+            <p className="text-base md:text-3xl font-bold uppercase text-[#4f5561] leading-[1.1] max-w-[720px]">
               {data.description}
             </p>
 
-            {/* Key Features/Benefits */}
-            <div className="space-y-3">
-              {data.keyFeatures?.map((feature, index) => (
-                <div key={index} className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-black">{feature}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
+              {normalizedFeatures.slice(0, 3).map((feature, index) => (
+                <div key={`${feature.title}-${index}`} className="flex items-center gap-2">
+                  <span className="sm:hidden text-[#9c7a1c] text-xl leading-[1.15] mt-0.5">&#8226;</span>
+                  <div>
+                    <p className="font-semibold text-base md:text-xl text-black leading-[1.1]">{feature.title}</p>
+                    {feature.description && (
+                      <p className="text-sm md:text-lg text-[#9c7a1c] leading-[1.15] mt-1">{feature.description}</p>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
-
-            {/* Call-to-Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              {data.primaryButton && (
-                <button
-                  type="button"
-                  onClick={() => setShowWaitlistForm(true)}
-                  className="px-8 py-3 cursor-pointer bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors"
-                >
-                  {data.primaryButton.text}
-                </button>
-              )}
-              {data.secondaryButton && (
-                <Link
-                  href={data.secondaryButton.link || '#'}
-                  className="px-6 py-3 bg-gray-200 text-black rounded-lg font-semibold hover:bg-gray-300 transition-colors"
-                >
-                  {data.secondaryButton.text}
-                </Link>
-              )}
-              {data.tertiaryButton && (
-                <Link
-                  href={data.tertiaryButton.link || '#'}
-                  className="px-6 py-3 bg-gray-200 text-black rounded-lg font-semibold hover:bg-gray-300 transition-colors"
-                >
-                  {data.tertiaryButton.text}
-                </Link>
-              )}
-            </div>
-
-            {/* Disclaimer/Guarantee */}
-            {/* <div className="flex items-center space-x-2 pt-4">
-              <div className="w-5 h-5 bg-gray-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-xs font-bold">i</span>
-              </div>
-              <p className="text-sm text-gray-600">
-                {data.disclaimerText}
-              </p>
-            </div> */}
           </div>
         </div>
+
+        <p className="text-center text-xs md:text-base mt-8 tracking-wide uppercase text-black ">
+          {data.foundationJourneyText || data.disclaimerText}
+        </p>
       </div>
-      <JoinWaitlistForm open={showWaitlistForm} onClose={() => setShowWaitlistForm(false)} />
-    </div>
+    </section>
   );
 };
 

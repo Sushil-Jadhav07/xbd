@@ -245,6 +245,20 @@ export const structure = (S) =>
                     .filter('_type == "learningBanner"')
                 ),
               S.listItem()
+                .title('Learning Model Shift')
+                .child(
+                  S.documentTypeList('learningModelShift')
+                    .title('Learning Model Shift')
+                    .filter('_type == "learningModelShift"')
+                ),
+              S.listItem()
+                .title('Learning Pillars')
+                .child(
+                  S.documentTypeList('learningPillars')
+                    .title('Learning Pillars')
+                    .filter('_type == "learningPillars"')
+                ),
+              S.listItem()
                 .title('Programs')
                 .child(
                   S.documentTypeList('programs')

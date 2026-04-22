@@ -85,6 +85,7 @@ export async function getExponentialJourneyData() {
       highlightText,
       titleEnd,
       subtitle,
+      subtitleHighlightText,
       mountainImage{
         asset->{
           _id,
@@ -894,21 +895,15 @@ export async function getAnujNewsletterData() {
 export async function getLearningBannerData() {
   const query = `*[_type == "learningBanner"][0]{
     topLabel,
+    secondaryHeading,
     mainHeading,
     description,
-    keyFeatures,
-    primaryButton{
-      text,
-      link
+    foundationJourneyText,
+    keyFeatures[]{
+      title,
+      description
     },
-    secondaryButton{
-      text,
-      link
-    },
-    tertiaryButton{
-      text,
-      link
-    },
+    "legacyKeyFeatures": keyFeatures,
     disclaimerText,
     bannerImage{
       asset->{
@@ -916,26 +911,6 @@ export async function getLearningBannerData() {
         url
       },
       alt
-    },
-    videoSection{
-      videoTitle,
-      videoDescription,
-      mediaType,
-      videoUrl,
-      uploadedVideo{
-        asset->{
-          _id,
-          url,
-          mimeType
-        }
-      },
-      videoThumbnail{
-        asset->{
-          _id,
-          url
-        },
-        alt
-      }
     }
   }`
   
@@ -943,6 +918,55 @@ export async function getLearningBannerData() {
     return await client.fetch(query)
   } catch (error) {
     console.error('Error fetching learning banner data:', error)
+    return null
+  }
+}
+
+export async function getLearningModelShiftData() {
+  const query = `*[_type == "learningModelShift"][0]{
+    titleLine1,
+    titleLine2,
+    quote,
+    leftHeader,
+    rightHeader,
+    comparisonRows[]{
+      leftText,
+      rightText
+    }
+  }`
+
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching learning model shift data:', error)
+    return null
+  }
+}
+
+export async function getLearningPillarsData() {
+  const query = `*[_type == "learningPillars"][0]{
+    headingPrefix,
+    headingText,
+    pillars[]{
+      titlePrefix,
+      titleHighlight,
+      topDescription,
+      diagramImage{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      bottomTitle,
+      bottomDescription
+    }
+  }`
+
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.error('Error fetching learning pillars data:', error)
     return null
   }
 }
@@ -1303,5 +1327,3 @@ export async function getInsightsVideosData() {
     return null
   }
 }
-
-

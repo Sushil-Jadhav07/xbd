@@ -7,9 +7,12 @@ import Faqs from '@/components/Learning-hub/Faqs'
 import IndustryFocus from '@/components/Learning-hub/IndustryFocus'
 import IntroductoryClass from '@/components/Learning-hub/IntroductoryClass'
 import LearningBanner from '@/components/Learning-hub/LearningBanner'
+import LearningModelShift from '@/components/Learning-hub/LearningModelShift'
+import LearningPillars from '@/components/Learning-hub/LearningPillars'
+import MasterFrameworkChange from '@/components/Learning-hub/MasterFrameworkChange'
 import Programs from '@/components/Learning-hub/Programs'
 import WhatLearn from '@/components/Learning-hub/WhatLearn'
-import { getLearningBannerData, getExponentialJourneyData, getProgramsData, getIndustryFocusData, getWhatLearnData, getIntroductoryClassData, getFaqsData } from '@/lib/sanityQueries'
+import { getLearningBannerData, getLearningModelShiftData, getLearningPillarsData, getExponentialJourneyData, getProgramsData, getIndustryFocusData, getWhatLearnData, getIntroductoryClassData, getFaqsData } from '@/lib/sanityQueries'
 import React from 'react'
 
 export const metadata = {
@@ -40,6 +43,8 @@ export const metadata = {
 export default async function Page() {
   const [
     learningBannerData,
+    learningModelShiftData,
+    learningPillarsData,
     programsData,
     industryFocusData,
     whatLearnData,
@@ -48,6 +53,8 @@ export default async function Page() {
     exponentialJourneyData,
   ] = await Promise.all([
     getLearningBannerData(),
+    getLearningModelShiftData(),
+    getLearningPillarsData(),
     getProgramsData(),
     getIndustryFocusData(),
     getWhatLearnData(),
@@ -62,6 +69,9 @@ export default async function Page() {
         <Navbar />
         {/* <ComingSoon /> */}
         <LearningBanner learningBannerData={learningBannerData} />
+        <LearningModelShift learningModelShiftData={learningModelShiftData} />
+        <LearningPillars learningPillarsData={learningPillarsData} />
+        <MasterFrameworkChange />
 
         <ExponentialJourney journeyData={exponentialJourneyData} />
         
