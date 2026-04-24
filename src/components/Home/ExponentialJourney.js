@@ -106,6 +106,14 @@ export default function ExponentialJourney({ journeyData }) {
     }
   };
 
+  const getStageTitleColorClass = (stageTitle = '') => {
+    const normalized = stageTitle.toUpperCase();
+    if (normalized === 'IMPLEMENTOR' || normalized === 'PRACTITIONER') {
+      return 'text-[#c1a35e]';
+    }
+    return 'text-[#111111]';
+  };
+
   // Get hero section data
   const titleStart = 'Growthh Transformation Leadership Program';
   const highlightText = 'Exponential journey';
@@ -118,9 +126,9 @@ export default function ExponentialJourney({ journeyData }) {
   // Define visual point positions for each stage (by stage number)
   const visualPointPositions = {
     1: { left: '2%', bottom: '0%', leftMobile: '2%', bottomMobile: '10%', label: 'Foundation' },
-    2: { left: '20%', bottom: '8%', leftMobile: '20%', bottomMobile: '22%', label: 'Reflector' },
-    3: { left: '35%', top: '57%', leftMobile: '33%', topMobile: '50%', label: 'Implementor' },
-    4: { left: '49%', top: '37%', leftMobile: '49%', topMobile: '37%', label: 'Practitioner' }
+    2: { left: '15%', bottom: '8%', leftMobile: '20%', bottomMobile: '22%', label: 'Reflector' },
+    3: { left: '26%', top: '57%', leftMobile: '33%', topMobile: '50%', label: 'Implementor' },
+    4: { left: '42%', top: '37%', leftMobile: '49%', topMobile: '37%', label: 'Practitioner' }
   };
 
   // Text overlays on mountain image (you can adjust these positions freely)
@@ -182,15 +190,15 @@ export default function ExponentialJourney({ journeyData }) {
           />
 
           {/* Header Text Overlay on Mountain */}
-          <div className="absolute top-4 md:top-8 left-0 right-0 text-center px-4 z-10">
-            <h2 className="text-lg md:text-4xl font-light mb-0 md:mb-4"> Growthh Transformation Leadership Program
+          <div className="absolute top-4 md:top-14 left-0 right-0 text-left px-4 z-10">
+            <h2 className="text-lg text-black md:text-5xl font-light mb-0 md:mb-4"> Growth Transformation Leadership Program
               {/* {titleStart}   <span className="text-[#c1a35e] font-semibold">{highlightText}</span> {titleEnd} */}
             </h2>
-            <h4 className="text-gray-800 dark:text-gray-100 text-lg md:text-4xl max-w-3xl mx-auto"> 
+            <h4 className="text-gray-800 text-left dark:text-gray-100 text-lg md:text-4xl "> 
               {subtitleParts ? (
                 <>
                   {subtitleParts[0]}
-                  <span className="text-[#c1a35e] font-semibold">{effectiveSubtitleHighlight}</span>
+                  <span className="text-[#c1a35e] text-left md:text-4xl text-lg font-semibold">{effectiveSubtitleHighlight}</span>
                   {subtitleParts.slice(1).join(effectiveSubtitleHighlight)}
                 </>
               ) : subtitleHighlightText ? (
@@ -205,7 +213,7 @@ export default function ExponentialJourney({ journeyData }) {
           </div>
 
           {/* Journey Text Overlay */}
-          <div className="absolute inset-0 z-20 pointer-events-none text-black">
+          <div className="absolute inset-0 z-20 pointer-events-none text-[#111111]">
             {/* Stage Guide Lines (parallel to stage text positions) */}
             <div
               className="absolute hidden md:block border-t border-dashed border-gray-500/70"
@@ -288,7 +296,7 @@ export default function ExponentialJourney({ journeyData }) {
                 {/* Mobile version */}
                 <div 
                   key={`${stage.id}-mobile`}
-                  className={`md:hidden absolute flex items-center space-x-3 cursor-pointer transition-transform hover:scale-110 isolate ${
+                  className={`md:hidden absolute flex flex-row-reverse items-center space-x-3 space-x-reverse cursor-pointer transition-transform hover:scale-110 isolate ${
                     hoveredStage === stage.id ? 'z-[100]' : 'z-10'
                   }`}
                   style={position.topMobile 
@@ -347,13 +355,15 @@ export default function ExponentialJourney({ journeyData }) {
                       </div>
                     )}
                   </div>
-                  <span className="text-black dark:text-white text-xs md:text-sm font-medium relative z-10">{stage.title}</span>
+                  <span className={`${getStageTitleColorClass(stage.title)} text-right text-xs md:text-sm font-semibold relative z-10`}>
+                    {stage.title}
+                  </span>
                 </div>
 
                 {/* Desktop version */}
                 <div 
                   key={`${stage.id}-desktop`}
-                  className={`hidden md:flex absolute items-center space-x-3 cursor-pointer transition-transform hover:scale-110 isolate ${
+                  className={`hidden md:flex absolute flex-row-reverse items-center space-x-3 space-x-reverse cursor-pointer transition-transform hover:scale-110 isolate ${
                     hoveredStage === stage.id ? 'z-[100]' : 'z-10'
                   }`}
                   style={position.top 
@@ -379,7 +389,9 @@ export default function ExponentialJourney({ journeyData }) {
                       }`}></div>
                     </div>
                   </div>
-                  <span className="text-black dark:text-white text-xs md:text-sm font-medium relative z-10">{stage.title}</span>
+                  <span className={`${getStageTitleColorClass(stage.title)} text-right text-xs md:text-sm font-semibold relative z-10`}>
+                    {stage.title}
+                  </span>
                   
                   {/* Hover Tooltip - Positioned relative to the entire journey point container */}
                   {hoveredStage === stage.id && (
@@ -468,7 +480,9 @@ export default function ExponentialJourney({ journeyData }) {
                   <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#c1a35e]"></div>
                 </div>
                 <p className="text-[#6b7280] dark:text-gray-400 text-xs md:text-sm mb-1 md:mb-2">STAGE {stageData[activeStage].stageNumber}</p>
-                <h2 className="text-[#c1a35e] text-xl md:text-2xl font-semibold">{stageData[activeStage].title}</h2>
+                <h2 className={`${getStageTitleColorClass(stageData[activeStage].title)} text-xl md:text-2xl font-semibold`}>
+                  {stageData[activeStage].title}
+                </h2>
               </>
             )}
           </div>
@@ -484,9 +498,9 @@ export default function ExponentialJourney({ journeyData }) {
                   }`}
                   onClick={() => setActiveStage(stage.id)}
                 >
-                  <h4 className={`text-base md:text-lg font-medium text-center transition-colors duration-200 ${
-                    activeStage === stage.id ? 'text-[#c1a35e]' : 'text-black dark:text-white'
-                  }`}>{stage.title}</h4>
+                  <h4 className={`text-base md:text-lg font-medium text-center transition-colors duration-200 ${getStageTitleColorClass(stage.title)}`}>
+                    {stage.title}
+                  </h4>
                 </div>
               ))}
             </div>
