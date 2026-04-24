@@ -3,7 +3,7 @@ import React from "react";
 const fallbackData = {
   heading: "Master the Framework and Lead the Change",
   subHeading: "Institutionalise AGILITY in your GROWTH DNA",
-  youtubeUrl: "https://youtu.be/R7GPK8q4YR4",
+  videoUrl: "/learning-hub/video-4-programme-highlights-final.mp4",
   bulletPoints: [
     "Establish a unified Enterprise AI-growth Mandate",
     "Reframe AI from projects to Architecture",
@@ -14,28 +14,11 @@ const fallbackData = {
   ],
 };
 
-const getYouTubeEmbedUrl = (url) => {
-  if (!url) return "";
-
-  let videoId = "";
-
-  if (url.includes("youtube.com/watch")) {
-    const match = url.match(/[?&]v=([^&#]*)/);
-    if (match) videoId = match[1];
-  } else if (url.includes("youtu.be/")) {
-    const match = url.match(/youtu\.be\/([^?#&]*)/);
-    if (match) videoId = match[1];
-  } else if (url.includes("youtube.com/embed/")) {
-    const match = url.match(/youtube\.com\/embed\/([^?#&]*)/);
-    if (match) videoId = match[1];
-  }
-
-  return videoId ? `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1` : "";
-};
-
 const MasterFrameworkChange = ({ masterFrameworkData }) => {
-  const data = masterFrameworkData || fallbackData;
-  const embedUrl = getYouTubeEmbedUrl(data.youtubeUrl);
+  const data = masterFrameworkData
+    ? { ...fallbackData, ...masterFrameworkData }
+    : fallbackData;
+  const finalVideoUrl = data.uploadedVideo?.asset?.url || data.videoUrl;
 
   return (
     <section className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-10 lg:py-12 pb-[60px] lg:pb-[100px] border-b border-[#c9c9c9]">
@@ -46,18 +29,14 @@ const MasterFrameworkChange = ({ masterFrameworkData }) => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mt-8 items-start">
           <div className="w-full max-w-[520px] bg-black rounded-md overflow-hidden aspect-video">
-            {embedUrl ? (
-              <iframe
-                src={embedUrl}
-                title={data.heading}
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
+            {finalVideoUrl ? (
+              <video className="w-full h-full object-contain" controls preload="metadata">
+                <source src={finalVideoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             ) : (
               <div className="w-full h-full flex items-center justify-center text-white text-sm">
-                Add a valid YouTube URL
+                Add a valid video URL
               </div>
             )}
           </div>
