@@ -65,7 +65,7 @@ const LearningModelShift = ({ learningModelShiftData }) => {
                 {hasHighlight ? " " : ""}
               </span>
               {hasHighlight ? (
-                <span className="text-4xl md:text-5xl font-extrabold text-[#9d7035] uppercase">
+                <span className="text-3xl md:text-5xl font-extrabold text-[#9d7035] uppercase">
                   {titleLine2Highlight}
                 </span>
               ) : null}

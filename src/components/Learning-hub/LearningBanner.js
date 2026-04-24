@@ -11,7 +11,8 @@ const fallbackData = {
     { title: "Ready-to-deploy", description: "frameworks & templates" },
     { title: "Peer", description: "collaboration & live clinics" },
   ],
-  foundationJourneyText: "FROM FOUNDATION → VISIONARY → IMPLEMENTOR → PRACTITIONER",
+  foundationJourneyText:
+    "FROM FOUNDATION \u2192 VISIONARY \u2192 IMPLEMENTOR \u2192 PRACTITIONER",
   bannerImage: {
     asset: {
       url: "/Insights-Page-Banner.jpg",
