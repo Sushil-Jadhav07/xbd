@@ -480,9 +480,7 @@ export default function ExponentialJourney({ journeyData }) {
                   <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#c1a35e]"></div>
                 </div>
                 <p className="text-[#6b7280] dark:text-gray-400 text-xs md:text-sm mb-1 md:mb-2">STAGE {stageData[activeStage].stageNumber}</p>
-                <h2 className={`${getStageTitleColorClass(stageData[activeStage].title)} text-xl md:text-2xl font-semibold`}>
-                  {stageData[activeStage].title}
-                </h2>
+                <h2 className="text-[#c1a35e] text-xl md:text-2xl font-semibold">{stageData[activeStage].title}</h2>
               </>
             )}
           </div>
@@ -498,9 +496,9 @@ export default function ExponentialJourney({ journeyData }) {
                   }`}
                   onClick={() => setActiveStage(stage.id)}
                 >
-                  <h4 className={`text-base md:text-lg font-medium text-center transition-colors duration-200 ${getStageTitleColorClass(stage.title)}`}>
-                    {stage.title}
-                  </h4>
+                  <h4 className={`text-base md:text-lg font-medium text-center transition-colors duration-200 ${
+                    activeStage === stage.id ? 'text-[#c1a35e]' : 'text-black dark:text-white'
+                  }`}>{stage.title}</h4>
                 </div>
               ))}
             </div>
