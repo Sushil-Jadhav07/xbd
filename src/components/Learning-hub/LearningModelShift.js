@@ -52,7 +52,7 @@ const LearningModelShift = ({ learningModelShiftData }) => {
     : "";
 
   return (
-    <section className="bg-white md:mx-[15px] mx-[5px] py-12 lg:py-12">
+    <section className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-12 lg:py-12">
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
         <div className="space-y-5 lg:space-y-6">
           <div>

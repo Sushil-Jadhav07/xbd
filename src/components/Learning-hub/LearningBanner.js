@@ -5,7 +5,7 @@ const fallbackData = {
   topLabel: "REWIRE",
   secondaryHeading: "LEAD THE CHANGE",
   mainHeading: "EXECUTIVE AI\nTRANSFORMATION\nLEADERSHIP\nPROGRAM",
-  description: "TURN YOUR GROWTH STRATEGY INTO MEASURABLE OUTCOMES",
+  description: "TURN YOUR GROWTH STRATEGY INTO  MEASURABLE OUTCOMES",
   keyFeatures: [
     { title: "Structured,", description: "outcome-first learning" },
     { title: "Ready-to-deploy", description: "frameworks & templates" },

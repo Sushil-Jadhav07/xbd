@@ -83,7 +83,7 @@ const LearningPillars = ({ learningPillarsData }) => {
                 )}
               </div>
 
-              <div className="bg-white p-6 border border-[#e9e9e980] dark:border-[#25252599] mt-6 flex-1">
+              <div className="bg-white p-6 border-2 border-[#9c7a1c]/20 shadow-xl    mt-6 flex-1">
                 <h4 className="text-lg md:text-2xl font-semibold text-black leading-tight mb-3 md:min-h-[58px]">
                   {pillar.bottomTitle}
                 </h4>
