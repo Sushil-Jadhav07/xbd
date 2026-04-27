@@ -49,7 +49,7 @@ const LearningBanner = ({ learningBannerData }) => {
 
   return (
     <section className="bg-white md:mx-[15px] mx-[5px] py-12 lg:py-14">
-      <div className="max-w-7xl mx-auto px-4 lg:px-6">
+      <div className="max-w-8xl mx-auto px-4 lg:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-10 items-center">
 
           {/* LEFT: Image */}
@@ -72,15 +72,15 @@ const LearningBanner = ({ learningBannerData }) => {
 
           {/* RIGHT: Content */}
           <div className="space-y-4 lg:space-y-5">
-            <h1 className="text-3xl mb-4 md:text-7xl font-black  text-[#9c7a1c] uppercase">
+            <h1 className="text-3xl mb-4 md:text-8xl font-black  text-[#9c7a1c] uppercase">
               {data.topLabel}
             </h1>
 
-            <h2 className="text-xl md:text-3xl font-semibold uppercase text-[#9c7a1c]  leading-[0.4]">
+            <h2 className="text-xl md:text-4xl font-semibold uppercase text-[#9c7a1c]  leading-[0.4]">
               {data.secondaryHeading}
             </h2>
 
-            <h3 className="text-lg md:text-3xl leading-[1.4] font-semibold uppercase text-black  ">
+            <h3 className="text-lg mt-8 md:text-5xl leading-[1] font-semibold uppercase text-black  ">
               {mainHeadingLines.map((line, index) => (
                 <span key={`${line}-${index}`} className="block">
                   {line}

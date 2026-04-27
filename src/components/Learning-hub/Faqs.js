@@ -9,7 +9,7 @@ const Faqs = ({ faqsData }) => {
     sectionBadge: "Support",
     mainTitle: "Frequently Asked",
     highlightedTitle: "Questions",
-    subtitle: 'Create two FAQ tabs: "For Organisations" and "For Individual Leaders." Key new questions for corporate buyers:',
+    subtitle: '',
     faqs: [
       {
         question: "Can this programme be customised for our industry?",
