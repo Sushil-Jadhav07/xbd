@@ -3,7 +3,7 @@ import React from "react";
 const fallbackData = {
   heading: "Master the Framework and Lead the Change",
   subHeading: "Institutionalise AGILITY in your GROWTH DNA",
-  videoUrl: "/learning-hub/video-4-programme-highlights-final.mp4",
+  videoUrl: "https://firebasestorage.googleapis.com/v0/b/union-living.appspot.com/o/Video%204_Programme%20Highlights%20final.mp4?alt=media&token=05399f4a-4045-45ff-85c4-4b80ed50aab6",
   bulletPoints: [
     "Establish a unified Enterprise AI-growth Mandate",
     "Reframe AI from projects to Architecture",
