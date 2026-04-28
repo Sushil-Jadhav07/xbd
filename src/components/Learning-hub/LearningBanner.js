@@ -5,7 +5,7 @@ const fallbackData = {
   topLabel: "REWIRE",
   secondaryHeading: "LEAD THE CHANGE",
   mainHeading: "EXECUTIVE AI\nTRANSFORMATION\nLEADERSHIP\nPROGRAM",
-  description: "TURN YOUR GROWTH STRATEGY INTO  MEASURABLE OUTCOMES",
+  description: "TURN YOUR GROWTH STRATEGY INTO\nMEASURABLE OUTCOMES",
   keyFeatures: [
     { title: "Structured,", description: "outcome-first learning" },
     { title: "Ready-to-deploy", description: "frameworks & templates" },
@@ -72,7 +72,7 @@ const LearningBanner = ({ learningBannerData }) => {
 
           {/* RIGHT: Content */}
           <div className="space-y-4 lg:space-y-5">
-            <h1 className="text-3xl mb-4 md:text-8xl font-black  text-[#9c7a1c] uppercase">
+            <h1 className="text-4xl mb-4 md:text-8xl font-black  text-[#9c7a1c] uppercase">
               {data.topLabel}
             </h1>
 
@@ -80,7 +80,7 @@ const LearningBanner = ({ learningBannerData }) => {
               {data.secondaryHeading}
             </h2>
 
-            <h3 className="text-lg mt-8 md:text-5xl leading-[1] font-semibold uppercase text-black  ">
+            <h3 className="text-lg mt-8 md:text-[40px] leading-[1] font-semibold uppercase text-black  ">
               {mainHeadingLines.map((line, index) => (
                 <span key={`${line}-${index}`} className="block">
                   {line}
@@ -88,7 +88,7 @@ const LearningBanner = ({ learningBannerData }) => {
               ))}
             </h3>
 
-            <p className="text-base md:text-xl font-semibold uppercase text-[#4f5561]  leading-[1.1] max-w-[720px]">
+            <p className="text-base md:text-xl font-semibold uppercase text-[#4f5561] leading-[1.1] max-w-[720px] whitespace-pre-line">
               {data.description}
             </p>
 
