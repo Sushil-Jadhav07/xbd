@@ -408,10 +408,10 @@ export default function ExponentialJourney({ journeyData }) {
                 >
                   <div className="relative z-10">
                     <div className={`w-4 h-4 rounded-full flex items-center justify-center border-4 border-gray-800 transition-colors ${
-                      activeStage === stage.id ? 'bg-[#9d7035]' : 'bg-gray-700'
+                      activeStage === stage.id || hoveredStage === stage.id ? 'bg-[#9d7035]' : 'bg-gray-700'
                     }`}>
                       <div className={`w-2 h-2 rounded-full transition-colors ${
-                        activeStage === stage.id ? 'bg-[#c1a35e]' : 'bg-gray-500'
+                        activeStage === stage.id || hoveredStage === stage.id ? 'bg-[#c1a35e]' : 'bg-gray-500'
                       }`}></div>
                     </div>
                     {/* Mobile Hover Tooltip */}
@@ -475,10 +475,10 @@ export default function ExponentialJourney({ journeyData }) {
                 >
                   <div className="relative z-10">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center border-4 border-gray-800 transition-colors ${
-                      activeStage === stage.id ? 'bg-[#9d7035]' : 'bg-gray-700'
+                      activeStage === stage.id || hoveredStage === stage.id ? 'bg-[#9d7035]' : 'bg-gray-700'
                     }`}>
                       <div className={`w-4 h-4 rounded-full transition-colors ${
-                        activeStage === stage.id ? 'bg-[#c1a35e]' : 'bg-gray-500'
+                        activeStage === stage.id || hoveredStage === stage.id ? 'bg-[#c1a35e]' : 'bg-gray-500'
                       }`}></div>
                     </div>
                   </div>
