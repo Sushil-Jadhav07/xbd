@@ -18,7 +18,12 @@ const MasterFrameworkChange = ({ masterFrameworkData }) => {
   const data = masterFrameworkData
     ? { ...fallbackData, ...masterFrameworkData }
     : fallbackData;
-  const finalVideoUrl = data.uploadedVideo?.asset?.url || data.videoUrl;
+  const localFallbackVideoUrl = "/learning-hub/video-4-programme-highlights-final.mp4";
+  const rawVideoUrl =
+    data.uploadedVideo?.asset?.url || data.videoUrl || localFallbackVideoUrl;
+  const finalVideoUrl = rawVideoUrl.startsWith("http")
+    ? rawVideoUrl
+    : encodeURI(rawVideoUrl.startsWith("/") ? rawVideoUrl : `/${rawVideoUrl}`);
 
   return (
     <section className="bg-[#f5f1eb] md:mx-[15px] mx-[5px] py-10 lg:py-12 pb-[60px] lg:pb-[100px] border-b border-[#c9c9c9]">
@@ -32,6 +37,7 @@ const MasterFrameworkChange = ({ masterFrameworkData }) => {
             {finalVideoUrl ? (
               <video className="w-full h-full object-contain" controls preload="metadata">
                 <source src={finalVideoUrl} type="video/mp4" />
+                <source src={localFallbackVideoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             ) : (
