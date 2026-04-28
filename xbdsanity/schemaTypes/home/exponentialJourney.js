@@ -142,7 +142,7 @@ export default {
               name: 'id',
               title: 'Stage ID',
               type: 'string',
-              description: 'Unique identifier (e.g., "foundation", "reflection")',
+              description: 'Unique identifier (e.g., "foundation", "VISIONARY")',
               validation: Rule => Rule.required()
             },
             {
