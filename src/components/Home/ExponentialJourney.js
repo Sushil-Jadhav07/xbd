@@ -117,10 +117,7 @@ export default function ExponentialJourney({ journeyData }) {
   };
 
   const getMobileStageTitleColorClass = (stage) => {
-    if (stage?.stageNumber === 1 || stage?.stageNumber === 2) {
-      return 'text-white';
-    }
-    return getStageTitleColorClass(stage?.title || '');
+    return 'text-[#c1a35e]';
   };
 
   // Hero section data

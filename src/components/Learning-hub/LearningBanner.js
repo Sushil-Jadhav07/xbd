@@ -72,7 +72,7 @@ const LearningBanner = ({ learningBannerData }) => {
 
           {/* RIGHT: Content */}
           <div className="space-y-4 lg:space-y-5">
-            <h1 className="text-4xl mb-4 md:text-8xl font-black  text-[#9c7a1c] uppercase">
+            <h1 className="text-4xl mb-4 md:text-7xl font-black  text-[#9c7a1c] uppercase">
               {data.topLabel}
             </h1>
 
