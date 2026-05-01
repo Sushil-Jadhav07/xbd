@@ -153,14 +153,26 @@ export default function LeadFormModal({ open, onClose, title = 'Book a 30-min Di
   if (!open) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center px-4"
-      aria-modal="true"
-      role="dialog"
-    >
-      <div className="absolute inset-0 bg-black/60" onClick={onClose} />
+    <>
+      <style jsx global>{`
+        .modal-scroll-hidden {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .modal-scroll-hidden::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+          display: none;
+        }
+      `}</style>
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center px-4"
+        aria-modal="true"
+        role="dialog"
+      >
+        <div className="absolute inset-0 bg-black/60" onClick={onClose} />
 
-      <div className="relative z-10 w-full max-w-md md:max-w-2xl bg-white dark:bg-gray-900 rounded-xl shadow-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
+        <div className="modal-scroll-hidden relative z-10 w-full max-w-md md:max-w-2xl bg-white dark:bg-gray-900 rounded-xl shadow-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-2">
           <h1 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">{title}</h1>
           <button 
@@ -377,7 +389,8 @@ export default function LeadFormModal({ open, onClose, title = 'Book a 30-min Di
             {submitting ? 'Submitting...' : 'Claim My Strategy Call'}
           </button>
         </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

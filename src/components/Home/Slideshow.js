@@ -238,6 +238,11 @@ const Slideshow = ({ slideshowData }) => {
   };
 
   const currentSlideData = slides[currentSlide];
+  const isLastSlide = currentSlide === slides.length - 1;
+  const isXOperatingSystemSlide =
+    (currentSlideData?.title || '').toLowerCase().includes('x-operating system') ||
+    (currentSlideData?.highlightText || '').toLowerCase().includes('x-operating system') ||
+    (currentSlideData?.titleafter || '').toLowerCase().includes('x-operating system');
 
   return (
     <>
@@ -411,6 +416,17 @@ const Slideshow = ({ slideshowData }) => {
                       </button>
                     )
                   )}
+
+                  {(isLastSlide || isXOperatingSystemSlide) && (
+                    <a
+                      href="https://www.xbd.co.in/blogs-detail/exponential-operating-system"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-[#c1a35e] text-white px-4 sm:px-5 lg:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:cursor-pointer hover:bg-[#9d7035] transition-colors duration-200 whitespace-nowrap w-full sm:w-auto inline-block text-center"
+                    >
+                      Explore More
+                    </a>
+                  )}
                   
                   {/* {currentSlideData.secondaryButton && (
                     <Link
@@ -485,4 +501,3 @@ const Slideshow = ({ slideshowData }) => {
 };
 
 export default Slideshow;
-
